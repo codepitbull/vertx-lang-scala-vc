@@ -1,0 +1,141 @@
+@code{
+
+  /*TODO: some methods lack necessary type infos for scala*/
+  /*see https://github.com/vert-x3/vertx-lang-scala/issues/23 */
+  def skipMethod(method) {
+    return method.name == 'addInterceptor' || method.name == 'removeInterceptor';
+  }
+
+  def findBasicMethods(methods) {
+    var ret = new java.util.ArrayList();
+    for (method : methods) {
+      if (!method.isFluent() && !method.isCacheReturn && !method.isStaticMethod && !method.isDefaultMethod && !skipMethod(method))
+        ret.add(method);
+    }
+    return ret;
+  }
+
+  def findDefaultMethods(methods) {
+    var ret = new java.util.ArrayList();
+    for (method : methods) {
+      if (method.isDefaultMethod && !skipMethod(method) && !method.isFluent && !method.isCacheReturn)
+        ret.add(method);
+    }
+    return ret;
+  }
+
+  def findFluentMethods(methods) {
+    var ret = new java.util.ArrayList();
+    for (method : methods) {
+      if (method.isFluent && !skipMethod(method) && !method.isCacheReturn)
+        ret.add(method);
+    }
+    return ret;
+  }
+
+  def findCacheReturnMethods(methods) {
+    var ret = new java.util.ArrayList();
+    for (method : methods) {
+      if (method.isCacheReturn && !skipMethod(method))
+        ret.add(method);
+    }
+    return ret;
+  }
+
+  def findFutureMethods(methods) {
+    var ret = new java.util.ArrayList();
+    for (method : methods) {
+      if (shouldMethodReturnAFuture(method) && !skipMethod(method))
+        ret.add(method);
+    }
+    return ret;
+  }
+
+
+  def isAsyncResultHandler(type) {
+    return type.kind == CLASS_HANDLER && type.args[0].kind == CLASS_ASYNC_RESULT;
+  }
+
+  def isLastParamAsyncResultHandler(method) {
+    var size = method.params.size;
+    return isAsyncResultHandler(method.params[size-1].type);
+  }
+
+  def typeOfReturnedFuture(method) {
+    return method.params[method.params.size-1].type.args[0].args[0];
+  }
+
+  def shouldMethodReturnAFuture(method) {
+    var size = method.params.size;
+    return size > 0 && isLastParamAsyncResultHandler(method) && !(method.returnType.kind == CLASS_HANDLER);
+  }
+
+  def assembleTypeParamString(method) {
+    var typeParamString = '';
+    if (!method.typeParams.isEmpty) {
+      for (typeParam : method.typeParams) {
+        if (typeParamString != '') {
+          typeParamString += ', ';
+        }
+        typeParamString += typeParam.name;
+      }
+      typeParamString = '[' + typeParamString + ']';
+    }
+    return typeParamString;
+  }
+
+  def invokeMethodWithoutConvertingReturn(target, type, method, typeParams) {
+    var typeParamString = assembleTypeParamString(method);
+
+    var paramString = '';
+    for (param : method.params) {
+      if (paramString != '') {
+        paramString += ', ';
+      }
+      paramString += conversionForJavaMethodParam(param.name, param.type);
+    }
+
+    ret = target + '.' + escapeIfKeyword(method.name) + typeParamString + '(' + paramString + ')';
+
+    return conversionForReturn(ret, method.returnType);
+  }
+
+  def invokeMethodAndUseProvidedHandler(target, type, method, typeParams, handler) {
+    var typeParamString = assembleTypeParamString(method);
+
+    var paramString = '';
+    for (param : method.params) {
+      if (paramString != '') {
+        paramString += ', ';
+      }
+      if (isAsyncResultHandler(param.type)) {
+        paramString += handler;
+      } else if(param.type.isNullable){
+        paramString += escapeIfKeyword(param.name) + '.orNull';
+      } else {
+        paramString += escapeIfKeyword(param.name);
+      }
+    }
+
+    return target + '.' + escapeIfKeyword(method.name) + typeParamString + '(' + paramString + ')';
+  }
+
+  def removeLastParam(params) {
+    var ret = new java.util.ArrayList(params);
+    ret.remove(params.size - 1);
+    return ret;
+  }
+
+  /**
+   * Some method names require special treatment when used in lang-scala. e.g. we have to convert the name
+   * of methods where the original version gets replaced with one returning a scala.Future.
+   */
+  def createNameForMethodReturningAFuture(method) {
+    var methodName = method.name;
+    if (methodName.endsWith('Handler')) {
+      methodName = methodName.substring(0, methodName.length-7);
+    }
+    methodName += 'Future';
+    return escapeIfKeyword(methodName);
+  }
+}

@@ -1,0 +1,114 @@
+@code{
+  var className = helper.getSimpleName(type.name);
+}
+
+\n
+@comment{"# Generate the imports"}
+@foreach{importedType : generateImports(type, importedTypes, methods)}
+import @{importedType}\n
+@end{}
+\n
+
+@if{doc != null}
+/**\n
+@{renderDoc("  *", doc, renderDocLink)}
+  */\n
+@end{}
+	implicit class @{className}Pimped@{assembleTypeParams(typeParams, true)}(val asJava: J@{className}@{assembleTypeParams(typeParams, true)}) extends AnyVal {\n
+
+@code{
+  var classes = new java.util.ArrayList();
+  var abstractClasses = new java.util.ArrayList();
+  for (superType : superTypes) {
+    if (superType.raw.isConcrete()){
+      classes.add(superType);
+    } else {
+      abstractClasses.add(superType);
+    }
+  }
+}
+
+@code{
+  var basicMethods = findBasicMethods(instanceMethods);
+  basicMethods.addAll(findCacheReturnMethods(instanceMethods));
+  var defaultMethods = findDefaultMethods(instanceMethods);
+  var fluentMethods = findFluentMethods(instanceMethods);
+  var futureMethods = findFutureMethods(instanceMethods);
+}
+
+\n
+@if{className == 'Vertx'}
+@includeNamed{'extensions/Vertx.templ'}
+@end{}
+\n
+
+@foreach{method : fluentMethods}
+	@if{method.doc != null}@{methodDoc(method, '  ', false)}@end{}
+@foreach{param : method.params}
+@end{}
+  def @{escapeIfKeyword(method.name)}
+	@{assembleTypeParams(method.typeParams, true)}(
+	@foreach{param : method.params}
+		@{escapeIfKeyword(param.name)}: @{toScalaMethodParam(param.type)}
+	@end{', '}): @{toReturnType(method.returnType)} = {\n
+    @{invokeMethodWithoutConvertingReturn('asJava', type, method, typeParams)}\n
+  }\n
+	\n
+@end{}
+
+@foreach{method : defaultMethods}
+	@if{method.name == 'executeBlocking'}
+	@if{method.params.size == 2}
+	@includeNamed{'executeblocking.templ'}
+	@end{}
+	@else{}
+	@if{method.doc != null}@{methodDoc(method, '  ', false)}@end{}
+  def @{escapeIfKeyword(method.name)}
+	@{assembleTypeParams(method.typeParams, true)}(
+	@foreach{param : method.params}
+		@{escapeIfKeyword(param.name)}: @{toScalaMethodParam(param.type)}
+	@end{', '}): @{toReturnType(method.returnType)} = {\n
+    @{invokeMethodWithoutConvertingReturn('asJava', type, method, typeParams)}\n
+  }\n
+	\n
+	@end{}
+@end{}
+
+@foreach{method : basicMethods}
+	@if{method.name == 'executeBlocking'}
+	@if{method.params.size == 2}
+	@includeNamed{'executeblocking.templ'}
+	@end{}
+	@else{}
+	@if{method.doc != null}@{methodDoc(method, '  ', false)}@end{}
+  def @{escapeIfKeyword(method.name)}
+	@{assembleTypeParams(method.typeParams, true)}(
+	@foreach{param : method.params}
+		@{escapeIfKeyword(param.name)}: @{toScalaMethodParam(param.type)}
+	@end{', '}): @{toReturnType(method.returnType)} = {\n
+    @{invokeMethodWithoutConvertingReturn('asJava', type, method, typeParams)}\n
+  }\n
+	\n
+	@end{}
+@end{}
+
+@if{className != 'CompositeFuture' && className != 'Future' }
+@foreach{method : futureMethods}
+	@if{method.name != 'executeBlocking'}
+	@if{method.doc != null}@{methodDoc(method, ' ', true)}@end{}
+  def @{createNameForMethodReturningAFuture(method)}
+	@{assembleTypeParams(method.typeParams, true)}(
+	@foreach{param : removeLastParam(method.params)}
+		@{escapeIfKeyword(param.name)}: @{toScalaMethodParam(param.type)}
+	@end{', '}): scala.concurrent.Future[@{toReturnType(typeOfReturnedFuture(method))}] = {\n
+		@comment{'TODO: https://github.com/vert-x3/vertx-codegen/issues/111'}
+    val promise = Promise[@{toReturnType(typeOfReturnedFuture(method))}]()\n
+		@code{var resultHandler = '{a:AsyncResult[' + typeOfAsyncResult(typeOfReturnedFuture(method)) + '] => if(a.failed) promise.failure(a.cause) else promise.success(' + conversionForReturn('a.result()', typeOfReturnedFuture(method)) + ');()}';}
+    @{invokeMethodAndUseProvidedHandler('asJava', type, method, typeParams, resultHandler).replace('<', '[').replace('>]', ']]')}\n
+    promise.future\n
+  }\n
+	\n
+	@end{}
+@end{}
+@end{}
+}\n
