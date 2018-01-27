@@ -14,20 +14,10 @@ import scala.util.{Failure, Success}
 @RunWith(classOf[JUnitRunner])
 class ScalaVerticleTest extends AsyncFlatSpec with Matchers{
 
-  "StartFutureVerticle" should "bew deployed twice" in {
-    val vertx:io.vertx.scala.core.VertxPimped = Vertx.vertx(VertxOptions())
-    implicit val exec: VertxExecutionContext = VertxExecutionContext(vertx.getOrCreateContext())
-    val result = Promise[String]
-    vertx.eventBus()
-      .localConsumer[String]("startMethod")
-      .handler(m => result.success(m.body()))
-    vertx.deployVerticle(nameForVerticle[StartFutureVerticle])
-    result.future.map(r => r should equal("startFuture"))
-  }
-
   "StartFutureVerticle" should "use startFuture to start" in {
-    val vertx:io.vertx.scala.core.VertxPimped = Vertx.vertx
+    val vertx = Vertx.vertx(VertxOptions())
     implicit val exec: VertxExecutionContext = VertxExecutionContext(vertx.getOrCreateContext())
+
     val result = Promise[String]
     vertx.eventBus()
       .localConsumer[String]("startMethod")
@@ -37,10 +27,10 @@ class ScalaVerticleTest extends AsyncFlatSpec with Matchers{
   }
 
   "StartVerticle" should "use start to start" in {
-    val vertx = Vertx.vertx
+    val vertx = Vertx.vertx(VertxOptions())
     implicit val exec: VertxExecutionContext = VertxExecutionContext(vertx.getOrCreateContext())
-
     val result = Promise[String]
+
     vertx.eventBus()
       .localConsumer[String]("startMethod")
       .handler(m => result.success(m.body()))
@@ -50,7 +40,7 @@ class ScalaVerticleTest extends AsyncFlatSpec with Matchers{
   }
 
   "StartFailVerticle" should "fail correctly if start throws an exception" in {
-    val vertx = Vertx.vertx
+    val vertx = Vertx.vertx(VertxOptions())
     implicit val exec: VertxExecutionContext = VertxExecutionContext(vertx.getOrCreateContext())
     val result = Promise[String]
 
@@ -62,9 +52,10 @@ class ScalaVerticleTest extends AsyncFlatSpec with Matchers{
   }
 
   "StopFutureVerticle" should "use stopFuture to stop" in {
-    val vertx = Vertx.vertx
+    val vertx = Vertx.vertx(VertxOptions())
     implicit val exec: VertxExecutionContext = VertxExecutionContext(vertx.getOrCreateContext())
     val result = Promise[String]
+
     vertx.eventBus()
       .localConsumer[String]("stopMethod")
       .handler(m => result.success(m.body()))
@@ -75,9 +66,10 @@ class ScalaVerticleTest extends AsyncFlatSpec with Matchers{
   }
 
   "StopVerticle" should "use stop to stop" in {
-    val vertx = Vertx.vertx
+    val vertx = Vertx.vertx(VertxOptions())
     implicit val exec: VertxExecutionContext = VertxExecutionContext(vertx.getOrCreateContext())
     val result = Promise[String]
+
     vertx.eventBus()
       .localConsumer[String]("stopMethod")
       .handler(m => result.success(m.body()))
@@ -88,7 +80,7 @@ class ScalaVerticleTest extends AsyncFlatSpec with Matchers{
   }
 
   "StopFailVerticle" should "fail correctly if stop throws an exception" in {
-    val vertx = Vertx.vertx
+    val vertx = Vertx.vertx(VertxOptions())
     implicit val exec: VertxExecutionContext = VertxExecutionContext(vertx.getOrCreateContext())
 
     vertx.deployVerticleFuture(nameForVerticle[StopFailVerticle])
