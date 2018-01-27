@@ -192,6 +192,13 @@ import io.vertx.core.buffer.Buffer
       asJava.getServers().asScala
     }
   }
+  
+  type AddressResolverOptions = JAddressResolverOptions
+  object AddressResolverOptions {
+    def apply(): JAddressResolverOptions = new JAddressResolverOptions()
+    def apply(json: JsonObject) = new JAddressResolverOptions(json)
+    def apply(other: JAddressResolverOptions) = new JAddressResolverOptions(other)
+  }
 
 
 import io.vertx.core.cli.{Argument => JArgument}
@@ -273,6 +280,13 @@ import io.vertx.core.cli.{Argument => JArgument}
     def isRequired: java.lang.Boolean = {
       asJava.isRequired()
     }
+  }
+  
+  type Argument = JArgument
+  object Argument {
+    def apply(): JArgument = new JArgument()
+    def apply(json: JsonObject) = new JArgument(json)
+    def apply(other: JArgument) = new JArgument(other)
   }
 
 
@@ -1297,6 +1311,7 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
       asJava.isUsePooledBuffers()
     }
   }
+  
 
 
 import io.vertx.core.cli.{Argument => JArgument}
@@ -1930,6 +1945,13 @@ import io.vertx.core.file.{CopyOptions => JCopyOptions}
       asJava.isReplaceExisting()
     }
   }
+  
+  type CopyOptions = JCopyOptions
+  object CopyOptions {
+    def apply(): JCopyOptions = new JCopyOptions()
+    def apply(json: JsonObject) = new JCopyOptions(json)
+    def apply(other: JCopyOptions) = new JCopyOptions(other)
+  }
 
 
 import io.vertx.lang.scala.AsyncResultWrapper
@@ -2544,6 +2566,13 @@ import io.vertx.core.net.NetworkOptions
       asJava.getTrafficClass()
     }
   }
+  
+  type DatagramSocketOptions = JDatagramSocketOptions
+  object DatagramSocketOptions {
+    def apply(): JDatagramSocketOptions = new JDatagramSocketOptions()
+    def apply(json: JsonObject) = new JDatagramSocketOptions(json)
+    def apply(other: JDatagramSocketOptions) = new JDatagramSocketOptions(other)
+  }
 
 
 import io.vertx.core.eventbus.{DeliveryOptions => JDeliveryOptions}
@@ -2587,6 +2616,13 @@ import io.vertx.core.eventbus.{DeliveryOptions => JDeliveryOptions}
     def getSendTimeout: java.lang.Long = {
       asJava.getSendTimeout()
     }
+  }
+  
+  type DeliveryOptions = JDeliveryOptions
+  object DeliveryOptions {
+    def apply(): JDeliveryOptions = new JDeliveryOptions()
+    def apply(json: JsonObject) = new JDeliveryOptions(json)
+    def apply(other: JDeliveryOptions) = new JDeliveryOptions(other)
   }
 
 
@@ -2713,6 +2749,13 @@ import io.vertx.core.json.JsonObject
     def getWorkerPoolSize: java.lang.Integer = {
       asJava.getWorkerPoolSize()
     }
+  }
+  
+  type DeploymentOptions = JDeploymentOptions
+  object DeploymentOptions {
+    def apply(): JDeploymentOptions = new JDeploymentOptions()
+    def apply(json: JsonObject) = new JDeploymentOptions(json)
+    def apply(other: JDeploymentOptions) = new JDeploymentOptions(other)
   }
 
 
@@ -3004,6 +3047,13 @@ import io.vertx.core.dns.{DnsClientOptions => JDnsClientOptions}
     def getQueryTimeout: java.lang.Long = {
       asJava.getQueryTimeout()
     }
+  }
+  
+  type DnsClientOptions = JDnsClientOptions
+  object DnsClientOptions {
+    def apply(): JDnsClientOptions = new JDnsClientOptions()
+    def apply(json: JsonObject) = new JDnsClientOptions(json)
+    def apply(other: JDnsClientOptions) = new JDnsClientOptions(other)
   }
 
 
@@ -3664,6 +3714,13 @@ import io.vertx.core.net.TCPSSLOptions
     def isUsePooledBuffers: java.lang.Boolean = {
       asJava.isUsePooledBuffers()
     }
+  }
+  
+  type EventBusOptions = JEventBusOptions
+  object EventBusOptions {
+    def apply(): JEventBusOptions = new JEventBusOptions()
+    def apply(json: JsonObject) = new JEventBusOptions(json)
+    def apply(other: JEventBusOptions) = new JEventBusOptions(other)
   }
 
 
@@ -4960,6 +5017,13 @@ import io.vertx.core.http.{GoAway => JGoAway}
       asJava.getLastStreamId()
     }
   }
+  
+  type GoAway = JGoAway
+  object GoAway {
+    def apply(): JGoAway = new JGoAway()
+    def apply(json: JsonObject) = new JGoAway(json)
+    def apply(other: JGoAway) = new JGoAway(other)
+  }
 
 
 import io.vertx.core.http.{Http2Settings => JHttp2Settings}
@@ -5033,6 +5097,13 @@ import io.vertx.core.http.{Http2Settings => JHttp2Settings}
     def isPushEnabled: java.lang.Boolean = {
       asJava.isPushEnabled()
     }
+  }
+  
+  type Http2Settings = JHttp2Settings
+  object Http2Settings {
+    def apply(): JHttp2Settings = new JHttp2Settings()
+    def apply(json: JsonObject) = new JHttp2Settings(json)
+    def apply(other: JHttp2Settings) = new JHttp2Settings(other)
   }
 
 
@@ -7284,6 +7355,13 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
       asJava.isVerifyHost()
     }
   }
+  
+  type HttpClientOptions = JHttpClientOptions
+  object HttpClientOptions {
+    def apply(): JHttpClientOptions = new JHttpClientOptions()
+    def apply(json: JsonObject) = new JHttpClientOptions(json)
+    def apply(other: JHttpClientOptions) = new JHttpClientOptions(other)
+  }
 
 
 import io.vertx.core.streams.{ReadStream => JReadStream}
@@ -8982,6 +9060,13 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
       asJava.getWebsocketSubProtocols()
     }
   }
+  
+  type HttpServerOptions = JHttpServerOptions
+  object HttpServerOptions {
+    def apply(): JHttpServerOptions = new JHttpServerOptions()
+    def apply(json: JsonObject) = new JHttpServerOptions(json)
+    def apply(other: JHttpServerOptions) = new JHttpServerOptions(other)
+  }
 
 
 import io.vertx.core.http.HttpServerRequest
@@ -9803,6 +9888,13 @@ import io.vertx.core.net.{JdkSSLEngineOptions => JJdkSSLEngineOptions}
   implicit class JdkSSLEngineOptionsPimped(val asJava: JJdkSSLEngineOptions) extends AnyVal {
 
   }
+  
+  type JdkSSLEngineOptions = JJdkSSLEngineOptions
+  object JdkSSLEngineOptions {
+    def apply(): JJdkSSLEngineOptions = new JJdkSSLEngineOptions()
+    def apply(json: JsonObject) = new JJdkSSLEngineOptions(json)
+    def apply(other: JJdkSSLEngineOptions) = new JJdkSSLEngineOptions(other)
+  }
 
 
 import io.vertx.core.buffer.Buffer
@@ -9862,6 +9954,13 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
     def getValue: io.vertx.core.buffer.Buffer = {
       asJava.getValue()
     }
+  }
+  
+  type JksOptions = JJksOptions
+  object JksOptions {
+    def apply(): JJksOptions = new JJksOptions()
+    def apply(json: JsonObject) = new JJksOptions(json)
+    def apply(other: JJksOptions) = new JJksOptions(other)
   }
 
 
@@ -10699,6 +10798,13 @@ import io.vertx.core.metrics.{MetricsOptions => JMetricsOptions}
       asJava.isEnabled()
     }
   }
+  
+  type MetricsOptions = JMetricsOptions
+  object MetricsOptions {
+    def apply(): JMetricsOptions = new JMetricsOptions()
+    def apply(json: JsonObject) = new JMetricsOptions(json)
+    def apply(other: JMetricsOptions) = new JMetricsOptions(other)
+  }
 
 
 import io.vertx.core.MultiMap
@@ -11359,6 +11465,13 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
       asJava.isUsePooledBuffers()
     }
   }
+  
+  type NetClientOptions = JNetClientOptions
+  object NetClientOptions {
+    def apply(): JNetClientOptions = new JNetClientOptions()
+    def apply(json: JsonObject) = new JNetClientOptions(json)
+    def apply(other: JNetClientOptions) = new JNetClientOptions(other)
+  }
 
 
 import io.vertx.lang.scala.AsyncResultWrapper
@@ -11943,6 +12056,13 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
       asJava.isUsePooledBuffers()
     }
   }
+  
+  type NetServerOptions = JNetServerOptions
+  object NetServerOptions {
+    def apply(): JNetServerOptions = new JNetServerOptions()
+    def apply(json: JsonObject) = new JNetServerOptions(json)
+    def apply(other: JNetServerOptions) = new JNetServerOptions(other)
+  }
 
 
 import io.vertx.lang.scala.AsyncResultWrapper
@@ -12290,6 +12410,7 @@ import io.vertx.core.net.{NetworkOptions => JNetworkOptions}
       asJava.getTrafficClass()
     }
   }
+  
 
 
 import io.vertx.core.file.{OpenOptions => JOpenOptions}
@@ -12411,6 +12532,13 @@ import io.vertx.core.file.{OpenOptions => JOpenOptions}
       asJava.isWrite()
     }
   }
+  
+  type OpenOptions = JOpenOptions
+  object OpenOptions {
+    def apply(): JOpenOptions = new JOpenOptions()
+    def apply(json: JsonObject) = new JOpenOptions(json)
+    def apply(other: JOpenOptions) = new JOpenOptions(other)
+  }
 
 
 import io.vertx.core.net.{OpenSSLEngineOptions => JOpenSSLEngineOptions}
@@ -12431,6 +12559,13 @@ import io.vertx.core.net.{OpenSSLEngineOptions => JOpenSSLEngineOptions}
     def isSessionCacheEnabled: java.lang.Boolean = {
       asJava.isSessionCacheEnabled()
     }
+  }
+  
+  type OpenSSLEngineOptions = JOpenSSLEngineOptions
+  object OpenSSLEngineOptions {
+    def apply(): JOpenSSLEngineOptions = new JOpenSSLEngineOptions()
+    def apply(json: JsonObject) = new JOpenSSLEngineOptions(json)
+    def apply(other: JOpenSSLEngineOptions) = new JOpenSSLEngineOptions(other)
   }
 
 
@@ -12577,6 +12712,13 @@ import io.vertx.core.cli.{Option => JOption}
       asJava.isSingleValued()
     }
   }
+  
+  type Option = JOption
+  object Option {
+    def apply(): JOption = new JOption()
+    def apply(json: JsonObject) = new JOption(json)
+    def apply(other: JOption) = new JOption(other)
+  }
 
 
 import io.vertx.core.buffer.Buffer
@@ -12718,6 +12860,13 @@ import io.vertx.core.net.{PemKeyCertOptions => JPemKeyCertOptions}
       asJava.getKeyValues().asScala
     }
   }
+  
+  type PemKeyCertOptions = JPemKeyCertOptions
+  object PemKeyCertOptions {
+    def apply(): JPemKeyCertOptions = new JPemKeyCertOptions()
+    def apply(json: JsonObject) = new JPemKeyCertOptions(json)
+    def apply(other: JPemKeyCertOptions) = new JPemKeyCertOptions(other)
+  }
 
 
 import io.vertx.core.buffer.Buffer
@@ -12778,6 +12927,13 @@ import io.vertx.core.net.{PemTrustOptions => JPemTrustOptions}
       asJava.getCertValues().asScala
     }
   }
+  
+  type PemTrustOptions = JPemTrustOptions
+  object PemTrustOptions {
+    def apply(): JPemTrustOptions = new JPemTrustOptions()
+    def apply(json: JsonObject) = new JPemTrustOptions(json)
+    def apply(other: JPemTrustOptions) = new JPemTrustOptions(other)
+  }
 
 
 import io.vertx.core.buffer.Buffer
@@ -12837,6 +12993,13 @@ import io.vertx.core.net.{PfxOptions => JPfxOptions}
     def getValue: io.vertx.core.buffer.Buffer = {
       asJava.getValue()
     }
+  }
+  
+  type PfxOptions = JPfxOptions
+  object PfxOptions {
+    def apply(): JPfxOptions = new JPfxOptions()
+    def apply(json: JsonObject) = new JPfxOptions(json)
+    def apply(other: JPfxOptions) = new JPfxOptions(other)
   }
 
 
@@ -12901,6 +13064,13 @@ import io.vertx.core.net.{ProxyOptions => JProxyOptions}
     def getUsername: String = {
       asJava.getUsername()
     }
+  }
+  
+  type ProxyOptions = JProxyOptions
+  object ProxyOptions {
+    def apply(): JProxyOptions = new JProxyOptions()
+    def apply(json: JsonObject) = new JProxyOptions(json)
+    def apply(other: JProxyOptions) = new JProxyOptions(other)
   }
 
 
@@ -13181,6 +13351,13 @@ import io.vertx.core.http.{RequestOptions => JRequestOptions}
     def getURI: String = {
       asJava.getURI()
     }
+  }
+  
+  type RequestOptions = JRequestOptions
+  object RequestOptions {
+    def apply(): JRequestOptions = new JRequestOptions()
+    def apply(json: JsonObject) = new JRequestOptions(json)
+    def apply(other: JRequestOptions) = new JRequestOptions(other)
   }
 
 
@@ -14145,6 +14322,7 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
       asJava.isUsePooledBuffers()
     }
   }
+  
 
 
 import io.vertx.core.TimeoutStream
@@ -14972,6 +15150,13 @@ import io.vertx.core.dns.AddressResolverOptions
     def getWorkerPoolSize: java.lang.Integer = {
       asJava.getWorkerPoolSize()
     }
+  }
+  
+  type VertxOptions = JVertxOptions
+  object VertxOptions {
+    def apply(): JVertxOptions = new JVertxOptions()
+    def apply(json: JsonObject) = new JVertxOptions(json)
+    def apply(other: JVertxOptions) = new JVertxOptions(other)
   }
 
 
