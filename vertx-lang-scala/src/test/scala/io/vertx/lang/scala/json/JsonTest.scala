@@ -15,6 +15,7 @@
  */
 package io.vertx.lang.scala.json
 
+import io.vertx.scala.core._
 import org.junit.Test
 import org.junit.Assert.assertEquals
 
@@ -30,7 +31,7 @@ class JsonTest {
     val enc = """{"foo":"foo text","bar":3.45,"baz":false,"myInt":2147483647}"""
 
     val obj: JsonObject =
-      Json.obj(
+      JsonObject(
         "foo" -> "foo text",
         "bar" -> 3.45d,
         "baz" -> false,
@@ -45,26 +46,10 @@ class JsonTest {
   }
 
   @Test
-  def wrapperConversionTest() {
-
-    val obj = Json.obj("foo" -> "foo text", "optional" -> true)
-
-    val wrapped: JsObject = obj
-    val scalaMapFields: scala.collection.Map[String, AnyRef] = wrapped.asMap
-
-    //Get the original object
-    val obj2: JsonObject = wrapped
-
-    assertEquals("foo text", scalaMapFields("foo"))
-    assertEquals(true, obj2.getBoolean("optional"))
-
-  }
-
-  @Test
   def jsonArrayTest() {
 
     val enc = """["f",3,"b",7,35.4,true]"""
-    val array = Json.arr("f", 3, "b", 7, 35.4f, true)
+    val array = JsonArray("f", 3, "b", 7, 35.4f, true)
 
     assertEquals(6, array.size())
     assertEquals(enc, array.encode())
@@ -76,7 +61,7 @@ class JsonTest {
 
     case class Custom(date: Date, other: Boolean)
     val info = Custom(new Date(), false)
-    val obj1 = Json.obj("custom" -> info)
+    val obj1 = JsonObject("custom" -> info)
 
     assertEquals(info, obj1.getValue[Custom]("custom"))
   }
@@ -84,23 +69,23 @@ class JsonTest {
   @Test
   def nestedObjectsTest() {
     val obj =
-      Json.obj(
-        "webappconf" -> Json.obj(
+      JsonObject(
+        "webappconf" -> JsonObject(
           "port" -> 8080,
           "ssl" -> false,
           "bridge" -> true,
-          "some_nested" -> Json.arr(1, 2, Json.obj("next" -> Json.arr(3, 4))),
-          "some_list" -> Json.arr(1, 2, Json.arr(3, 4)),
-          "inbound_permitted" -> Json.arr(
-            Json.obj(
+          "some_nested" -> JsonArray(1, 2, JsonObject("next" -> JsonArray(3, 4))),
+          "some_list" -> JsonArray(1, 2, JsonArray(3, 4)),
+          "inbound_permitted" -> JsonArray(
+            JsonObject(
               "address" -> "acme.bar",
-              "match" -> Json.obj(
+              "match" -> JsonObject(
                 "action" -> "foo")),
-            Json.obj(
+            JsonObject(
               "address" -> "acme.baz",
-              "match" -> Json.obj(
+              "match" -> JsonObject(
                 "action" -> "index"))),
-          "outbound_permitted" -> Json.arr(
+          "outbound_permitted" -> JsonArray(
             new JsonObject())))
 
     assertEquals(jsonString, obj.encode())
@@ -109,21 +94,21 @@ class JsonTest {
   @Test
   def nestedObjectsWithListsTest() {
     val obj =
-      Json.obj(
-        "webappconf" -> Json.obj(
+      JsonObject(
+        "webappconf" -> JsonObject(
           "port" -> 8080,
           "ssl" -> false,
           "bridge" -> true,
-          "some_nested" -> List(1, 2, Json.obj("next" -> List(3, 4))),
+          "some_nested" -> List(1, 2, JsonObject("next" -> List(3, 4))),
           "some_list" -> List(1, 2, List(3, 4)),
           "inbound_permitted" -> List(
-            Json.obj(
+            JsonObject(
               "address" -> "acme.bar",
-              "match" -> Json.obj(
+              "match" -> JsonObject(
                 "action" -> "foo")),
-            Json.obj(
+            JsonObject(
               "address" -> "acme.baz",
-              "match" -> Json.obj(
+              "match" -> JsonObject(
                 "action" -> "index"))),
           "outbound_permitted" -> List(new JsonObject())))
 
@@ -133,21 +118,21 @@ class JsonTest {
   @Test
   def nestedObjectsWithArraysTest() {
     val obj =
-      Json.obj(
-        "webappconf" -> Json.obj(
+      JsonObject(
+        "webappconf" -> JsonObject(
           "port" -> 8080,
           "ssl" -> false,
           "bridge" -> true,
-          "some_nested" -> Array(1, 2, Json.obj("next" -> Array(3, 4))),
+          "some_nested" -> Array(1, 2, JsonObject("next" -> Array(3, 4))),
           "some_list" -> Array(1, 2, Array(3, 4)),
           "inbound_permitted" -> Array(
-            Json.obj(
+            JsonObject(
               "address" -> "acme.bar",
-              "match" -> Json.obj(
+              "match" -> JsonObject(
                 "action" -> "foo")),
-            Json.obj(
+            JsonObject(
               "address" -> "acme.baz",
-              "match" -> Json.obj(
+              "match" -> JsonObject(
                 "action" -> "index"))),
           "outbound_permitted" -> Array(new JsonObject())))
 
@@ -157,21 +142,21 @@ class JsonTest {
   @Test
   def mixedNestedObjectsTest() {
     val obj =
-      Json.obj(
-        "webappconf" -> Json.obj(
+      JsonObject(
+        "webappconf" -> JsonObject(
           "port" -> 8080,
           "ssl" -> false,
           "bridge" -> true,
-          "some_nested" -> Vector(1, 2, Json.obj("next" -> List(3, 4))),
-          "some_list" -> Json.arr(1, 2, Vector(3, 4)),
+          "some_nested" -> Vector(1, 2, JsonObject("next" -> List(3, 4))),
+          "some_list" -> JsonArray(1, 2, Vector(3, 4)),
           "inbound_permitted" -> List(
-            Json.obj(
+            JsonObject(
               "address" -> "acme.bar",
-              "match" -> Json.obj(
+              "match" -> JsonObject(
                 "action" -> "foo")),
-            Json.obj(
+            JsonObject(
               "address" -> "acme.baz",
-              "match" -> Json.obj(
+              "match" -> JsonObject(
                 "action" -> "index"))),
           "outbound_permitted" -> Array(new JsonObject())))
 

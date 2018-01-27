@@ -23,8 +23,6 @@ var modulePackage = fullPackage.replace('.'+moduleName,'');
 
 package @{modulePackage}\n
 
-import io.vertx.lang.scala.json.Json._\n
-import io.vertx.core.json.JsonObject\n
 import scala.collection.JavaConverters._\n
 import scala.compat.java8.FunctionConverters._\n
 import io.vertx.lang.scala.HandlerOps._\n
@@ -37,6 +35,9 @@ import scala.concurrent.Promise\n
 \n
 package object @{moduleName}{\n
 \n
+@if{moduleName=="core"}
+@includeNamed{'extensions/Json.templ'}
+@end{}
 @end{}
 
 @comment{"# Template for DataObject code generation"}

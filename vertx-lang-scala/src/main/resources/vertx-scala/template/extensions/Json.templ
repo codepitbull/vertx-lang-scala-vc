@@ -1,0 +1,37 @@
+\n
+  import io.vertx.core.json.{JsonObject => JJsonObject}\n
+  import io.vertx.core.json.{JsonArray => JJsonArray}\n
+
+  type JsonObject = JJsonObject\n
+  type JsonArray = JJsonArray\n
+\n
+  object JsonObject {\n
+    def apply(): JsonObject = new JJsonObject()\n
+    def apply(json: String): JsonObject = new JJsonObject(json)\n
+    def apply(fields: (String, Any)*): JsonObject = {\n
+      val o = new JsonObject()\n
+      fields.foreach {\n
+        case (key, l: Array[_]) => o.put(key, listToJsArr(l))\n
+        case (key, l: Seq[_]) => o.put(key, listToJsArr(l))\n
+        case (key, value) => o.put(key, value)\n
+      }\n
+      o\n
+    }\n
+  }\n
+\n
+  object JsonArray {\n
+    def apply(): JsonArray = new JJsonArray()\n
+    def apply(json: String): JsonArray = new JJsonArray(json)\n
+    def apply(fields: Any*): JsonArray = {\n
+      val a = new JsonArray()\n
+      fields.foreach {\n
+        case array: Array[_] => a.add(listToJsArr(array))\n
+        case seq: Seq[_] => a.add(listToJsArr(seq))\n
+        case f => a.add(f)\n
+      }\n
+      a\n
+    }\n
+  }\n
+\n
+  private def listToJsArr(a: Seq[_]) = JsonArray(a: _*)\n
+\n
