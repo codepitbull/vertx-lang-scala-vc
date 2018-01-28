@@ -2,7 +2,6 @@ package io.vertx.lang.scala.verticle
 
 import io.vertx.scala.core._
 import io.vertx.core.Vertx
-import io.vertx.core.cli.CLI
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import org.scalatest.{AsyncFlatSpec, Matchers}
@@ -31,8 +30,7 @@ class ScalaVerticleTest extends AsyncFlatSpec with Matchers{
     val vertx = Vertx.vertx(VertxOptions())
     implicit val exec: VertxExecutionContext = VertxExecutionContext(vertx.getOrCreateContext())
     val result = Promise[String]
-    val c = CLI.create("tst")
-    c.getDescription
+
     vertx.eventBus()
       .localConsumer[String]("startMethod")
       .handler(m => result.success(m.body()))
