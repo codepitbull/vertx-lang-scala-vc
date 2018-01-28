@@ -789,7 +789,9 @@ import io.vertx.core.cli.Argument
   * Command Line Interface object does not contains "value", it's a model. It must be evaluated by a
   * parser that returns a [[io.vertx.core.cli.CommandLine]] object containing the argument and option values.
   */
-implicit class CLIPimped(val asJava: JCLI) extends AnyVal {
+  import scala.language.implicitConversions
+  implicit def bla2bla(x: JCLI):CLIPimped = CLIPimped(x)
+case class CLIPimped(val asJava: JCLI) extends AnyVal {
 
 
   /**
