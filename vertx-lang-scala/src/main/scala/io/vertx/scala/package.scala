@@ -68,7 +68,7 @@ import io.vertx.core.buffer.Buffer
   * DNS <i>A</i> and <i>AAAA</i> queries.
   */
 
-  implicit class AddressResolverOptionsPimped(val asJava: JAddressResolverOptions) extends AnyVal {
+  implicit class AddressResolverOptionsScala(val asJava: JAddressResolverOptions) extends AnyVal {
 
 
   /**
@@ -229,7 +229,7 @@ import io.vertx.core.buffer.Buffer
   
   type AddressResolverOptions = JAddressResolverOptions
   object AddressResolverOptions {
-    def apply(): JAddressResolverOptions = new JAddressResolverOptions()
+    def apply(): JAddressResolverOptions = new AddressResolverOptions()
     def apply(json: JsonObject) = new JAddressResolverOptions(json)
     def apply(other: JAddressResolverOptions) = new JAddressResolverOptions(other)
   }
@@ -242,7 +242,7 @@ import io.vertx.core.cli.{Argument => JArgument}
   * first index is 0 (because we are in the computer world).
   */
 
-  implicit class ArgumentPimped(val asJava: JArgument) extends AnyVal {
+  implicit class ArgumentScala(val asJava: JArgument) extends AnyVal {
 
 
   /**
@@ -318,7 +318,7 @@ import io.vertx.core.cli.{Argument => JArgument}
   
   type Argument = JArgument
   object Argument {
-    def apply(): JArgument = new JArgument()
+    def apply(): JArgument = new Argument()
     def apply(json: JsonObject) = new JArgument(json)
     def apply(other: JArgument) = new JArgument(other)
   }
@@ -343,7 +343,7 @@ import io.vertx.core.streams.{WriteStream => JWriteStream}
   * other streams, e.g. an [[io.vertx.core.http.HttpClientRequest]] instance,
   * using the [[io.vertx.core.streams.Pump]] class
   */
-implicit class AsyncFilePimped(val asJava: JAsyncFile) extends AnyVal {
+implicit class AsyncFileScala(val asJava: JAsyncFile) extends AnyVal {
 
 
   def handler(handler: scala.Option[io.vertx.core.buffer.Buffer => Unit]): JAsyncFile = {
@@ -550,7 +550,7 @@ import io.vertx.core.Handler
   * An asynchronous map.
   * 
   */
-implicit class AsyncMapPimped[K, V](val asJava: JAsyncMap[K, V]) extends AnyVal {
+implicit class AsyncMapScala[K, V](val asJava: JAsyncMap[K, V]) extends AnyVal {
 
 
   /**
@@ -789,9 +789,7 @@ import io.vertx.core.cli.Argument
   * Command Line Interface object does not contains "value", it's a model. It must be evaluated by a
   * parser that returns a [[io.vertx.core.cli.CommandLine]] object containing the argument and option values.
   */
-  import scala.language.implicitConversions
-  implicit def bla2bla(x: JCLI):CLIPimped = CLIPimped(x)
-case class CLIPimped(val asJava: JCLI) extends AnyVal {
+implicit class CLIScala(val asJava: JCLI) extends AnyVal {
 
 
   /**
@@ -1014,7 +1012,7 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   * Base class for Client options
   */
 
-  implicit class ClientOptionsBasePimped(val asJava: JClientOptionsBase) extends AnyVal {
+  implicit class ClientOptionsBaseScala(val asJava: JClientOptionsBase) extends AnyVal {
 
 
   /**
@@ -1365,7 +1363,7 @@ import io.vertx.core.cli.Argument
   * has stored the argument and option values. Only  instance of parser should create
   * objects of this type.
   */
-implicit class CommandLinePimped(val asJava: JCommandLine) extends AnyVal {
+implicit class CommandLineScala(val asJava: JCommandLine) extends AnyVal {
 
 
   /**
@@ -1534,7 +1532,7 @@ import io.vertx.core.Future
   * needs to be coordinated.
   * The handlers set for the coordinated futures are overridden by the handler of the composite future.
   */
-implicit class CompositeFuturePimped(val asJava: JCompositeFuture) extends AnyVal {
+implicit class CompositeFutureScala(val asJava: JCompositeFuture) extends AnyVal {
 
 
   def setHandler(handler: AsyncResult[JCompositeFuture] => Unit): JCompositeFuture = {
@@ -1788,7 +1786,7 @@ import io.vertx.core.{Vertx => JVertx}
   * 
   * This class also provides [[io.vertx.core.Context#runOnContext]] which allows an action to be executed asynchronously using the same context.
   */
-implicit class ContextPimped(val asJava: JContext) extends AnyVal {
+implicit class ContextScala(val asJava: JContext) extends AnyVal {
 
 
   /**
@@ -1938,7 +1936,7 @@ import io.vertx.core.file.{CopyOptions => JCopyOptions}
   * Describes the copy (and move) options.
   */
 
-  implicit class CopyOptionsPimped(val asJava: JCopyOptions) extends AnyVal {
+  implicit class CopyOptionsScala(val asJava: JCopyOptions) extends AnyVal {
 
 
   /**
@@ -1984,7 +1982,7 @@ import io.vertx.core.file.{CopyOptions => JCopyOptions}
   
   type CopyOptions = JCopyOptions
   object CopyOptions {
-    def apply(): JCopyOptions = new JCopyOptions()
+    def apply(): JCopyOptions = new CopyOptions()
     def apply(json: JsonObject) = new JCopyOptions(json)
     def apply(other: JCopyOptions) = new JCopyOptions(other)
   }
@@ -1999,7 +1997,7 @@ import io.vertx.core.Handler
   * An asynchronous counter that can be used to across the cluster to maintain a consistent count.
   * 
   */
-implicit class CounterPimped(val asJava: JCounter) extends AnyVal {
+implicit class CounterScala(val asJava: JCounter) extends AnyVal {
 
 
   /**
@@ -2136,7 +2134,7 @@ import io.vertx.core.net.SocketAddress
 /**
   * A received datagram packet (UDP) which contains the data and information about the sender of the data itself.
   */
-implicit class DatagramPacketPimped(val asJava: JDatagramPacket) extends AnyVal {
+implicit class DatagramPacketScala(val asJava: JDatagramPacket) extends AnyVal {
 
 
   /**
@@ -2187,7 +2185,7 @@ import io.vertx.core.net.SocketAddress
   * 
   * Please consult the documentation for more information on datagram sockets.
   */
-implicit class DatagramSocketPimped(val asJava: JDatagramSocket) extends AnyVal {
+implicit class DatagramSocketScala(val asJava: JDatagramSocket) extends AnyVal {
 
 
   /**
@@ -2487,7 +2485,7 @@ import io.vertx.core.net.NetworkOptions
   * Options used to configure a datagram socket.
   */
 
-  implicit class DatagramSocketOptionsPimped(val asJava: JDatagramSocketOptions) extends AnyVal {
+  implicit class DatagramSocketOptionsScala(val asJava: JDatagramSocketOptions) extends AnyVal {
 
 
   /**
@@ -2605,7 +2603,7 @@ import io.vertx.core.net.NetworkOptions
   
   type DatagramSocketOptions = JDatagramSocketOptions
   object DatagramSocketOptions {
-    def apply(): JDatagramSocketOptions = new JDatagramSocketOptions()
+    def apply(): JDatagramSocketOptions = new DatagramSocketOptions()
     def apply(json: JsonObject) = new JDatagramSocketOptions(json)
     def apply(other: JDatagramSocketOptions) = new JDatagramSocketOptions(other)
   }
@@ -2620,7 +2618,7 @@ import io.vertx.core.eventbus.{DeliveryOptions => JDeliveryOptions}
   * that you wish to send with the message.
   */
 
-  implicit class DeliveryOptionsPimped(val asJava: JDeliveryOptions) extends AnyVal {
+  implicit class DeliveryOptionsScala(val asJava: JDeliveryOptions) extends AnyVal {
 
 
   /**
@@ -2656,7 +2654,7 @@ import io.vertx.core.eventbus.{DeliveryOptions => JDeliveryOptions}
   
   type DeliveryOptions = JDeliveryOptions
   object DeliveryOptions {
-    def apply(): JDeliveryOptions = new JDeliveryOptions()
+    def apply(): JDeliveryOptions = new DeliveryOptions()
     def apply(json: JsonObject) = new JDeliveryOptions(json)
     def apply(other: JDeliveryOptions) = new JDeliveryOptions(other)
   }
@@ -2670,7 +2668,7 @@ import io.vertx.core.json.JsonObject
   * 
   */
 
-  implicit class DeploymentOptionsPimped(val asJava: JDeploymentOptions) extends AnyVal {
+  implicit class DeploymentOptionsScala(val asJava: JDeploymentOptions) extends AnyVal {
 
 
   /**
@@ -2789,7 +2787,7 @@ import io.vertx.core.json.JsonObject
   
   type DeploymentOptions = JDeploymentOptions
   object DeploymentOptions {
-    def apply(): JDeploymentOptions = new JDeploymentOptions()
+    def apply(): JDeploymentOptions = new DeploymentOptions()
     def apply(json: JsonObject) = new JDeploymentOptions(json)
     def apply(other: JDeploymentOptions) = new JDeploymentOptions(other)
   }
@@ -2811,7 +2809,7 @@ import io.vertx.core.dns.SrvRecord
   * 
   * Please consult the documentation for more information on DNS clients.
   */
-implicit class DnsClientPimped(val asJava: JDnsClient) extends AnyVal {
+implicit class DnsClientScala(val asJava: JDnsClient) extends AnyVal {
 
 
   /**
@@ -3051,7 +3049,7 @@ import io.vertx.core.dns.{DnsClientOptions => JDnsClientOptions}
   * Configuration options for Vert.x DNS client.
   */
 
-  implicit class DnsClientOptionsPimped(val asJava: JDnsClientOptions) extends AnyVal {
+  implicit class DnsClientOptionsScala(val asJava: JDnsClientOptions) extends AnyVal {
 
 
   /**
@@ -3087,7 +3085,7 @@ import io.vertx.core.dns.{DnsClientOptions => JDnsClientOptions}
   
   type DnsClientOptions = JDnsClientOptions
   object DnsClientOptions {
-    def apply(): JDnsClientOptions = new JDnsClientOptions()
+    def apply(): JDnsClientOptions = new DnsClientOptions()
     def apply(json: JsonObject) = new JDnsClientOptions(json)
     def apply(other: JDnsClientOptions) = new JDnsClientOptions(other)
   }
@@ -3121,7 +3119,7 @@ import io.vertx.core.eventbus.{EventBus => JEventBus}
   * 
   * Please refer to the documentation for more information on the event bus.
   */
-implicit class EventBusPimped(val asJava: JEventBus) extends AnyVal {
+implicit class EventBusScala(val asJava: JEventBus) extends AnyVal {
 
 
   /**
@@ -3334,7 +3332,7 @@ import io.vertx.core.net.TCPSSLOptions
   * Options to configure the event bus.
   */
 
-  implicit class EventBusOptionsPimped(val asJava: JEventBusOptions) extends AnyVal {
+  implicit class EventBusOptionsScala(val asJava: JEventBusOptions) extends AnyVal {
 
 
   /**
@@ -3754,7 +3752,7 @@ import io.vertx.core.net.TCPSSLOptions
   
   type EventBusOptions = JEventBusOptions
   object EventBusOptions {
-    def apply(): JEventBusOptions = new JEventBusOptions()
+    def apply(): JEventBusOptions = new EventBusOptions()
     def apply(json: JsonObject) = new JEventBusOptions(json)
     def apply(other: JEventBusOptions) = new JEventBusOptions(other)
   }
@@ -3766,7 +3764,7 @@ import io.vertx.core.file.{FileProps => JFileProps}
   * Represents properties of a file on the file system.
   * 
   */
-implicit class FilePropsPimped(val asJava: JFileProps) extends AnyVal {
+implicit class FilePropsScala(val asJava: JFileProps) extends AnyVal {
 
 
   /**
@@ -3859,7 +3857,7 @@ import io.vertx.core.Handler
   * 
   * Please consult the documentation for more information on file system support.
   */
-implicit class FileSystemPimped(val asJava: JFileSystem) extends AnyVal {
+implicit class FileSystemScala(val asJava: JFileSystem) extends AnyVal {
 
 
   /**
@@ -4712,7 +4710,7 @@ import io.vertx.core.file.{FileSystemProps => JFileSystemProps}
 /**
   * Represents properties of the file system.
   */
-implicit class FileSystemPropsPimped(val asJava: JFileSystemProps) extends AnyVal {
+implicit class FileSystemPropsScala(val asJava: JFileSystemProps) extends AnyVal {
 
 
   /**
@@ -4748,7 +4746,7 @@ import io.vertx.core.Future
   * Represents the result of an action that may, or may not, have occurred yet.
   * 
   */
-implicit class FuturePimped[T](val asJava: JFuture[T]) extends AnyVal {
+implicit class FutureScala[T](val asJava: JFuture[T]) extends AnyVal {
 
 
   /**
@@ -5021,7 +5019,7 @@ import io.vertx.core.http.{GoAway => JGoAway}
   * A  frame.
   */
 
-  implicit class GoAwayPimped(val asJava: JGoAway) extends AnyVal {
+  implicit class GoAwayScala(val asJava: JGoAway) extends AnyVal {
 
 
   /**
@@ -5056,7 +5054,7 @@ import io.vertx.core.http.{GoAway => JGoAway}
   
   type GoAway = JGoAway
   object GoAway {
-    def apply(): JGoAway = new JGoAway()
+    def apply(): JGoAway = new GoAway()
     def apply(json: JsonObject) = new JGoAway(json)
     def apply(other: JGoAway) = new JGoAway(other)
   }
@@ -5071,7 +5069,7 @@ import io.vertx.core.http.{Http2Settings => JHttp2Settings}
   * protocol extensions.
   */
 
-  implicit class Http2SettingsPimped(val asJava: JHttp2Settings) extends AnyVal {
+  implicit class Http2SettingsScala(val asJava: JHttp2Settings) extends AnyVal {
 
 
   /**
@@ -5137,7 +5135,7 @@ import io.vertx.core.http.{Http2Settings => JHttp2Settings}
   
   type Http2Settings = JHttp2Settings
   object Http2Settings {
-    def apply(): JHttp2Settings = new JHttp2Settings()
+    def apply(): JHttp2Settings = new Http2Settings()
     def apply(json: JsonObject) = new JHttp2Settings(json)
     def apply(other: JHttp2Settings) = new JHttp2Settings(other)
   }
@@ -5191,7 +5189,7 @@ import io.vertx.core.http.HttpClient
   * 
   * The client is designed to be reused between requests.
   */
-implicit class HttpClientPimped(val asJava: JHttpClient) extends AnyVal {
+implicit class HttpClientScala(val asJava: JHttpClient) extends AnyVal {
 
 
   /**
@@ -6788,7 +6786,7 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   * Options describing how an [[io.vertx.core.http.HttpClient]] will make connections.
   */
 
-  implicit class HttpClientOptionsPimped(val asJava: JHttpClientOptions) extends AnyVal {
+  implicit class HttpClientOptionsScala(val asJava: JHttpClientOptions) extends AnyVal {
 
 
   /**
@@ -7394,7 +7392,7 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   
   type HttpClientOptions = JHttpClientOptions
   object HttpClientOptions {
-    def apply(): JHttpClientOptions = new JHttpClientOptions()
+    def apply(): JHttpClientOptions = new HttpClientOptions()
     def apply(json: JsonObject) = new JHttpClientOptions(json)
     def apply(other: JHttpClientOptions) = new JHttpClientOptions(other)
   }
@@ -7446,7 +7444,7 @@ import io.vertx.core.http.{HttpClientRequest => JHttpClientRequest}
   * An example of using this class is as follows:
   * 
   */
-implicit class HttpClientRequestPimped(val asJava: JHttpClientRequest) extends AnyVal {
+implicit class HttpClientRequestScala(val asJava: JHttpClientRequest) extends AnyVal {
 
 
   def exceptionHandler(handler: scala.Option[Throwable => Unit]): JHttpClientRequest = {
@@ -7813,7 +7811,7 @@ import io.vertx.core.net.NetSocket
   * It implements [[io.vertx.core.streams.ReadStream]] so it can be used with
   * [[io.vertx.core.streams.Pump]] to pump data with flow control.
   */
-implicit class HttpClientResponsePimped(val asJava: JHttpClientResponse) extends AnyVal {
+implicit class HttpClientResponseScala(val asJava: JHttpClientResponse) extends AnyVal {
 
 
   def resume(): JHttpClientResponse = {
@@ -7961,7 +7959,7 @@ import io.vertx.core.net.SocketAddress
   *   <li>[[io.vertx.core.http.HttpConnection#exceptionHandler]]</li>
   * </ul>
   */
-implicit class HttpConnectionPimped(val asJava: JHttpConnection) extends AnyVal {
+implicit class HttpConnectionScala(val asJava: JHttpConnection) extends AnyVal {
 
 
   /**
@@ -8217,7 +8215,7 @@ import io.vertx.core.http.{HttpFrame => JHttpFrame}
 /**
   * An HTTP/2 frame.
   */
-implicit class HttpFramePimped(val asJava: JHttpFrame) extends AnyVal {
+implicit class HttpFrameScala(val asJava: JHttpFrame) extends AnyVal {
 
 
   /**
@@ -8268,7 +8266,7 @@ import io.vertx.core.Handler
   * You receive WebSockets by providing a [[io.vertx.core.http.HttpServer#websocketHandler]]. As WebSocket connections arrive on the server, the
   * WebSocket is passed to the handler.
   */
-implicit class HttpServerPimped(val asJava: JHttpServer) extends AnyVal {
+implicit class HttpServerScala(val asJava: JHttpServer) extends AnyVal {
 
 
   /**
@@ -8469,7 +8467,7 @@ import io.vertx.core.Handler
 /**
   * Represents an file upload from an HTML FORM.
   */
-implicit class HttpServerFileUploadPimped(val asJava: JHttpServerFileUpload) extends AnyVal {
+implicit class HttpServerFileUploadScala(val asJava: JHttpServerFileUpload) extends AnyVal {
 
 
   def exceptionHandler(handler: scala.Option[Throwable => Unit]): JHttpServerFileUpload = {
@@ -8578,7 +8576,7 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   * Represents options used by an [[io.vertx.core.http.HttpServer]] instance
   */
 
-  implicit class HttpServerOptionsPimped(val asJava: JHttpServerOptions) extends AnyVal {
+  implicit class HttpServerOptionsScala(val asJava: JHttpServerOptions) extends AnyVal {
 
 
   /**
@@ -9099,7 +9097,7 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   
   type HttpServerOptions = JHttpServerOptions
   object HttpServerOptions {
-    def apply(): JHttpServerOptions = new JHttpServerOptions()
+    def apply(): JHttpServerOptions = new HttpServerOptions()
     def apply(json: JsonObject) = new JHttpServerOptions(json)
     def apply(other: JHttpServerOptions) = new JHttpServerOptions(other)
   }
@@ -9141,7 +9139,7 @@ import io.vertx.core.net.NetSocket
   * [[io.vertx.core.streams.Pump]] to pump data with flow control.
   * 
   */
-implicit class HttpServerRequestPimped(val asJava: JHttpServerRequest) extends AnyVal {
+implicit class HttpServerRequestScala(val asJava: JHttpServerRequest) extends AnyVal {
 
 
   def exceptionHandler(handler: scala.Option[Throwable => Unit]): JHttpServerRequest = {
@@ -9431,7 +9429,7 @@ import io.vertx.core.Handler
   * It implements [[io.vertx.core.streams.WriteStream]] so it can be used with
   * [[io.vertx.core.streams.Pump]] to pump data with flow control.
   */
-implicit class HttpServerResponsePimped(val asJava: JHttpServerResponse) extends AnyVal {
+implicit class HttpServerResponseScala(val asJava: JHttpServerResponse) extends AnyVal {
 
 
   def exceptionHandler(handler: scala.Option[Throwable => Unit]): JHttpServerResponse = {
@@ -9921,13 +9919,13 @@ import io.vertx.core.net.{JdkSSLEngineOptions => JJdkSSLEngineOptions}
   * Configures a <a href="../../../../../../../cheatsheet/TCPSSLOptions.html">TCPSSLOptions</a> to use the JDK ssl engine implementation.
   */
 
-  implicit class JdkSSLEngineOptionsPimped(val asJava: JJdkSSLEngineOptions) extends AnyVal {
+  implicit class JdkSSLEngineOptionsScala(val asJava: JJdkSSLEngineOptions) extends AnyVal {
 
   }
   
   type JdkSSLEngineOptions = JJdkSSLEngineOptions
   object JdkSSLEngineOptions {
-    def apply(): JJdkSSLEngineOptions = new JJdkSSLEngineOptions()
+    def apply(): JJdkSSLEngineOptions = new JdkSSLEngineOptions()
     def apply(json: JsonObject) = new JJdkSSLEngineOptions(json)
     def apply(other: JJdkSSLEngineOptions) = new JJdkSSLEngineOptions(other)
   }
@@ -9958,7 +9956,7 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   * </pre>
   */
 
-  implicit class JksOptionsPimped(val asJava: JJksOptions) extends AnyVal {
+  implicit class JksOptionsScala(val asJava: JJksOptions) extends AnyVal {
 
 
   /**
@@ -9994,7 +9992,7 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   
   type JksOptions = JJksOptions
   object JksOptions {
-    def apply(): JJksOptions = new JJksOptions()
+    def apply(): JJksOptions = new JksOptions()
     def apply(json: JsonObject) = new JJksOptions(json)
     def apply(other: JJksOptions) = new JJksOptions(other)
   }
@@ -10009,7 +10007,7 @@ import io.vertx.core.json.JsonObject
 /**
   * A JSON event emited by the [[io.vertx.core.parsetools.JsonParser]].
   */
-implicit class JsonEventPimped(val asJava: JJsonEvent) extends AnyVal {
+implicit class JsonEventScala(val asJava: JJsonEvent) extends AnyVal {
 
 
   /**
@@ -10176,7 +10174,7 @@ import io.vertx.core.parsetools.JsonEvent
   * the cause of the failure and the current handling stops. After such event, the parser should not handle data
   * anymore.
   */
-implicit class JsonParserPimped(val asJava: JJsonParser) extends AnyVal {
+implicit class JsonParserScala(val asJava: JJsonParser) extends AnyVal {
 
 
   /**
@@ -10276,7 +10274,7 @@ import scala.collection.JavaConverters._
   *
   * Since the version 3.4, this class extends the  interface. However some methods are only accessible in Java.
   */
-implicit class LocalMapPimped[K, V](val asJava: JLocalMap[K, V]) extends AnyVal {
+implicit class LocalMapScala[K, V](val asJava: JLocalMap[K, V]) extends AnyVal {
 
 
   /**
@@ -10422,7 +10420,7 @@ import io.vertx.core.shareddata.{Lock => JLock}
   * When the lock is obtained, no-one else in the cluster can obtain the lock with the same name until the lock
   * is released.
   */
-implicit class LockPimped(val asJava: JLock) extends AnyVal {
+implicit class LockScala(val asJava: JLock) extends AnyVal {
 
 
   /**
@@ -10438,7 +10436,7 @@ import io.vertx.core.metrics.{Measured => JMeasured}
 
 /**
   */
-implicit class MeasuredPimped(val asJava: JMeasured) extends AnyVal {
+implicit class MeasuredScala(val asJava: JMeasured) extends AnyVal {
 
 
   /**
@@ -10471,7 +10469,7 @@ import io.vertx.core.Handler
   * 
   * If you want to notify the sender that processing failed, then [[io.vertx.core.eventbus.Message#fail]] can be called.
   */
-implicit class MessagePimped[T](val asJava: JMessage[T]) extends AnyVal {
+implicit class MessageScala[T](val asJava: JMessage[T]) extends AnyVal {
 
 
   /**
@@ -10608,7 +10606,7 @@ import io.vertx.core.eventbus.{MessageConsumer => JMessageConsumer}
   * The consumer is unregistered from the event bus using the [[io.vertx.core.eventbus.MessageConsumer#unregister]] method or by calling the
   * [[io.vertx.core.eventbus.MessageConsumer#handler]] with a null value..
   */
-implicit class MessageConsumerPimped[T](val asJava: JMessageConsumer[T]) extends AnyVal {
+implicit class MessageConsumerScala[T](val asJava: JMessageConsumer[T]) extends AnyVal {
 
 
   def exceptionHandler(handler: scala.Option[Throwable => Unit]): JMessageConsumer[T] = {
@@ -10729,7 +10727,7 @@ import io.vertx.core.eventbus.MessageProducer
   * Represents a stream of message that can be written to.
   * 
   */
-implicit class MessageProducerPimped[T](val asJava: JMessageProducer[T]) extends AnyVal {
+implicit class MessageProducerScala[T](val asJava: JMessageProducer[T]) extends AnyVal {
 
 
   def exceptionHandler(handler: scala.Option[Throwable => Unit]): JMessageProducer[T] = {
@@ -10821,7 +10819,7 @@ import io.vertx.core.metrics.{MetricsOptions => JMetricsOptions}
   * those specific implementations.
   */
 
-  implicit class MetricsOptionsPimped(val asJava: JMetricsOptions) extends AnyVal {
+  implicit class MetricsOptionsScala(val asJava: JMetricsOptions) extends AnyVal {
 
 
   /**
@@ -10837,7 +10835,7 @@ import io.vertx.core.metrics.{MetricsOptions => JMetricsOptions}
   
   type MetricsOptions = JMetricsOptions
   object MetricsOptions {
-    def apply(): JMetricsOptions = new JMetricsOptions()
+    def apply(): JMetricsOptions = new MetricsOptions()
     def apply(json: JsonObject) = new JMetricsOptions(json)
     def apply(other: JMetricsOptions) = new JMetricsOptions(other)
   }
@@ -10853,7 +10851,7 @@ import scala.collection.JavaConverters._
   * It's useful in Vert.x to represent things in Vert.x like HTTP headers and HTTP parameters which allow
   * multiple values for keys.
   */
-implicit class MultiMapPimped(val asJava: JMultiMap) extends AnyVal {
+implicit class MultiMapScala(val asJava: JMultiMap) extends AnyVal {
 
 
   /**
@@ -10968,7 +10966,7 @@ import io.vertx.core.dns.{MxRecord => JMxRecord}
 /**
   * Represent a Mail-Exchange-Record (MX) which was resolved for a domain.
   */
-implicit class MxRecordPimped(val asJava: JMxRecord) extends AnyVal {
+implicit class MxRecordScala(val asJava: JMxRecord) extends AnyVal {
 
 
   /**
@@ -11007,7 +11005,7 @@ import io.vertx.core.net.SocketAddress
   * This client supports a configurable number of connection attempts and a configurable
   * delay between attempts.
   */
-implicit class NetClientPimped(val asJava: JNetClient) extends AnyVal {
+implicit class NetClientScala(val asJava: JNetClient) extends AnyVal {
 
 
   /**
@@ -11137,7 +11135,7 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   * Options for configuring a [[io.vertx.core.net.NetClient]].
   */
 
-  implicit class NetClientOptionsPimped(val asJava: JNetClientOptions) extends AnyVal {
+  implicit class NetClientOptionsScala(val asJava: JNetClientOptions) extends AnyVal {
 
 
   /**
@@ -11504,7 +11502,7 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   
   type NetClientOptions = JNetClientOptions
   object NetClientOptions {
-    def apply(): JNetClientOptions = new JNetClientOptions()
+    def apply(): JNetClientOptions = new NetClientOptions()
     def apply(json: JsonObject) = new JNetClientOptions(json)
     def apply(other: JNetClientOptions) = new JNetClientOptions(other)
   }
@@ -11527,7 +11525,7 @@ import io.vertx.core.net.SocketAddress
 /**
   * Represents a TCP server
   */
-implicit class NetServerPimped(val asJava: JNetServer) extends AnyVal {
+implicit class NetServerScala(val asJava: JNetServer) extends AnyVal {
 
 
   /**
@@ -11751,7 +11749,7 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   * Options for configuring a [[io.vertx.core.net.NetServer]].
   */
 
-  implicit class NetServerOptionsPimped(val asJava: JNetServerOptions) extends AnyVal {
+  implicit class NetServerOptionsScala(val asJava: JNetServerOptions) extends AnyVal {
 
 
   /**
@@ -12095,7 +12093,7 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   
   type NetServerOptions = JNetServerOptions
   object NetServerOptions {
-    def apply(): JNetServerOptions = new JNetServerOptions()
+    def apply(): JNetServerOptions = new NetServerOptions()
     def apply(json: JsonObject) = new JNetServerOptions(json)
     def apply(other: JNetServerOptions) = new JNetServerOptions(other)
   }
@@ -12125,7 +12123,7 @@ import io.vertx.core.net.SocketAddress
   * It implements both  and  so it can be used with
   * [[io.vertx.core.streams.Pump]] to pump data with flow control.
   */
-implicit class NetSocketPimped(val asJava: JNetSocket) extends AnyVal {
+implicit class NetSocketScala(val asJava: JNetSocket) extends AnyVal {
 
 
   def exceptionHandler(handler: scala.Option[Throwable => Unit]): JNetSocket = {
@@ -12381,7 +12379,7 @@ import io.vertx.core.net.{NetworkOptions => JNetworkOptions}
 /**
   */
 
-  implicit class NetworkOptionsPimped(val asJava: JNetworkOptions) extends AnyVal {
+  implicit class NetworkOptionsScala(val asJava: JNetworkOptions) extends AnyVal {
 
 
   /**
@@ -12455,7 +12453,7 @@ import io.vertx.core.file.{OpenOptions => JOpenOptions}
   * Describes how an [[io.vertx.core.file.AsyncFile]] should be opened.
   */
 
-  implicit class OpenOptionsPimped(val asJava: JOpenOptions) extends AnyVal {
+  implicit class OpenOptionsScala(val asJava: JOpenOptions) extends AnyVal {
 
 
   /**
@@ -12571,7 +12569,7 @@ import io.vertx.core.file.{OpenOptions => JOpenOptions}
   
   type OpenOptions = JOpenOptions
   object OpenOptions {
-    def apply(): JOpenOptions = new JOpenOptions()
+    def apply(): JOpenOptions = new OpenOptions()
     def apply(json: JsonObject) = new JOpenOptions(json)
     def apply(other: JOpenOptions) = new JOpenOptions(other)
   }
@@ -12583,7 +12581,7 @@ import io.vertx.core.net.{OpenSSLEngineOptions => JOpenSSLEngineOptions}
   * Configures a <a href="../../../../../../../cheatsheet/TCPSSLOptions.html">TCPSSLOptions</a> to use OpenSsl.
   */
 
-  implicit class OpenSSLEngineOptionsPimped(val asJava: JOpenSSLEngineOptions) extends AnyVal {
+  implicit class OpenSSLEngineOptionsScala(val asJava: JOpenSSLEngineOptions) extends AnyVal {
 
 
   /**
@@ -12599,7 +12597,7 @@ import io.vertx.core.net.{OpenSSLEngineOptions => JOpenSSLEngineOptions}
   
   type OpenSSLEngineOptions = JOpenSSLEngineOptions
   object OpenSSLEngineOptions {
-    def apply(): JOpenSSLEngineOptions = new JOpenSSLEngineOptions()
+    def apply(): JOpenSSLEngineOptions = new OpenSSLEngineOptions()
     def apply(json: JsonObject) = new JOpenSSLEngineOptions(json)
     def apply(other: JOpenSSLEngineOptions) = new JOpenSSLEngineOptions(other)
   }
@@ -12614,7 +12612,7 @@ import io.vertx.core.cli.{Option => JOption}
   * Short name is generally used with a single dash, while long name requires a double-dash.
   */
 
-  implicit class OptionPimped(val asJava: JOption) extends AnyVal {
+  implicit class OptionScala(val asJava: JOption) extends AnyVal {
 
 
   /**
@@ -12751,7 +12749,7 @@ import io.vertx.core.cli.{Option => JOption}
   
   type Option = JOption
   object Option {
-    def apply(): JOption = new JOption()
+    def apply(): JOption = new Option()
     def apply(json: JsonObject) = new JOption(json)
     def apply(other: JOption) = new JOption(other)
   }
@@ -12825,7 +12823,7 @@ import io.vertx.core.net.{PemKeyCertOptions => JPemKeyCertOptions}
   * </pre>
   */
 
-  implicit class PemKeyCertOptionsPimped(val asJava: JPemKeyCertOptions) extends AnyVal {
+  implicit class PemKeyCertOptionsScala(val asJava: JPemKeyCertOptions) extends AnyVal {
 
 
   /**
@@ -12899,7 +12897,7 @@ import io.vertx.core.net.{PemKeyCertOptions => JPemKeyCertOptions}
   
   type PemKeyCertOptions = JPemKeyCertOptions
   object PemKeyCertOptions {
-    def apply(): JPemKeyCertOptions = new JPemKeyCertOptions()
+    def apply(): JPemKeyCertOptions = new PemKeyCertOptions()
     def apply(json: JsonObject) = new JPemKeyCertOptions(json)
     def apply(other: JPemKeyCertOptions) = new JPemKeyCertOptions(other)
   }
@@ -12940,7 +12938,7 @@ import io.vertx.core.net.{PemTrustOptions => JPemTrustOptions}
   * </pre>
   */
 
-  implicit class PemTrustOptionsPimped(val asJava: JPemTrustOptions) extends AnyVal {
+  implicit class PemTrustOptionsScala(val asJava: JPemTrustOptions) extends AnyVal {
 
 
   /**
@@ -12966,7 +12964,7 @@ import io.vertx.core.net.{PemTrustOptions => JPemTrustOptions}
   
   type PemTrustOptions = JPemTrustOptions
   object PemTrustOptions {
-    def apply(): JPemTrustOptions = new JPemTrustOptions()
+    def apply(): JPemTrustOptions = new PemTrustOptions()
     def apply(json: JsonObject) = new JPemTrustOptions(json)
     def apply(other: JPemTrustOptions) = new JPemTrustOptions(other)
   }
@@ -12997,7 +12995,7 @@ import io.vertx.core.net.{PfxOptions => JPfxOptions}
   * </pre>
   */
 
-  implicit class PfxOptionsPimped(val asJava: JPfxOptions) extends AnyVal {
+  implicit class PfxOptionsScala(val asJava: JPfxOptions) extends AnyVal {
 
 
   /**
@@ -13033,7 +13031,7 @@ import io.vertx.core.net.{PfxOptions => JPfxOptions}
   
   type PfxOptions = JPfxOptions
   object PfxOptions {
-    def apply(): JPfxOptions = new JPfxOptions()
+    def apply(): JPfxOptions = new PfxOptions()
     def apply(json: JsonObject) = new JPfxOptions(json)
     def apply(other: JPfxOptions) = new JPfxOptions(other)
   }
@@ -13046,7 +13044,7 @@ import io.vertx.core.net.{ProxyOptions => JProxyOptions}
   * Proxy options for a net client or a net client.
   */
 
-  implicit class ProxyOptionsPimped(val asJava: JProxyOptions) extends AnyVal {
+  implicit class ProxyOptionsScala(val asJava: JProxyOptions) extends AnyVal {
 
 
   /**
@@ -13104,7 +13102,7 @@ import io.vertx.core.net.{ProxyOptions => JProxyOptions}
   
   type ProxyOptions = JProxyOptions
   object ProxyOptions {
-    def apply(): JProxyOptions = new JProxyOptions()
+    def apply(): JProxyOptions = new ProxyOptions()
     def apply(json: JsonObject) = new JProxyOptions(json)
     def apply(other: JProxyOptions) = new JProxyOptions(other)
   }
@@ -13137,7 +13135,7 @@ import io.vertx.core.streams.{WriteStream => JWriteStream}
   * 
   * Please see the documentation for more information.
   */
-implicit class PumpPimped(val asJava: JPump) extends AnyVal {
+implicit class PumpScala(val asJava: JPump) extends AnyVal {
 
 
   /**
@@ -13186,7 +13184,7 @@ import io.vertx.core.Handler
   * Any class that implements this interface can be used by a [[io.vertx.core.streams.Pump]] to pump data from it
   * to a [[io.vertx.core.streams.WriteStream]].
   */
-implicit class ReadStreamPimped[T](val asJava: JReadStream[T]) extends AnyVal {
+implicit class ReadStreamScala[T](val asJava: JReadStream[T]) extends AnyVal {
 
 
   /**
@@ -13270,7 +13268,7 @@ import io.vertx.core.parsetools.{RecordParser => JRecordParser}
   * 
   * Please see the documentation for more information.
   */
-implicit class RecordParserPimped(val asJava: JRecordParser) extends AnyVal {
+implicit class RecordParserScala(val asJava: JRecordParser) extends AnyVal {
 
 
   def exceptionHandler(handler: scala.Option[Throwable => Unit]): JRecordParser = {
@@ -13345,7 +13343,7 @@ import io.vertx.core.http.{RequestOptions => JRequestOptions}
   * Options describing how an [[io.vertx.core.http.HttpClient]] will make connect to make a request.
   */
 
-  implicit class RequestOptionsPimped(val asJava: JRequestOptions) extends AnyVal {
+  implicit class RequestOptionsScala(val asJava: JRequestOptions) extends AnyVal {
 
 
   /**
@@ -13391,7 +13389,7 @@ import io.vertx.core.http.{RequestOptions => JRequestOptions}
   
   type RequestOptions = JRequestOptions
   object RequestOptions {
-    def apply(): JRequestOptions = new JRequestOptions()
+    def apply(): JRequestOptions = new RequestOptions()
     def apply(json: JsonObject) = new JRequestOptions(json)
     def apply(other: JRequestOptions) = new JRequestOptions(other)
   }
@@ -13409,7 +13407,7 @@ import io.vertx.core.net.PemTrustOptions
   * 
   * While it helps for testing and development, it should never ever be used in production settings.
   */
-implicit class SelfSignedCertificatePimped(val asJava: JSelfSignedCertificate) extends AnyVal {
+implicit class SelfSignedCertificateScala(val asJava: JSelfSignedCertificate) extends AnyVal {
 
 
   /**
@@ -13461,7 +13459,7 @@ import io.vertx.core.eventbus.Message
   *
   * Encapsulates a message being sent from Vert.x. Used with event bus interceptors
   */
-implicit class SendContextPimped[T](val asJava: JSendContext[T]) extends AnyVal {
+implicit class SendContextScala[T](val asJava: JSendContext[T]) extends AnyVal {
 
 
   /**
@@ -13513,7 +13511,7 @@ import io.vertx.core.net.SocketAddress
   * Instances of this class are passed into a [[io.vertx.core.http.HttpServer#websocketHandler]] or provided
   * when a WebSocket handshake is manually [[io.vertx.core.http.HttpServerRequest#upgrade]]ed.
   */
-implicit class ServerWebSocketPimped(val asJava: JServerWebSocket) extends AnyVal {
+implicit class ServerWebSocketScala(val asJava: JServerWebSocket) extends AnyVal {
 
 
   /**
@@ -13831,7 +13829,7 @@ import io.vertx.core.shareddata.{SharedData => JSharedData}
   * </p>
   * Please see the documentation for more information.
   */
-implicit class SharedDataPimped(val asJava: JSharedData) extends AnyVal {
+implicit class SharedDataScala(val asJava: JSharedData) extends AnyVal {
 
 
   /**
@@ -13952,7 +13950,7 @@ import io.vertx.core.net.SocketAddress
   * Use [[io.vertx.core.net.SocketAddress#inetSocketAddress]] to create an inet socket address and [[io.vertx.core.net.SocketAddress#domainSocketAddress]]
   * to create a domain socket address
   */
-implicit class SocketAddressPimped(val asJava: JSocketAddress) extends AnyVal {
+implicit class SocketAddressScala(val asJava: JSocketAddress) extends AnyVal {
 
 
   /**
@@ -13983,7 +13981,7 @@ import io.vertx.core.dns.{SrvRecord => JSrvRecord}
 /**
   * Represent a Service-Record (SRV) which was resolved for a domain.
   */
-implicit class SrvRecordPimped(val asJava: JSrvRecord) extends AnyVal {
+implicit class SrvRecordScala(val asJava: JSrvRecord) extends AnyVal {
 
 
   /**
@@ -14044,7 +14042,7 @@ import io.vertx.core.Handler
 /**
   * Base interface for a stream.
   */
-implicit class StreamBasePimped(val asJava: JStreamBase) extends AnyVal {
+implicit class StreamBaseScala(val asJava: JStreamBase) extends AnyVal {
 
 
   /**
@@ -14077,7 +14075,7 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   * Base class. TCP and SSL related options
   */
 
-  implicit class TCPSSLOptionsPimped(val asJava: JTCPSSLOptions) extends AnyVal {
+  implicit class TCPSSLOptionsScala(val asJava: JTCPSSLOptions) extends AnyVal {
 
 
   /**
@@ -14375,7 +14373,7 @@ import io.vertx.core.{TimeoutStream => JTimeoutStream}
   * Pausing the timer inhibits the timer shots until the stream is resumed. Setting a null handler callback cancels
   * the timer.
   */
-implicit class TimeoutStreamPimped(val asJava: JTimeoutStream) extends AnyVal {
+implicit class TimeoutStreamScala(val asJava: JTimeoutStream) extends AnyVal {
 
 
   def exceptionHandler(handler: scala.Option[Throwable => Unit]): JTimeoutStream = {
@@ -14482,7 +14480,7 @@ import io.vertx.core.{TimeoutStream => JTimeoutStream}
   * 
   * Please see the user manual for more detailed usage information.
   */
-implicit class VertxPimped(val asJava: JVertx) extends AnyVal {
+implicit class VertxScala(val asJava: JVertx) extends AnyVal {
 
   import io.vertx.lang.scala.ScalaVerticle;  /**
     * Deploy a verticle instance that you have created yourself.
@@ -14960,7 +14958,7 @@ import io.vertx.core.dns.AddressResolverOptions
   * Instances of this class are used to configure [[io.vertx.core.Vertx]] instances.
   */
 
-  implicit class VertxOptionsPimped(val asJava: JVertxOptions) extends AnyVal {
+  implicit class VertxOptionsScala(val asJava: JVertxOptions) extends AnyVal {
 
 
   /**
@@ -15190,7 +15188,7 @@ import io.vertx.core.dns.AddressResolverOptions
   
   type VertxOptions = JVertxOptions
   object VertxOptions {
-    def apply(): JVertxOptions = new JVertxOptions()
+    def apply(): JVertxOptions = new VertxOptions()
     def apply(json: JsonObject) = new JVertxOptions(json)
     def apply(other: JVertxOptions) = new JVertxOptions(other)
   }
@@ -15210,7 +15208,7 @@ import io.vertx.core.net.SocketAddress
 /**
   * Represents a client-side WebSocket.
   */
-implicit class WebSocketPimped(val asJava: JWebSocket) extends AnyVal {
+implicit class WebSocketScala(val asJava: JWebSocket) extends AnyVal {
 
 
   /**
@@ -15456,7 +15454,7 @@ import io.vertx.core.net.SocketAddress
   * It implements both  and  so it can be used with
   * [[io.vertx.core.streams.Pump]] to pump data with flow control.
   */
-implicit class WebSocketBasePimped(val asJava: JWebSocketBase) extends AnyVal {
+implicit class WebSocketBaseScala(val asJava: JWebSocketBase) extends AnyVal {
 
 
   def exceptionHandler(handler: scala.Option[Throwable => Unit]): JWebSocketBase = {
@@ -15734,7 +15732,7 @@ import io.vertx.core.http.WebSocketFrame
   * If there are more than one frames in the message, then the first frame should be a text or binary frame with
   * final = false, followed by one or more continuation frames. The last continuation frame should have final = true.
   */
-implicit class WebSocketFramePimped(val asJava: JWebSocketFrame) extends AnyVal {
+implicit class WebSocketFrameScala(val asJava: JWebSocketFrame) extends AnyVal {
 
 
   /**
@@ -15817,7 +15815,7 @@ import io.vertx.core.Future
   * It provides the same <code>executeBlocking</code> operation than [[io.vertx.core.Context]] and
   * [[io.vertx.core.Vertx]] but on a separate worker pool.
   */
-implicit class WorkerExecutorPimped(val asJava: JWorkerExecutor) extends AnyVal {
+implicit class WorkerExecutorScala(val asJava: JWorkerExecutor) extends AnyVal {
 
 
   /**
@@ -15871,7 +15869,7 @@ import io.vertx.core.streams.{WriteStream => JWriteStream}
   * Any class that implements this interface can be used by a [[io.vertx.core.streams.Pump]] to pump data from a `ReadStream`
   * to it.
   */
-implicit class WriteStreamPimped[T](val asJava: JWriteStream[T]) extends AnyVal {
+implicit class WriteStreamScala[T](val asJava: JWriteStream[T]) extends AnyVal {
 
 
   /**
