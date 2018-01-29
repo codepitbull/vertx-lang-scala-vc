@@ -237,22 +237,22 @@
             </configuration>
           </execution>
           <!-- Run the annotation processor on codegen and generate the Scala codegen -->
-          <!--<execution>-->
-            <!--<id>generate-codegen</id>-->
-            <!--<goals>-->
-              <!--<goal>process</goal>-->
-            <!--</goals>-->
-            <!--<phase>generate-test-sources</phase>-->
-            <!--<configuration>-->
-              <!--<processors>-->
-                <!--<processor>io.vertx.codegen.CodeGenProcessor</processor>-->
-              <!--</processors>-->
-              <!--<optionMap>-->
-                <!--<outputDirectory>${project.basedir}/src/test</outputDirectory>-->
-              <!--</optionMap>-->
-              <!--<sourceDirectory>${project.build.directory}/sources/codegen</sourceDirectory>-->
-            <!--</configuration>-->
-          <!--</execution>-->
+          <execution>
+            <id>generate-codegen</id>
+            <goals>
+              <goal>process</goal>
+            </goals>
+            <phase>generate-test-sources</phase>
+            <configuration>
+              <processors>
+                <processor>io.vertx.codegen.CodeGenProcessor</processor>
+              </processors>
+              <optionMap>
+                <outputDirectory>${project.basedir}/src/test</outputDirectory>
+              </optionMap>
+              <sourceDirectory>${project.build.directory}/sources/codegen</sourceDirectory>
+            </configuration>
+          </execution>
           <!-- We have to run the annotation processor again to process docs -->
           <execution>
             <id>docgen-docs</id>

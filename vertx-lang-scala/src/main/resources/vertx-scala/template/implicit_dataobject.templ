@@ -103,9 +103,8 @@ import @{importedType}\n
 @if{!type.isAbstract()}
   type @{className} = J@{className}\n
   object @{className} {\n
-    def apply(): J@{className} = new @{className}()\n
+    @if{hasEmptyConstructor}def apply(): J@{className} = new @{className}()\n@end{}
     def apply(json: JsonObject) = new J@{className}(json)\n
-    def apply(other: J@{className}) = new J@{className}(other)\n
   }\n
 @end{}
 \n

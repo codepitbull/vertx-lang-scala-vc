@@ -231,7 +231,6 @@ import io.vertx.core.buffer.Buffer
   object AddressResolverOptions {
     def apply(): JAddressResolverOptions = new AddressResolverOptions()
     def apply(json: JsonObject) = new JAddressResolverOptions(json)
-    def apply(other: JAddressResolverOptions) = new JAddressResolverOptions(other)
   }
 
 
@@ -320,7 +319,6 @@ import io.vertx.core.cli.{Argument => JArgument}
   object Argument {
     def apply(): JArgument = new Argument()
     def apply(json: JsonObject) = new JArgument(json)
-    def apply(other: JArgument) = new JArgument(other)
   }
 
 
@@ -1984,7 +1982,6 @@ import io.vertx.core.file.{CopyOptions => JCopyOptions}
   object CopyOptions {
     def apply(): JCopyOptions = new CopyOptions()
     def apply(json: JsonObject) = new JCopyOptions(json)
-    def apply(other: JCopyOptions) = new JCopyOptions(other)
   }
 
 
@@ -2381,7 +2378,7 @@ implicit class DatagramSocketScala(val asJava: JDatagramSocket) extends AnyVal {
    */
   def sendFuture(packet: io.vertx.core.buffer.Buffer, port: java.lang.Integer, host: String): scala.concurrent.Future[JDatagramSocket] = {
     val promise = Promise[JDatagramSocket]()
-    asJava.send(packet, port, host, {a:AsyncResult[JDatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.send(packet, port, host, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -2390,7 +2387,7 @@ implicit class DatagramSocketScala(val asJava: JDatagramSocket) extends AnyVal {
    */
   def sendFuture(str: String, port: java.lang.Integer, host: String): scala.concurrent.Future[JDatagramSocket] = {
     val promise = Promise[JDatagramSocket]()
-    asJava.send(str, port, host, {a:AsyncResult[JDatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.send(str, port, host, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -2399,7 +2396,7 @@ implicit class DatagramSocketScala(val asJava: JDatagramSocket) extends AnyVal {
    */
   def sendFuture(str: String, enc: String, port: java.lang.Integer, host: String): scala.concurrent.Future[JDatagramSocket] = {
     val promise = Promise[JDatagramSocket]()
-    asJava.send(str, enc, port, host, {a:AsyncResult[JDatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.send(str, enc, port, host, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -2417,7 +2414,7 @@ implicit class DatagramSocketScala(val asJava: JDatagramSocket) extends AnyVal {
    */
   def listenMulticastGroupFuture(multicastAddress: String): scala.concurrent.Future[JDatagramSocket] = {
     val promise = Promise[JDatagramSocket]()
-    asJava.listenMulticastGroup(multicastAddress, {a:AsyncResult[JDatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.listenMulticastGroup(multicastAddress, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -2426,7 +2423,7 @@ implicit class DatagramSocketScala(val asJava: JDatagramSocket) extends AnyVal {
    */
   def listenMulticastGroupFuture(multicastAddress: String, networkInterface: String, source: scala.Option[String]): scala.concurrent.Future[JDatagramSocket] = {
     val promise = Promise[JDatagramSocket]()
-    asJava.listenMulticastGroup(multicastAddress, networkInterface, source.orNull, {a:AsyncResult[JDatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.listenMulticastGroup(multicastAddress, networkInterface, source.orNull, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -2435,7 +2432,7 @@ implicit class DatagramSocketScala(val asJava: JDatagramSocket) extends AnyVal {
    */
   def unlistenMulticastGroupFuture(multicastAddress: String): scala.concurrent.Future[JDatagramSocket] = {
     val promise = Promise[JDatagramSocket]()
-    asJava.unlistenMulticastGroup(multicastAddress, {a:AsyncResult[JDatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.unlistenMulticastGroup(multicastAddress, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -2444,7 +2441,7 @@ implicit class DatagramSocketScala(val asJava: JDatagramSocket) extends AnyVal {
    */
   def unlistenMulticastGroupFuture(multicastAddress: String, networkInterface: String, source: scala.Option[String]): scala.concurrent.Future[JDatagramSocket] = {
     val promise = Promise[JDatagramSocket]()
-    asJava.unlistenMulticastGroup(multicastAddress, networkInterface, source.orNull, {a:AsyncResult[JDatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.unlistenMulticastGroup(multicastAddress, networkInterface, source.orNull, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -2453,7 +2450,7 @@ implicit class DatagramSocketScala(val asJava: JDatagramSocket) extends AnyVal {
    */
   def blockMulticastGroupFuture(multicastAddress: String, sourceToBlock: String): scala.concurrent.Future[JDatagramSocket] = {
     val promise = Promise[JDatagramSocket]()
-    asJava.blockMulticastGroup(multicastAddress, sourceToBlock, {a:AsyncResult[JDatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.blockMulticastGroup(multicastAddress, sourceToBlock, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -2462,7 +2459,7 @@ implicit class DatagramSocketScala(val asJava: JDatagramSocket) extends AnyVal {
    */
   def blockMulticastGroupFuture(multicastAddress: String, networkInterface: String, sourceToBlock: String): scala.concurrent.Future[JDatagramSocket] = {
     val promise = Promise[JDatagramSocket]()
-    asJava.blockMulticastGroup(multicastAddress, networkInterface, sourceToBlock, {a:AsyncResult[JDatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.blockMulticastGroup(multicastAddress, networkInterface, sourceToBlock, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -2471,7 +2468,7 @@ implicit class DatagramSocketScala(val asJava: JDatagramSocket) extends AnyVal {
    */
   def listenFuture(port: java.lang.Integer, host: String): scala.concurrent.Future[JDatagramSocket] = {
     val promise = Promise[JDatagramSocket]()
-    asJava.listen(port, host, {a:AsyncResult[JDatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.listen(port, host, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -2605,7 +2602,6 @@ import io.vertx.core.net.NetworkOptions
   object DatagramSocketOptions {
     def apply(): JDatagramSocketOptions = new DatagramSocketOptions()
     def apply(json: JsonObject) = new JDatagramSocketOptions(json)
-    def apply(other: JDatagramSocketOptions) = new JDatagramSocketOptions(other)
   }
 
 
@@ -2656,7 +2652,6 @@ import io.vertx.core.eventbus.{DeliveryOptions => JDeliveryOptions}
   object DeliveryOptions {
     def apply(): JDeliveryOptions = new DeliveryOptions()
     def apply(json: JsonObject) = new JDeliveryOptions(json)
-    def apply(other: JDeliveryOptions) = new JDeliveryOptions(other)
   }
 
 
@@ -2789,7 +2784,6 @@ import io.vertx.core.json.JsonObject
   object DeploymentOptions {
     def apply(): JDeploymentOptions = new DeploymentOptions()
     def apply(json: JsonObject) = new JDeploymentOptions(json)
-    def apply(other: JDeploymentOptions) = new JDeploymentOptions(other)
   }
 
 
@@ -2938,7 +2932,7 @@ implicit class DnsClientScala(val asJava: JDnsClient) extends AnyVal {
    */
   def lookupFuture(name: String): scala.concurrent.Future[scala.Option[String]] = {
     val promise = Promise[scala.Option[String]]()
-    asJava.lookup(name, {a:AsyncResult[String] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()));()})
+    asJava.lookup(name, {a:AsyncResult[java.lang.String] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()));()})
     promise.future
   }
 
@@ -2947,7 +2941,7 @@ implicit class DnsClientScala(val asJava: JDnsClient) extends AnyVal {
    */
   def lookup4Future(name: String): scala.concurrent.Future[scala.Option[String]] = {
     val promise = Promise[scala.Option[String]]()
-    asJava.lookup4(name, {a:AsyncResult[String] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()));()})
+    asJava.lookup4(name, {a:AsyncResult[java.lang.String] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()));()})
     promise.future
   }
 
@@ -2956,7 +2950,7 @@ implicit class DnsClientScala(val asJava: JDnsClient) extends AnyVal {
    */
   def lookup6Future(name: String): scala.concurrent.Future[scala.Option[String]] = {
     val promise = Promise[scala.Option[String]]()
-    asJava.lookup6(name, {a:AsyncResult[String] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()));()})
+    asJava.lookup6(name, {a:AsyncResult[java.lang.String] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()));()})
     promise.future
   }
 
@@ -2965,7 +2959,7 @@ implicit class DnsClientScala(val asJava: JDnsClient) extends AnyVal {
    */
   def resolveAFuture(name: String): scala.concurrent.Future[List[String]] = {
     val promise = Promise[List[String]]()
-    asJava.resolveA(name, {a:AsyncResult[java.util.List[String]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.toList);()})
+    asJava.resolveA(name, {a:AsyncResult[java.util.List[java.lang.String]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.toList);()})
     promise.future
   }
 
@@ -2974,7 +2968,7 @@ implicit class DnsClientScala(val asJava: JDnsClient) extends AnyVal {
    */
   def resolveAAAAFuture(name: String): scala.concurrent.Future[List[String]] = {
     val promise = Promise[List[String]]()
-    asJava.resolveAAAA(name, {a:AsyncResult[java.util.List[String]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.toList);()})
+    asJava.resolveAAAA(name, {a:AsyncResult[java.util.List[java.lang.String]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.toList);()})
     promise.future
   }
 
@@ -2983,7 +2977,7 @@ implicit class DnsClientScala(val asJava: JDnsClient) extends AnyVal {
    */
   def resolveCNAMEFuture(name: String): scala.concurrent.Future[List[String]] = {
     val promise = Promise[List[String]]()
-    asJava.resolveCNAME(name, {a:AsyncResult[java.util.List[String]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.toList);()})
+    asJava.resolveCNAME(name, {a:AsyncResult[java.util.List[java.lang.String]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.toList);()})
     promise.future
   }
 
@@ -2992,7 +2986,7 @@ implicit class DnsClientScala(val asJava: JDnsClient) extends AnyVal {
    */
   def resolveMXFuture(name: String): scala.concurrent.Future[List[JMxRecord]] = {
     val promise = Promise[List[JMxRecord]]()
-    asJava.resolveMX(name, {a:AsyncResult[java.util.List[JMxRecord]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.toList);()})
+    asJava.resolveMX(name, {a:AsyncResult[java.util.List[io.vertx.core.dns.MxRecord]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.toList);()})
     promise.future
   }
 
@@ -3001,7 +2995,7 @@ implicit class DnsClientScala(val asJava: JDnsClient) extends AnyVal {
    */
   def resolveTXTFuture(name: String): scala.concurrent.Future[List[String]] = {
     val promise = Promise[List[String]]()
-    asJava.resolveTXT(name, {a:AsyncResult[java.util.List[String]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.toList);()})
+    asJava.resolveTXT(name, {a:AsyncResult[java.util.List[java.lang.String]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.toList);()})
     promise.future
   }
 
@@ -3010,7 +3004,7 @@ implicit class DnsClientScala(val asJava: JDnsClient) extends AnyVal {
    */
   def resolvePTRFuture(name: String): scala.concurrent.Future[scala.Option[String]] = {
     val promise = Promise[scala.Option[String]]()
-    asJava.resolvePTR(name, {a:AsyncResult[String] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()));()})
+    asJava.resolvePTR(name, {a:AsyncResult[java.lang.String] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()));()})
     promise.future
   }
 
@@ -3019,7 +3013,7 @@ implicit class DnsClientScala(val asJava: JDnsClient) extends AnyVal {
    */
   def resolveNSFuture(name: String): scala.concurrent.Future[List[String]] = {
     val promise = Promise[List[String]]()
-    asJava.resolveNS(name, {a:AsyncResult[java.util.List[String]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.toList);()})
+    asJava.resolveNS(name, {a:AsyncResult[java.util.List[java.lang.String]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.toList);()})
     promise.future
   }
 
@@ -3028,7 +3022,7 @@ implicit class DnsClientScala(val asJava: JDnsClient) extends AnyVal {
    */
   def resolveSRVFuture(name: String): scala.concurrent.Future[List[JSrvRecord]] = {
     val promise = Promise[List[JSrvRecord]]()
-    asJava.resolveSRV(name, {a:AsyncResult[java.util.List[JSrvRecord]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.toList);()})
+    asJava.resolveSRV(name, {a:AsyncResult[java.util.List[io.vertx.core.dns.SrvRecord]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.toList);()})
     promise.future
   }
 
@@ -3037,7 +3031,7 @@ implicit class DnsClientScala(val asJava: JDnsClient) extends AnyVal {
    */
   def reverseLookupFuture(ipaddress: String): scala.concurrent.Future[scala.Option[String]] = {
     val promise = Promise[scala.Option[String]]()
-    asJava.reverseLookup(ipaddress, {a:AsyncResult[String] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()));()})
+    asJava.reverseLookup(ipaddress, {a:AsyncResult[java.lang.String] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()));()})
     promise.future
   }
 
@@ -3087,7 +3081,6 @@ import io.vertx.core.dns.{DnsClientOptions => JDnsClientOptions}
   object DnsClientOptions {
     def apply(): JDnsClientOptions = new DnsClientOptions()
     def apply(json: JsonObject) = new JDnsClientOptions(json)
-    def apply(other: JDnsClientOptions) = new JDnsClientOptions(other)
   }
 
 
@@ -3295,7 +3288,7 @@ implicit class EventBusScala(val asJava: JEventBus) extends AnyVal {
    */
   def sendFuture[T](address: String, message: AnyRef): scala.concurrent.Future[JMessage[T]] = {
     val promise = Promise[JMessage[T]]()
-    asJava.send[T](address, message, {a:AsyncResult[JMessage[T]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.send[T](address, message, {a:AsyncResult[io.vertx.core.eventbus.Message[T]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -3304,7 +3297,7 @@ implicit class EventBusScala(val asJava: JEventBus) extends AnyVal {
    */
   def sendFuture[T](address: String, message: AnyRef, options: JDeliveryOptions): scala.concurrent.Future[JMessage[T]] = {
     val promise = Promise[JMessage[T]]()
-    asJava.send[T](address, message, options, {a:AsyncResult[JMessage[T]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.send[T](address, message, options, {a:AsyncResult[io.vertx.core.eventbus.Message[T]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -3754,7 +3747,6 @@ import io.vertx.core.net.TCPSSLOptions
   object EventBusOptions {
     def apply(): JEventBusOptions = new EventBusOptions()
     def apply(json: JsonObject) = new JEventBusOptions(json)
-    def apply(other: JEventBusOptions) = new JEventBusOptions(other)
   }
 
 
@@ -4519,7 +4511,7 @@ implicit class FileSystemScala(val asJava: JFileSystem) extends AnyVal {
    */
   def propsFuture(path: String): scala.concurrent.Future[JFileProps] = {
     val promise = Promise[JFileProps]()
-    asJava.props(path, {a:AsyncResult[JFileProps] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.props(path, {a:AsyncResult[io.vertx.core.file.FileProps] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -4528,7 +4520,7 @@ implicit class FileSystemScala(val asJava: JFileSystem) extends AnyVal {
    */
   def lpropsFuture(path: String): scala.concurrent.Future[JFileProps] = {
     val promise = Promise[JFileProps]()
-    asJava.lprops(path, {a:AsyncResult[JFileProps] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.lprops(path, {a:AsyncResult[io.vertx.core.file.FileProps] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -4564,7 +4556,7 @@ implicit class FileSystemScala(val asJava: JFileSystem) extends AnyVal {
    */
   def readSymlinkFuture(link: String): scala.concurrent.Future[String] = {
     val promise = Promise[String]()
-    asJava.readSymlink(link, {a:AsyncResult[String] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.readSymlink(link, {a:AsyncResult[java.lang.String] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -4627,7 +4619,7 @@ implicit class FileSystemScala(val asJava: JFileSystem) extends AnyVal {
    */
   def readDirFuture(path: String): scala.concurrent.Future[List[String]] = {
     val promise = Promise[List[String]]()
-    asJava.readDir(path, {a:AsyncResult[java.util.List[String]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.toList);()})
+    asJava.readDir(path, {a:AsyncResult[java.util.List[java.lang.String]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.toList);()})
     promise.future
   }
 
@@ -4636,7 +4628,7 @@ implicit class FileSystemScala(val asJava: JFileSystem) extends AnyVal {
    */
   def readDirFuture(path: String, filter: String): scala.concurrent.Future[List[String]] = {
     val promise = Promise[List[String]]()
-    asJava.readDir(path, filter, {a:AsyncResult[java.util.List[String]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.toList);()})
+    asJava.readDir(path, filter, {a:AsyncResult[java.util.List[java.lang.String]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.toList);()})
     promise.future
   }
 
@@ -4663,7 +4655,7 @@ implicit class FileSystemScala(val asJava: JFileSystem) extends AnyVal {
    */
   def openFuture(path: String, options: JOpenOptions): scala.concurrent.Future[JAsyncFile] = {
     val promise = Promise[JAsyncFile]()
-    asJava.open(path, options, {a:AsyncResult[JAsyncFile] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.open(path, options, {a:AsyncResult[io.vertx.core.file.AsyncFile] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -4699,7 +4691,7 @@ implicit class FileSystemScala(val asJava: JFileSystem) extends AnyVal {
    */
   def fsPropsFuture(path: String): scala.concurrent.Future[JFileSystemProps] = {
     val promise = Promise[JFileSystemProps]()
-    asJava.fsProps(path, {a:AsyncResult[JFileSystemProps] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.fsProps(path, {a:AsyncResult[io.vertx.core.file.FileSystemProps] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -5056,7 +5048,6 @@ import io.vertx.core.http.{GoAway => JGoAway}
   object GoAway {
     def apply(): JGoAway = new GoAway()
     def apply(json: JsonObject) = new JGoAway(json)
-    def apply(other: JGoAway) = new JGoAway(other)
   }
 
 
@@ -5137,7 +5128,6 @@ import io.vertx.core.http.{Http2Settings => JHttp2Settings}
   object Http2Settings {
     def apply(): JHttp2Settings = new Http2Settings()
     def apply(json: JsonObject) = new JHttp2Settings(json)
-    def apply(other: JHttp2Settings) = new JHttp2Settings(other)
   }
 
 
@@ -7394,7 +7384,6 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   object HttpClientOptions {
     def apply(): JHttpClientOptions = new HttpClientOptions()
     def apply(json: JsonObject) = new JHttpClientOptions(json)
-    def apply(other: JHttpClientOptions) = new JHttpClientOptions(other)
   }
 
 
@@ -8424,7 +8413,7 @@ implicit class HttpServerScala(val asJava: JHttpServer) extends AnyVal {
    */
   def listenFuture(port: java.lang.Integer, host: String): scala.concurrent.Future[JHttpServer] = {
     val promise = Promise[JHttpServer]()
-    asJava.listen(port, host, {a:AsyncResult[JHttpServer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.listen(port, host, {a:AsyncResult[io.vertx.core.http.HttpServer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -8433,7 +8422,7 @@ implicit class HttpServerScala(val asJava: JHttpServer) extends AnyVal {
    */
   def listenFuture(port: java.lang.Integer): scala.concurrent.Future[JHttpServer] = {
     val promise = Promise[JHttpServer]()
-    asJava.listen(port, {a:AsyncResult[JHttpServer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.listen(port, {a:AsyncResult[io.vertx.core.http.HttpServer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -8442,7 +8431,7 @@ implicit class HttpServerScala(val asJava: JHttpServer) extends AnyVal {
    */
   def listenFuture(): scala.concurrent.Future[JHttpServer] = {
     val promise = Promise[JHttpServer]()
-    asJava.listen({a:AsyncResult[JHttpServer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.listen({a:AsyncResult[io.vertx.core.http.HttpServer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -9099,7 +9088,6 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   object HttpServerOptions {
     def apply(): JHttpServerOptions = new HttpServerOptions()
     def apply(json: JsonObject) = new JHttpServerOptions(json)
-    def apply(other: JHttpServerOptions) = new JHttpServerOptions(other)
   }
 
 
@@ -9880,7 +9868,7 @@ implicit class HttpServerResponseScala(val asJava: JHttpServerResponse) extends 
    */
   def pushFuture(method: io.vertx.core.http.HttpMethod, host: String, path: String): scala.concurrent.Future[JHttpServerResponse] = {
     val promise = Promise[JHttpServerResponse]()
-    asJava.push(method, host, path, {a:AsyncResult[JHttpServerResponse] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.push(method, host, path, {a:AsyncResult[io.vertx.core.http.HttpServerResponse] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -9889,7 +9877,7 @@ implicit class HttpServerResponseScala(val asJava: JHttpServerResponse) extends 
    */
   def pushFuture(method: io.vertx.core.http.HttpMethod, path: String, headers: JMultiMap): scala.concurrent.Future[JHttpServerResponse] = {
     val promise = Promise[JHttpServerResponse]()
-    asJava.push(method, path, headers, {a:AsyncResult[JHttpServerResponse] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.push(method, path, headers, {a:AsyncResult[io.vertx.core.http.HttpServerResponse] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -9898,7 +9886,7 @@ implicit class HttpServerResponseScala(val asJava: JHttpServerResponse) extends 
    */
   def pushFuture(method: io.vertx.core.http.HttpMethod, path: String): scala.concurrent.Future[JHttpServerResponse] = {
     val promise = Promise[JHttpServerResponse]()
-    asJava.push(method, path, {a:AsyncResult[JHttpServerResponse] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.push(method, path, {a:AsyncResult[io.vertx.core.http.HttpServerResponse] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -9907,7 +9895,7 @@ implicit class HttpServerResponseScala(val asJava: JHttpServerResponse) extends 
    */
   def pushFuture(method: io.vertx.core.http.HttpMethod, host: String, path: String, headers: JMultiMap): scala.concurrent.Future[JHttpServerResponse] = {
     val promise = Promise[JHttpServerResponse]()
-    asJava.push(method, host, path, headers, {a:AsyncResult[JHttpServerResponse] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.push(method, host, path, headers, {a:AsyncResult[io.vertx.core.http.HttpServerResponse] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -9927,7 +9915,6 @@ import io.vertx.core.net.{JdkSSLEngineOptions => JJdkSSLEngineOptions}
   object JdkSSLEngineOptions {
     def apply(): JJdkSSLEngineOptions = new JdkSSLEngineOptions()
     def apply(json: JsonObject) = new JJdkSSLEngineOptions(json)
-    def apply(other: JJdkSSLEngineOptions) = new JJdkSSLEngineOptions(other)
   }
 
 
@@ -9994,7 +9981,6 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   object JksOptions {
     def apply(): JJksOptions = new JksOptions()
     def apply(json: JsonObject) = new JJksOptions(json)
-    def apply(other: JJksOptions) = new JJksOptions(other)
   }
 
 
@@ -10570,7 +10556,7 @@ implicit class MessageScala[T](val asJava: JMessage[T]) extends AnyVal {
    */
   def replyFuture[R](message: AnyRef): scala.concurrent.Future[JMessage[R]] = {
     val promise = Promise[JMessage[R]]()
-    asJava.reply[R](message, {a:AsyncResult[JMessage[R]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.reply[R](message, {a:AsyncResult[io.vertx.core.eventbus.Message[R]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -10579,7 +10565,7 @@ implicit class MessageScala[T](val asJava: JMessage[T]) extends AnyVal {
    */
   def replyFuture[R](message: AnyRef, options: JDeliveryOptions): scala.concurrent.Future[JMessage[R]] = {
     val promise = Promise[JMessage[R]]()
-    asJava.reply[R](message, options, {a:AsyncResult[JMessage[R]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.reply[R](message, options, {a:AsyncResult[io.vertx.core.eventbus.Message[R]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -10806,7 +10792,7 @@ implicit class MessageProducerScala[T](val asJava: JMessageProducer[T]) extends 
 
   def sendFuture[R](message: T): scala.concurrent.Future[JMessage[R]] = {
     val promise = Promise[JMessage[R]]()
-    asJava.send[R](message, {a:AsyncResult[JMessage[R]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.send[R](message, {a:AsyncResult[io.vertx.core.eventbus.Message[R]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -10837,7 +10823,6 @@ import io.vertx.core.metrics.{MetricsOptions => JMetricsOptions}
   object MetricsOptions {
     def apply(): JMetricsOptions = new MetricsOptions()
     def apply(json: JsonObject) = new JMetricsOptions(json)
-    def apply(other: JMetricsOptions) = new JMetricsOptions(other)
   }
 
 
@@ -11081,7 +11066,7 @@ implicit class NetClientScala(val asJava: JNetClient) extends AnyVal {
    */
   def connectFuture(port: java.lang.Integer, host: String): scala.concurrent.Future[JNetSocket] = {
     val promise = Promise[JNetSocket]()
-    asJava.connect(port, host, {a:AsyncResult[JNetSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.connect(port, host, {a:AsyncResult[io.vertx.core.net.NetSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -11090,7 +11075,7 @@ implicit class NetClientScala(val asJava: JNetClient) extends AnyVal {
    */
   def connectFuture(port: java.lang.Integer, host: String, serverName: String): scala.concurrent.Future[JNetSocket] = {
     val promise = Promise[JNetSocket]()
-    asJava.connect(port, host, serverName, {a:AsyncResult[JNetSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.connect(port, host, serverName, {a:AsyncResult[io.vertx.core.net.NetSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -11099,7 +11084,7 @@ implicit class NetClientScala(val asJava: JNetClient) extends AnyVal {
    */
   def connectFuture(remoteAddress: JSocketAddress): scala.concurrent.Future[JNetSocket] = {
     val promise = Promise[JNetSocket]()
-    asJava.connect(remoteAddress, {a:AsyncResult[JNetSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.connect(remoteAddress, {a:AsyncResult[io.vertx.core.net.NetSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -11108,7 +11093,7 @@ implicit class NetClientScala(val asJava: JNetClient) extends AnyVal {
    */
   def connectFuture(remoteAddress: JSocketAddress, serverName: String): scala.concurrent.Future[JNetSocket] = {
     val promise = Promise[JNetSocket]()
-    asJava.connect(remoteAddress, serverName, {a:AsyncResult[JNetSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.connect(remoteAddress, serverName, {a:AsyncResult[io.vertx.core.net.NetSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -11504,7 +11489,6 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   object NetClientOptions {
     def apply(): JNetClientOptions = new NetClientOptions()
     def apply(json: JsonObject) = new JNetClientOptions(json)
-    def apply(other: JNetClientOptions) = new JNetClientOptions(other)
   }
 
 
@@ -11687,7 +11671,7 @@ implicit class NetServerScala(val asJava: JNetServer) extends AnyVal {
    */
   def listenFuture(): scala.concurrent.Future[JNetServer] = {
     val promise = Promise[JNetServer]()
-    asJava.listen({a:AsyncResult[JNetServer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.listen({a:AsyncResult[io.vertx.core.net.NetServer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -11696,7 +11680,7 @@ implicit class NetServerScala(val asJava: JNetServer) extends AnyVal {
    */
   def listenFuture(port: java.lang.Integer, host: String): scala.concurrent.Future[JNetServer] = {
     val promise = Promise[JNetServer]()
-    asJava.listen(port, host, {a:AsyncResult[JNetServer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.listen(port, host, {a:AsyncResult[io.vertx.core.net.NetServer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -11705,7 +11689,7 @@ implicit class NetServerScala(val asJava: JNetServer) extends AnyVal {
    */
   def listenFuture(port: java.lang.Integer): scala.concurrent.Future[JNetServer] = {
     val promise = Promise[JNetServer]()
-    asJava.listen(port, {a:AsyncResult[JNetServer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.listen(port, {a:AsyncResult[io.vertx.core.net.NetServer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -11714,7 +11698,7 @@ implicit class NetServerScala(val asJava: JNetServer) extends AnyVal {
    */
   def listenFuture(localAddress: JSocketAddress): scala.concurrent.Future[JNetServer] = {
     val promise = Promise[JNetServer]()
-    asJava.listen(localAddress, {a:AsyncResult[JNetServer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.listen(localAddress, {a:AsyncResult[io.vertx.core.net.NetServer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -12095,7 +12079,6 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   object NetServerOptions {
     def apply(): JNetServerOptions = new NetServerOptions()
     def apply(json: JsonObject) = new JNetServerOptions(json)
-    def apply(other: JNetServerOptions) = new JNetServerOptions(other)
   }
 
 
@@ -12571,7 +12554,6 @@ import io.vertx.core.file.{OpenOptions => JOpenOptions}
   object OpenOptions {
     def apply(): JOpenOptions = new OpenOptions()
     def apply(json: JsonObject) = new JOpenOptions(json)
-    def apply(other: JOpenOptions) = new JOpenOptions(other)
   }
 
 
@@ -12599,7 +12581,6 @@ import io.vertx.core.net.{OpenSSLEngineOptions => JOpenSSLEngineOptions}
   object OpenSSLEngineOptions {
     def apply(): JOpenSSLEngineOptions = new OpenSSLEngineOptions()
     def apply(json: JsonObject) = new JOpenSSLEngineOptions(json)
-    def apply(other: JOpenSSLEngineOptions) = new JOpenSSLEngineOptions(other)
   }
 
 
@@ -12751,7 +12732,6 @@ import io.vertx.core.cli.{Option => JOption}
   object Option {
     def apply(): JOption = new Option()
     def apply(json: JsonObject) = new JOption(json)
-    def apply(other: JOption) = new JOption(other)
   }
 
 
@@ -12899,7 +12879,6 @@ import io.vertx.core.net.{PemKeyCertOptions => JPemKeyCertOptions}
   object PemKeyCertOptions {
     def apply(): JPemKeyCertOptions = new PemKeyCertOptions()
     def apply(json: JsonObject) = new JPemKeyCertOptions(json)
-    def apply(other: JPemKeyCertOptions) = new JPemKeyCertOptions(other)
   }
 
 
@@ -12966,7 +12945,6 @@ import io.vertx.core.net.{PemTrustOptions => JPemTrustOptions}
   object PemTrustOptions {
     def apply(): JPemTrustOptions = new PemTrustOptions()
     def apply(json: JsonObject) = new JPemTrustOptions(json)
-    def apply(other: JPemTrustOptions) = new JPemTrustOptions(other)
   }
 
 
@@ -13033,7 +13011,6 @@ import io.vertx.core.net.{PfxOptions => JPfxOptions}
   object PfxOptions {
     def apply(): JPfxOptions = new PfxOptions()
     def apply(json: JsonObject) = new JPfxOptions(json)
-    def apply(other: JPfxOptions) = new JPfxOptions(other)
   }
 
 
@@ -13104,7 +13081,6 @@ import io.vertx.core.net.{ProxyOptions => JProxyOptions}
   object ProxyOptions {
     def apply(): JProxyOptions = new ProxyOptions()
     def apply(json: JsonObject) = new JProxyOptions(json)
-    def apply(other: JProxyOptions) = new JProxyOptions(other)
   }
 
 
@@ -13391,7 +13367,6 @@ import io.vertx.core.http.{RequestOptions => JRequestOptions}
   object RequestOptions {
     def apply(): JRequestOptions = new RequestOptions()
     def apply(json: JsonObject) = new JRequestOptions(json)
-    def apply(other: JRequestOptions) = new JRequestOptions(other)
   }
 
 
@@ -13899,7 +13874,7 @@ implicit class SharedDataScala(val asJava: JSharedData) extends AnyVal {
    */
   def getClusterWideMapFuture[K, V](name: String): scala.concurrent.Future[JAsyncMap[K, V]] = {
     val promise = Promise[JAsyncMap[K, V]]()
-    asJava.getClusterWideMap[K, V](name, {a:AsyncResult[JAsyncMap[K, V]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.getClusterWideMap[K, V](name, {a:AsyncResult[io.vertx.core.shareddata.AsyncMap[K,V]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -13908,7 +13883,7 @@ implicit class SharedDataScala(val asJava: JSharedData) extends AnyVal {
    */
   def getAsyncMapFuture[K, V](name: String): scala.concurrent.Future[JAsyncMap[K, V]] = {
     val promise = Promise[JAsyncMap[K, V]]()
-    asJava.getAsyncMap[K, V](name, {a:AsyncResult[JAsyncMap[K, V]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.getAsyncMap[K, V](name, {a:AsyncResult[io.vertx.core.shareddata.AsyncMap[K,V]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -13917,7 +13892,7 @@ implicit class SharedDataScala(val asJava: JSharedData) extends AnyVal {
    */
   def getLockFuture(name: String): scala.concurrent.Future[JLock] = {
     val promise = Promise[JLock]()
-    asJava.getLock(name, {a:AsyncResult[JLock] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.getLock(name, {a:AsyncResult[io.vertx.core.shareddata.Lock] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -13926,7 +13901,7 @@ implicit class SharedDataScala(val asJava: JSharedData) extends AnyVal {
    */
   def getLockWithTimeoutFuture(name: String, timeout: java.lang.Long): scala.concurrent.Future[JLock] = {
     val promise = Promise[JLock]()
-    asJava.getLockWithTimeout(name, timeout, {a:AsyncResult[JLock] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.getLockWithTimeout(name, timeout, {a:AsyncResult[io.vertx.core.shareddata.Lock] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -13935,7 +13910,7 @@ implicit class SharedDataScala(val asJava: JSharedData) extends AnyVal {
    */
   def getCounterFuture(name: String): scala.concurrent.Future[JCounter] = {
     val promise = Promise[JCounter]()
-    asJava.getCounter(name, {a:AsyncResult[JCounter] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.getCounter(name, {a:AsyncResult[io.vertx.core.shareddata.Counter] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -14922,7 +14897,7 @@ implicit class VertxScala(val asJava: JVertx) extends AnyVal {
    */
   def deployVerticleFuture(name: String): scala.concurrent.Future[String] = {
     val promise = Promise[String]()
-    asJava.deployVerticle(name, {a:AsyncResult[String] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.deployVerticle(name, {a:AsyncResult[java.lang.String] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -14931,7 +14906,7 @@ implicit class VertxScala(val asJava: JVertx) extends AnyVal {
    */
   def deployVerticleFuture(name: String, options: JDeploymentOptions): scala.concurrent.Future[String] = {
     val promise = Promise[String]()
-    asJava.deployVerticle(name, options, {a:AsyncResult[String] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    asJava.deployVerticle(name, options, {a:AsyncResult[java.lang.String] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
@@ -15190,7 +15165,6 @@ import io.vertx.core.dns.AddressResolverOptions
   object VertxOptions {
     def apply(): JVertxOptions = new VertxOptions()
     def apply(json: JsonObject) = new JVertxOptions(json)
-    def apply(other: JVertxOptions) = new JVertxOptions(other)
   }
 
 
