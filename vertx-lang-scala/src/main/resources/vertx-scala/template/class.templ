@@ -101,7 +101,6 @@ import @{importedType}\n
 	@foreach{param : removeLastParam(method.params)}
 		@{escapeIfKeyword(param.name)}: @{toScalaMethodParam(param.type)}
 	@end{', '}): scala.concurrent.Future[@{toReturnType(typeOfReturnedFuture(method))}] = {\n
-		@comment{'TODO: https://github.com/vert-x3/vertx-codegen/issues/111'}
     val promise = Promise[@{toReturnType(typeOfReturnedFuture(method))}]()\n
 		@code{var resultHandler = '{a:AsyncResult[' + typeOfReturnedFuture(method).name.replace('<', '[').replace('>', ']') + '] => if(a.failed) promise.failure(a.cause) else promise.success(' + conversionForReturn('a.result()', typeOfReturnedFuture(method)) + ');()}';}
     @{invokeMethodAndUseProvidedHandler('asJava', type, method, typeParams, resultHandler).replace('<', '[').replace('>]', ']]')}\n
