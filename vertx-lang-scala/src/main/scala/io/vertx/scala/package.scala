@@ -1587,7 +1587,7 @@ implicit class CompositeFutureScala(val asJava: JCompositeFuture) extends AnyVal
     * @return the mapped future
     */
   def map[U](mapper: JCompositeFuture => U): JFuture[U] = {
-    asJava.map[U](asJavaFunction(mapper))
+    asJava.map[U](a => mapper(a))
   }
 
   /**
@@ -1597,7 +1597,7 @@ implicit class CompositeFutureScala(val asJava: JCompositeFuture) extends AnyVal
     * @return A recovered future
     */
   def recover(mapper: Throwable => JFuture[JCompositeFuture]): JFuture[JCompositeFuture] = {
-    asJava.recover(asJavaFunction(mapper))
+    asJava.recover(a => mapper(a).asJava)
   }
 
   /**
@@ -1614,7 +1614,7 @@ implicit class CompositeFutureScala(val asJava: JCompositeFuture) extends AnyVal
     * @return the mapped future
     */
   def otherwise(mapper: Throwable => JCompositeFuture): JFuture[JCompositeFuture] = {
-    asJava.otherwise(asJavaFunction(mapper))
+    asJava.otherwise(a => mapper(a).asJava)
   }
 
   /**
@@ -4857,7 +4857,7 @@ implicit class FutureScala[T](val asJava: JFuture[T]) extends AnyVal {
     * @return the mapped future
     */
   def otherwise(mapper: Throwable => T): JFuture[T] = {
-    asJava.otherwise(asJavaFunction(mapper))
+    asJava.otherwise(a => mapper(a))
   }
 
   /**
@@ -5778,7 +5778,7 @@ implicit class HttpClientScala(val asJava: JHttpClient) extends AnyVal {
     * @return a reference to this, so the API can be used fluently
     */
   def redirectHandler(handler: JHttpClientResponse => JFuture[JHttpClientRequest]): JHttpClient = {
-    asJava.redirectHandler(asJavaFunction(handler))
+    asJava.redirectHandler(a => handler(a).asJava)
   }
 
   /**
@@ -10895,6 +10895,18 @@ implicit class MultiMapScala(val asJava: JMultiMap) extends AnyVal {
   }
 
   /**
+    * Check if there is a header with the specified `name` and `value`.
+    *
+    * If `caseInsensitive` is `true`, `value` is compared in a case-insensitive way.
+    * @param name the name to search for
+    * @param value the value to search for
+    * @return `true` if at least one entry is found
+    */
+  def contains(name: String, value: String, caseInsensitive: java.lang.Boolean): java.lang.Boolean = {
+    asJava.contains(name, value, caseInsensitive)
+  }
+
+  /**
     * Returns the value of with the specified name.  If there are
     * more than one values for the specified name, the first value is returned.
     * @param name The name of the header to search
@@ -10933,8 +10945,8 @@ implicit class MultiMapScala(val asJava: JMultiMap) extends AnyVal {
     * Gets a immutable Set of all names
     * @return A scala.collection.immutable.Set of all names
     */
-  def names(): Seq[String] = {
-    asJava.names().asScala.toSeq
+  def names(): Set[String] = {
+    asJava.names().asScala.toSet
   }
 
   /**
@@ -14610,7 +14622,8 @@ implicit class VertxScala(val asJava: JVertx) extends AnyVal {
   }
 
   /**
-    * Create a DNS client to connect to a DNS server at the specified host and port
+    * Create a DNS client to connect to a DNS server at the specified host and port, with the default query timeout (5 seconds)
+    * <p/>
     * @param port the port
     * @param host the host
     * @return the DNS client
@@ -14787,8 +14800,8 @@ implicit class VertxScala(val asJava: JVertx) extends AnyVal {
     * Return a Set of deployment IDs for the currently deployed deploymentIDs.
     * @return Set of deployment IDs
     */
-  def deploymentIDs(): Seq[String] = {
-    asJava.deploymentIDs().asScala.toSeq
+  def deploymentIDs(): Set[String] = {
+    asJava.deploymentIDs().asScala.toSet
   }
 
   /**

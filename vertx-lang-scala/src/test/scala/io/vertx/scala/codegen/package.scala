@@ -312,40 +312,40 @@ implicit class CollectionTCKScala(val asJava: JCollectionTCK) extends AnyVal {
     asJava.methodWithListEnumReturn().asScala.toList
   }
 
-  def methodWithSetStringReturn(): Seq[String] = {
-    asJava.methodWithSetStringReturn().asScala.toSeq
+  def methodWithSetStringReturn(): Set[String] = {
+    asJava.methodWithSetStringReturn().asScala.toSet
   }
 
-  def methodWithSetLongReturn(): Seq[java.lang.Long] = {
-    asJava.methodWithSetLongReturn().asScala.toSeq
+  def methodWithSetLongReturn(): Set[java.lang.Long] = {
+    asJava.methodWithSetLongReturn().asScala.toSet
   }
 
-  def methodWithSetVertxGenReturn(): Seq[JRefedInterface1] = {
-    asJava.methodWithSetVertxGenReturn().asScala.toSeq
+  def methodWithSetVertxGenReturn(): Set[JRefedInterface1] = {
+    asJava.methodWithSetVertxGenReturn().asScala.toSet
   }
 
-  def methodWithSetJsonObjectReturn(): Seq[io.vertx.core.json.JsonObject] = {
-    asJava.methodWithSetJsonObjectReturn().asScala.toSeq
+  def methodWithSetJsonObjectReturn(): Set[io.vertx.core.json.JsonObject] = {
+    asJava.methodWithSetJsonObjectReturn().asScala.toSet
   }
 
-  def methodWithSetComplexJsonObjectReturn(): Seq[io.vertx.core.json.JsonObject] = {
-    asJava.methodWithSetComplexJsonObjectReturn().asScala.toSeq
+  def methodWithSetComplexJsonObjectReturn(): Set[io.vertx.core.json.JsonObject] = {
+    asJava.methodWithSetComplexJsonObjectReturn().asScala.toSet
   }
 
-  def methodWithSetJsonArrayReturn(): Seq[io.vertx.core.json.JsonArray] = {
-    asJava.methodWithSetJsonArrayReturn().asScala.toSeq
+  def methodWithSetJsonArrayReturn(): Set[io.vertx.core.json.JsonArray] = {
+    asJava.methodWithSetJsonArrayReturn().asScala.toSet
   }
 
-  def methodWithSetComplexJsonArrayReturn(): Seq[io.vertx.core.json.JsonArray] = {
-    asJava.methodWithSetComplexJsonArrayReturn().asScala.toSeq
+  def methodWithSetComplexJsonArrayReturn(): Set[io.vertx.core.json.JsonArray] = {
+    asJava.methodWithSetComplexJsonArrayReturn().asScala.toSet
   }
 
-  def methodWithSetDataObjectReturn(): Seq[JTestDataObject] = {
-    asJava.methodWithSetDataObjectReturn().asScala.toSeq
+  def methodWithSetDataObjectReturn(): Set[JTestDataObject] = {
+    asJava.methodWithSetDataObjectReturn().asScala.toSet
   }
 
-  def methodWithSetEnumReturn(): Seq[io.vertx.codegen.testmodel.TestEnum] = {
-    asJava.methodWithSetEnumReturn().asScala.toSeq
+  def methodWithSetEnumReturn(): Set[io.vertx.codegen.testmodel.TestEnum] = {
+    asJava.methodWithSetEnumReturn().asScala.toSet
   }
 
   def methodWithHandlerAsyncResultListStringFuture(): scala.concurrent.Future[List[String]] = {
@@ -360,15 +360,15 @@ implicit class CollectionTCKScala(val asJava: JCollectionTCK) extends AnyVal {
     promise.future
   }
 
-  def methodWithHandlerAsyncResultSetStringFuture(): scala.concurrent.Future[Seq[String]] = {
-    val promise = Promise[Seq[String]]()
-    asJava.methodWithHandlerAsyncResultSetString({a:AsyncResult[java.util.Set[java.lang.String]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.toSeq);()})
+  def methodWithHandlerAsyncResultSetStringFuture(): scala.concurrent.Future[Set[String]] = {
+    val promise = Promise[Set[String]]()
+    asJava.methodWithHandlerAsyncResultSetString({a:AsyncResult[java.util.Set[java.lang.String]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.toSet);()})
     promise.future
   }
 
-  def methodWithHandlerAsyncResultSetIntegerFuture(): scala.concurrent.Future[Seq[java.lang.Integer]] = {
-    val promise = Promise[Seq[java.lang.Integer]]()
-    asJava.methodWithHandlerAsyncResultSetInteger({a:AsyncResult[java.util.Set[java.lang.Integer]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.toSeq);()})
+  def methodWithHandlerAsyncResultSetIntegerFuture(): scala.concurrent.Future[Set[java.lang.Integer]] = {
+    val promise = Promise[Set[java.lang.Integer]]()
+    asJava.methodWithHandlerAsyncResultSetInteger({a:AsyncResult[java.util.Set[java.lang.Integer]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.toSet);()})
     promise.future
   }
 
@@ -420,51 +420,51 @@ implicit class CollectionTCKScala(val asJava: JCollectionTCK) extends AnyVal {
     promise.future
   }
 
-  def methodWithHandlerAsyncResultSetVertxGenFuture(): scala.concurrent.Future[Seq[JRefedInterface1]] = {
-    val promise = Promise[Seq[JRefedInterface1]]()
-    asJava.methodWithHandlerAsyncResultSetVertxGen({a:AsyncResult[java.util.Set[io.vertx.codegen.testmodel.RefedInterface1]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.toSeq);()})
+  def methodWithHandlerAsyncResultSetVertxGenFuture(): scala.concurrent.Future[Set[JRefedInterface1]] = {
+    val promise = Promise[Set[JRefedInterface1]]()
+    asJava.methodWithHandlerAsyncResultSetVertxGen({a:AsyncResult[java.util.Set[io.vertx.codegen.testmodel.RefedInterface1]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.toSet);()})
     promise.future
   }
 
-  def methodWithHandlerAsyncResultSetAbstractVertxGenFuture(): scala.concurrent.Future[Seq[JRefedInterface2]] = {
-    val promise = Promise[Seq[JRefedInterface2]]()
-    asJava.methodWithHandlerAsyncResultSetAbstractVertxGen({a:AsyncResult[java.util.Set[io.vertx.codegen.testmodel.RefedInterface2]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.toSeq);()})
+  def methodWithHandlerAsyncResultSetAbstractVertxGenFuture(): scala.concurrent.Future[Set[JRefedInterface2]] = {
+    val promise = Promise[Set[JRefedInterface2]]()
+    asJava.methodWithHandlerAsyncResultSetAbstractVertxGen({a:AsyncResult[java.util.Set[io.vertx.codegen.testmodel.RefedInterface2]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.toSet);()})
     promise.future
   }
 
-  def methodWithHandlerAsyncResultSetJsonObjectFuture(): scala.concurrent.Future[Seq[io.vertx.core.json.JsonObject]] = {
-    val promise = Promise[Seq[io.vertx.core.json.JsonObject]]()
-    asJava.methodWithHandlerAsyncResultSetJsonObject({a:AsyncResult[java.util.Set[io.vertx.core.json.JsonObject]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.toSeq);()})
+  def methodWithHandlerAsyncResultSetJsonObjectFuture(): scala.concurrent.Future[Set[io.vertx.core.json.JsonObject]] = {
+    val promise = Promise[Set[io.vertx.core.json.JsonObject]]()
+    asJava.methodWithHandlerAsyncResultSetJsonObject({a:AsyncResult[java.util.Set[io.vertx.core.json.JsonObject]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.toSet);()})
     promise.future
   }
 
-  def methodWithHandlerAsyncResultSetComplexJsonObjectFuture(): scala.concurrent.Future[Seq[io.vertx.core.json.JsonObject]] = {
-    val promise = Promise[Seq[io.vertx.core.json.JsonObject]]()
-    asJava.methodWithHandlerAsyncResultSetComplexJsonObject({a:AsyncResult[java.util.Set[io.vertx.core.json.JsonObject]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.toSeq);()})
+  def methodWithHandlerAsyncResultSetComplexJsonObjectFuture(): scala.concurrent.Future[Set[io.vertx.core.json.JsonObject]] = {
+    val promise = Promise[Set[io.vertx.core.json.JsonObject]]()
+    asJava.methodWithHandlerAsyncResultSetComplexJsonObject({a:AsyncResult[java.util.Set[io.vertx.core.json.JsonObject]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.toSet);()})
     promise.future
   }
 
-  def methodWithHandlerAsyncResultSetJsonArrayFuture(): scala.concurrent.Future[Seq[io.vertx.core.json.JsonArray]] = {
-    val promise = Promise[Seq[io.vertx.core.json.JsonArray]]()
-    asJava.methodWithHandlerAsyncResultSetJsonArray({a:AsyncResult[java.util.Set[io.vertx.core.json.JsonArray]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.toSeq);()})
+  def methodWithHandlerAsyncResultSetJsonArrayFuture(): scala.concurrent.Future[Set[io.vertx.core.json.JsonArray]] = {
+    val promise = Promise[Set[io.vertx.core.json.JsonArray]]()
+    asJava.methodWithHandlerAsyncResultSetJsonArray({a:AsyncResult[java.util.Set[io.vertx.core.json.JsonArray]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.toSet);()})
     promise.future
   }
 
-  def methodWithHandlerAsyncResultSetComplexJsonArrayFuture(): scala.concurrent.Future[Seq[io.vertx.core.json.JsonArray]] = {
-    val promise = Promise[Seq[io.vertx.core.json.JsonArray]]()
-    asJava.methodWithHandlerAsyncResultSetComplexJsonArray({a:AsyncResult[java.util.Set[io.vertx.core.json.JsonArray]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.toSeq);()})
+  def methodWithHandlerAsyncResultSetComplexJsonArrayFuture(): scala.concurrent.Future[Set[io.vertx.core.json.JsonArray]] = {
+    val promise = Promise[Set[io.vertx.core.json.JsonArray]]()
+    asJava.methodWithHandlerAsyncResultSetComplexJsonArray({a:AsyncResult[java.util.Set[io.vertx.core.json.JsonArray]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.toSet);()})
     promise.future
   }
 
-  def methodWithHandlerAsyncResultSetDataObjectFuture(): scala.concurrent.Future[Seq[JTestDataObject]] = {
-    val promise = Promise[Seq[JTestDataObject]]()
-    asJava.methodWithHandlerAsyncResultSetDataObject({a:AsyncResult[java.util.Set[io.vertx.codegen.testmodel.TestDataObject]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.toSeq);()})
+  def methodWithHandlerAsyncResultSetDataObjectFuture(): scala.concurrent.Future[Set[JTestDataObject]] = {
+    val promise = Promise[Set[JTestDataObject]]()
+    asJava.methodWithHandlerAsyncResultSetDataObject({a:AsyncResult[java.util.Set[io.vertx.codegen.testmodel.TestDataObject]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.toSet);()})
     promise.future
   }
 
-  def methodWithHandlerAsyncResultSetEnumFuture(): scala.concurrent.Future[Seq[io.vertx.codegen.testmodel.TestEnum]] = {
-    val promise = Promise[Seq[io.vertx.codegen.testmodel.TestEnum]]()
-    asJava.methodWithHandlerAsyncResultSetEnum({a:AsyncResult[java.util.Set[io.vertx.codegen.testmodel.TestEnum]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.toSeq);()})
+  def methodWithHandlerAsyncResultSetEnumFuture(): scala.concurrent.Future[Set[io.vertx.codegen.testmodel.TestEnum]] = {
+    val promise = Promise[Set[io.vertx.codegen.testmodel.TestEnum]]()
+    asJava.methodWithHandlerAsyncResultSetEnum({a:AsyncResult[java.util.Set[io.vertx.codegen.testmodel.TestEnum]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.toSet);()})
     promise.future
   }
 
@@ -1021,43 +1021,43 @@ implicit class FunctionParamTCKScala(val asJava: JFunctionParamTCK) extends AnyV
 
 
   def methodWithBasicParam(byteFunc: java.lang.Byte => String, shortFunc: java.lang.Short => String, integerFunc: java.lang.Integer => String, longFunc: java.lang.Long => String, floatFunc: java.lang.Float => String, doubleFunc: java.lang.Double => String, booleanFunc: java.lang.Boolean => String, charFunc: java.lang.Character => String, stringFunc: String => String): List[String] = {
-    asJava.methodWithBasicParam(asJavaFunction(byteFunc), asJavaFunction(shortFunc), asJavaFunction(integerFunc), asJavaFunction(longFunc), asJavaFunction(floatFunc), asJavaFunction(doubleFunc), asJavaFunction(booleanFunc), asJavaFunction(charFunc), asJavaFunction(stringFunc)).asScala.toList
+    asJava.methodWithBasicParam(a => byteFunc(a), a => shortFunc(a), a => integerFunc(a), a => longFunc(a), a => floatFunc(a), a => doubleFunc(a), a => booleanFunc(a), a => charFunc(a), a => stringFunc(a)).asScala.toList
   }
 
   def methodWithJsonParam(objectFunc: io.vertx.core.json.JsonObject => String, arrayFunc: io.vertx.core.json.JsonArray => String): List[String] = {
-    asJava.methodWithJsonParam(asJavaFunction(objectFunc), asJavaFunction(arrayFunc)).asScala.toList
+    asJava.methodWithJsonParam(a => objectFunc(a), a => arrayFunc(a)).asScala.toList
   }
 
   def methodWithVoidParam(func: Void => String): String = {
-    asJava.methodWithVoidParam(asJavaFunction(func))
+    asJava.methodWithVoidParam(a => func(a))
   }
 
   def methodWithUserTypeParam(arg: JRefedInterface1, func: JRefedInterface1 => String): String = {
-    asJava.methodWithUserTypeParam(arg.asJava, asJavaFunction(func))
+    asJava.methodWithUserTypeParam(arg.asJava, a => func(a))
   }
 
   def methodWithObjectParam(arg: AnyRef, func: AnyRef => String): String = {
-    asJava.methodWithObjectParam(arg, asJavaFunction(func))
+    asJava.methodWithObjectParam(arg, a => func(a))
   }
 
   def methodWithDataObjectParam(func: JTestDataObject => String): String = {
-    asJava.methodWithDataObjectParam(asJavaFunction(func))
+    asJava.methodWithDataObjectParam(a => func(a))
   }
 
   def methodWithEnumParam(func: io.vertx.codegen.testmodel.TestEnum => String): String = {
-    asJava.methodWithEnumParam(asJavaFunction(func))
+    asJava.methodWithEnumParam(a => func(a))
   }
 
   def methodWithListParam(stringFunc: List[String] => String): String = {
-    asJava.methodWithListParam(asJavaFunction(stringFunc))
+    asJava.methodWithListParam(a => stringFunc(a.asScala.toList))
   }
 
   def methodWithSetParam(func: Set[String] => String): String = {
-    asJava.methodWithSetParam(asJavaFunction(func))
+    asJava.methodWithSetParam(a => func(a.asScala.toSet))
   }
 
   def methodWithMapParam(func: Map[String, String] => String): String = {
-    asJava.methodWithMapParam(asJavaFunction(func))
+    asJava.methodWithMapParam(a => func(a.asScala.toMap))
   }
 
   def methodWithGenericParam[T](t: T, func: T => String): String = {
@@ -1065,43 +1065,43 @@ implicit class FunctionParamTCKScala(val asJava: JFunctionParamTCK) extends AnyV
   }
 
   def methodWithGenericUserTypeParam[T](t: T, func: JGenericRefedInterface[T] => String): String = {
-    asJava.methodWithGenericUserTypeParam[T](t, asJavaFunction(func))
+    asJava.methodWithGenericUserTypeParam[T](t, a => func(a))
   }
 
   def methodWithBasicReturn(byteFunc: String => java.lang.Byte, shortFunc: String => java.lang.Short, integerFunc: String => java.lang.Integer, longFunc: String => java.lang.Long, floatFunc: String => java.lang.Float, doubleFunc: String => java.lang.Double, booleanFunc: String => java.lang.Boolean, charFunc: String => java.lang.Character, stringFunc: String => String): String = {
-    asJava.methodWithBasicReturn(asJavaFunction(byteFunc), asJavaFunction(shortFunc), asJavaFunction(integerFunc), asJavaFunction(longFunc), asJavaFunction(floatFunc), asJavaFunction(doubleFunc), asJavaFunction(booleanFunc), asJavaFunction(charFunc), asJavaFunction(stringFunc))
+    asJava.methodWithBasicReturn(a => byteFunc(a), a => shortFunc(a), a => integerFunc(a), a => longFunc(a), a => floatFunc(a), a => doubleFunc(a), a => booleanFunc(a), a => charFunc(a), a => stringFunc(a))
   }
 
   def methodWithJsonReturn(objectFunc: String => io.vertx.core.json.JsonObject, arrayFunc: String => io.vertx.core.json.JsonArray): String = {
-    asJava.methodWithJsonReturn(asJavaFunction(objectFunc), asJavaFunction(arrayFunc))
+    asJava.methodWithJsonReturn(a => objectFunc(a), a => arrayFunc(a))
   }
 
   def methodWithObjectReturn(func: java.lang.Integer => AnyRef): String = {
-    asJava.methodWithObjectReturn(asJavaFunction(func))
+    asJava.methodWithObjectReturn(a => func(a))
   }
 
   def methodWithDataObjectReturn(func: String => JTestDataObject): String = {
-    asJava.methodWithDataObjectReturn(asJavaFunction(func))
+    asJava.methodWithDataObjectReturn(a => func(a).asJava)
   }
 
   def methodWithEnumReturn(func: String => io.vertx.codegen.testmodel.TestEnum): String = {
-    asJava.methodWithEnumReturn(asJavaFunction(func))
+    asJava.methodWithEnumReturn(a => func(a))
   }
 
   def methodWithListReturn(func: String => List[String]): String = {
-    asJava.methodWithListReturn(asJavaFunction(func))
+    asJava.methodWithListReturn(a => func(a).map(x => x.asInstanceOf[String]).asJava)
   }
 
   def methodWithSetReturn(func: String => Set[String]): String = {
-    asJava.methodWithSetReturn(asJavaFunction(func))
+    asJava.methodWithSetReturn(a => func(a).map(x => x.asInstanceOf[String]).asJava)
   }
 
   def methodWithMapReturn(func: String => Map[String, String]): String = {
-    asJava.methodWithMapReturn(asJavaFunction(func))
+    asJava.methodWithMapReturn(a => func(a).mapValues(x => x.asInstanceOf[String]).asJava)
   }
 
   def methodWithGenericReturn[T](func: java.lang.Integer => T): String = {
-    asJava.methodWithGenericReturn[T](asJavaFunction(func))
+    asJava.methodWithGenericReturn[T](a => func(a))
   }
 
   def methodWithGenericUserTypeReturn[T](func: JGenericRefedInterface[T] => JGenericRefedInterface[T]): String = {
@@ -1109,11 +1109,11 @@ implicit class FunctionParamTCKScala(val asJava: JFunctionParamTCK) extends AnyV
   }
 
   def methodWithNullableListParam(func: scala.Option[List[String]] => String): String = {
-    asJava.methodWithNullableListParam(asJavaFunction(func))
+    asJava.methodWithNullableListParam(a => func(scala.Option(a).flatMap(x => Some(x.asScala.toList))))
   }
 
   def methodWithNullableListReturn(func: String => scala.Option[List[String]]): String = {
-    asJava.methodWithNullableListReturn(asJavaFunction(func))
+    asJava.methodWithNullableListReturn(a => func(a).map(x => x.map(x => x.asInstanceOf[String]).asJava).orNull)
   }
 
 }
@@ -1358,63 +1358,63 @@ implicit class GenericsTCKScala(val asJava: JGenericsTCK) extends AnyVal {
   }
 
   def methodWithFunctionParamByteParameterized(handler: JGenericRefedInterface[java.lang.Byte] => String): Unit = {
-    asJava.methodWithFunctionParamByteParameterized(asJavaFunction(handler))
+    asJava.methodWithFunctionParamByteParameterized(a => handler(a))
   }
 
   def methodWithFunctionParamShortParameterized(handler: JGenericRefedInterface[java.lang.Short] => String): Unit = {
-    asJava.methodWithFunctionParamShortParameterized(asJavaFunction(handler))
+    asJava.methodWithFunctionParamShortParameterized(a => handler(a))
   }
 
   def methodWithFunctionParamIntegerParameterized(handler: JGenericRefedInterface[java.lang.Integer] => String): Unit = {
-    asJava.methodWithFunctionParamIntegerParameterized(asJavaFunction(handler))
+    asJava.methodWithFunctionParamIntegerParameterized(a => handler(a))
   }
 
   def methodWithFunctionParamLongParameterized(handler: JGenericRefedInterface[java.lang.Long] => String): Unit = {
-    asJava.methodWithFunctionParamLongParameterized(asJavaFunction(handler))
+    asJava.methodWithFunctionParamLongParameterized(a => handler(a))
   }
 
   def methodWithFunctionParamFloatParameterized(handler: JGenericRefedInterface[java.lang.Float] => String): Unit = {
-    asJava.methodWithFunctionParamFloatParameterized(asJavaFunction(handler))
+    asJava.methodWithFunctionParamFloatParameterized(a => handler(a))
   }
 
   def methodWithFunctionParamDoubleParameterized(handler: JGenericRefedInterface[java.lang.Double] => String): Unit = {
-    asJava.methodWithFunctionParamDoubleParameterized(asJavaFunction(handler))
+    asJava.methodWithFunctionParamDoubleParameterized(a => handler(a))
   }
 
   def methodWithFunctionParamBooleanParameterized(handler: JGenericRefedInterface[java.lang.Boolean] => String): Unit = {
-    asJava.methodWithFunctionParamBooleanParameterized(asJavaFunction(handler))
+    asJava.methodWithFunctionParamBooleanParameterized(a => handler(a))
   }
 
   def methodWithFunctionParamCharacterParameterized(handler: JGenericRefedInterface[java.lang.Character] => String): Unit = {
-    asJava.methodWithFunctionParamCharacterParameterized(asJavaFunction(handler))
+    asJava.methodWithFunctionParamCharacterParameterized(a => handler(a))
   }
 
   def methodWithFunctionParamStringParameterized(handler: JGenericRefedInterface[String] => String): Unit = {
-    asJava.methodWithFunctionParamStringParameterized(asJavaFunction(handler))
+    asJava.methodWithFunctionParamStringParameterized(a => handler(a))
   }
 
   def methodWithFunctionParamJsonObjectParameterized(handler: JGenericRefedInterface[io.vertx.core.json.JsonObject] => String): Unit = {
-    asJava.methodWithFunctionParamJsonObjectParameterized(asJavaFunction(handler))
+    asJava.methodWithFunctionParamJsonObjectParameterized(a => handler(a))
   }
 
   def methodWithFunctionParamJsonArrayParameterized(handler: JGenericRefedInterface[io.vertx.core.json.JsonArray] => String): Unit = {
-    asJava.methodWithFunctionParamJsonArrayParameterized(asJavaFunction(handler))
+    asJava.methodWithFunctionParamJsonArrayParameterized(a => handler(a))
   }
 
   def methodWithFunctionParamDataObjectParameterized(handler: JGenericRefedInterface[JTestDataObject] => String): Unit = {
-    asJava.methodWithFunctionParamDataObjectParameterized(asJavaFunction(handler))
+    asJava.methodWithFunctionParamDataObjectParameterized(a => handler(a))
   }
 
   def methodWithFunctionParamEnumParameterized(handler: JGenericRefedInterface[io.vertx.codegen.testmodel.TestEnum] => String): Unit = {
-    asJava.methodWithFunctionParamEnumParameterized(asJavaFunction(handler))
+    asJava.methodWithFunctionParamEnumParameterized(a => handler(a))
   }
 
   def methodWithFunctionParamGenEnumParameterized(handler: JGenericRefedInterface[io.vertx.codegen.testmodel.TestGenEnum] => String): Unit = {
-    asJava.methodWithFunctionParamGenEnumParameterized(asJavaFunction(handler))
+    asJava.methodWithFunctionParamGenEnumParameterized(a => handler(a))
   }
 
   def methodWithFunctionParamUserTypeParameterized(handler: JGenericRefedInterface[JRefedInterface1] => String): Unit = {
-    asJava.methodWithFunctionParamUserTypeParameterized(asJavaFunction(handler))
+    asJava.methodWithFunctionParamUserTypeParameterized(a => handler(a))
   }
 
   def methodWithClassTypeParameterizedReturn[U](`type`: Class[U]): JGenericRefedInterface[U] = {
@@ -1430,7 +1430,7 @@ implicit class GenericsTCKScala(val asJava: JGenericsTCK) extends AnyVal {
   }
 
   def methodWithFunctionParamClassTypeParameterized[U](`type`: Class[U], handler: JGenericRefedInterface[U] => String): Unit = {
-    asJava.methodWithFunctionParamClassTypeParameterized[U](`type`, asJavaFunction(handler))
+    asJava.methodWithFunctionParamClassTypeParameterized[U](`type`, a => handler(a))
   }
 
   def methodWithClassTypeParam[U](`type`: Class[U], u: U): Unit = {
@@ -1454,7 +1454,7 @@ implicit class GenericsTCKScala(val asJava: JGenericsTCK) extends AnyVal {
   }
 
   def methodWithClassTypeFunctionReturn[U](`type`: Class[U], f: String => U): Unit = {
-    asJava.methodWithClassTypeFunctionReturn[U](`type`, asJavaFunction(f))
+    asJava.methodWithClassTypeFunctionReturn[U](`type`, a => f(a))
   }
 
   def interfaceWithApiArg(value: JRefedInterface1): JInterfaceWithApiArg = {
@@ -2340,8 +2340,8 @@ implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
     asJava.methodWithNullableSetByteHandlerAsyncResult(notNull, (p:AsyncResult[scala.Option[Set[java.lang.Byte]]]) => handler(p))
   }
 
-  def methodWithNullableSetByteReturn(notNull: java.lang.Boolean): scala.Option[Seq[java.lang.Byte]] = {
-    scala.Option(asJava.methodWithNullableSetByteReturn(notNull)).flatMap(x => Some(x.asScala.toSeq))
+  def methodWithNullableSetByteReturn(notNull: java.lang.Boolean): scala.Option[Set[java.lang.Byte]] = {
+    scala.Option(asJava.methodWithNullableSetByteReturn(notNull)).flatMap(x => Some(x.asScala.toSet))
   }
 
   def methodWithNonNullableSetShortParam(param: Set[java.lang.Short]): java.lang.Boolean = {
@@ -2360,8 +2360,8 @@ implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
     asJava.methodWithNullableSetShortHandlerAsyncResult(notNull, (p:AsyncResult[scala.Option[Set[java.lang.Short]]]) => handler(p))
   }
 
-  def methodWithNullableSetShortReturn(notNull: java.lang.Boolean): scala.Option[Seq[java.lang.Short]] = {
-    scala.Option(asJava.methodWithNullableSetShortReturn(notNull)).flatMap(x => Some(x.asScala.toSeq))
+  def methodWithNullableSetShortReturn(notNull: java.lang.Boolean): scala.Option[Set[java.lang.Short]] = {
+    scala.Option(asJava.methodWithNullableSetShortReturn(notNull)).flatMap(x => Some(x.asScala.toSet))
   }
 
   def methodWithNonNullableSetIntegerParam(param: Set[java.lang.Integer]): java.lang.Boolean = {
@@ -2380,8 +2380,8 @@ implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
     asJava.methodWithNullableSetIntegerHandlerAsyncResult(notNull, (p:AsyncResult[scala.Option[Set[java.lang.Integer]]]) => handler(p))
   }
 
-  def methodWithNullableSetIntegerReturn(notNull: java.lang.Boolean): scala.Option[Seq[java.lang.Integer]] = {
-    scala.Option(asJava.methodWithNullableSetIntegerReturn(notNull)).flatMap(x => Some(x.asScala.toSeq))
+  def methodWithNullableSetIntegerReturn(notNull: java.lang.Boolean): scala.Option[Set[java.lang.Integer]] = {
+    scala.Option(asJava.methodWithNullableSetIntegerReturn(notNull)).flatMap(x => Some(x.asScala.toSet))
   }
 
   def methodWithNonNullableSetLongParam(param: Set[java.lang.Long]): java.lang.Boolean = {
@@ -2400,8 +2400,8 @@ implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
     asJava.methodWithNullableSetLongHandlerAsyncResult(notNull, (p:AsyncResult[scala.Option[Set[java.lang.Long]]]) => handler(p))
   }
 
-  def methodWithNullableSetLongReturn(notNull: java.lang.Boolean): scala.Option[Seq[java.lang.Long]] = {
-    scala.Option(asJava.methodWithNullableSetLongReturn(notNull)).flatMap(x => Some(x.asScala.toSeq))
+  def methodWithNullableSetLongReturn(notNull: java.lang.Boolean): scala.Option[Set[java.lang.Long]] = {
+    scala.Option(asJava.methodWithNullableSetLongReturn(notNull)).flatMap(x => Some(x.asScala.toSet))
   }
 
   def methodWithNonNullableSetFloatParam(param: Set[java.lang.Float]): java.lang.Boolean = {
@@ -2420,8 +2420,8 @@ implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
     asJava.methodWithNullableSetFloatHandlerAsyncResult(notNull, (p:AsyncResult[scala.Option[Set[java.lang.Float]]]) => handler(p))
   }
 
-  def methodWithNullableSetFloatReturn(notNull: java.lang.Boolean): scala.Option[Seq[java.lang.Float]] = {
-    scala.Option(asJava.methodWithNullableSetFloatReturn(notNull)).flatMap(x => Some(x.asScala.toSeq))
+  def methodWithNullableSetFloatReturn(notNull: java.lang.Boolean): scala.Option[Set[java.lang.Float]] = {
+    scala.Option(asJava.methodWithNullableSetFloatReturn(notNull)).flatMap(x => Some(x.asScala.toSet))
   }
 
   def methodWithNonNullableSetDoubleParam(param: Set[java.lang.Double]): java.lang.Boolean = {
@@ -2440,8 +2440,8 @@ implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
     asJava.methodWithNullableSetDoubleHandlerAsyncResult(notNull, (p:AsyncResult[scala.Option[Set[java.lang.Double]]]) => handler(p))
   }
 
-  def methodWithNullableSetDoubleReturn(notNull: java.lang.Boolean): scala.Option[Seq[java.lang.Double]] = {
-    scala.Option(asJava.methodWithNullableSetDoubleReturn(notNull)).flatMap(x => Some(x.asScala.toSeq))
+  def methodWithNullableSetDoubleReturn(notNull: java.lang.Boolean): scala.Option[Set[java.lang.Double]] = {
+    scala.Option(asJava.methodWithNullableSetDoubleReturn(notNull)).flatMap(x => Some(x.asScala.toSet))
   }
 
   def methodWithNonNullableSetBooleanParam(param: Set[java.lang.Boolean]): java.lang.Boolean = {
@@ -2460,8 +2460,8 @@ implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
     asJava.methodWithNullableSetBooleanHandlerAsyncResult(notNull, (p:AsyncResult[scala.Option[Set[java.lang.Boolean]]]) => handler(p))
   }
 
-  def methodWithNullableSetBooleanReturn(notNull: java.lang.Boolean): scala.Option[Seq[java.lang.Boolean]] = {
-    scala.Option(asJava.methodWithNullableSetBooleanReturn(notNull)).flatMap(x => Some(x.asScala.toSeq))
+  def methodWithNullableSetBooleanReturn(notNull: java.lang.Boolean): scala.Option[Set[java.lang.Boolean]] = {
+    scala.Option(asJava.methodWithNullableSetBooleanReturn(notNull)).flatMap(x => Some(x.asScala.toSet))
   }
 
   def methodWithNonNullableSetStringParam(param: Set[String]): java.lang.Boolean = {
@@ -2480,8 +2480,8 @@ implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
     asJava.methodWithNullableSetStringHandlerAsyncResult(notNull, (p:AsyncResult[scala.Option[Set[String]]]) => handler(p))
   }
 
-  def methodWithNullableSetStringReturn(notNull: java.lang.Boolean): scala.Option[Seq[String]] = {
-    scala.Option(asJava.methodWithNullableSetStringReturn(notNull)).flatMap(x => Some(x.asScala.toSeq))
+  def methodWithNullableSetStringReturn(notNull: java.lang.Boolean): scala.Option[Set[String]] = {
+    scala.Option(asJava.methodWithNullableSetStringReturn(notNull)).flatMap(x => Some(x.asScala.toSet))
   }
 
   def methodWithNonNullableSetCharParam(param: Set[java.lang.Character]): java.lang.Boolean = {
@@ -2500,8 +2500,8 @@ implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
     asJava.methodWithNullableSetCharHandlerAsyncResult(notNull, (p:AsyncResult[scala.Option[Set[java.lang.Character]]]) => handler(p))
   }
 
-  def methodWithNullableSetCharReturn(notNull: java.lang.Boolean): scala.Option[Seq[java.lang.Character]] = {
-    scala.Option(asJava.methodWithNullableSetCharReturn(notNull)).flatMap(x => Some(x.asScala.toSeq))
+  def methodWithNullableSetCharReturn(notNull: java.lang.Boolean): scala.Option[Set[java.lang.Character]] = {
+    scala.Option(asJava.methodWithNullableSetCharReturn(notNull)).flatMap(x => Some(x.asScala.toSet))
   }
 
   def methodWithNonNullableSetJsonObjectParam(param: Set[io.vertx.core.json.JsonObject]): java.lang.Boolean = {
@@ -2520,8 +2520,8 @@ implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
     asJava.methodWithNullableSetJsonObjectHandlerAsyncResult(notNull, (p:AsyncResult[scala.Option[Set[io.vertx.core.json.JsonObject]]]) => handler(p))
   }
 
-  def methodWithNullableSetJsonObjectReturn(notNull: java.lang.Boolean): scala.Option[Seq[io.vertx.core.json.JsonObject]] = {
-    scala.Option(asJava.methodWithNullableSetJsonObjectReturn(notNull)).flatMap(x => Some(x.asScala.toSeq))
+  def methodWithNullableSetJsonObjectReturn(notNull: java.lang.Boolean): scala.Option[Set[io.vertx.core.json.JsonObject]] = {
+    scala.Option(asJava.methodWithNullableSetJsonObjectReturn(notNull)).flatMap(x => Some(x.asScala.toSet))
   }
 
   def methodWithNonNullableSetJsonArrayParam(param: Set[io.vertx.core.json.JsonArray]): java.lang.Boolean = {
@@ -2540,8 +2540,8 @@ implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
     asJava.methodWithNullableSetJsonArrayHandlerAsyncResult(notNull, (p:AsyncResult[scala.Option[Set[io.vertx.core.json.JsonArray]]]) => handler(p))
   }
 
-  def methodWithNullableSetJsonArrayReturn(notNull: java.lang.Boolean): scala.Option[Seq[io.vertx.core.json.JsonArray]] = {
-    scala.Option(asJava.methodWithNullableSetJsonArrayReturn(notNull)).flatMap(x => Some(x.asScala.toSeq))
+  def methodWithNullableSetJsonArrayReturn(notNull: java.lang.Boolean): scala.Option[Set[io.vertx.core.json.JsonArray]] = {
+    scala.Option(asJava.methodWithNullableSetJsonArrayReturn(notNull)).flatMap(x => Some(x.asScala.toSet))
   }
 
   def methodWithNonNullableSetApiParam(param: Set[JRefedInterface1]): java.lang.Boolean = {
@@ -2560,8 +2560,8 @@ implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
     asJava.methodWithNullableSetApiHandlerAsyncResult(notNull, (p:AsyncResult[scala.Option[Set[JRefedInterface1]]]) => handler(p))
   }
 
-  def methodWithNullableSetApiReturn(notNull: java.lang.Boolean): scala.Option[Seq[JRefedInterface1]] = {
-    scala.Option(asJava.methodWithNullableSetApiReturn(notNull)).flatMap(x => Some(x.asScala.toSeq))
+  def methodWithNullableSetApiReturn(notNull: java.lang.Boolean): scala.Option[Set[JRefedInterface1]] = {
+    scala.Option(asJava.methodWithNullableSetApiReturn(notNull)).flatMap(x => Some(x.asScala.toSet))
   }
 
   def methodWithNonNullableSetDataObjectParam(param: Set[JTestDataObject]): java.lang.Boolean = {
@@ -2580,8 +2580,8 @@ implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
     asJava.methodWithNullableSetDataObjectHandlerAsyncResult(notNull, (p:AsyncResult[scala.Option[Set[JTestDataObject]]]) => handler(p))
   }
 
-  def methodWithNullableSetDataObjectReturn(notNull: java.lang.Boolean): scala.Option[Seq[JTestDataObject]] = {
-    scala.Option(asJava.methodWithNullableSetDataObjectReturn(notNull)).flatMap(x => Some(x.asScala.toSeq))
+  def methodWithNullableSetDataObjectReturn(notNull: java.lang.Boolean): scala.Option[Set[JTestDataObject]] = {
+    scala.Option(asJava.methodWithNullableSetDataObjectReturn(notNull)).flatMap(x => Some(x.asScala.toSet))
   }
 
   def methodWithNonNullableSetEnumParam(param: Set[io.vertx.codegen.testmodel.TestEnum]): java.lang.Boolean = {
@@ -2600,8 +2600,8 @@ implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
     asJava.methodWithNullableSetEnumHandlerAsyncResult(notNull, (p:AsyncResult[scala.Option[Set[io.vertx.codegen.testmodel.TestEnum]]]) => handler(p))
   }
 
-  def methodWithNullableSetEnumReturn(notNull: java.lang.Boolean): scala.Option[Seq[io.vertx.codegen.testmodel.TestEnum]] = {
-    scala.Option(asJava.methodWithNullableSetEnumReturn(notNull)).flatMap(x => Some(x.asScala.toSeq))
+  def methodWithNullableSetEnumReturn(notNull: java.lang.Boolean): scala.Option[Set[io.vertx.codegen.testmodel.TestEnum]] = {
+    scala.Option(asJava.methodWithNullableSetEnumReturn(notNull)).flatMap(x => Some(x.asScala.toSet))
   }
 
   def methodWithNonNullableSetGenEnumParam(param: Set[io.vertx.codegen.testmodel.TestGenEnum]): java.lang.Boolean = {
@@ -2620,8 +2620,8 @@ implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
     asJava.methodWithNullableSetGenEnumHandlerAsyncResult(notNull, (p:AsyncResult[scala.Option[Set[io.vertx.codegen.testmodel.TestGenEnum]]]) => handler(p))
   }
 
-  def methodWithNullableSetGenEnumReturn(notNull: java.lang.Boolean): scala.Option[Seq[io.vertx.codegen.testmodel.TestGenEnum]] = {
-    scala.Option(asJava.methodWithNullableSetGenEnumReturn(notNull)).flatMap(x => Some(x.asScala.toSeq))
+  def methodWithNullableSetGenEnumReturn(notNull: java.lang.Boolean): scala.Option[Set[io.vertx.codegen.testmodel.TestGenEnum]] = {
+    scala.Option(asJava.methodWithNullableSetGenEnumReturn(notNull)).flatMap(x => Some(x.asScala.toSet))
   }
 
   def methodWithNonNullableMapByteParam(param: Map[String, java.lang.Byte]): java.lang.Boolean = {
@@ -3104,8 +3104,8 @@ implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
     asJava.methodWithSetNullableByteHandlerAsyncResult((p:AsyncResult[Set[scala.Option[java.lang.Byte]]]) => handler(p))
   }
 
-  def methodWithSetNullableByteReturn(): Seq[scala.Option[java.lang.Byte]] = {
-    asJava.methodWithSetNullableByteReturn().asScala.map(x => Option(x)).toSeq
+  def methodWithSetNullableByteReturn(): Set[scala.Option[java.lang.Byte]] = {
+    asJava.methodWithSetNullableByteReturn().asScala.map(x => Option(x)).toSet
   }
 
   def methodWithSetNullableShortParam(param: Set[scala.Option[java.lang.Short]]): Unit = {
@@ -3120,8 +3120,8 @@ implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
     asJava.methodWithSetNullableShortHandlerAsyncResult((p:AsyncResult[Set[scala.Option[java.lang.Short]]]) => handler(p))
   }
 
-  def methodWithSetNullableShortReturn(): Seq[scala.Option[java.lang.Short]] = {
-    asJava.methodWithSetNullableShortReturn().asScala.map(x => Option(x)).toSeq
+  def methodWithSetNullableShortReturn(): Set[scala.Option[java.lang.Short]] = {
+    asJava.methodWithSetNullableShortReturn().asScala.map(x => Option(x)).toSet
   }
 
   def methodWithSetNullableIntegerParam(param: Set[scala.Option[java.lang.Integer]]): Unit = {
@@ -3136,8 +3136,8 @@ implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
     asJava.methodWithSetNullableIntegerHandlerAsyncResult((p:AsyncResult[Set[scala.Option[java.lang.Integer]]]) => handler(p))
   }
 
-  def methodWithSetNullableIntegerReturn(): Seq[scala.Option[java.lang.Integer]] = {
-    asJava.methodWithSetNullableIntegerReturn().asScala.map(x => Option(x)).toSeq
+  def methodWithSetNullableIntegerReturn(): Set[scala.Option[java.lang.Integer]] = {
+    asJava.methodWithSetNullableIntegerReturn().asScala.map(x => Option(x)).toSet
   }
 
   def methodWithSetNullableLongParam(param: Set[scala.Option[java.lang.Long]]): Unit = {
@@ -3152,8 +3152,8 @@ implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
     asJava.methodWithSetNullableLongHandlerAsyncResult((p:AsyncResult[Set[scala.Option[java.lang.Long]]]) => handler(p))
   }
 
-  def methodWithSetNullableLongReturn(): Seq[scala.Option[java.lang.Long]] = {
-    asJava.methodWithSetNullableLongReturn().asScala.map(x => Option(x)).toSeq
+  def methodWithSetNullableLongReturn(): Set[scala.Option[java.lang.Long]] = {
+    asJava.methodWithSetNullableLongReturn().asScala.map(x => Option(x)).toSet
   }
 
   def methodWithSetNullableBooleanParam(param: Set[scala.Option[java.lang.Boolean]]): Unit = {
@@ -3168,8 +3168,8 @@ implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
     asJava.methodWithSetNullableBooleanHandlerAsyncResult((p:AsyncResult[Set[scala.Option[java.lang.Boolean]]]) => handler(p))
   }
 
-  def methodWithSetNullableBooleanReturn(): Seq[scala.Option[java.lang.Boolean]] = {
-    asJava.methodWithSetNullableBooleanReturn().asScala.map(x => Option(x)).toSeq
+  def methodWithSetNullableBooleanReturn(): Set[scala.Option[java.lang.Boolean]] = {
+    asJava.methodWithSetNullableBooleanReturn().asScala.map(x => Option(x)).toSet
   }
 
   def methodWithSetNullableFloatParam(param: Set[scala.Option[java.lang.Float]]): Unit = {
@@ -3184,8 +3184,8 @@ implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
     asJava.methodWithSetNullableFloatHandlerAsyncResult((p:AsyncResult[Set[scala.Option[java.lang.Float]]]) => handler(p))
   }
 
-  def methodWithSetNullableFloatReturn(): Seq[scala.Option[java.lang.Float]] = {
-    asJava.methodWithSetNullableFloatReturn().asScala.map(x => Option(x)).toSeq
+  def methodWithSetNullableFloatReturn(): Set[scala.Option[java.lang.Float]] = {
+    asJava.methodWithSetNullableFloatReturn().asScala.map(x => Option(x)).toSet
   }
 
   def methodWithSetNullableDoubleParam(param: Set[scala.Option[java.lang.Double]]): Unit = {
@@ -3200,8 +3200,8 @@ implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
     asJava.methodWithSetNullableDoubleHandlerAsyncResult((p:AsyncResult[Set[scala.Option[java.lang.Double]]]) => handler(p))
   }
 
-  def methodWithSetNullableDoubleReturn(): Seq[scala.Option[java.lang.Double]] = {
-    asJava.methodWithSetNullableDoubleReturn().asScala.map(x => Option(x)).toSeq
+  def methodWithSetNullableDoubleReturn(): Set[scala.Option[java.lang.Double]] = {
+    asJava.methodWithSetNullableDoubleReturn().asScala.map(x => Option(x)).toSet
   }
 
   def methodWithSetNullableStringParam(param: Set[scala.Option[String]]): Unit = {
@@ -3216,8 +3216,8 @@ implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
     asJava.methodWithSetNullableStringHandlerAsyncResult((p:AsyncResult[Set[scala.Option[String]]]) => handler(p))
   }
 
-  def methodWithSetNullableStringReturn(): Seq[scala.Option[String]] = {
-    asJava.methodWithSetNullableStringReturn().asScala.map(x => Option(x)).toSeq
+  def methodWithSetNullableStringReturn(): Set[scala.Option[String]] = {
+    asJava.methodWithSetNullableStringReturn().asScala.map(x => Option(x)).toSet
   }
 
   def methodWithSetNullableCharParam(param: Set[scala.Option[java.lang.Character]]): Unit = {
@@ -3232,8 +3232,8 @@ implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
     asJava.methodWithSetNullableCharHandlerAsyncResult((p:AsyncResult[Set[scala.Option[java.lang.Character]]]) => handler(p))
   }
 
-  def methodWithSetNullableCharReturn(): Seq[scala.Option[java.lang.Character]] = {
-    asJava.methodWithSetNullableCharReturn().asScala.map(x => Option(x)).toSeq
+  def methodWithSetNullableCharReturn(): Set[scala.Option[java.lang.Character]] = {
+    asJava.methodWithSetNullableCharReturn().asScala.map(x => Option(x)).toSet
   }
 
   def methodWithSetNullableJsonObjectParam(param: Set[scala.Option[io.vertx.core.json.JsonObject]]): Unit = {
@@ -3248,8 +3248,8 @@ implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
     asJava.methodWithSetNullableJsonObjectHandlerAsyncResult((p:AsyncResult[Set[scala.Option[io.vertx.core.json.JsonObject]]]) => handler(p))
   }
 
-  def methodWithSetNullableJsonObjectReturn(): Seq[scala.Option[io.vertx.core.json.JsonObject]] = {
-    asJava.methodWithSetNullableJsonObjectReturn().asScala.map(x => Option(x)).toSeq
+  def methodWithSetNullableJsonObjectReturn(): Set[scala.Option[io.vertx.core.json.JsonObject]] = {
+    asJava.methodWithSetNullableJsonObjectReturn().asScala.map(x => Option(x)).toSet
   }
 
   def methodWithSetNullableJsonArrayParam(param: Set[scala.Option[io.vertx.core.json.JsonArray]]): Unit = {
@@ -3264,8 +3264,8 @@ implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
     asJava.methodWithSetNullableJsonArrayHandlerAsyncResult((p:AsyncResult[Set[scala.Option[io.vertx.core.json.JsonArray]]]) => handler(p))
   }
 
-  def methodWithSetNullableJsonArrayReturn(): Seq[scala.Option[io.vertx.core.json.JsonArray]] = {
-    asJava.methodWithSetNullableJsonArrayReturn().asScala.map(x => Option(x)).toSeq
+  def methodWithSetNullableJsonArrayReturn(): Set[scala.Option[io.vertx.core.json.JsonArray]] = {
+    asJava.methodWithSetNullableJsonArrayReturn().asScala.map(x => Option(x)).toSet
   }
 
   def methodWithSetNullableApiParam(param: Set[scala.Option[JRefedInterface1]]): Unit = {
@@ -3280,8 +3280,8 @@ implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
     asJava.methodWithSetNullableApiHandlerAsyncResult((p:AsyncResult[Set[scala.Option[JRefedInterface1]]]) => handler(p))
   }
 
-  def methodWithSetNullableApiReturn(): Seq[scala.Option[JRefedInterface1]] = {
-    asJava.methodWithSetNullableApiReturn().asScala.map(x => Option(x)).toSeq
+  def methodWithSetNullableApiReturn(): Set[scala.Option[JRefedInterface1]] = {
+    asJava.methodWithSetNullableApiReturn().asScala.map(x => Option(x)).toSet
   }
 
   def methodWithSetNullableDataObjectParam(param: Set[scala.Option[JTestDataObject]]): Unit = {
@@ -3296,8 +3296,8 @@ implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
     asJava.methodWithSetNullableDataObjectHandlerAsyncResult((p:AsyncResult[Set[scala.Option[JTestDataObject]]]) => handler(p))
   }
 
-  def methodWithSetNullableDataObjectReturn(): Seq[scala.Option[JTestDataObject]] = {
-    asJava.methodWithSetNullableDataObjectReturn().asScala.map(x => Option(x)).toSeq
+  def methodWithSetNullableDataObjectReturn(): Set[scala.Option[JTestDataObject]] = {
+    asJava.methodWithSetNullableDataObjectReturn().asScala.map(x => Option(x)).toSet
   }
 
   def methodWithSetNullableEnumParam(param: Set[scala.Option[io.vertx.codegen.testmodel.TestEnum]]): Unit = {
@@ -3312,8 +3312,8 @@ implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
     asJava.methodWithSetNullableEnumHandlerAsyncResult((p:AsyncResult[Set[scala.Option[io.vertx.codegen.testmodel.TestEnum]]]) => handler(p))
   }
 
-  def methodWithSetNullableEnumReturn(): Seq[scala.Option[io.vertx.codegen.testmodel.TestEnum]] = {
-    asJava.methodWithSetNullableEnumReturn().asScala.map(x => Option(x)).toSeq
+  def methodWithSetNullableEnumReturn(): Set[scala.Option[io.vertx.codegen.testmodel.TestEnum]] = {
+    asJava.methodWithSetNullableEnumReturn().asScala.map(x => Option(x)).toSet
   }
 
   def methodWithSetNullableGenEnumParam(param: Set[scala.Option[io.vertx.codegen.testmodel.TestGenEnum]]): Unit = {
@@ -3328,8 +3328,8 @@ implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
     asJava.methodWithSetNullableGenEnumHandlerAsyncResult((p:AsyncResult[Set[scala.Option[io.vertx.codegen.testmodel.TestGenEnum]]]) => handler(p))
   }
 
-  def methodWithSetNullableGenEnumReturn(): Seq[scala.Option[io.vertx.codegen.testmodel.TestGenEnum]] = {
-    asJava.methodWithSetNullableGenEnumReturn().asScala.map(x => Option(x)).toSeq
+  def methodWithSetNullableGenEnumReturn(): Set[scala.Option[io.vertx.codegen.testmodel.TestGenEnum]] = {
+    asJava.methodWithSetNullableGenEnumReturn().asScala.map(x => Option(x)).toSet
   }
 
   def methodWithMapNullableByteParam(param: Map[String, scala.Option[java.lang.Byte]]): Unit = {
@@ -3706,93 +3706,93 @@ implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
     promise.future
   }
 
-  def methodWithNullableSetByteHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[scala.Option[Seq[java.lang.Byte]]] = {
-    val promise = Promise[scala.Option[Seq[java.lang.Byte]]]()
-    asJava.methodWithNullableSetByteHandlerAsyncResult(notNull, {a:AsyncResult[java.util.Set[java.lang.Byte]] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()).flatMap(x => Some(x.asScala.toSeq)));()})
+  def methodWithNullableSetByteHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[scala.Option[Set[java.lang.Byte]]] = {
+    val promise = Promise[scala.Option[Set[java.lang.Byte]]]()
+    asJava.methodWithNullableSetByteHandlerAsyncResult(notNull, {a:AsyncResult[java.util.Set[java.lang.Byte]] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()).flatMap(x => Some(x.asScala.toSet)));()})
     promise.future
   }
 
-  def methodWithNullableSetShortHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[scala.Option[Seq[java.lang.Short]]] = {
-    val promise = Promise[scala.Option[Seq[java.lang.Short]]]()
-    asJava.methodWithNullableSetShortHandlerAsyncResult(notNull, {a:AsyncResult[java.util.Set[java.lang.Short]] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()).flatMap(x => Some(x.asScala.toSeq)));()})
+  def methodWithNullableSetShortHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[scala.Option[Set[java.lang.Short]]] = {
+    val promise = Promise[scala.Option[Set[java.lang.Short]]]()
+    asJava.methodWithNullableSetShortHandlerAsyncResult(notNull, {a:AsyncResult[java.util.Set[java.lang.Short]] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()).flatMap(x => Some(x.asScala.toSet)));()})
     promise.future
   }
 
-  def methodWithNullableSetIntegerHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[scala.Option[Seq[java.lang.Integer]]] = {
-    val promise = Promise[scala.Option[Seq[java.lang.Integer]]]()
-    asJava.methodWithNullableSetIntegerHandlerAsyncResult(notNull, {a:AsyncResult[java.util.Set[java.lang.Integer]] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()).flatMap(x => Some(x.asScala.toSeq)));()})
+  def methodWithNullableSetIntegerHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[scala.Option[Set[java.lang.Integer]]] = {
+    val promise = Promise[scala.Option[Set[java.lang.Integer]]]()
+    asJava.methodWithNullableSetIntegerHandlerAsyncResult(notNull, {a:AsyncResult[java.util.Set[java.lang.Integer]] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()).flatMap(x => Some(x.asScala.toSet)));()})
     promise.future
   }
 
-  def methodWithNullableSetLongHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[scala.Option[Seq[java.lang.Long]]] = {
-    val promise = Promise[scala.Option[Seq[java.lang.Long]]]()
-    asJava.methodWithNullableSetLongHandlerAsyncResult(notNull, {a:AsyncResult[java.util.Set[java.lang.Long]] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()).flatMap(x => Some(x.asScala.toSeq)));()})
+  def methodWithNullableSetLongHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[scala.Option[Set[java.lang.Long]]] = {
+    val promise = Promise[scala.Option[Set[java.lang.Long]]]()
+    asJava.methodWithNullableSetLongHandlerAsyncResult(notNull, {a:AsyncResult[java.util.Set[java.lang.Long]] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()).flatMap(x => Some(x.asScala.toSet)));()})
     promise.future
   }
 
-  def methodWithNullableSetFloatHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[scala.Option[Seq[java.lang.Float]]] = {
-    val promise = Promise[scala.Option[Seq[java.lang.Float]]]()
-    asJava.methodWithNullableSetFloatHandlerAsyncResult(notNull, {a:AsyncResult[java.util.Set[java.lang.Float]] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()).flatMap(x => Some(x.asScala.toSeq)));()})
+  def methodWithNullableSetFloatHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[scala.Option[Set[java.lang.Float]]] = {
+    val promise = Promise[scala.Option[Set[java.lang.Float]]]()
+    asJava.methodWithNullableSetFloatHandlerAsyncResult(notNull, {a:AsyncResult[java.util.Set[java.lang.Float]] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()).flatMap(x => Some(x.asScala.toSet)));()})
     promise.future
   }
 
-  def methodWithNullableSetDoubleHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[scala.Option[Seq[java.lang.Double]]] = {
-    val promise = Promise[scala.Option[Seq[java.lang.Double]]]()
-    asJava.methodWithNullableSetDoubleHandlerAsyncResult(notNull, {a:AsyncResult[java.util.Set[java.lang.Double]] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()).flatMap(x => Some(x.asScala.toSeq)));()})
+  def methodWithNullableSetDoubleHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[scala.Option[Set[java.lang.Double]]] = {
+    val promise = Promise[scala.Option[Set[java.lang.Double]]]()
+    asJava.methodWithNullableSetDoubleHandlerAsyncResult(notNull, {a:AsyncResult[java.util.Set[java.lang.Double]] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()).flatMap(x => Some(x.asScala.toSet)));()})
     promise.future
   }
 
-  def methodWithNullableSetBooleanHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[scala.Option[Seq[java.lang.Boolean]]] = {
-    val promise = Promise[scala.Option[Seq[java.lang.Boolean]]]()
-    asJava.methodWithNullableSetBooleanHandlerAsyncResult(notNull, {a:AsyncResult[java.util.Set[java.lang.Boolean]] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()).flatMap(x => Some(x.asScala.toSeq)));()})
+  def methodWithNullableSetBooleanHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[scala.Option[Set[java.lang.Boolean]]] = {
+    val promise = Promise[scala.Option[Set[java.lang.Boolean]]]()
+    asJava.methodWithNullableSetBooleanHandlerAsyncResult(notNull, {a:AsyncResult[java.util.Set[java.lang.Boolean]] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()).flatMap(x => Some(x.asScala.toSet)));()})
     promise.future
   }
 
-  def methodWithNullableSetStringHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[scala.Option[Seq[String]]] = {
-    val promise = Promise[scala.Option[Seq[String]]]()
-    asJava.methodWithNullableSetStringHandlerAsyncResult(notNull, {a:AsyncResult[java.util.Set[java.lang.String]] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()).flatMap(x => Some(x.asScala.toSeq)));()})
+  def methodWithNullableSetStringHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[scala.Option[Set[String]]] = {
+    val promise = Promise[scala.Option[Set[String]]]()
+    asJava.methodWithNullableSetStringHandlerAsyncResult(notNull, {a:AsyncResult[java.util.Set[java.lang.String]] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()).flatMap(x => Some(x.asScala.toSet)));()})
     promise.future
   }
 
-  def methodWithNullableSetCharHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[scala.Option[Seq[java.lang.Character]]] = {
-    val promise = Promise[scala.Option[Seq[java.lang.Character]]]()
-    asJava.methodWithNullableSetCharHandlerAsyncResult(notNull, {a:AsyncResult[java.util.Set[java.lang.Character]] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()).flatMap(x => Some(x.asScala.toSeq)));()})
+  def methodWithNullableSetCharHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[scala.Option[Set[java.lang.Character]]] = {
+    val promise = Promise[scala.Option[Set[java.lang.Character]]]()
+    asJava.methodWithNullableSetCharHandlerAsyncResult(notNull, {a:AsyncResult[java.util.Set[java.lang.Character]] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()).flatMap(x => Some(x.asScala.toSet)));()})
     promise.future
   }
 
-  def methodWithNullableSetJsonObjectHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[scala.Option[Seq[io.vertx.core.json.JsonObject]]] = {
-    val promise = Promise[scala.Option[Seq[io.vertx.core.json.JsonObject]]]()
-    asJava.methodWithNullableSetJsonObjectHandlerAsyncResult(notNull, {a:AsyncResult[java.util.Set[io.vertx.core.json.JsonObject]] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()).flatMap(x => Some(x.asScala.toSeq)));()})
+  def methodWithNullableSetJsonObjectHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[scala.Option[Set[io.vertx.core.json.JsonObject]]] = {
+    val promise = Promise[scala.Option[Set[io.vertx.core.json.JsonObject]]]()
+    asJava.methodWithNullableSetJsonObjectHandlerAsyncResult(notNull, {a:AsyncResult[java.util.Set[io.vertx.core.json.JsonObject]] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()).flatMap(x => Some(x.asScala.toSet)));()})
     promise.future
   }
 
-  def methodWithNullableSetJsonArrayHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[scala.Option[Seq[io.vertx.core.json.JsonArray]]] = {
-    val promise = Promise[scala.Option[Seq[io.vertx.core.json.JsonArray]]]()
-    asJava.methodWithNullableSetJsonArrayHandlerAsyncResult(notNull, {a:AsyncResult[java.util.Set[io.vertx.core.json.JsonArray]] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()).flatMap(x => Some(x.asScala.toSeq)));()})
+  def methodWithNullableSetJsonArrayHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[scala.Option[Set[io.vertx.core.json.JsonArray]]] = {
+    val promise = Promise[scala.Option[Set[io.vertx.core.json.JsonArray]]]()
+    asJava.methodWithNullableSetJsonArrayHandlerAsyncResult(notNull, {a:AsyncResult[java.util.Set[io.vertx.core.json.JsonArray]] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()).flatMap(x => Some(x.asScala.toSet)));()})
     promise.future
   }
 
-  def methodWithNullableSetApiHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[scala.Option[Seq[JRefedInterface1]]] = {
-    val promise = Promise[scala.Option[Seq[JRefedInterface1]]]()
-    asJava.methodWithNullableSetApiHandlerAsyncResult(notNull, {a:AsyncResult[java.util.Set[io.vertx.codegen.testmodel.RefedInterface1]] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()).flatMap(x => Some(x.asScala.toSeq)));()})
+  def methodWithNullableSetApiHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[scala.Option[Set[JRefedInterface1]]] = {
+    val promise = Promise[scala.Option[Set[JRefedInterface1]]]()
+    asJava.methodWithNullableSetApiHandlerAsyncResult(notNull, {a:AsyncResult[java.util.Set[io.vertx.codegen.testmodel.RefedInterface1]] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()).flatMap(x => Some(x.asScala.toSet)));()})
     promise.future
   }
 
-  def methodWithNullableSetDataObjectHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[scala.Option[Seq[JTestDataObject]]] = {
-    val promise = Promise[scala.Option[Seq[JTestDataObject]]]()
-    asJava.methodWithNullableSetDataObjectHandlerAsyncResult(notNull, {a:AsyncResult[java.util.Set[io.vertx.codegen.testmodel.TestDataObject]] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()).flatMap(x => Some(x.asScala.toSeq)));()})
+  def methodWithNullableSetDataObjectHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[scala.Option[Set[JTestDataObject]]] = {
+    val promise = Promise[scala.Option[Set[JTestDataObject]]]()
+    asJava.methodWithNullableSetDataObjectHandlerAsyncResult(notNull, {a:AsyncResult[java.util.Set[io.vertx.codegen.testmodel.TestDataObject]] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()).flatMap(x => Some(x.asScala.toSet)));()})
     promise.future
   }
 
-  def methodWithNullableSetEnumHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[scala.Option[Seq[io.vertx.codegen.testmodel.TestEnum]]] = {
-    val promise = Promise[scala.Option[Seq[io.vertx.codegen.testmodel.TestEnum]]]()
-    asJava.methodWithNullableSetEnumHandlerAsyncResult(notNull, {a:AsyncResult[java.util.Set[io.vertx.codegen.testmodel.TestEnum]] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()).flatMap(x => Some(x.asScala.toSeq)));()})
+  def methodWithNullableSetEnumHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[scala.Option[Set[io.vertx.codegen.testmodel.TestEnum]]] = {
+    val promise = Promise[scala.Option[Set[io.vertx.codegen.testmodel.TestEnum]]]()
+    asJava.methodWithNullableSetEnumHandlerAsyncResult(notNull, {a:AsyncResult[java.util.Set[io.vertx.codegen.testmodel.TestEnum]] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()).flatMap(x => Some(x.asScala.toSet)));()})
     promise.future
   }
 
-  def methodWithNullableSetGenEnumHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[scala.Option[Seq[io.vertx.codegen.testmodel.TestGenEnum]]] = {
-    val promise = Promise[scala.Option[Seq[io.vertx.codegen.testmodel.TestGenEnum]]]()
-    asJava.methodWithNullableSetGenEnumHandlerAsyncResult(notNull, {a:AsyncResult[java.util.Set[io.vertx.codegen.testmodel.TestGenEnum]] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()).flatMap(x => Some(x.asScala.toSeq)));()})
+  def methodWithNullableSetGenEnumHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[scala.Option[Set[io.vertx.codegen.testmodel.TestGenEnum]]] = {
+    val promise = Promise[scala.Option[Set[io.vertx.codegen.testmodel.TestGenEnum]]]()
+    asJava.methodWithNullableSetGenEnumHandlerAsyncResult(notNull, {a:AsyncResult[java.util.Set[io.vertx.codegen.testmodel.TestGenEnum]] => if(a.failed) promise.failure(a.cause) else promise.success(scala.Option(a.result()).flatMap(x => Some(x.asScala.toSet)));()})
     promise.future
   }
 
@@ -3952,93 +3952,93 @@ implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
     promise.future
   }
 
-  def methodWithSetNullableByteHandlerAsyncResultFuture(): scala.concurrent.Future[Seq[scala.Option[java.lang.Byte]]] = {
-    val promise = Promise[Seq[scala.Option[java.lang.Byte]]]()
-    asJava.methodWithSetNullableByteHandlerAsyncResult({a:AsyncResult[java.util.Set[java.lang.Byte]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.map(x => Option(x)).toSeq);()})
+  def methodWithSetNullableByteHandlerAsyncResultFuture(): scala.concurrent.Future[Set[scala.Option[java.lang.Byte]]] = {
+    val promise = Promise[Set[scala.Option[java.lang.Byte]]]()
+    asJava.methodWithSetNullableByteHandlerAsyncResult({a:AsyncResult[java.util.Set[java.lang.Byte]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.map(x => Option(x)).toSet);()})
     promise.future
   }
 
-  def methodWithSetNullableShortHandlerAsyncResultFuture(): scala.concurrent.Future[Seq[scala.Option[java.lang.Short]]] = {
-    val promise = Promise[Seq[scala.Option[java.lang.Short]]]()
-    asJava.methodWithSetNullableShortHandlerAsyncResult({a:AsyncResult[java.util.Set[java.lang.Short]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.map(x => Option(x)).toSeq);()})
+  def methodWithSetNullableShortHandlerAsyncResultFuture(): scala.concurrent.Future[Set[scala.Option[java.lang.Short]]] = {
+    val promise = Promise[Set[scala.Option[java.lang.Short]]]()
+    asJava.methodWithSetNullableShortHandlerAsyncResult({a:AsyncResult[java.util.Set[java.lang.Short]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.map(x => Option(x)).toSet);()})
     promise.future
   }
 
-  def methodWithSetNullableIntegerHandlerAsyncResultFuture(): scala.concurrent.Future[Seq[scala.Option[java.lang.Integer]]] = {
-    val promise = Promise[Seq[scala.Option[java.lang.Integer]]]()
-    asJava.methodWithSetNullableIntegerHandlerAsyncResult({a:AsyncResult[java.util.Set[java.lang.Integer]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.map(x => Option(x)).toSeq);()})
+  def methodWithSetNullableIntegerHandlerAsyncResultFuture(): scala.concurrent.Future[Set[scala.Option[java.lang.Integer]]] = {
+    val promise = Promise[Set[scala.Option[java.lang.Integer]]]()
+    asJava.methodWithSetNullableIntegerHandlerAsyncResult({a:AsyncResult[java.util.Set[java.lang.Integer]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.map(x => Option(x)).toSet);()})
     promise.future
   }
 
-  def methodWithSetNullableLongHandlerAsyncResultFuture(): scala.concurrent.Future[Seq[scala.Option[java.lang.Long]]] = {
-    val promise = Promise[Seq[scala.Option[java.lang.Long]]]()
-    asJava.methodWithSetNullableLongHandlerAsyncResult({a:AsyncResult[java.util.Set[java.lang.Long]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.map(x => Option(x)).toSeq);()})
+  def methodWithSetNullableLongHandlerAsyncResultFuture(): scala.concurrent.Future[Set[scala.Option[java.lang.Long]]] = {
+    val promise = Promise[Set[scala.Option[java.lang.Long]]]()
+    asJava.methodWithSetNullableLongHandlerAsyncResult({a:AsyncResult[java.util.Set[java.lang.Long]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.map(x => Option(x)).toSet);()})
     promise.future
   }
 
-  def methodWithSetNullableBooleanHandlerAsyncResultFuture(): scala.concurrent.Future[Seq[scala.Option[java.lang.Boolean]]] = {
-    val promise = Promise[Seq[scala.Option[java.lang.Boolean]]]()
-    asJava.methodWithSetNullableBooleanHandlerAsyncResult({a:AsyncResult[java.util.Set[java.lang.Boolean]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.map(x => Option(x)).toSeq);()})
+  def methodWithSetNullableBooleanHandlerAsyncResultFuture(): scala.concurrent.Future[Set[scala.Option[java.lang.Boolean]]] = {
+    val promise = Promise[Set[scala.Option[java.lang.Boolean]]]()
+    asJava.methodWithSetNullableBooleanHandlerAsyncResult({a:AsyncResult[java.util.Set[java.lang.Boolean]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.map(x => Option(x)).toSet);()})
     promise.future
   }
 
-  def methodWithSetNullableFloatHandlerAsyncResultFuture(): scala.concurrent.Future[Seq[scala.Option[java.lang.Float]]] = {
-    val promise = Promise[Seq[scala.Option[java.lang.Float]]]()
-    asJava.methodWithSetNullableFloatHandlerAsyncResult({a:AsyncResult[java.util.Set[java.lang.Float]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.map(x => Option(x)).toSeq);()})
+  def methodWithSetNullableFloatHandlerAsyncResultFuture(): scala.concurrent.Future[Set[scala.Option[java.lang.Float]]] = {
+    val promise = Promise[Set[scala.Option[java.lang.Float]]]()
+    asJava.methodWithSetNullableFloatHandlerAsyncResult({a:AsyncResult[java.util.Set[java.lang.Float]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.map(x => Option(x)).toSet);()})
     promise.future
   }
 
-  def methodWithSetNullableDoubleHandlerAsyncResultFuture(): scala.concurrent.Future[Seq[scala.Option[java.lang.Double]]] = {
-    val promise = Promise[Seq[scala.Option[java.lang.Double]]]()
-    asJava.methodWithSetNullableDoubleHandlerAsyncResult({a:AsyncResult[java.util.Set[java.lang.Double]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.map(x => Option(x)).toSeq);()})
+  def methodWithSetNullableDoubleHandlerAsyncResultFuture(): scala.concurrent.Future[Set[scala.Option[java.lang.Double]]] = {
+    val promise = Promise[Set[scala.Option[java.lang.Double]]]()
+    asJava.methodWithSetNullableDoubleHandlerAsyncResult({a:AsyncResult[java.util.Set[java.lang.Double]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.map(x => Option(x)).toSet);()})
     promise.future
   }
 
-  def methodWithSetNullableStringHandlerAsyncResultFuture(): scala.concurrent.Future[Seq[scala.Option[String]]] = {
-    val promise = Promise[Seq[scala.Option[String]]]()
-    asJava.methodWithSetNullableStringHandlerAsyncResult({a:AsyncResult[java.util.Set[java.lang.String]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.map(x => Option(x)).toSeq);()})
+  def methodWithSetNullableStringHandlerAsyncResultFuture(): scala.concurrent.Future[Set[scala.Option[String]]] = {
+    val promise = Promise[Set[scala.Option[String]]]()
+    asJava.methodWithSetNullableStringHandlerAsyncResult({a:AsyncResult[java.util.Set[java.lang.String]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.map(x => Option(x)).toSet);()})
     promise.future
   }
 
-  def methodWithSetNullableCharHandlerAsyncResultFuture(): scala.concurrent.Future[Seq[scala.Option[java.lang.Character]]] = {
-    val promise = Promise[Seq[scala.Option[java.lang.Character]]]()
-    asJava.methodWithSetNullableCharHandlerAsyncResult({a:AsyncResult[java.util.Set[java.lang.Character]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.map(x => Option(x)).toSeq);()})
+  def methodWithSetNullableCharHandlerAsyncResultFuture(): scala.concurrent.Future[Set[scala.Option[java.lang.Character]]] = {
+    val promise = Promise[Set[scala.Option[java.lang.Character]]]()
+    asJava.methodWithSetNullableCharHandlerAsyncResult({a:AsyncResult[java.util.Set[java.lang.Character]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.map(x => Option(x)).toSet);()})
     promise.future
   }
 
-  def methodWithSetNullableJsonObjectHandlerAsyncResultFuture(): scala.concurrent.Future[Seq[scala.Option[io.vertx.core.json.JsonObject]]] = {
-    val promise = Promise[Seq[scala.Option[io.vertx.core.json.JsonObject]]]()
-    asJava.methodWithSetNullableJsonObjectHandlerAsyncResult({a:AsyncResult[java.util.Set[io.vertx.core.json.JsonObject]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.map(x => Option(x)).toSeq);()})
+  def methodWithSetNullableJsonObjectHandlerAsyncResultFuture(): scala.concurrent.Future[Set[scala.Option[io.vertx.core.json.JsonObject]]] = {
+    val promise = Promise[Set[scala.Option[io.vertx.core.json.JsonObject]]]()
+    asJava.methodWithSetNullableJsonObjectHandlerAsyncResult({a:AsyncResult[java.util.Set[io.vertx.core.json.JsonObject]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.map(x => Option(x)).toSet);()})
     promise.future
   }
 
-  def methodWithSetNullableJsonArrayHandlerAsyncResultFuture(): scala.concurrent.Future[Seq[scala.Option[io.vertx.core.json.JsonArray]]] = {
-    val promise = Promise[Seq[scala.Option[io.vertx.core.json.JsonArray]]]()
-    asJava.methodWithSetNullableJsonArrayHandlerAsyncResult({a:AsyncResult[java.util.Set[io.vertx.core.json.JsonArray]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.map(x => Option(x)).toSeq);()})
+  def methodWithSetNullableJsonArrayHandlerAsyncResultFuture(): scala.concurrent.Future[Set[scala.Option[io.vertx.core.json.JsonArray]]] = {
+    val promise = Promise[Set[scala.Option[io.vertx.core.json.JsonArray]]]()
+    asJava.methodWithSetNullableJsonArrayHandlerAsyncResult({a:AsyncResult[java.util.Set[io.vertx.core.json.JsonArray]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.map(x => Option(x)).toSet);()})
     promise.future
   }
 
-  def methodWithSetNullableApiHandlerAsyncResultFuture(): scala.concurrent.Future[Seq[scala.Option[JRefedInterface1]]] = {
-    val promise = Promise[Seq[scala.Option[JRefedInterface1]]]()
-    asJava.methodWithSetNullableApiHandlerAsyncResult({a:AsyncResult[java.util.Set[io.vertx.codegen.testmodel.RefedInterface1]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.map(x => Option(x)).toSeq);()})
+  def methodWithSetNullableApiHandlerAsyncResultFuture(): scala.concurrent.Future[Set[scala.Option[JRefedInterface1]]] = {
+    val promise = Promise[Set[scala.Option[JRefedInterface1]]]()
+    asJava.methodWithSetNullableApiHandlerAsyncResult({a:AsyncResult[java.util.Set[io.vertx.codegen.testmodel.RefedInterface1]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.map(x => Option(x)).toSet);()})
     promise.future
   }
 
-  def methodWithSetNullableDataObjectHandlerAsyncResultFuture(): scala.concurrent.Future[Seq[scala.Option[JTestDataObject]]] = {
-    val promise = Promise[Seq[scala.Option[JTestDataObject]]]()
-    asJava.methodWithSetNullableDataObjectHandlerAsyncResult({a:AsyncResult[java.util.Set[io.vertx.codegen.testmodel.TestDataObject]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.map(x => Option(x)).toSeq);()})
+  def methodWithSetNullableDataObjectHandlerAsyncResultFuture(): scala.concurrent.Future[Set[scala.Option[JTestDataObject]]] = {
+    val promise = Promise[Set[scala.Option[JTestDataObject]]]()
+    asJava.methodWithSetNullableDataObjectHandlerAsyncResult({a:AsyncResult[java.util.Set[io.vertx.codegen.testmodel.TestDataObject]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.map(x => Option(x)).toSet);()})
     promise.future
   }
 
-  def methodWithSetNullableEnumHandlerAsyncResultFuture(): scala.concurrent.Future[Seq[scala.Option[io.vertx.codegen.testmodel.TestEnum]]] = {
-    val promise = Promise[Seq[scala.Option[io.vertx.codegen.testmodel.TestEnum]]]()
-    asJava.methodWithSetNullableEnumHandlerAsyncResult({a:AsyncResult[java.util.Set[io.vertx.codegen.testmodel.TestEnum]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.map(x => Option(x)).toSeq);()})
+  def methodWithSetNullableEnumHandlerAsyncResultFuture(): scala.concurrent.Future[Set[scala.Option[io.vertx.codegen.testmodel.TestEnum]]] = {
+    val promise = Promise[Set[scala.Option[io.vertx.codegen.testmodel.TestEnum]]]()
+    asJava.methodWithSetNullableEnumHandlerAsyncResult({a:AsyncResult[java.util.Set[io.vertx.codegen.testmodel.TestEnum]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.map(x => Option(x)).toSet);()})
     promise.future
   }
 
-  def methodWithSetNullableGenEnumHandlerAsyncResultFuture(): scala.concurrent.Future[Seq[scala.Option[io.vertx.codegen.testmodel.TestGenEnum]]] = {
-    val promise = Promise[Seq[scala.Option[io.vertx.codegen.testmodel.TestGenEnum]]]()
-    asJava.methodWithSetNullableGenEnumHandlerAsyncResult({a:AsyncResult[java.util.Set[io.vertx.codegen.testmodel.TestGenEnum]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.map(x => Option(x)).toSeq);()})
+  def methodWithSetNullableGenEnumHandlerAsyncResultFuture(): scala.concurrent.Future[Set[scala.Option[io.vertx.codegen.testmodel.TestGenEnum]]] = {
+    val promise = Promise[Set[scala.Option[io.vertx.codegen.testmodel.TestGenEnum]]]()
+    asJava.methodWithSetNullableGenEnumHandlerAsyncResult({a:AsyncResult[java.util.Set[io.vertx.codegen.testmodel.TestGenEnum]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result().asScala.map(x => Option(x)).toSet);()})
     promise.future
   }
 

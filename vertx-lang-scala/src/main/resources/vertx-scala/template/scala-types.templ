@@ -234,7 +234,7 @@
           ret += '[' + toReturnType(type.args[0]) + ']';
         return wrapInOptionIfNullable(nullable, ret);
     } else if (type.kind == CLASS_SET){
-        var ret = 'Seq';
+        var ret = 'Set';
         if (!type.args.isEmpty)
           ret += '[' + toReturnType(type.args[0]) + ']';
         return wrapInOptionIfNullable(nullable, ret);
@@ -385,12 +385,17 @@
       return 'Unknown type for conversionForJavaMethodParam '+type.name+' '+type.kind;
     }
 
+    //TODO thisd is extremely ugly and should be more generic!
     if(type.kind == CLASS_FUNCTION) {
-      if(type.isNullable) {
+      if(type.args[0].isVariable || (type.args[1].isParameterized && type.args[1].args[0].isVariable)) {
+        return 'asJavaFunction(' + name + ')';
+      }
+      else if(type.isNullable) {
         return name + '.map(x => asJavaFunction(x)).orNull';
       }
       else {
-        return 'asJavaFunction(' + name + ')';
+        var invocation = name + '(' + conversionForReturn('a', type.args[0]) + ')';
+        return 'a => ' + conversionForJavaMethodParam(invocation, type.args[1]);
       }
     }
     else {
@@ -435,10 +440,10 @@
       }
     } else if (type.kind == CLASS_SET){
       if(type.args[0].isNullable) {
-        conversion = '.asScala.map(x => Option(x)).toSeq';
+        conversion = '.asScala.map(x => Option(x)).toSet';
       }
       else {
-        conversion = '.asScala.toSeq';
+        conversion = '.asScala.toSet';
       }
     } else if (type.kind == CLASS_MAP){
       if(type.args[1].isNullable) {
