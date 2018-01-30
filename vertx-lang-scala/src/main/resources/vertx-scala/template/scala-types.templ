@@ -385,7 +385,6 @@
       return 'Unknown type for conversionForJavaMethodParam '+type.name+' '+type.kind;
     }
 
-    //TODO thisd is extremely ugly and should be more generic!
     if(type.kind == CLASS_FUNCTION) {
       if(type.args[0].isVariable || (type.args[1].isParameterized && type.args[1].args[0].isVariable)) {
         return 'asJavaFunction(' + name + ')';

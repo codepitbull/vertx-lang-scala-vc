@@ -17,6 +17,7 @@
 package io.vertx.lang.scala
 
 import io.vertx.core.json.JsonObject
+import io.vertx.scala.core._
 import io.vertx.core.{AbstractVerticle, Future, Verticle}
 import io.vertx.core.{Context, Vertx}
 
@@ -33,8 +34,8 @@ import scala.reflect.runtime.universe._
   */
 abstract class ScalaVerticle {
   protected implicit var executionContext:VertxExecutionContext = _
-  protected var vertx: Vertx = _
-  protected var ctx: Context = _
+  protected var vertx: VertxScala = _
+  protected var ctx: ContextScala = _
   private var javaVerticle: AbstractVerticle = _
 
   /**
