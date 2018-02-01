@@ -110,8 +110,6 @@
       }
       if (isAsyncResultHandler(param.type)) {
         paramString += handler;
-      } else if(param.type.isNullable){
-        paramString += escapeIfKeyword(param.name) + '.orNull';
       } else {
         paramString += escapeIfKeyword(param.name);
       }

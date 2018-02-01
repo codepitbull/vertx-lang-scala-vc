@@ -29,10 +29,6 @@ import @{importedType}\n
 }
 
 @code{
-  var basicMethods = findBasicMethods(instanceMethods);
-  basicMethods.addAll(findCacheReturnMethods(instanceMethods));
-  var defaultMethods = findDefaultMethods(instanceMethods);
-  var fluentMethods = findFluentMethods(instanceMethods);
   var futureMethods = findFutureMethods(instanceMethods);
 }
 
@@ -41,56 +37,6 @@ import @{importedType}\n
 @includeNamed{'extensions/Vertx.templ'}
 @end{}
 \n
-
-@foreach{method : fluentMethods}
-	@if{method.doc != null}@{methodDoc(method, '  ', false)}@end{}
-@foreach{param : method.params}
-@end{}
-  def @{escapeIfKeyword(method.name)}
-	@{assembleTypeParams(method.typeParams, true)}(
-	@foreach{param : method.params}
-		@{escapeIfKeyword(param.name)}: @{toScalaMethodParam(param.type)}
-	@end{', '}): @{toReturnType(method.returnType)} = {\n
-    @{invokeMethodWithoutConvertingReturn('asJava', type, method, typeParams)}\n
-  }\n
-	\n
-@end{}
-
-@foreach{method : defaultMethods}
-	@if{method.name == 'executeBlocking'}
-	@if{method.params.size == 2}
-	@includeNamed{'executeblocking.templ'}
-	@end{}
-	@else{}
-	@if{method.doc != null}@{methodDoc(method, '  ', false)}@end{}
-  def @{escapeIfKeyword(method.name)}
-	@{assembleTypeParams(method.typeParams, true)}(
-	@foreach{param : method.params}
-		@{escapeIfKeyword(param.name)}: @{toScalaMethodParam(param.type)}
-	@end{', '}): @{toReturnType(method.returnType)} = {\n
-    @{invokeMethodWithoutConvertingReturn('asJava', type, method, typeParams)}\n
-  }\n
-	\n
-	@end{}
-@end{}
-
-@foreach{method : basicMethods}
-	@if{method.name == 'executeBlocking'}
-	@if{method.params.size == 2}
-	@includeNamed{'executeblocking.templ'}
-	@end{}
-	@else{}
-	@if{method.doc != null}@{methodDoc(method, '  ', false)}@end{}
-  def @{escapeIfKeyword(method.name)}
-	@{assembleTypeParams(method.typeParams, true)}(
-	@foreach{param : method.params}
-		@{escapeIfKeyword(param.name)}: @{toScalaMethodParam(param.type)}
-	@end{', '}): @{toReturnType(method.returnType)} = {\n
-    @{invokeMethodWithoutConvertingReturn('asJava', type, method, typeParams)}\n
-  }\n
-	\n
-	@end{}
-@end{}
 
 @if{className != 'CompositeFuture' && className != 'Future' }
 @foreach{method : futureMethods}

@@ -21,7 +21,6 @@ import io.vertx.scala.core._
 import io.vertx.core.{AbstractVerticle, Future, Verticle}
 import io.vertx.core.{Context, Vertx}
 
-import scala.concurrent.ExecutionContext
 import scala.util.{Failure, Success}
 import scala.collection.JavaConverters._
 import scala.collection.mutable
@@ -34,8 +33,8 @@ import scala.reflect.runtime.universe._
   */
 abstract class ScalaVerticle {
   protected implicit var executionContext:VertxExecutionContext = _
-  protected var vertx: VertxScala = _
-  protected var ctx: ContextScala = _
+  protected var vertx: Vertx = _
+  protected var ctx: Context = _
   private var javaVerticle: AbstractVerticle = _
 
   /**
@@ -66,7 +65,7 @@ abstract class ScalaVerticle {
 
   /**
     * Stop the verticle.<p>
-    * This is called by Vert.x when the verticle instance is un-deployed. Don't call it yourself.<p>
+    * This is called by Vert.x when the verticle instance is un-deployed. Don't c all it yourself.<p>
     * If your verticle does things in it's shut-down which take some time then you can override this method
     * and complete the future some time later when clean-up is complete.
     *

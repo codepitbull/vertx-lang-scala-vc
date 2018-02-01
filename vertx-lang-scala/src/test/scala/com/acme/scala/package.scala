@@ -36,14 +36,6 @@ import io.vertx.codegen.testmodel.TestInterface
 implicit class MyInterfaceScala(val asJava: JMyInterface) extends AnyVal {
 
 
-  def sub(): JSubInterface = {
-    asJava.sub()
-  }
-
-  def method(): JTestInterface = {
-    asJava.method()
-  }
-
 }
 
 import com.acme.pkg.sub.{SubInterface => JSubInterface}
@@ -52,10 +44,6 @@ import com.acme.pkg.sub.{SubInterface => JSubInterface}
   */
 implicit class SubInterfaceScala(val asJava: JSubInterface) extends AnyVal {
 
-
-  def reverse(s: String): String = {
-    asJava.reverse(s)
-  }
 
 }
 
