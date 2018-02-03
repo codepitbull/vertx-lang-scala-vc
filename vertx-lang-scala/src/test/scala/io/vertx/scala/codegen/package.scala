@@ -158,21 +158,6 @@ implicit class CollectionTCKScala(val asJava: io.vertx.codegen.testmodel.Collect
 
 }
 
-import io.vertx.core.buffer.Buffer
-
-/**
-  */
-
-  implicit class DataObjectWithBufferScala(val asJava: io.vertx.codegen.testmodel.DataObjectWithBuffer) extends AnyVal {
-
-    def setBuffer(value: io.vertx.core.buffer.Buffer) = {
-      asJava.setBuffer(value)
-    }
-    def getBuffer: io.vertx.core.buffer.Buffer = {
-      asJava.getBuffer()
-    }
-  }
-  
   type DataObjectWithBuffer = io.vertx.codegen.testmodel.DataObjectWithBuffer
 
   object DataObjectWithBuffer {
@@ -181,56 +166,6 @@ import io.vertx.core.buffer.Buffer
   }
 
 
-import io.vertx.core.json.JsonArray
-import io.vertx.codegen.testmodel.TestEnum
-import io.vertx.codegen.testmodel.{TestDataObject => JTestDataObject}
-import io.vertx.core.json.JsonObject
-import io.vertx.codegen.testmodel.TestDataObject
-import io.vertx.codegen.testmodel.TestGenEnum
-
-/**
-  */
-
-  implicit class DataObjectWithListAddersScala(val asJava: io.vertx.codegen.testmodel.DataObjectWithListAdders) extends AnyVal {
-
-    def addBooleanValue(value: java.lang.Boolean) = {
-      asJava.addBooleanValue(value)
-      }
-    def addDataObjectValue(value: io.vertx.codegen.testmodel.TestDataObject) = {
-      asJava.addDataObjectValue(value)
-      }
-    def addDoubleValue(value: java.lang.Double) = {
-      asJava.addDoubleValue(value)
-      }
-    def addEnumValue(value: io.vertx.codegen.testmodel.TestEnum) = {
-      asJava.addEnumValue(value)
-      }
-    def addFloatValue(value: java.lang.Float) = {
-      asJava.addFloatValue(value)
-      }
-    def addGenEnumValue(value: io.vertx.codegen.testmodel.TestGenEnum) = {
-      asJava.addGenEnumValue(value)
-      }
-    def addIntegerValue(value: java.lang.Integer) = {
-      asJava.addIntegerValue(value)
-      }
-    def addJsonArrayValue(value: io.vertx.core.json.JsonArray) = {
-      asJava.addJsonArrayValue(value)
-      }
-    def addJsonObjectValue(value: io.vertx.core.json.JsonObject) = {
-      asJava.addJsonObjectValue(value)
-      }
-    def addLongValue(value: java.lang.Long) = {
-      asJava.addLongValue(value)
-      }
-    def addShortValue(value: java.lang.Short) = {
-      asJava.addShortValue(value)
-      }
-    def addStringValue(value: String) = {
-      asJava.addStringValue(value)
-      }
-  }
-  
   type DataObjectWithListAdders = io.vertx.codegen.testmodel.DataObjectWithListAdders
 
   object DataObjectWithListAdders {
@@ -239,56 +174,6 @@ import io.vertx.codegen.testmodel.TestGenEnum
   }
 
 
-import io.vertx.core.json.JsonArray
-import io.vertx.codegen.testmodel.TestEnum
-import io.vertx.codegen.testmodel.{TestDataObject => JTestDataObject}
-import io.vertx.core.json.JsonObject
-import io.vertx.codegen.testmodel.TestDataObject
-import io.vertx.codegen.testmodel.TestGenEnum
-
-/**
-  */
-
-  implicit class DataObjectWithListsScala(val asJava: io.vertx.codegen.testmodel.DataObjectWithLists) extends AnyVal {
-
-    def setBooleanValues(value: List[java.lang.Boolean]) = {
-        asJava.setBooleanValues(value.asJava)
-      }
-    def setDataObjectValues(value: List[io.vertx.codegen.testmodel.TestDataObject]) = {
-      asJava.setDataObjectValues(value.asJava)
-      }
-    def setDoubleValues(value: List[java.lang.Double]) = {
-        asJava.setDoubleValues(value.asJava)
-      }
-    def setEnumValues(value: List[io.vertx.codegen.testmodel.TestEnum]) = {
-      asJava.setEnumValues(value.asJava)
-      }
-    def setFloatValues(value: List[java.lang.Float]) = {
-        asJava.setFloatValues(value.asJava)
-      }
-    def setGenEnumValues(value: List[io.vertx.codegen.testmodel.TestGenEnum]) = {
-      asJava.setGenEnumValues(value.asJava)
-      }
-    def setIntegerValues(value: List[java.lang.Integer]) = {
-        asJava.setIntegerValues(value.asJava)
-      }
-    def setJsonArrayValues(value: List[io.vertx.core.json.JsonArray]) = {
-      asJava.setJsonArrayValues(value.asJava)
-      }
-    def setJsonObjectValues(value: List[io.vertx.core.json.JsonObject]) = {
-      asJava.setJsonObjectValues(value.asJava)
-      }
-    def setLongValues(value: List[java.lang.Long]) = {
-        asJava.setLongValues(value.asJava)
-      }
-    def setShortValues(value: List[java.lang.Short]) = {
-        asJava.setShortValues(value.asJava)
-      }
-    def setStringValues(value: List[String]) = {
-      asJava.setStringValues(value.asJava)
-      }
-  }
-  
   type DataObjectWithLists = io.vertx.codegen.testmodel.DataObjectWithLists
 
   object DataObjectWithLists {
@@ -297,56 +182,6 @@ import io.vertx.codegen.testmodel.TestGenEnum
   }
 
 
-import io.vertx.core.json.JsonArray
-import io.vertx.codegen.testmodel.TestEnum
-import io.vertx.codegen.testmodel.{TestDataObject => JTestDataObject}
-import io.vertx.core.json.JsonObject
-import io.vertx.codegen.testmodel.TestDataObject
-import io.vertx.codegen.testmodel.TestGenEnum
-
-/**
-  */
-
-  implicit class DataObjectWithMapAddersScala(val asJava: io.vertx.codegen.testmodel.DataObjectWithMapAdders) extends AnyVal {
-
-    def addBooleanValue(key: String, value: java.lang.Boolean) = {
-      asJava.addBooleanValue(key, value)
-    }
-    def addDataObjectValue(key: String, value: io.vertx.codegen.testmodel.TestDataObject) = {
-      asJava.addDataObjectValue(key, value)
-    }
-    def addDoubleValue(key: String, value: java.lang.Double) = {
-      asJava.addDoubleValue(key, value)
-    }
-    def addEnumValue(key: String, value: io.vertx.codegen.testmodel.TestEnum) = {
-      asJava.addEnumValue(key, value)
-    }
-    def addFloatValue(key: String, value: java.lang.Float) = {
-      asJava.addFloatValue(key, value)
-    }
-    def addGenEnumValue(key: String, value: io.vertx.codegen.testmodel.TestGenEnum) = {
-      asJava.addGenEnumValue(key, value)
-    }
-    def addIntegerValue(key: String, value: java.lang.Integer) = {
-      asJava.addIntegerValue(key, value)
-    }
-    def addJsonArrayValue(key: String, value: io.vertx.core.json.JsonArray) = {
-      asJava.addJsonArrayValue(key, value)
-    }
-    def addJsonObjectValue(key: String, value: io.vertx.core.json.JsonObject) = {
-      asJava.addJsonObjectValue(key, value)
-    }
-    def addLongValue(key: String, value: java.lang.Long) = {
-      asJava.addLongValue(key, value)
-    }
-    def addShortValue(key: String, value: java.lang.Short) = {
-      asJava.addShortValue(key, value)
-    }
-    def addStringValue(key: String, value: String) = {
-      asJava.addStringValue(key, value)
-    }
-  }
-  
   type DataObjectWithMapAdders = io.vertx.codegen.testmodel.DataObjectWithMapAdders
 
   object DataObjectWithMapAdders {
@@ -355,56 +190,6 @@ import io.vertx.codegen.testmodel.TestGenEnum
   }
 
 
-import io.vertx.core.json.JsonArray
-import io.vertx.codegen.testmodel.TestEnum
-import io.vertx.codegen.testmodel.{TestDataObject => JTestDataObject}
-import io.vertx.core.json.JsonObject
-import io.vertx.codegen.testmodel.TestDataObject
-import io.vertx.codegen.testmodel.TestGenEnum
-
-/**
-  */
-
-  implicit class DataObjectWithMapsScala(val asJava: io.vertx.codegen.testmodel.DataObjectWithMaps) extends AnyVal {
-
-    def setBooleanValues(value: Map[String, java.lang.Boolean]) = {
-      asJava.setBooleanValues(value.asJava)
-    }
-    def setDataObjectValues(value: Map[String, io.vertx.codegen.testmodel.TestDataObject]) = {
-      asJava.setDataObjectValues(value.asJava)
-    }
-    def setDoubleValues(value: Map[String, java.lang.Double]) = {
-      asJava.setDoubleValues(value.asJava)
-    }
-    def setEnumValues(value: Map[String, io.vertx.codegen.testmodel.TestEnum]) = {
-      asJava.setEnumValues(value.asJava)
-    }
-    def setFloatValues(value: Map[String, java.lang.Float]) = {
-      asJava.setFloatValues(value.asJava)
-    }
-    def setGenEnumValues(value: Map[String, io.vertx.codegen.testmodel.TestGenEnum]) = {
-      asJava.setGenEnumValues(value.asJava)
-    }
-    def setIntegerValues(value: Map[String, java.lang.Integer]) = {
-      asJava.setIntegerValues(value.asJava)
-    }
-    def setJsonArrayValues(value: Map[String, io.vertx.core.json.JsonArray]) = {
-      asJava.setJsonArrayValues(value.asJava)
-    }
-    def setJsonObjectValues(value: Map[String, io.vertx.core.json.JsonObject]) = {
-      asJava.setJsonObjectValues(value.asJava)
-    }
-    def setLongValues(value: Map[String, java.lang.Long]) = {
-      asJava.setLongValues(value.asJava)
-    }
-    def setShortValues(value: Map[String, java.lang.Short]) = {
-      asJava.setShortValues(value.asJava)
-    }
-    def setStringValues(value: Map[String, String]) = {
-      asJava.setStringValues(value.asJava)
-    }
-  }
-  
   type DataObjectWithMaps = io.vertx.codegen.testmodel.DataObjectWithMaps
 
   object DataObjectWithMaps {
@@ -413,35 +198,6 @@ import io.vertx.codegen.testmodel.TestGenEnum
   }
 
 
-import io.vertx.codegen.testmodel.DataObjectWithBuffer
-import io.vertx.core.buffer.Buffer
-import io.vertx.codegen.testmodel.{DataObjectWithBuffer => JDataObjectWithBuffer}
-
-/**
-  */
-
-  implicit class DataObjectWithNestedBufferScala(val asJava: io.vertx.codegen.testmodel.DataObjectWithNestedBuffer) extends AnyVal {
-
-    def setBuffer(value: io.vertx.core.buffer.Buffer) = {
-      asJava.setBuffer(value)
-    }
-    def getBuffer: io.vertx.core.buffer.Buffer = {
-      asJava.getBuffer()
-    }
-    def setBuffers(value: List[io.vertx.core.buffer.Buffer]) = {
-      asJava.setBuffers(value.asJava)
-      }
-    def getBuffers: scala.collection.mutable.Buffer[io.vertx.core.buffer.Buffer] = {
-      asJava.getBuffers().asScala
-    }
-    def setNested(value: io.vertx.codegen.testmodel.DataObjectWithBuffer) = {
-      asJava.setNested(value)
-    }
-    def getNested: io.vertx.codegen.testmodel.DataObjectWithBuffer = {
-      asJava.getNested()
-    }
-  }
-  
   type DataObjectWithNestedBuffer = io.vertx.codegen.testmodel.DataObjectWithNestedBuffer
 
   object DataObjectWithNestedBuffer {
@@ -450,14 +206,6 @@ import io.vertx.codegen.testmodel.{DataObjectWithBuffer => JDataObjectWithBuffer
   }
 
 
-
-/**
-  */
-
-  implicit class DataObjectWithOnlyJsonObjectConstructorScala(val asJava: io.vertx.codegen.testmodel.DataObjectWithOnlyJsonObjectConstructor) extends AnyVal {
-
-  }
-  
   type DataObjectWithOnlyJsonObjectConstructor = io.vertx.codegen.testmodel.DataObjectWithOnlyJsonObjectConstructor
 
   object DataObjectWithOnlyJsonObjectConstructor {
@@ -465,28 +213,6 @@ import io.vertx.codegen.testmodel.{DataObjectWithBuffer => JDataObjectWithBuffer
   }
 
 
-import io.vertx.codegen.testmodel.DataObjectWithRecursion
-import io.vertx.codegen.testmodel.{DataObjectWithRecursion => JDataObjectWithRecursion}
-
-/**
-  */
-
-  implicit class DataObjectWithRecursionScala(val asJava: io.vertx.codegen.testmodel.DataObjectWithRecursion) extends AnyVal {
-
-    def setData(value: String) = {
-      asJava.setData(value)
-    }
-    def getData: String = {
-      asJava.getData()
-    }
-    def setNext(value: io.vertx.codegen.testmodel.DataObjectWithRecursion) = {
-      asJava.setNext(value)
-    }
-    def getNext: io.vertx.codegen.testmodel.DataObjectWithRecursion = {
-      asJava.getNext()
-    }
-  }
-  
   type DataObjectWithRecursion = io.vertx.codegen.testmodel.DataObjectWithRecursion
 
   object DataObjectWithRecursion {
@@ -494,74 +220,6 @@ import io.vertx.codegen.testmodel.{DataObjectWithRecursion => JDataObjectWithRec
   }
 
 
-import io.vertx.core.json.JsonArray
-import io.vertx.codegen.testmodel.TestEnum
-import io.vertx.codegen.testmodel.{TestDataObject => JTestDataObject}
-import io.vertx.core.json.JsonObject
-import io.vertx.codegen.testmodel.TestDataObject
-import io.vertx.codegen.testmodel.TestGenEnum
-
-/**
-  */
-
-  implicit class DataObjectWithValuesScala(val asJava: io.vertx.codegen.testmodel.DataObjectWithValues) extends AnyVal {
-
-    def setBooleanValue(value: java.lang.Boolean) = {
-      asJava.setBooleanValue(value)
-    }
-    def setBoxedBooleanValue(value: java.lang.Boolean) = {
-      asJava.setBoxedBooleanValue(value)
-    }
-    def setBoxedDoubleValue(value: java.lang.Double) = {
-      asJava.setBoxedDoubleValue(value)
-    }
-    def setBoxedFloatValue(value: java.lang.Float) = {
-      asJava.setBoxedFloatValue(value)
-    }
-    def setBoxedIntValue(value: java.lang.Integer) = {
-      asJava.setBoxedIntValue(value)
-    }
-    def setBoxedLongValue(value: java.lang.Long) = {
-      asJava.setBoxedLongValue(value)
-    }
-    def setBoxedShortValue(value: java.lang.Short) = {
-      asJava.setBoxedShortValue(value)
-    }
-    def setDataObjectValue(value: io.vertx.codegen.testmodel.TestDataObject) = {
-      asJava.setDataObjectValue(value)
-    }
-    def setDoubleValue(value: java.lang.Double) = {
-      asJava.setDoubleValue(value)
-    }
-    def setEnumValue(value: io.vertx.codegen.testmodel.TestEnum) = {
-      asJava.setEnumValue(value)
-    }
-    def setFloatValue(value: java.lang.Float) = {
-      asJava.setFloatValue(value)
-    }
-    def setGenEnumValue(value: io.vertx.codegen.testmodel.TestGenEnum) = {
-      asJava.setGenEnumValue(value)
-    }
-    def setIntValue(value: java.lang.Integer) = {
-      asJava.setIntValue(value)
-    }
-    def setJsonArrayValue(value: io.vertx.core.json.JsonArray) = {
-      asJava.setJsonArrayValue(value)
-    }
-    def setJsonObjectValue(value: io.vertx.core.json.JsonObject) = {
-      asJava.setJsonObjectValue(value)
-    }
-    def setLongValue(value: java.lang.Long) = {
-      asJava.setLongValue(value)
-    }
-    def setShortValue(value: java.lang.Short) = {
-      asJava.setShortValue(value)
-    }
-    def setStringValue(value: String) = {
-      asJava.setStringValue(value)
-    }
-  }
-  
   type DataObjectWithValues = io.vertx.codegen.testmodel.DataObjectWithValues
 
   object DataObjectWithValues {
@@ -1316,32 +974,6 @@ implicit class NullableTCKScala(val asJava: io.vertx.codegen.testmodel.NullableT
 
 }
 
-
-/**
-  */
-
-  implicit class TestDataObjectScala(val asJava: io.vertx.codegen.testmodel.TestDataObject) extends AnyVal {
-
-    def setBar(value: java.lang.Integer) = {
-      asJava.setBar(value)
-    }
-    def getBar: java.lang.Integer = {
-      asJava.getBar()
-    }
-    def setFoo(value: String) = {
-      asJava.setFoo(value)
-    }
-    def getFoo: String = {
-      asJava.getFoo()
-    }
-    def setWibble(value: java.lang.Double) = {
-      asJava.setWibble(value)
-    }
-    def getWibble: java.lang.Double = {
-      asJava.getWibble()
-    }
-  }
-  
   type TestDataObject = io.vertx.codegen.testmodel.TestDataObject
 
   object TestDataObject {

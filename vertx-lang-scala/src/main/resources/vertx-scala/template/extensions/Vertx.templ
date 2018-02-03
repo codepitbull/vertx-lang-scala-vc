@@ -10,7 +10,7 @@
     * @param verticle the verticle instance to deploy.\n
     */\n
   def deployVerticle(verticle: ScalaVerticle): Unit = {\n
-    asJava.asInstanceOf[JVertx].deployVerticle(verticle.asJava)\n
+    asJava.asInstanceOf[JVertx].deployVerticle(verticle.asJava())\n
   }\n
 \n
   /**\n
@@ -30,7 +30,7 @@
     * @param options  the deployment options.\n
     */\n
   def deployVerticle(verticle: ScalaVerticle, options: DeploymentOptions): Unit = {\n
-    asJava.asInstanceOf[JVertx].deployVerticle(verticle.asJava, options.asJava)\n
+    asJava.asInstanceOf[JVertx].deployVerticle(verticle.asJava(), options)\n
   }\n
 \n
   /**\n
@@ -38,6 +38,6 @@
     */\n
   def deployVerticleFuture(verticle: ScalaVerticle, options: DeploymentOptions): scala.concurrent.Future[String] = {\n
     val promiseAndHandler = handlerForAsyncResultWithConversion[String, String](x => x.asInstanceOf[String])\n
-    asJava.asInstanceOf[JVertx].deployVerticle(verticle.asJava(), options.asJava, promiseAndHandler._1)\n
+    asJava.asInstanceOf[JVertx].deployVerticle(verticle.asJava(), options, promiseAndHandler._1)\n
     promiseAndHandler._2.future\n
   }\n

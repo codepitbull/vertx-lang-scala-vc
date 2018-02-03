@@ -49,59 +49,6 @@ implicit class BridgeEventScala(val asJava: io.vertx.ext.web.handler.sockjs.Brid
 
 }
 
-import io.vertx.ext.bridge.{PermittedOptions => JPermittedOptions}
-import io.vertx.ext.bridge.PermittedOptions
-
-/**
-  * Options for configuring the event bus bridge.
-  */
-
-  implicit class BridgeOptionsScala(val asJava: io.vertx.ext.web.handler.sockjs.BridgeOptions) extends AnyVal {
-
-    def setInboundPermitted(value: List[io.vertx.ext.bridge.PermittedOptions]) = {
-      asJava.setInboundPermitted(value.asJava)
-      }
-    def addInboundPermitted(value: io.vertx.ext.bridge.PermittedOptions) = {
-      asJava.addInboundPermitted(value)
-      }
-    def getInboundPermitteds: scala.collection.mutable.Buffer[io.vertx.ext.bridge.PermittedOptions] = {
-      asJava.getInboundPermitteds().asScala
-    }
-    def setMaxAddressLength(value: java.lang.Integer) = {
-      asJava.setMaxAddressLength(value)
-    }
-    def getMaxAddressLength: java.lang.Integer = {
-      asJava.getMaxAddressLength()
-    }
-    def setMaxHandlersPerSocket(value: java.lang.Integer) = {
-      asJava.setMaxHandlersPerSocket(value)
-    }
-    def getMaxHandlersPerSocket: java.lang.Integer = {
-      asJava.getMaxHandlersPerSocket()
-    }
-    def setOutboundPermitted(value: List[io.vertx.ext.bridge.PermittedOptions]) = {
-      asJava.setOutboundPermitted(value.asJava)
-      }
-    def addOutboundPermitted(value: io.vertx.ext.bridge.PermittedOptions) = {
-      asJava.addOutboundPermitted(value)
-      }
-    def getOutboundPermitteds: scala.collection.mutable.Buffer[io.vertx.ext.bridge.PermittedOptions] = {
-      asJava.getOutboundPermitteds().asScala
-    }
-    def setPingTimeout(value: java.lang.Long) = {
-      asJava.setPingTimeout(value)
-    }
-    def getPingTimeout: java.lang.Long = {
-      asJava.getPingTimeout()
-    }
-    def setReplyTimeout(value: java.lang.Long) = {
-      asJava.setReplyTimeout(value)
-    }
-    def getReplyTimeout: java.lang.Long = {
-      asJava.getReplyTimeout()
-    }
-  }
-  
   type BridgeOptions = io.vertx.ext.web.handler.sockjs.BridgeOptions
 
   object BridgeOptions {
@@ -110,30 +57,6 @@ import io.vertx.ext.bridge.PermittedOptions
   }
 
 
-
-
-  implicit class Http2PushMappingScala(val asJava: io.vertx.ext.web.Http2PushMapping) extends AnyVal {
-
-    def setExtensionTarget(value: String) = {
-      asJava.setExtensionTarget(value)
-    }
-    def getExtensionTarget: String = {
-      asJava.getExtensionTarget()
-    }
-    def setFilePath(value: String) = {
-      asJava.setFilePath(value)
-    }
-    def getFilePath: String = {
-      asJava.getFilePath()
-    }
-    def setNoPush(value: java.lang.Boolean) = {
-      asJava.setNoPush(value)
-    }
-    def isNoPush: java.lang.Boolean = {
-      asJava.isNoPush()
-    }
-  }
-  
   type Http2PushMapping = io.vertx.ext.web.Http2PushMapping
 
   object Http2PushMapping {
@@ -142,41 +65,6 @@ import io.vertx.ext.bridge.PermittedOptions
   }
 
 
-import io.vertx.core.json.JsonObject
-
-/**
-  * Specify a match to allow for inbound and outbound traffic using the
-  * <a href="../../../../../../../../../cheatsheet/BridgeOptions.html">BridgeOptions</a>.
-  */
-
-  implicit class PermittedOptionsScala(val asJava: io.vertx.ext.web.handler.sockjs.PermittedOptions) extends AnyVal {
-
-    def setAddress(value: String) = {
-      asJava.setAddress(value)
-    }
-    def getAddress: String = {
-      asJava.getAddress()
-    }
-    def setAddressRegex(value: String) = {
-      asJava.setAddressRegex(value)
-    }
-    def getAddressRegex: String = {
-      asJava.getAddressRegex()
-    }
-    def setMatch(value: io.vertx.core.json.JsonObject) = {
-      asJava.setMatch(value)
-    }
-    def getMatch: io.vertx.core.json.JsonObject = {
-      asJava.getMatch()
-    }
-    def setRequiredAuthority(value: String) = {
-      asJava.setRequiredAuthority(value)
-    }
-    def getRequiredAuthority: String = {
-      asJava.getRequiredAuthority()
-    }
-  }
-  
   type PermittedOptions = io.vertx.ext.web.handler.sockjs.PermittedOptions
 
   object PermittedOptions {
@@ -244,51 +132,6 @@ implicit class SessionStoreScala(val asJava: io.vertx.ext.web.sstore.SessionStor
 
 }
 
-
-/**
-  * Options for configuring a SockJS handler
-  */
-
-  implicit class SockJSHandlerOptionsScala(val asJava: io.vertx.ext.web.handler.sockjs.SockJSHandlerOptions) extends AnyVal {
-
-    def addDisabledTransport(value: String) = {
-      asJava.addDisabledTransport(value)
-      }
-    def getDisabledTransports: scala.collection.mutable.Set[String] = {
-      asJava.getDisabledTransports().asScala
-    }
-    def setHeartbeatInterval(value: java.lang.Long) = {
-      asJava.setHeartbeatInterval(value)
-    }
-    def getHeartbeatInterval: java.lang.Long = {
-      asJava.getHeartbeatInterval()
-    }
-    def setInsertJSESSIONID(value: java.lang.Boolean) = {
-      asJava.setInsertJSESSIONID(value)
-    }
-    def isInsertJSESSIONID: java.lang.Boolean = {
-      asJava.isInsertJSESSIONID()
-    }
-    def setLibraryURL(value: String) = {
-      asJava.setLibraryURL(value)
-    }
-    def getLibraryURL: String = {
-      asJava.getLibraryURL()
-    }
-    def setMaxBytesStreaming(value: java.lang.Integer) = {
-      asJava.setMaxBytesStreaming(value)
-    }
-    def getMaxBytesStreaming: java.lang.Integer = {
-      asJava.getMaxBytesStreaming()
-    }
-    def setSessionTimeout(value: java.lang.Long) = {
-      asJava.setSessionTimeout(value)
-    }
-    def getSessionTimeout: java.lang.Long = {
-      asJava.getSessionTimeout()
-    }
-  }
-  
   type SockJSHandlerOptions = io.vertx.ext.web.handler.sockjs.SockJSHandlerOptions
 
   object SockJSHandlerOptions {
