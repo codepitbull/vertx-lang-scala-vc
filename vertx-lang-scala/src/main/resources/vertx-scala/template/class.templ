@@ -10,9 +10,9 @@ import @{importedType}\n
 \n
 
 @if{doc != null}
-/**\n
-@{renderDoc("  *", doc, renderDocLink)}
-  */\n
+  /**\n
+@{renderDoc("   *", doc, renderDocLink)}
+   */\n
 @end{}
   implicit class @{className}Scala@{assembleTypeParams(typeParams, true)}(val asJava: @{helper.getNonGenericType(type)}@{assembleTypeParams(typeParams, true)}) extends AnyVal {\n
 @code{
@@ -40,7 +40,7 @@ import @{importedType}\n
 @if{className != 'CompositeFuture' && className != 'Future' }
 @foreach{method : futureMethods}
 	@if{method.name != 'executeBlocking'}
-	@if{method.doc != null}@{methodDoc(method, ' ', true)}@end{}
+	@if{method.doc != null}@{methodDoc(method, '    ', true)}@end{}
     def @{createNameForMethodReturningAFuture(method)}
 	@{assembleTypeParams(method.typeParams, true)}(
 	@foreach{param : removeLastParam(method.params)}

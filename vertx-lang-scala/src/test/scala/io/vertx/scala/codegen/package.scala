@@ -31,8 +31,8 @@ import io.vertx.core.AsyncResult
 import scala.collection.JavaConverters._
 import io.vertx.core.Handler
 
-/**
-  */
+  /**
+   */
   implicit class CollectionTCKScala(val asJava: io.vertx.codegen.testmodel.CollectionTCK) extends AnyVal {
 
     def methodWithHandlerAsyncResultListStringFuture(): scala.concurrent.Future[java.util.List[String]] = {
@@ -237,8 +237,8 @@ import io.vertx.codegen.testmodel.{GenericRefedInterface => JGenericRefedInterfa
 import io.vertx.codegen.testmodel.RefedInterface1
 import io.vertx.codegen.testmodel.GenericNullableRefedInterface
 
-/**
-  */
+  /**
+   */
   implicit class GenericsTCKScala(val asJava: io.vertx.codegen.testmodel.GenericsTCK) extends AnyVal {
 
     def methodWithHandlerAsyncResultByteParameterizedFuture(): scala.concurrent.Future[io.vertx.codegen.testmodel.GenericRefedInterface[java.lang.Byte]] = {
@@ -370,9 +370,9 @@ import scala.collection.JavaConverters._
 import io.vertx.codegen.testmodel.RefedInterface1
 import io.vertx.codegen.testmodel.TestGenEnum
 
-/**
-  * The TCK for @Nullable.
-  */
+  /**
+   * The TCK for @Nullable.
+   */
   implicit class NullableTCKScala(val asJava: io.vertx.codegen.testmodel.NullableTCK) extends AnyVal {
 
     def methodWithNullableByteHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[java.lang.Byte] = {
@@ -999,8 +999,8 @@ import io.vertx.codegen.testmodel.ConcreteHandlerUserType
 import io.vertx.codegen.testmodel.ConcreteHandlerUserTypeExtension
 import io.vertx.codegen.testmodel.TestGenEnum
 
-/**
-  */
+  /**
+   */
   implicit class TestInterfaceScala(val asJava: io.vertx.codegen.testmodel.TestInterface) extends AnyVal {
 
     def methodWithHandlerAsyncResultByteFuture(sendFailure: java.lang.Boolean): scala.concurrent.Future[java.lang.Byte] = {
