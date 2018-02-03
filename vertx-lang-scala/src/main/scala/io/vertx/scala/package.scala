@@ -91,46 +91,45 @@ import io.vertx.core.Handler
   * other streams, e.g. an [[io.vertx.core.http.HttpClientRequest]] instance,
   * using the [[io.vertx.core.streams.Pump]] class
   */
-implicit class AsyncFileScala(val asJava: io.vertx.core.file.AsyncFile) extends AnyVal {
-
+  implicit class AsyncFileScala(val asJava: io.vertx.core.file.AsyncFile) extends AnyVal {
 
  /**
    * Like [[close]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def closeFuture(): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.close({a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def closeFuture(): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.close({a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[write]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def writeFuture(buffer: io.vertx.core.buffer.Buffer, position: java.lang.Long): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.write(buffer, position, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def writeFuture(buffer: io.vertx.core.buffer.Buffer, position: java.lang.Long): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.write(buffer, position, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[read]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def readFuture(buffer: io.vertx.core.buffer.Buffer, offset: java.lang.Integer, position: java.lang.Long, length: java.lang.Integer): scala.concurrent.Future[io.vertx.core.buffer.Buffer] = {
-    val promise = Promise[io.vertx.core.buffer.Buffer]()
-    asJava.read(buffer, offset, position, length, {a:AsyncResult[io.vertx.core.buffer.Buffer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def readFuture(buffer: io.vertx.core.buffer.Buffer, offset: java.lang.Integer, position: java.lang.Long, length: java.lang.Integer): scala.concurrent.Future[io.vertx.core.buffer.Buffer] = {
+      val promise = Promise[io.vertx.core.buffer.Buffer]()
+      asJava.read(buffer, offset, position, length, {a:AsyncResult[io.vertx.core.buffer.Buffer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[flush]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def flushFuture(): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.flush({a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def flushFuture(): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.flush({a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
-}
+  }
 
 import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.AsyncResult
@@ -141,109 +140,108 @@ import io.vertx.core.Handler
   * An asynchronous map.
   * 
   */
-implicit class AsyncMapScala[K, V](val asJava: io.vertx.core.shareddata.AsyncMap[K, V]) extends AnyVal {
-
+  implicit class AsyncMapScala[K, V](val asJava: io.vertx.core.shareddata.AsyncMap[K, V]) extends AnyVal {
 
  /**
    * Like [[get]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def getFuture(k: K): scala.concurrent.Future[V] = {
-    val promise = Promise[V]()
-    asJava.get(k, {a:AsyncResult[V] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def getFuture(k: K): scala.concurrent.Future[V] = {
+      val promise = Promise[V]()
+      asJava.get(k, {a:AsyncResult[V] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[put]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def putFuture(k: K, v: V): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.put(k, v, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def putFuture(k: K, v: V): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.put(k, v, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[put]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def putFuture(k: K, v: V, ttl: java.lang.Long): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.put(k, v, ttl, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def putFuture(k: K, v: V, ttl: java.lang.Long): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.put(k, v, ttl, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[putIfAbsent]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def putIfAbsentFuture(k: K, v: V): scala.concurrent.Future[V] = {
-    val promise = Promise[V]()
-    asJava.putIfAbsent(k, v, {a:AsyncResult[V] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def putIfAbsentFuture(k: K, v: V): scala.concurrent.Future[V] = {
+      val promise = Promise[V]()
+      asJava.putIfAbsent(k, v, {a:AsyncResult[V] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[putIfAbsent]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def putIfAbsentFuture(k: K, v: V, ttl: java.lang.Long): scala.concurrent.Future[V] = {
-    val promise = Promise[V]()
-    asJava.putIfAbsent(k, v, ttl, {a:AsyncResult[V] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def putIfAbsentFuture(k: K, v: V, ttl: java.lang.Long): scala.concurrent.Future[V] = {
+      val promise = Promise[V]()
+      asJava.putIfAbsent(k, v, ttl, {a:AsyncResult[V] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[remove]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def removeFuture(k: K): scala.concurrent.Future[V] = {
-    val promise = Promise[V]()
-    asJava.remove(k, {a:AsyncResult[V] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def removeFuture(k: K): scala.concurrent.Future[V] = {
+      val promise = Promise[V]()
+      asJava.remove(k, {a:AsyncResult[V] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[removeIfPresent]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def removeIfPresentFuture(k: K, v: V): scala.concurrent.Future[java.lang.Boolean] = {
-    val promise = Promise[java.lang.Boolean]()
-    asJava.removeIfPresent(k, v, {a:AsyncResult[java.lang.Boolean] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def removeIfPresentFuture(k: K, v: V): scala.concurrent.Future[java.lang.Boolean] = {
+      val promise = Promise[java.lang.Boolean]()
+      asJava.removeIfPresent(k, v, {a:AsyncResult[java.lang.Boolean] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[replace]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def replaceFuture(k: K, v: V): scala.concurrent.Future[V] = {
-    val promise = Promise[V]()
-    asJava.replace(k, v, {a:AsyncResult[V] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def replaceFuture(k: K, v: V): scala.concurrent.Future[V] = {
+      val promise = Promise[V]()
+      asJava.replace(k, v, {a:AsyncResult[V] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[replaceIfPresent]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def replaceIfPresentFuture(k: K, oldValue: V, newValue: V): scala.concurrent.Future[java.lang.Boolean] = {
-    val promise = Promise[java.lang.Boolean]()
-    asJava.replaceIfPresent(k, oldValue, newValue, {a:AsyncResult[java.lang.Boolean] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def replaceIfPresentFuture(k: K, oldValue: V, newValue: V): scala.concurrent.Future[java.lang.Boolean] = {
+      val promise = Promise[java.lang.Boolean]()
+      asJava.replaceIfPresent(k, oldValue, newValue, {a:AsyncResult[java.lang.Boolean] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[clear]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def clearFuture(): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.clear({a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def clearFuture(): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.clear({a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[size]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def sizeFuture(): scala.concurrent.Future[java.lang.Integer] = {
-    val promise = Promise[java.lang.Integer]()
-    asJava.size({a:AsyncResult[java.lang.Integer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def sizeFuture(): scala.concurrent.Future[java.lang.Integer] = {
+      val promise = Promise[java.lang.Integer]()
+      asJava.size({a:AsyncResult[java.lang.Integer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
-}
+  }
 
 
 
@@ -261,10 +259,9 @@ import io.vertx.core.Future
   * needs to be coordinated.
   * The handlers set for the coordinated futures are overridden by the handler of the composite future.
   */
-implicit class CompositeFutureScala(val asJava: io.vertx.core.CompositeFuture) extends AnyVal {
+  implicit class CompositeFutureScala(val asJava: io.vertx.core.CompositeFuture) extends AnyVal {
 
-
-}
+  }
 
 import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.{Future => JFuture}
@@ -304,10 +301,9 @@ import io.vertx.core.Future
   * 
   * This class also provides [[io.vertx.core.Context#runOnContext]] which allows an action to be executed asynchronously using the same context.
   */
-implicit class ContextScala(val asJava: io.vertx.core.Context) extends AnyVal {
+  implicit class ContextScala(val asJava: io.vertx.core.Context) extends AnyVal {
 
-
-}
+  }
 
   type CopyOptions = io.vertx.core.file.CopyOptions
 
@@ -325,73 +321,72 @@ import io.vertx.core.Handler
   * An asynchronous counter that can be used to across the cluster to maintain a consistent count.
   * 
   */
-implicit class CounterScala(val asJava: io.vertx.core.shareddata.Counter) extends AnyVal {
-
+  implicit class CounterScala(val asJava: io.vertx.core.shareddata.Counter) extends AnyVal {
 
  /**
    * Like [[get]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def getFuture(): scala.concurrent.Future[java.lang.Long] = {
-    val promise = Promise[java.lang.Long]()
-    asJava.get({a:AsyncResult[java.lang.Long] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def getFuture(): scala.concurrent.Future[java.lang.Long] = {
+      val promise = Promise[java.lang.Long]()
+      asJava.get({a:AsyncResult[java.lang.Long] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[incrementAndGet]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def incrementAndGetFuture(): scala.concurrent.Future[java.lang.Long] = {
-    val promise = Promise[java.lang.Long]()
-    asJava.incrementAndGet({a:AsyncResult[java.lang.Long] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def incrementAndGetFuture(): scala.concurrent.Future[java.lang.Long] = {
+      val promise = Promise[java.lang.Long]()
+      asJava.incrementAndGet({a:AsyncResult[java.lang.Long] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[getAndIncrement]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def getAndIncrementFuture(): scala.concurrent.Future[java.lang.Long] = {
-    val promise = Promise[java.lang.Long]()
-    asJava.getAndIncrement({a:AsyncResult[java.lang.Long] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def getAndIncrementFuture(): scala.concurrent.Future[java.lang.Long] = {
+      val promise = Promise[java.lang.Long]()
+      asJava.getAndIncrement({a:AsyncResult[java.lang.Long] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[decrementAndGet]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def decrementAndGetFuture(): scala.concurrent.Future[java.lang.Long] = {
-    val promise = Promise[java.lang.Long]()
-    asJava.decrementAndGet({a:AsyncResult[java.lang.Long] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def decrementAndGetFuture(): scala.concurrent.Future[java.lang.Long] = {
+      val promise = Promise[java.lang.Long]()
+      asJava.decrementAndGet({a:AsyncResult[java.lang.Long] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[addAndGet]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def addAndGetFuture(value: java.lang.Long): scala.concurrent.Future[java.lang.Long] = {
-    val promise = Promise[java.lang.Long]()
-    asJava.addAndGet(value, {a:AsyncResult[java.lang.Long] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def addAndGetFuture(value: java.lang.Long): scala.concurrent.Future[java.lang.Long] = {
+      val promise = Promise[java.lang.Long]()
+      asJava.addAndGet(value, {a:AsyncResult[java.lang.Long] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[getAndAdd]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def getAndAddFuture(value: java.lang.Long): scala.concurrent.Future[java.lang.Long] = {
-    val promise = Promise[java.lang.Long]()
-    asJava.getAndAdd(value, {a:AsyncResult[java.lang.Long] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def getAndAddFuture(value: java.lang.Long): scala.concurrent.Future[java.lang.Long] = {
+      val promise = Promise[java.lang.Long]()
+      asJava.getAndAdd(value, {a:AsyncResult[java.lang.Long] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[compareAndSet]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def compareAndSetFuture(expected: java.lang.Long, value: java.lang.Long): scala.concurrent.Future[java.lang.Boolean] = {
-    val promise = Promise[java.lang.Boolean]()
-    asJava.compareAndSet(expected, value, {a:AsyncResult[java.lang.Boolean] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def compareAndSetFuture(expected: java.lang.Long, value: java.lang.Long): scala.concurrent.Future[java.lang.Boolean] = {
+      val promise = Promise[java.lang.Boolean]()
+      asJava.compareAndSet(expected, value, {a:AsyncResult[java.lang.Boolean] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
-}
+  }
 
 import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.datagram.{DatagramSocket => JDatagramSocket}
@@ -414,109 +409,108 @@ import io.vertx.core.datagram.{DatagramPacket => JDatagramPacket}
   * 
   * Please consult the documentation for more information on datagram sockets.
   */
-implicit class DatagramSocketScala(val asJava: io.vertx.core.datagram.DatagramSocket) extends AnyVal {
-
-
- /**
-   * Like [[send]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
-   */
-  def sendFuture(packet: io.vertx.core.buffer.Buffer, port: java.lang.Integer, host: String): scala.concurrent.Future[io.vertx.core.datagram.DatagramSocket] = {
-    val promise = Promise[io.vertx.core.datagram.DatagramSocket]()
-    asJava.send(packet, port, host, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+  implicit class DatagramSocketScala(val asJava: io.vertx.core.datagram.DatagramSocket) extends AnyVal {
 
  /**
    * Like [[send]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def sendFuture(str: String, port: java.lang.Integer, host: String): scala.concurrent.Future[io.vertx.core.datagram.DatagramSocket] = {
-    val promise = Promise[io.vertx.core.datagram.DatagramSocket]()
-    asJava.send(str, port, host, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def sendFuture(packet: io.vertx.core.buffer.Buffer, port: java.lang.Integer, host: String): scala.concurrent.Future[io.vertx.core.datagram.DatagramSocket] = {
+      val promise = Promise[io.vertx.core.datagram.DatagramSocket]()
+      asJava.send(packet, port, host, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[send]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def sendFuture(str: String, enc: String, port: java.lang.Integer, host: String): scala.concurrent.Future[io.vertx.core.datagram.DatagramSocket] = {
-    val promise = Promise[io.vertx.core.datagram.DatagramSocket]()
-    asJava.send(str, enc, port, host, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def sendFuture(str: String, port: java.lang.Integer, host: String): scala.concurrent.Future[io.vertx.core.datagram.DatagramSocket] = {
+      val promise = Promise[io.vertx.core.datagram.DatagramSocket]()
+      asJava.send(str, port, host, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
+
+ /**
+   * Like [[send]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
+   */
+    def sendFuture(str: String, enc: String, port: java.lang.Integer, host: String): scala.concurrent.Future[io.vertx.core.datagram.DatagramSocket] = {
+      val promise = Promise[io.vertx.core.datagram.DatagramSocket]()
+      asJava.send(str, enc, port, host, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[close]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def closeFuture(): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.close({a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def closeFuture(): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.close({a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[listenMulticastGroup]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def listenMulticastGroupFuture(multicastAddress: String): scala.concurrent.Future[io.vertx.core.datagram.DatagramSocket] = {
-    val promise = Promise[io.vertx.core.datagram.DatagramSocket]()
-    asJava.listenMulticastGroup(multicastAddress, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def listenMulticastGroupFuture(multicastAddress: String): scala.concurrent.Future[io.vertx.core.datagram.DatagramSocket] = {
+      val promise = Promise[io.vertx.core.datagram.DatagramSocket]()
+      asJava.listenMulticastGroup(multicastAddress, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[listenMulticastGroup]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def listenMulticastGroupFuture(multicastAddress: String, networkInterface: String, source: String): scala.concurrent.Future[io.vertx.core.datagram.DatagramSocket] = {
-    val promise = Promise[io.vertx.core.datagram.DatagramSocket]()
-    asJava.listenMulticastGroup(multicastAddress, networkInterface, source, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def listenMulticastGroupFuture(multicastAddress: String, networkInterface: String, source: String): scala.concurrent.Future[io.vertx.core.datagram.DatagramSocket] = {
+      val promise = Promise[io.vertx.core.datagram.DatagramSocket]()
+      asJava.listenMulticastGroup(multicastAddress, networkInterface, source, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[unlistenMulticastGroup]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def unlistenMulticastGroupFuture(multicastAddress: String): scala.concurrent.Future[io.vertx.core.datagram.DatagramSocket] = {
-    val promise = Promise[io.vertx.core.datagram.DatagramSocket]()
-    asJava.unlistenMulticastGroup(multicastAddress, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def unlistenMulticastGroupFuture(multicastAddress: String): scala.concurrent.Future[io.vertx.core.datagram.DatagramSocket] = {
+      val promise = Promise[io.vertx.core.datagram.DatagramSocket]()
+      asJava.unlistenMulticastGroup(multicastAddress, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[unlistenMulticastGroup]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def unlistenMulticastGroupFuture(multicastAddress: String, networkInterface: String, source: String): scala.concurrent.Future[io.vertx.core.datagram.DatagramSocket] = {
-    val promise = Promise[io.vertx.core.datagram.DatagramSocket]()
-    asJava.unlistenMulticastGroup(multicastAddress, networkInterface, source, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def unlistenMulticastGroupFuture(multicastAddress: String, networkInterface: String, source: String): scala.concurrent.Future[io.vertx.core.datagram.DatagramSocket] = {
+      val promise = Promise[io.vertx.core.datagram.DatagramSocket]()
+      asJava.unlistenMulticastGroup(multicastAddress, networkInterface, source, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[blockMulticastGroup]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def blockMulticastGroupFuture(multicastAddress: String, sourceToBlock: String): scala.concurrent.Future[io.vertx.core.datagram.DatagramSocket] = {
-    val promise = Promise[io.vertx.core.datagram.DatagramSocket]()
-    asJava.blockMulticastGroup(multicastAddress, sourceToBlock, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def blockMulticastGroupFuture(multicastAddress: String, sourceToBlock: String): scala.concurrent.Future[io.vertx.core.datagram.DatagramSocket] = {
+      val promise = Promise[io.vertx.core.datagram.DatagramSocket]()
+      asJava.blockMulticastGroup(multicastAddress, sourceToBlock, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[blockMulticastGroup]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def blockMulticastGroupFuture(multicastAddress: String, networkInterface: String, sourceToBlock: String): scala.concurrent.Future[io.vertx.core.datagram.DatagramSocket] = {
-    val promise = Promise[io.vertx.core.datagram.DatagramSocket]()
-    asJava.blockMulticastGroup(multicastAddress, networkInterface, sourceToBlock, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def blockMulticastGroupFuture(multicastAddress: String, networkInterface: String, sourceToBlock: String): scala.concurrent.Future[io.vertx.core.datagram.DatagramSocket] = {
+      val promise = Promise[io.vertx.core.datagram.DatagramSocket]()
+      asJava.blockMulticastGroup(multicastAddress, networkInterface, sourceToBlock, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[listen]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def listenFuture(port: java.lang.Integer, host: String): scala.concurrent.Future[io.vertx.core.datagram.DatagramSocket] = {
-    val promise = Promise[io.vertx.core.datagram.DatagramSocket]()
-    asJava.listen(port, host, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def listenFuture(port: java.lang.Integer, host: String): scala.concurrent.Future[io.vertx.core.datagram.DatagramSocket] = {
+      val promise = Promise[io.vertx.core.datagram.DatagramSocket]()
+      asJava.listen(port, host, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
-}
+  }
 
   type DatagramSocketOptions = io.vertx.core.datagram.DatagramSocketOptions
 
@@ -552,118 +546,117 @@ import scala.collection.JavaConverters._
   * 
   * Please consult the documentation for more information on DNS clients.
   */
-implicit class DnsClientScala(val asJava: io.vertx.core.dns.DnsClient) extends AnyVal {
-
+  implicit class DnsClientScala(val asJava: io.vertx.core.dns.DnsClient) extends AnyVal {
 
  /**
    * Like [[lookup]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def lookupFuture(name: String): scala.concurrent.Future[String] = {
-    val promise = Promise[String]()
-    asJava.lookup(name, {a:AsyncResult[java.lang.String] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def lookupFuture(name: String): scala.concurrent.Future[String] = {
+      val promise = Promise[String]()
+      asJava.lookup(name, {a:AsyncResult[java.lang.String] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[lookup4]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def lookup4Future(name: String): scala.concurrent.Future[String] = {
-    val promise = Promise[String]()
-    asJava.lookup4(name, {a:AsyncResult[java.lang.String] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def lookup4Future(name: String): scala.concurrent.Future[String] = {
+      val promise = Promise[String]()
+      asJava.lookup4(name, {a:AsyncResult[java.lang.String] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[lookup6]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def lookup6Future(name: String): scala.concurrent.Future[String] = {
-    val promise = Promise[String]()
-    asJava.lookup6(name, {a:AsyncResult[java.lang.String] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def lookup6Future(name: String): scala.concurrent.Future[String] = {
+      val promise = Promise[String]()
+      asJava.lookup6(name, {a:AsyncResult[java.lang.String] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[resolveA]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def resolveAFuture(name: String): scala.concurrent.Future[java.util.List[String]] = {
-    val promise = Promise[java.util.List[String]]()
-    asJava.resolveA(name, {a:AsyncResult[java.util.List[java.lang.String]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def resolveAFuture(name: String): scala.concurrent.Future[java.util.List[String]] = {
+      val promise = Promise[java.util.List[String]]()
+      asJava.resolveA(name, {a:AsyncResult[java.util.List[java.lang.String]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[resolveAAAA]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def resolveAAAAFuture(name: String): scala.concurrent.Future[java.util.List[String]] = {
-    val promise = Promise[java.util.List[String]]()
-    asJava.resolveAAAA(name, {a:AsyncResult[java.util.List[java.lang.String]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def resolveAAAAFuture(name: String): scala.concurrent.Future[java.util.List[String]] = {
+      val promise = Promise[java.util.List[String]]()
+      asJava.resolveAAAA(name, {a:AsyncResult[java.util.List[java.lang.String]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[resolveCNAME]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def resolveCNAMEFuture(name: String): scala.concurrent.Future[java.util.List[String]] = {
-    val promise = Promise[java.util.List[String]]()
-    asJava.resolveCNAME(name, {a:AsyncResult[java.util.List[java.lang.String]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def resolveCNAMEFuture(name: String): scala.concurrent.Future[java.util.List[String]] = {
+      val promise = Promise[java.util.List[String]]()
+      asJava.resolveCNAME(name, {a:AsyncResult[java.util.List[java.lang.String]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[resolveMX]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def resolveMXFuture(name: String): scala.concurrent.Future[java.util.List[io.vertx.core.dns.MxRecord]] = {
-    val promise = Promise[java.util.List[io.vertx.core.dns.MxRecord]]()
-    asJava.resolveMX(name, {a:AsyncResult[java.util.List[io.vertx.core.dns.MxRecord]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def resolveMXFuture(name: String): scala.concurrent.Future[java.util.List[io.vertx.core.dns.MxRecord]] = {
+      val promise = Promise[java.util.List[io.vertx.core.dns.MxRecord]]()
+      asJava.resolveMX(name, {a:AsyncResult[java.util.List[io.vertx.core.dns.MxRecord]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[resolveTXT]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def resolveTXTFuture(name: String): scala.concurrent.Future[java.util.List[String]] = {
-    val promise = Promise[java.util.List[String]]()
-    asJava.resolveTXT(name, {a:AsyncResult[java.util.List[java.lang.String]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def resolveTXTFuture(name: String): scala.concurrent.Future[java.util.List[String]] = {
+      val promise = Promise[java.util.List[String]]()
+      asJava.resolveTXT(name, {a:AsyncResult[java.util.List[java.lang.String]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[resolvePTR]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def resolvePTRFuture(name: String): scala.concurrent.Future[String] = {
-    val promise = Promise[String]()
-    asJava.resolvePTR(name, {a:AsyncResult[java.lang.String] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def resolvePTRFuture(name: String): scala.concurrent.Future[String] = {
+      val promise = Promise[String]()
+      asJava.resolvePTR(name, {a:AsyncResult[java.lang.String] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[resolveNS]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def resolveNSFuture(name: String): scala.concurrent.Future[java.util.List[String]] = {
-    val promise = Promise[java.util.List[String]]()
-    asJava.resolveNS(name, {a:AsyncResult[java.util.List[java.lang.String]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def resolveNSFuture(name: String): scala.concurrent.Future[java.util.List[String]] = {
+      val promise = Promise[java.util.List[String]]()
+      asJava.resolveNS(name, {a:AsyncResult[java.util.List[java.lang.String]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[resolveSRV]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def resolveSRVFuture(name: String): scala.concurrent.Future[java.util.List[io.vertx.core.dns.SrvRecord]] = {
-    val promise = Promise[java.util.List[io.vertx.core.dns.SrvRecord]]()
-    asJava.resolveSRV(name, {a:AsyncResult[java.util.List[io.vertx.core.dns.SrvRecord]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def resolveSRVFuture(name: String): scala.concurrent.Future[java.util.List[io.vertx.core.dns.SrvRecord]] = {
+      val promise = Promise[java.util.List[io.vertx.core.dns.SrvRecord]]()
+      asJava.resolveSRV(name, {a:AsyncResult[java.util.List[io.vertx.core.dns.SrvRecord]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[reverseLookup]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def reverseLookupFuture(ipaddress: String): scala.concurrent.Future[String] = {
-    val promise = Promise[String]()
-    asJava.reverseLookup(ipaddress, {a:AsyncResult[java.lang.String] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def reverseLookupFuture(ipaddress: String): scala.concurrent.Future[String] = {
+      val promise = Promise[String]()
+      asJava.reverseLookup(ipaddress, {a:AsyncResult[java.lang.String] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
-}
+  }
 
   type DnsClientOptions = io.vertx.core.dns.DnsClientOptions
 
@@ -693,28 +686,27 @@ import io.vertx.core.Handler
   * 
   * Please refer to the documentation for more information on the event bus.
   */
-implicit class EventBusScala(val asJava: io.vertx.core.eventbus.EventBus) extends AnyVal {
-
-
- /**
-   * Like [[send]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
-   */
-  def sendFuture[T](address: String, message: AnyRef): scala.concurrent.Future[io.vertx.core.eventbus.Message[T]] = {
-    val promise = Promise[io.vertx.core.eventbus.Message[T]]()
-    asJava.send[T](address, message, {a:AsyncResult[io.vertx.core.eventbus.Message[T]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+  implicit class EventBusScala(val asJava: io.vertx.core.eventbus.EventBus) extends AnyVal {
 
  /**
    * Like [[send]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def sendFuture[T](address: String, message: AnyRef, options: io.vertx.core.eventbus.DeliveryOptions): scala.concurrent.Future[io.vertx.core.eventbus.Message[T]] = {
-    val promise = Promise[io.vertx.core.eventbus.Message[T]]()
-    asJava.send[T](address, message, options, {a:AsyncResult[io.vertx.core.eventbus.Message[T]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def sendFuture[T](address: String, message: AnyRef): scala.concurrent.Future[io.vertx.core.eventbus.Message[T]] = {
+      val promise = Promise[io.vertx.core.eventbus.Message[T]]()
+      asJava.send[T](address, message, {a:AsyncResult[io.vertx.core.eventbus.Message[T]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
-}
+ /**
+   * Like [[send]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
+   */
+    def sendFuture[T](address: String, message: AnyRef, options: io.vertx.core.eventbus.DeliveryOptions): scala.concurrent.Future[io.vertx.core.eventbus.Message[T]] = {
+      val promise = Promise[io.vertx.core.eventbus.Message[T]]()
+      asJava.send[T](address, message, options, {a:AsyncResult[io.vertx.core.eventbus.Message[T]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
+
+  }
 
   type EventBusOptions = io.vertx.core.eventbus.EventBusOptions
 
@@ -754,280 +746,279 @@ import io.vertx.core.Handler
   * 
   * Please consult the documentation for more information on file system support.
   */
-implicit class FileSystemScala(val asJava: io.vertx.core.file.FileSystem) extends AnyVal {
-
-
- /**
-   * Like [[copy]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
-   */
-  def copyFuture(from: String, to: String): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.copy(from, to, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+  implicit class FileSystemScala(val asJava: io.vertx.core.file.FileSystem) extends AnyVal {
 
  /**
    * Like [[copy]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def copyFuture(from: String, to: String, options: io.vertx.core.file.CopyOptions): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.copy(from, to, options, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def copyFuture(from: String, to: String): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.copy(from, to, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
+
+ /**
+   * Like [[copy]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
+   */
+    def copyFuture(from: String, to: String, options: io.vertx.core.file.CopyOptions): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.copy(from, to, options, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[copyRecursive]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def copyRecursiveFuture(from: String, to: String, recursive: java.lang.Boolean): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.copyRecursive(from, to, recursive, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def copyRecursiveFuture(from: String, to: String, recursive: java.lang.Boolean): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.copyRecursive(from, to, recursive, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[move]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def moveFuture(from: String, to: String): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.move(from, to, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def moveFuture(from: String, to: String): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.move(from, to, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[move]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def moveFuture(from: String, to: String, options: io.vertx.core.file.CopyOptions): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.move(from, to, options, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def moveFuture(from: String, to: String, options: io.vertx.core.file.CopyOptions): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.move(from, to, options, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[truncate]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def truncateFuture(path: String, len: java.lang.Long): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.truncate(path, len, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def truncateFuture(path: String, len: java.lang.Long): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.truncate(path, len, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[chmod]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def chmodFuture(path: String, perms: String): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.chmod(path, perms, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def chmodFuture(path: String, perms: String): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.chmod(path, perms, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[chmodRecursive]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def chmodRecursiveFuture(path: String, perms: String, dirPerms: String): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.chmodRecursive(path, perms, dirPerms, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def chmodRecursiveFuture(path: String, perms: String, dirPerms: String): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.chmodRecursive(path, perms, dirPerms, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[chown]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def chownFuture(path: String, user: String, group: String): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.chown(path, user, group, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def chownFuture(path: String, user: String, group: String): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.chown(path, user, group, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[props]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def propsFuture(path: String): scala.concurrent.Future[io.vertx.core.file.FileProps] = {
-    val promise = Promise[io.vertx.core.file.FileProps]()
-    asJava.props(path, {a:AsyncResult[io.vertx.core.file.FileProps] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def propsFuture(path: String): scala.concurrent.Future[io.vertx.core.file.FileProps] = {
+      val promise = Promise[io.vertx.core.file.FileProps]()
+      asJava.props(path, {a:AsyncResult[io.vertx.core.file.FileProps] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[lprops]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def lpropsFuture(path: String): scala.concurrent.Future[io.vertx.core.file.FileProps] = {
-    val promise = Promise[io.vertx.core.file.FileProps]()
-    asJava.lprops(path, {a:AsyncResult[io.vertx.core.file.FileProps] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def lpropsFuture(path: String): scala.concurrent.Future[io.vertx.core.file.FileProps] = {
+      val promise = Promise[io.vertx.core.file.FileProps]()
+      asJava.lprops(path, {a:AsyncResult[io.vertx.core.file.FileProps] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[link]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def linkFuture(link: String, existing: String): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.link(link, existing, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def linkFuture(link: String, existing: String): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.link(link, existing, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[symlink]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def symlinkFuture(link: String, existing: String): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.symlink(link, existing, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def symlinkFuture(link: String, existing: String): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.symlink(link, existing, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[unlink]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def unlinkFuture(link: String): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.unlink(link, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def unlinkFuture(link: String): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.unlink(link, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[readSymlink]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def readSymlinkFuture(link: String): scala.concurrent.Future[String] = {
-    val promise = Promise[String]()
-    asJava.readSymlink(link, {a:AsyncResult[java.lang.String] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def readSymlinkFuture(link: String): scala.concurrent.Future[String] = {
+      val promise = Promise[String]()
+      asJava.readSymlink(link, {a:AsyncResult[java.lang.String] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[delete]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def deleteFuture(path: String): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.delete(path, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def deleteFuture(path: String): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.delete(path, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[deleteRecursive]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def deleteRecursiveFuture(path: String, recursive: java.lang.Boolean): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.deleteRecursive(path, recursive, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def deleteRecursiveFuture(path: String, recursive: java.lang.Boolean): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.deleteRecursive(path, recursive, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[mkdir]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def mkdirFuture(path: String): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.mkdir(path, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def mkdirFuture(path: String): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.mkdir(path, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[mkdir]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def mkdirFuture(path: String, perms: String): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.mkdir(path, perms, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def mkdirFuture(path: String, perms: String): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.mkdir(path, perms, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[mkdirs]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def mkdirsFuture(path: String): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.mkdirs(path, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def mkdirsFuture(path: String): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.mkdirs(path, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[mkdirs]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def mkdirsFuture(path: String, perms: String): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.mkdirs(path, perms, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def mkdirsFuture(path: String, perms: String): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.mkdirs(path, perms, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[readDir]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def readDirFuture(path: String): scala.concurrent.Future[java.util.List[String]] = {
-    val promise = Promise[java.util.List[String]]()
-    asJava.readDir(path, {a:AsyncResult[java.util.List[java.lang.String]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def readDirFuture(path: String): scala.concurrent.Future[java.util.List[String]] = {
+      val promise = Promise[java.util.List[String]]()
+      asJava.readDir(path, {a:AsyncResult[java.util.List[java.lang.String]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[readDir]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def readDirFuture(path: String, filter: String): scala.concurrent.Future[java.util.List[String]] = {
-    val promise = Promise[java.util.List[String]]()
-    asJava.readDir(path, filter, {a:AsyncResult[java.util.List[java.lang.String]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def readDirFuture(path: String, filter: String): scala.concurrent.Future[java.util.List[String]] = {
+      val promise = Promise[java.util.List[String]]()
+      asJava.readDir(path, filter, {a:AsyncResult[java.util.List[java.lang.String]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[readFile]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def readFileFuture(path: String): scala.concurrent.Future[io.vertx.core.buffer.Buffer] = {
-    val promise = Promise[io.vertx.core.buffer.Buffer]()
-    asJava.readFile(path, {a:AsyncResult[io.vertx.core.buffer.Buffer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def readFileFuture(path: String): scala.concurrent.Future[io.vertx.core.buffer.Buffer] = {
+      val promise = Promise[io.vertx.core.buffer.Buffer]()
+      asJava.readFile(path, {a:AsyncResult[io.vertx.core.buffer.Buffer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[writeFile]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def writeFileFuture(path: String, data: io.vertx.core.buffer.Buffer): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.writeFile(path, data, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def writeFileFuture(path: String, data: io.vertx.core.buffer.Buffer): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.writeFile(path, data, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[open]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def openFuture(path: String, options: io.vertx.core.file.OpenOptions): scala.concurrent.Future[io.vertx.core.file.AsyncFile] = {
-    val promise = Promise[io.vertx.core.file.AsyncFile]()
-    asJava.open(path, options, {a:AsyncResult[io.vertx.core.file.AsyncFile] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def openFuture(path: String, options: io.vertx.core.file.OpenOptions): scala.concurrent.Future[io.vertx.core.file.AsyncFile] = {
+      val promise = Promise[io.vertx.core.file.AsyncFile]()
+      asJava.open(path, options, {a:AsyncResult[io.vertx.core.file.AsyncFile] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[createFile]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def createFileFuture(path: String): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.createFile(path, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def createFileFuture(path: String): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.createFile(path, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[createFile]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def createFileFuture(path: String, perms: String): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.createFile(path, perms, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def createFileFuture(path: String, perms: String): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.createFile(path, perms, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[exists]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def existsFuture(path: String): scala.concurrent.Future[java.lang.Boolean] = {
-    val promise = Promise[java.lang.Boolean]()
-    asJava.exists(path, {a:AsyncResult[java.lang.Boolean] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def existsFuture(path: String): scala.concurrent.Future[java.lang.Boolean] = {
+      val promise = Promise[java.lang.Boolean]()
+      asJava.exists(path, {a:AsyncResult[java.lang.Boolean] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[fsProps]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def fsPropsFuture(path: String): scala.concurrent.Future[io.vertx.core.file.FileSystemProps] = {
-    val promise = Promise[io.vertx.core.file.FileSystemProps]()
-    asJava.fsProps(path, {a:AsyncResult[io.vertx.core.file.FileSystemProps] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def fsPropsFuture(path: String): scala.concurrent.Future[io.vertx.core.file.FileSystemProps] = {
+      val promise = Promise[io.vertx.core.file.FileSystemProps]()
+      asJava.fsProps(path, {a:AsyncResult[io.vertx.core.file.FileSystemProps] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
-}
+  }
 
 import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.{Future => JFuture}
@@ -1039,10 +1030,9 @@ import io.vertx.core.Future
   * Represents the result of an action that may, or may not, have occurred yet.
   * 
   */
-implicit class FutureScala[T](val asJava: io.vertx.core.Future[T]) extends AnyVal {
+  implicit class FutureScala[T](val asJava: io.vertx.core.Future[T]) extends AnyVal {
 
-
-}
+  }
 
   type GoAway = io.vertx.core.http.GoAway
 
@@ -1087,28 +1077,27 @@ import io.vertx.core.http.{Http2Settings => JHttp2Settings}
   *   <li>[[io.vertx.core.http.HttpConnection#exceptionHandler]]</li>
   * </ul>
   */
-implicit class HttpConnectionScala(val asJava: io.vertx.core.http.HttpConnection) extends AnyVal {
-
+  implicit class HttpConnectionScala(val asJava: io.vertx.core.http.HttpConnection) extends AnyVal {
 
  /**
    * Like [[updateSettings]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def updateSettingsFuture(settings: io.vertx.core.http.Http2Settings): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.updateSettings(settings, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def updateSettingsFuture(settings: io.vertx.core.http.Http2Settings): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.updateSettings(settings, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[ping]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def pingFuture(data: io.vertx.core.buffer.Buffer): scala.concurrent.Future[io.vertx.core.buffer.Buffer] = {
-    val promise = Promise[io.vertx.core.buffer.Buffer]()
-    asJava.ping(data, {a:AsyncResult[io.vertx.core.buffer.Buffer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def pingFuture(data: io.vertx.core.buffer.Buffer): scala.concurrent.Future[io.vertx.core.buffer.Buffer] = {
+      val promise = Promise[io.vertx.core.buffer.Buffer]()
+      asJava.ping(data, {a:AsyncResult[io.vertx.core.buffer.Buffer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
-}
+  }
 
 import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.http.{HttpServer => JHttpServer}
@@ -1131,46 +1120,45 @@ import io.vertx.core.Handler
   * You receive WebSockets by providing a [[io.vertx.core.http.HttpServer#websocketHandler]]. As WebSocket connections arrive on the server, the
   * WebSocket is passed to the handler.
   */
-implicit class HttpServerScala(val asJava: io.vertx.core.http.HttpServer) extends AnyVal {
-
-
- /**
-   * Like [[listen]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
-   */
-  def listenFuture(port: java.lang.Integer, host: String): scala.concurrent.Future[io.vertx.core.http.HttpServer] = {
-    val promise = Promise[io.vertx.core.http.HttpServer]()
-    asJava.listen(port, host, {a:AsyncResult[io.vertx.core.http.HttpServer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+  implicit class HttpServerScala(val asJava: io.vertx.core.http.HttpServer) extends AnyVal {
 
  /**
    * Like [[listen]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def listenFuture(port: java.lang.Integer): scala.concurrent.Future[io.vertx.core.http.HttpServer] = {
-    val promise = Promise[io.vertx.core.http.HttpServer]()
-    asJava.listen(port, {a:AsyncResult[io.vertx.core.http.HttpServer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def listenFuture(port: java.lang.Integer, host: String): scala.concurrent.Future[io.vertx.core.http.HttpServer] = {
+      val promise = Promise[io.vertx.core.http.HttpServer]()
+      asJava.listen(port, host, {a:AsyncResult[io.vertx.core.http.HttpServer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[listen]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def listenFuture(): scala.concurrent.Future[io.vertx.core.http.HttpServer] = {
-    val promise = Promise[io.vertx.core.http.HttpServer]()
-    asJava.listen({a:AsyncResult[io.vertx.core.http.HttpServer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def listenFuture(port: java.lang.Integer): scala.concurrent.Future[io.vertx.core.http.HttpServer] = {
+      val promise = Promise[io.vertx.core.http.HttpServer]()
+      asJava.listen(port, {a:AsyncResult[io.vertx.core.http.HttpServer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
+
+ /**
+   * Like [[listen]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
+   */
+    def listenFuture(): scala.concurrent.Future[io.vertx.core.http.HttpServer] = {
+      val promise = Promise[io.vertx.core.http.HttpServer]()
+      asJava.listen({a:AsyncResult[io.vertx.core.http.HttpServer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[close]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def closeFuture(): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.close({a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def closeFuture(): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.close({a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
-}
+  }
 
   type HttpServerOptions = io.vertx.core.http.HttpServerOptions
 
@@ -1212,73 +1200,72 @@ import io.vertx.core.Handler
   * It implements [[io.vertx.core.streams.WriteStream]] so it can be used with
   * [[io.vertx.core.streams.Pump]] to pump data with flow control.
   */
-implicit class HttpServerResponseScala(val asJava: io.vertx.core.http.HttpServerResponse) extends AnyVal {
-
-
- /**
-   * Like [[sendFile]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
-   */
-  def sendFileFuture(filename: String): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.sendFile(filename, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+  implicit class HttpServerResponseScala(val asJava: io.vertx.core.http.HttpServerResponse) extends AnyVal {
 
  /**
    * Like [[sendFile]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def sendFileFuture(filename: String, offset: java.lang.Long): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.sendFile(filename, offset, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def sendFileFuture(filename: String): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.sendFile(filename, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[sendFile]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def sendFileFuture(filename: String, offset: java.lang.Long, length: java.lang.Long): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.sendFile(filename, offset, length, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def sendFileFuture(filename: String, offset: java.lang.Long): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.sendFile(filename, offset, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
+
+ /**
+   * Like [[sendFile]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
+   */
+    def sendFileFuture(filename: String, offset: java.lang.Long, length: java.lang.Long): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.sendFile(filename, offset, length, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[push]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def pushFuture(method: io.vertx.core.http.HttpMethod, host: String, path: String): scala.concurrent.Future[io.vertx.core.http.HttpServerResponse] = {
-    val promise = Promise[io.vertx.core.http.HttpServerResponse]()
-    asJava.push(method, host, path, {a:AsyncResult[io.vertx.core.http.HttpServerResponse] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def pushFuture(method: io.vertx.core.http.HttpMethod, host: String, path: String): scala.concurrent.Future[io.vertx.core.http.HttpServerResponse] = {
+      val promise = Promise[io.vertx.core.http.HttpServerResponse]()
+      asJava.push(method, host, path, {a:AsyncResult[io.vertx.core.http.HttpServerResponse] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[push]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def pushFuture(method: io.vertx.core.http.HttpMethod, path: String, headers: io.vertx.core.MultiMap): scala.concurrent.Future[io.vertx.core.http.HttpServerResponse] = {
-    val promise = Promise[io.vertx.core.http.HttpServerResponse]()
-    asJava.push(method, path, headers, {a:AsyncResult[io.vertx.core.http.HttpServerResponse] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def pushFuture(method: io.vertx.core.http.HttpMethod, path: String, headers: io.vertx.core.MultiMap): scala.concurrent.Future[io.vertx.core.http.HttpServerResponse] = {
+      val promise = Promise[io.vertx.core.http.HttpServerResponse]()
+      asJava.push(method, path, headers, {a:AsyncResult[io.vertx.core.http.HttpServerResponse] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[push]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def pushFuture(method: io.vertx.core.http.HttpMethod, path: String): scala.concurrent.Future[io.vertx.core.http.HttpServerResponse] = {
-    val promise = Promise[io.vertx.core.http.HttpServerResponse]()
-    asJava.push(method, path, {a:AsyncResult[io.vertx.core.http.HttpServerResponse] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def pushFuture(method: io.vertx.core.http.HttpMethod, path: String): scala.concurrent.Future[io.vertx.core.http.HttpServerResponse] = {
+      val promise = Promise[io.vertx.core.http.HttpServerResponse]()
+      asJava.push(method, path, {a:AsyncResult[io.vertx.core.http.HttpServerResponse] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[push]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def pushFuture(method: io.vertx.core.http.HttpMethod, host: String, path: String, headers: io.vertx.core.MultiMap): scala.concurrent.Future[io.vertx.core.http.HttpServerResponse] = {
-    val promise = Promise[io.vertx.core.http.HttpServerResponse]()
-    asJava.push(method, host, path, headers, {a:AsyncResult[io.vertx.core.http.HttpServerResponse] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def pushFuture(method: io.vertx.core.http.HttpMethod, host: String, path: String, headers: io.vertx.core.MultiMap): scala.concurrent.Future[io.vertx.core.http.HttpServerResponse] = {
+      val promise = Promise[io.vertx.core.http.HttpServerResponse]()
+      asJava.push(method, host, path, headers, {a:AsyncResult[io.vertx.core.http.HttpServerResponse] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
-}
+  }
 
   type JdkSSLEngineOptions = io.vertx.core.net.JdkSSLEngineOptions
 
@@ -1314,28 +1301,27 @@ import io.vertx.core.Handler
   * 
   * If you want to notify the sender that processing failed, then [[io.vertx.core.eventbus.Message#fail]] can be called.
   */
-implicit class MessageScala[T](val asJava: io.vertx.core.eventbus.Message[T]) extends AnyVal {
-
-
- /**
-   * Like [[reply]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
-   */
-  def replyFuture[R](message: AnyRef): scala.concurrent.Future[io.vertx.core.eventbus.Message[R]] = {
-    val promise = Promise[io.vertx.core.eventbus.Message[R]]()
-    asJava.reply[R](message, {a:AsyncResult[io.vertx.core.eventbus.Message[R]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+  implicit class MessageScala[T](val asJava: io.vertx.core.eventbus.Message[T]) extends AnyVal {
 
  /**
    * Like [[reply]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def replyFuture[R](message: AnyRef, options: io.vertx.core.eventbus.DeliveryOptions): scala.concurrent.Future[io.vertx.core.eventbus.Message[R]] = {
-    val promise = Promise[io.vertx.core.eventbus.Message[R]]()
-    asJava.reply[R](message, options, {a:AsyncResult[io.vertx.core.eventbus.Message[R]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def replyFuture[R](message: AnyRef): scala.concurrent.Future[io.vertx.core.eventbus.Message[R]] = {
+      val promise = Promise[io.vertx.core.eventbus.Message[R]]()
+      asJava.reply[R](message, {a:AsyncResult[io.vertx.core.eventbus.Message[R]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
-}
+ /**
+   * Like [[reply]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
+   */
+    def replyFuture[R](message: AnyRef, options: io.vertx.core.eventbus.DeliveryOptions): scala.concurrent.Future[io.vertx.core.eventbus.Message[R]] = {
+      val promise = Promise[io.vertx.core.eventbus.Message[R]]()
+      asJava.reply[R](message, options, {a:AsyncResult[io.vertx.core.eventbus.Message[R]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
+
+  }
 
 import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.eventbus.{Message => JMessage}
@@ -1354,28 +1340,27 @@ import io.vertx.core.Handler
   * The consumer is unregistered from the event bus using the [[io.vertx.core.eventbus.MessageConsumer#unregister]] method or by calling the
   * [[io.vertx.core.eventbus.MessageConsumer#handler]] with a null value..
   */
-implicit class MessageConsumerScala[T](val asJava: io.vertx.core.eventbus.MessageConsumer[T]) extends AnyVal {
-
+  implicit class MessageConsumerScala[T](val asJava: io.vertx.core.eventbus.MessageConsumer[T]) extends AnyVal {
 
  /**
    * Like [[completionHandler]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def completionFuture(): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.completionHandler({a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def completionFuture(): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.completionHandler({a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[unregister]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def unregisterFuture(): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.unregister({a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def unregisterFuture(): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.unregister({a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
-}
+  }
 
 import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.eventbus.DeliveryOptions
@@ -1389,16 +1374,15 @@ import io.vertx.core.Handler
   * Represents a stream of message that can be written to.
   * 
   */
-implicit class MessageProducerScala[T](val asJava: io.vertx.core.eventbus.MessageProducer[T]) extends AnyVal {
+  implicit class MessageProducerScala[T](val asJava: io.vertx.core.eventbus.MessageProducer[T]) extends AnyVal {
 
+    def sendFuture[R](message: T): scala.concurrent.Future[io.vertx.core.eventbus.Message[R]] = {
+      val promise = Promise[io.vertx.core.eventbus.Message[R]]()
+      asJava.send[R](message, {a:AsyncResult[io.vertx.core.eventbus.Message[R]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
-  def sendFuture[R](message: T): scala.concurrent.Future[io.vertx.core.eventbus.Message[R]] = {
-    val promise = Promise[io.vertx.core.eventbus.Message[R]]()
-    asJava.send[R](message, {a:AsyncResult[io.vertx.core.eventbus.Message[R]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
   }
-
-}
 
   type MetricsOptions = io.vertx.core.metrics.MetricsOptions
 
@@ -1424,46 +1408,45 @@ import io.vertx.core.net.SocketAddress
   * This client supports a configurable number of connection attempts and a configurable
   * delay between attempts.
   */
-implicit class NetClientScala(val asJava: io.vertx.core.net.NetClient) extends AnyVal {
-
-
- /**
-   * Like [[connect]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
-   */
-  def connectFuture(port: java.lang.Integer, host: String): scala.concurrent.Future[io.vertx.core.net.NetSocket] = {
-    val promise = Promise[io.vertx.core.net.NetSocket]()
-    asJava.connect(port, host, {a:AsyncResult[io.vertx.core.net.NetSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+  implicit class NetClientScala(val asJava: io.vertx.core.net.NetClient) extends AnyVal {
 
  /**
    * Like [[connect]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def connectFuture(port: java.lang.Integer, host: String, serverName: String): scala.concurrent.Future[io.vertx.core.net.NetSocket] = {
-    val promise = Promise[io.vertx.core.net.NetSocket]()
-    asJava.connect(port, host, serverName, {a:AsyncResult[io.vertx.core.net.NetSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def connectFuture(port: java.lang.Integer, host: String): scala.concurrent.Future[io.vertx.core.net.NetSocket] = {
+      val promise = Promise[io.vertx.core.net.NetSocket]()
+      asJava.connect(port, host, {a:AsyncResult[io.vertx.core.net.NetSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[connect]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def connectFuture(remoteAddress: io.vertx.core.net.SocketAddress): scala.concurrent.Future[io.vertx.core.net.NetSocket] = {
-    val promise = Promise[io.vertx.core.net.NetSocket]()
-    asJava.connect(remoteAddress, {a:AsyncResult[io.vertx.core.net.NetSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def connectFuture(port: java.lang.Integer, host: String, serverName: String): scala.concurrent.Future[io.vertx.core.net.NetSocket] = {
+      val promise = Promise[io.vertx.core.net.NetSocket]()
+      asJava.connect(port, host, serverName, {a:AsyncResult[io.vertx.core.net.NetSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[connect]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def connectFuture(remoteAddress: io.vertx.core.net.SocketAddress, serverName: String): scala.concurrent.Future[io.vertx.core.net.NetSocket] = {
-    val promise = Promise[io.vertx.core.net.NetSocket]()
-    asJava.connect(remoteAddress, serverName, {a:AsyncResult[io.vertx.core.net.NetSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def connectFuture(remoteAddress: io.vertx.core.net.SocketAddress): scala.concurrent.Future[io.vertx.core.net.NetSocket] = {
+      val promise = Promise[io.vertx.core.net.NetSocket]()
+      asJava.connect(remoteAddress, {a:AsyncResult[io.vertx.core.net.NetSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
-}
+ /**
+   * Like [[connect]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
+   */
+    def connectFuture(remoteAddress: io.vertx.core.net.SocketAddress, serverName: String): scala.concurrent.Future[io.vertx.core.net.NetSocket] = {
+      val promise = Promise[io.vertx.core.net.NetSocket]()
+      asJava.connect(remoteAddress, serverName, {a:AsyncResult[io.vertx.core.net.NetSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
+
+  }
 
   type NetClientOptions = io.vertx.core.net.NetClientOptions
 
@@ -1486,55 +1469,54 @@ import io.vertx.core.net.SocketAddress
 /**
   * Represents a TCP server
   */
-implicit class NetServerScala(val asJava: io.vertx.core.net.NetServer) extends AnyVal {
-
-
- /**
-   * Like [[listen]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
-   */
-  def listenFuture(): scala.concurrent.Future[io.vertx.core.net.NetServer] = {
-    val promise = Promise[io.vertx.core.net.NetServer]()
-    asJava.listen({a:AsyncResult[io.vertx.core.net.NetServer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+  implicit class NetServerScala(val asJava: io.vertx.core.net.NetServer) extends AnyVal {
 
  /**
    * Like [[listen]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def listenFuture(port: java.lang.Integer, host: String): scala.concurrent.Future[io.vertx.core.net.NetServer] = {
-    val promise = Promise[io.vertx.core.net.NetServer]()
-    asJava.listen(port, host, {a:AsyncResult[io.vertx.core.net.NetServer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def listenFuture(): scala.concurrent.Future[io.vertx.core.net.NetServer] = {
+      val promise = Promise[io.vertx.core.net.NetServer]()
+      asJava.listen({a:AsyncResult[io.vertx.core.net.NetServer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[listen]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def listenFuture(port: java.lang.Integer): scala.concurrent.Future[io.vertx.core.net.NetServer] = {
-    val promise = Promise[io.vertx.core.net.NetServer]()
-    asJava.listen(port, {a:AsyncResult[io.vertx.core.net.NetServer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def listenFuture(port: java.lang.Integer, host: String): scala.concurrent.Future[io.vertx.core.net.NetServer] = {
+      val promise = Promise[io.vertx.core.net.NetServer]()
+      asJava.listen(port, host, {a:AsyncResult[io.vertx.core.net.NetServer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[listen]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def listenFuture(localAddress: io.vertx.core.net.SocketAddress): scala.concurrent.Future[io.vertx.core.net.NetServer] = {
-    val promise = Promise[io.vertx.core.net.NetServer]()
-    asJava.listen(localAddress, {a:AsyncResult[io.vertx.core.net.NetServer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def listenFuture(port: java.lang.Integer): scala.concurrent.Future[io.vertx.core.net.NetServer] = {
+      val promise = Promise[io.vertx.core.net.NetServer]()
+      asJava.listen(port, {a:AsyncResult[io.vertx.core.net.NetServer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
+
+ /**
+   * Like [[listen]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
+   */
+    def listenFuture(localAddress: io.vertx.core.net.SocketAddress): scala.concurrent.Future[io.vertx.core.net.NetServer] = {
+      val promise = Promise[io.vertx.core.net.NetServer]()
+      asJava.listen(localAddress, {a:AsyncResult[io.vertx.core.net.NetServer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[close]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def closeFuture(): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.close({a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def closeFuture(): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.close({a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
-}
+  }
 
   type NetServerOptions = io.vertx.core.net.NetServerOptions
 
@@ -1560,37 +1542,36 @@ import io.vertx.core.Handler
   * It implements both  and  so it can be used with
   * [[io.vertx.core.streams.Pump]] to pump data with flow control.
   */
-implicit class NetSocketScala(val asJava: io.vertx.core.net.NetSocket) extends AnyVal {
-
-
- /**
-   * Like [[sendFile]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
-   */
-  def sendFileFuture(filename: String): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.sendFile(filename, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+  implicit class NetSocketScala(val asJava: io.vertx.core.net.NetSocket) extends AnyVal {
 
  /**
    * Like [[sendFile]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def sendFileFuture(filename: String, offset: java.lang.Long): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.sendFile(filename, offset, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def sendFileFuture(filename: String): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.sendFile(filename, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[sendFile]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def sendFileFuture(filename: String, offset: java.lang.Long, length: java.lang.Long): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.sendFile(filename, offset, length, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def sendFileFuture(filename: String, offset: java.lang.Long): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.sendFile(filename, offset, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
-}
+ /**
+   * Like [[sendFile]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
+   */
+    def sendFileFuture(filename: String, offset: java.lang.Long, length: java.lang.Long): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.sendFile(filename, offset, length, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
+
+  }
 
 
 
@@ -1685,55 +1666,54 @@ import io.vertx.core.Handler
   * </p>
   * Please see the documentation for more information.
   */
-implicit class SharedDataScala(val asJava: io.vertx.core.shareddata.SharedData) extends AnyVal {
-
+  implicit class SharedDataScala(val asJava: io.vertx.core.shareddata.SharedData) extends AnyVal {
 
  /**
    * Like [[getClusterWideMap]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def getClusterWideMapFuture[K, V](name: String): scala.concurrent.Future[io.vertx.core.shareddata.AsyncMap[K, V]] = {
-    val promise = Promise[io.vertx.core.shareddata.AsyncMap[K, V]]()
-    asJava.getClusterWideMap[K, V](name, {a:AsyncResult[io.vertx.core.shareddata.AsyncMap[K,V]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def getClusterWideMapFuture[K, V](name: String): scala.concurrent.Future[io.vertx.core.shareddata.AsyncMap[K, V]] = {
+      val promise = Promise[io.vertx.core.shareddata.AsyncMap[K, V]]()
+      asJava.getClusterWideMap[K, V](name, {a:AsyncResult[io.vertx.core.shareddata.AsyncMap[K,V]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[getAsyncMap]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def getAsyncMapFuture[K, V](name: String): scala.concurrent.Future[io.vertx.core.shareddata.AsyncMap[K, V]] = {
-    val promise = Promise[io.vertx.core.shareddata.AsyncMap[K, V]]()
-    asJava.getAsyncMap[K, V](name, {a:AsyncResult[io.vertx.core.shareddata.AsyncMap[K,V]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def getAsyncMapFuture[K, V](name: String): scala.concurrent.Future[io.vertx.core.shareddata.AsyncMap[K, V]] = {
+      val promise = Promise[io.vertx.core.shareddata.AsyncMap[K, V]]()
+      asJava.getAsyncMap[K, V](name, {a:AsyncResult[io.vertx.core.shareddata.AsyncMap[K,V]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[getLock]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def getLockFuture(name: String): scala.concurrent.Future[io.vertx.core.shareddata.Lock] = {
-    val promise = Promise[io.vertx.core.shareddata.Lock]()
-    asJava.getLock(name, {a:AsyncResult[io.vertx.core.shareddata.Lock] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def getLockFuture(name: String): scala.concurrent.Future[io.vertx.core.shareddata.Lock] = {
+      val promise = Promise[io.vertx.core.shareddata.Lock]()
+      asJava.getLock(name, {a:AsyncResult[io.vertx.core.shareddata.Lock] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[getLockWithTimeout]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def getLockWithTimeoutFuture(name: String, timeout: java.lang.Long): scala.concurrent.Future[io.vertx.core.shareddata.Lock] = {
-    val promise = Promise[io.vertx.core.shareddata.Lock]()
-    asJava.getLockWithTimeout(name, timeout, {a:AsyncResult[io.vertx.core.shareddata.Lock] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def getLockWithTimeoutFuture(name: String, timeout: java.lang.Long): scala.concurrent.Future[io.vertx.core.shareddata.Lock] = {
+      val promise = Promise[io.vertx.core.shareddata.Lock]()
+      asJava.getLockWithTimeout(name, timeout, {a:AsyncResult[io.vertx.core.shareddata.Lock] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[getCounter]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def getCounterFuture(name: String): scala.concurrent.Future[io.vertx.core.shareddata.Counter] = {
-    val promise = Promise[io.vertx.core.shareddata.Counter]()
-    asJava.getCounter(name, {a:AsyncResult[io.vertx.core.shareddata.Counter] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def getCounterFuture(name: String): scala.concurrent.Future[io.vertx.core.shareddata.Counter] = {
+      val promise = Promise[io.vertx.core.shareddata.Counter]()
+      asJava.getCounter(name, {a:AsyncResult[io.vertx.core.shareddata.Counter] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
-}
+  }
 
 
 
@@ -1784,7 +1764,7 @@ import io.vertx.core.Handler
   * 
   * Please see the user manual for more detailed usage information.
   */
-implicit class VertxScala(val asJava: io.vertx.core.Vertx) extends AnyVal {
+  implicit class VertxScala(val asJava: io.vertx.core.Vertx) extends AnyVal {
 
   import io.vertx.lang.scala.ScalaVerticle;  /**
     * Deploy a verticle instance that you have created yourself.
@@ -1831,40 +1811,40 @@ implicit class VertxScala(val asJava: io.vertx.core.Vertx) extends AnyVal {
  /**
    * Like [[close]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def closeFuture(): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.close({a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def closeFuture(): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.close({a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[deployVerticle]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def deployVerticleFuture(name: String): scala.concurrent.Future[String] = {
-    val promise = Promise[String]()
-    asJava.deployVerticle(name, {a:AsyncResult[java.lang.String] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def deployVerticleFuture(name: String): scala.concurrent.Future[String] = {
+      val promise = Promise[String]()
+      asJava.deployVerticle(name, {a:AsyncResult[java.lang.String] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[deployVerticle]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def deployVerticleFuture(name: String, options: io.vertx.core.DeploymentOptions): scala.concurrent.Future[String] = {
-    val promise = Promise[String]()
-    asJava.deployVerticle(name, options, {a:AsyncResult[java.lang.String] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def deployVerticleFuture(name: String, options: io.vertx.core.DeploymentOptions): scala.concurrent.Future[String] = {
+      val promise = Promise[String]()
+      asJava.deployVerticle(name, options, {a:AsyncResult[java.lang.String] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[undeploy]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def undeployFuture(deploymentID: String): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.undeploy(deploymentID, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def undeployFuture(deploymentID: String): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.undeploy(deploymentID, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
-}
+  }
 
   type VertxOptions = io.vertx.core.VertxOptions
 
@@ -1886,9 +1866,8 @@ import io.vertx.core.Future
   * It provides the same <code>executeBlocking</code> operation than [[io.vertx.core.Context]] and
   * [[io.vertx.core.Vertx]] but on a separate worker pool.
   */
-implicit class WorkerExecutorScala(val asJava: io.vertx.core.WorkerExecutor) extends AnyVal {
+  implicit class WorkerExecutorScala(val asJava: io.vertx.core.WorkerExecutor) extends AnyVal {
 
-
-}
+  }
 
 }

@@ -38,16 +38,15 @@ import io.vertx.core.Future
   * 
   * Please consult the documentation for a full explanation.
   */
-implicit class BridgeEventScala(val asJava: io.vertx.ext.web.handler.sockjs.BridgeEvent) extends AnyVal {
+  implicit class BridgeEventScala(val asJava: io.vertx.ext.web.handler.sockjs.BridgeEvent) extends AnyVal {
 
+    def setFuture(): scala.concurrent.Future[java.lang.Boolean] = {
+      val promise = Promise[java.lang.Boolean]()
+      asJava.setHandler({a:AsyncResult[java.lang.Boolean] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
-  def setFuture(): scala.concurrent.Future[java.lang.Boolean] = {
-    val promise = Promise[java.lang.Boolean]()
-    asJava.setHandler({a:AsyncResult[java.lang.Boolean] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
   }
-
-}
 
   type BridgeOptions = io.vertx.ext.web.handler.sockjs.BridgeOptions
 
@@ -82,55 +81,54 @@ import io.vertx.core.Handler
 /**
   * A session store is used to store sessions for an Vert.x-Web web app
   */
-implicit class SessionStoreScala(val asJava: io.vertx.ext.web.sstore.SessionStore) extends AnyVal {
-
+  implicit class SessionStoreScala(val asJava: io.vertx.ext.web.sstore.SessionStore) extends AnyVal {
 
  /**
    * Like [[get]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def getFuture(id: String): scala.concurrent.Future[io.vertx.ext.web.Session] = {
-    val promise = Promise[io.vertx.ext.web.Session]()
-    asJava.get(id, {a:AsyncResult[io.vertx.ext.web.Session] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def getFuture(id: String): scala.concurrent.Future[io.vertx.ext.web.Session] = {
+      val promise = Promise[io.vertx.ext.web.Session]()
+      asJava.get(id, {a:AsyncResult[io.vertx.ext.web.Session] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[delete]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def deleteFuture(id: String): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.delete(id, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def deleteFuture(id: String): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.delete(id, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[put]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def putFuture(session: io.vertx.ext.web.Session): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.put(session, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def putFuture(session: io.vertx.ext.web.Session): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.put(session, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[clear]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def clearFuture(): scala.concurrent.Future[Unit] = {
-    val promise = Promise[Unit]()
-    asJava.clear({a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def clearFuture(): scala.concurrent.Future[Unit] = {
+      val promise = Promise[Unit]()
+      asJava.clear({a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
  /**
    * Like [[size]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def sizeFuture(): scala.concurrent.Future[java.lang.Integer] = {
-    val promise = Promise[java.lang.Integer]()
-    asJava.size({a:AsyncResult[java.lang.Integer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def sizeFuture(): scala.concurrent.Future[java.lang.Integer] = {
+      val promise = Promise[java.lang.Integer]()
+      asJava.size({a:AsyncResult[java.lang.Integer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
-}
+  }
 
   type SockJSHandlerOptions = io.vertx.ext.web.handler.sockjs.SockJSHandlerOptions
 
@@ -152,27 +150,26 @@ import io.vertx.core.Handler
   * 
   * Concrete implementations exist for several well-known template engines.
   */
-implicit class TemplateEngineScala(val asJava: io.vertx.ext.web.templ.TemplateEngine) extends AnyVal {
-
-
- /**
-   * Like [[render]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
-   */
-  def renderFuture(context: io.vertx.ext.web.RoutingContext, templateFileName: String): scala.concurrent.Future[io.vertx.core.buffer.Buffer] = {
-    val promise = Promise[io.vertx.core.buffer.Buffer]()
-    asJava.render(context, templateFileName, {a:AsyncResult[io.vertx.core.buffer.Buffer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+  implicit class TemplateEngineScala(val asJava: io.vertx.ext.web.templ.TemplateEngine) extends AnyVal {
 
  /**
    * Like [[render]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def renderFuture(context: io.vertx.ext.web.RoutingContext, templateDirectory: String, templateFileName: String): scala.concurrent.Future[io.vertx.core.buffer.Buffer] = {
-    val promise = Promise[io.vertx.core.buffer.Buffer]()
-    asJava.render(context, templateDirectory, templateFileName, {a:AsyncResult[io.vertx.core.buffer.Buffer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
-    promise.future
-  }
+    def renderFuture(context: io.vertx.ext.web.RoutingContext, templateFileName: String): scala.concurrent.Future[io.vertx.core.buffer.Buffer] = {
+      val promise = Promise[io.vertx.core.buffer.Buffer]()
+      asJava.render(context, templateFileName, {a:AsyncResult[io.vertx.core.buffer.Buffer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
 
-}
+ /**
+   * Like [[render]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
+   */
+    def renderFuture(context: io.vertx.ext.web.RoutingContext, templateDirectory: String, templateFileName: String): scala.concurrent.Future[io.vertx.core.buffer.Buffer] = {
+      val promise = Promise[io.vertx.core.buffer.Buffer]()
+      asJava.render(context, templateDirectory, templateFileName, {a:AsyncResult[io.vertx.core.buffer.Buffer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      promise.future
+    }
+
+  }
 
 }
