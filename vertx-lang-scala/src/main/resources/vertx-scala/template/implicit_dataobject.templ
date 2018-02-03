@@ -102,9 +102,10 @@ import @{importedType}\n
   \n
 @if{!type.isAbstract()}
   type @{className} = @{helper.getNonGenericType(type)}\n
+\n
   object @{className} {\n
     @if{hasEmptyConstructor}def apply() = new @{className}()\n@end{}
-    def apply(json: JsonObject) = new @{helper.getNonGenericType(type)}(json)\n
+    def apply(json: JsonObject) = new @{className}(json)\n
   }\n
 @end{}
 \n

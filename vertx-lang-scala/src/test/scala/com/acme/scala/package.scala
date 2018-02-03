@@ -26,20 +26,4 @@ import scala.concurrent.Promise
 package object pkg{
 
 
-
-/**
-  */
-implicit class MyInterfaceScala(val asJava: com.acme.pkg.MyInterface) extends AnyVal {
-
-
-}
-
-
-/**
-  */
-implicit class SubInterfaceScala(val asJava: com.acme.pkg.sub.SubInterface) extends AnyVal {
-
-
-}
-
 }

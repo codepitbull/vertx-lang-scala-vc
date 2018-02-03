@@ -229,9 +229,10 @@ import io.vertx.core.buffer.Buffer
   }
   
   type AddressResolverOptions = io.vertx.core.dns.AddressResolverOptions
+
   object AddressResolverOptions {
     def apply() = new AddressResolverOptions()
-    def apply(json: JsonObject) = new io.vertx.core.dns.AddressResolverOptions(json)
+    def apply(json: JsonObject) = new AddressResolverOptions(json)
   }
 
 
@@ -316,9 +317,10 @@ import io.vertx.core.buffer.Buffer
   }
   
   type Argument = io.vertx.core.cli.Argument
+
   object Argument {
     def apply() = new Argument()
-    def apply(json: JsonObject) = new io.vertx.core.cli.Argument(json)
+    def apply(json: JsonObject) = new Argument(json)
   }
 
 
@@ -486,32 +488,6 @@ implicit class AsyncMapScala[K, V](val asJava: io.vertx.core.shareddata.AsyncMap
     asJava.size({a:AsyncResult[java.lang.Integer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
-
-}
-
-import io.vertx.core.cli.{Argument => JArgument}
-import io.vertx.core.cli.Option
-import io.vertx.core.cli.{Option => JOption}
-import scala.collection.JavaConverters._
-import io.vertx.core.cli.Argument
-
-/**
-  * Interface defining a command-line interface (in other words a command such as 'run', 'ls'...).
-  * This interface is polyglot to ease reuse such as in Vert.x Shell.
-  * <p/>
-  * A command line interface has a name, and defines a set of options and arguments. Options are key-value pair such
-  * as `-foo=bar` or `-flag`. The supported formats depend on the used parser. Arguments are unlike
-  * options raw values. Options are defined using
-  * <a href="../../../../../../../cheatsheet/Option.html">Option</a>, while argument are defined using <a href="../../../../../../../cheatsheet/Argument.html">Argument</a>.
-  * <p/>
-  * Command line interfaces also define a summary and a description. These attributes are used in the usage generation
-  * . To disable the help generation, set the `hidden` attribute to `true`.
-  * <p/>
-  * Command Line Interface object does not contains "value", it's a model. It must be evaluated by a
-  * parser that returns a [[io.vertx.core.cli.CommandLine]] object containing the argument and option values.
-  */
-implicit class CLIScala(val asJava: io.vertx.core.cli.CLI) extends AnyVal {
-
 
 }
 
@@ -871,23 +847,6 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   
 
 
-import io.vertx.core.cli.{Argument => JArgument}
-import io.vertx.core.cli.Option
-import io.vertx.core.cli.{Option => JOption}
-import io.vertx.core.cli.CLI
-import io.vertx.core.cli.{CLI => JCLI}
-import io.vertx.core.cli.Argument
-
-/**
-  * The parser transforms a CLI (a model) into an [[io.vertx.core.cli.CommandLine]]. This [[io.vertx.core.cli.CommandLine]]
-  * has stored the argument and option values. Only  instance of parser should create
-  * objects of this type.
-  */
-implicit class CommandLineScala(val asJava: io.vertx.core.cli.CommandLine) extends AnyVal {
-
-
-}
-
 import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.CompositeFuture
 import io.vertx.core.{Future => JFuture}
@@ -1000,9 +959,10 @@ implicit class ContextScala(val asJava: io.vertx.core.Context) extends AnyVal {
   }
   
   type CopyOptions = io.vertx.core.file.CopyOptions
+
   object CopyOptions {
     def apply() = new CopyOptions()
-    def apply(json: JsonObject) = new io.vertx.core.file.CopyOptions(json)
+    def apply(json: JsonObject) = new CopyOptions(json)
   }
 
 
@@ -1079,15 +1039,6 @@ implicit class CounterScala(val asJava: io.vertx.core.shareddata.Counter) extend
     asJava.compareAndSet(expected, value, {a:AsyncResult[java.lang.Boolean] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
-
-}
-
-
-/**
-  * A received datagram packet (UDP) which contains the data and information about the sender of the data itself.
-  */
-implicit class DatagramPacketScala(val asJava: io.vertx.core.datagram.DatagramPacket) extends AnyVal {
-
 
 }
 
@@ -1338,9 +1289,10 @@ implicit class DatagramSocketScala(val asJava: io.vertx.core.datagram.DatagramSo
   }
   
   type DatagramSocketOptions = io.vertx.core.datagram.DatagramSocketOptions
+
   object DatagramSocketOptions {
     def apply() = new DatagramSocketOptions()
-    def apply(json: JsonObject) = new io.vertx.core.datagram.DatagramSocketOptions(json)
+    def apply(json: JsonObject) = new DatagramSocketOptions(json)
   }
 
 
@@ -1387,9 +1339,10 @@ implicit class DatagramSocketScala(val asJava: io.vertx.core.datagram.DatagramSo
   }
   
   type DeliveryOptions = io.vertx.core.eventbus.DeliveryOptions
+
   object DeliveryOptions {
     def apply() = new DeliveryOptions()
-    def apply(json: JsonObject) = new io.vertx.core.eventbus.DeliveryOptions(json)
+    def apply(json: JsonObject) = new DeliveryOptions(json)
   }
 
 
@@ -1518,9 +1471,10 @@ import io.vertx.core.json.JsonObject
   }
   
   type DeploymentOptions = io.vertx.core.DeploymentOptions
+
   object DeploymentOptions {
     def apply() = new DeploymentOptions()
-    def apply(json: JsonObject) = new io.vertx.core.DeploymentOptions(json)
+    def apply(json: JsonObject) = new DeploymentOptions(json)
   }
 
 
@@ -1687,9 +1641,10 @@ implicit class DnsClientScala(val asJava: io.vertx.core.dns.DnsClient) extends A
   }
   
   type DnsClientOptions = io.vertx.core.dns.DnsClientOptions
+
   object DnsClientOptions {
     def apply() = new DnsClientOptions()
-    def apply(json: JsonObject) = new io.vertx.core.dns.DnsClientOptions(json)
+    def apply(json: JsonObject) = new DnsClientOptions(json)
   }
 
 
@@ -2174,21 +2129,12 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   }
   
   type EventBusOptions = io.vertx.core.eventbus.EventBusOptions
+
   object EventBusOptions {
     def apply() = new EventBusOptions()
-    def apply(json: JsonObject) = new io.vertx.core.eventbus.EventBusOptions(json)
+    def apply(json: JsonObject) = new EventBusOptions(json)
   }
 
-
-
-/**
-  * Represents properties of a file on the file system.
-  * 
-  */
-implicit class FilePropsScala(val asJava: io.vertx.core.file.FileProps) extends AnyVal {
-
-
-}
 
 import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.file.AsyncFile
@@ -2495,15 +2441,6 @@ implicit class FileSystemScala(val asJava: io.vertx.core.file.FileSystem) extend
 
 }
 
-
-/**
-  * Represents properties of the file system.
-  */
-implicit class FileSystemPropsScala(val asJava: io.vertx.core.file.FileSystemProps) extends AnyVal {
-
-
-}
-
 import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.{Future => JFuture}
 import io.vertx.core.AsyncResult
@@ -2559,9 +2496,10 @@ import io.vertx.core.buffer.Buffer
   }
   
   type GoAway = io.vertx.core.http.GoAway
+
   object GoAway {
     def apply() = new GoAway()
-    def apply(json: JsonObject) = new io.vertx.core.http.GoAway(json)
+    def apply(json: JsonObject) = new GoAway(json)
   }
 
 
@@ -2638,54 +2576,12 @@ import io.vertx.core.buffer.Buffer
   }
   
   type Http2Settings = io.vertx.core.http.Http2Settings
+
   object Http2Settings {
     def apply() = new Http2Settings()
-    def apply(json: JsonObject) = new io.vertx.core.http.Http2Settings(json)
+    def apply(json: JsonObject) = new Http2Settings(json)
   }
 
-
-import io.vertx.core.http.HttpClientResponse
-import io.vertx.core.http.{RequestOptions => JRequestOptions}
-import io.vertx.core.http.HttpMethod
-import io.vertx.core.http.{HttpClientResponse => JHttpClientResponse}
-import io.vertx.core.MultiMap
-import io.vertx.core.http.{WebSocket => JWebSocket}
-import io.vertx.core.http.RequestOptions
-import io.vertx.core.{MultiMap => JMultiMap}
-import io.vertx.core.http.WebSocket
-import io.vertx.core.http.WebsocketVersion
-import io.vertx.core.Handler
-
-/**
-  * An asynchronous HTTP client.
-  * 
-  * It allows you to make requests to HTTP servers, and a single client can make requests to any server.
-  * 
-  * It also allows you to open WebSockets to servers.
-  * 
-  * The client can also pool HTTP connections.
-  * 
-  * For pooling to occur, keep-alive must be true on the <a href="../../../../../../../cheatsheet/HttpClientOptions.html">HttpClientOptions</a> (default is true).
-  * In this case connections will be pooled and re-used if there are pending HTTP requests waiting to get a connection,
-  * otherwise they will be closed.
-  * 
-  * This gives the benefits of keep alive when the client is loaded but means we don't keep connections hanging around
-  * unnecessarily when there would be no benefits anyway.
-  * 
-  * The client also supports pipe-lining of requests. Pipe-lining means another request is sent on the same connection
-  * before the response from the preceding one has returned. Pipe-lining is not appropriate for all requests.
-  * 
-  * To enable pipe-lining, it must be enabled on the <a href="../../../../../../../cheatsheet/HttpClientOptions.html">HttpClientOptions</a> (default is false).
-  * 
-  * When pipe-lining is enabled the connection will be automatically closed when all in-flight responses have returned
-  * and there are no outstanding pending requests to write.
-  * 
-  * The client is designed to be reused between requests.
-  */
-implicit class HttpClientScala(val asJava: io.vertx.core.http.HttpClient) extends AnyVal {
-
-
-}
 
 import io.vertx.core.net.ProxyOptions
 import io.vertx.core.net.JksOptions
@@ -3315,74 +3211,12 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   }
   
   type HttpClientOptions = io.vertx.core.http.HttpClientOptions
+
   object HttpClientOptions {
     def apply() = new HttpClientOptions()
-    def apply(json: JsonObject) = new io.vertx.core.http.HttpClientOptions(json)
+    def apply(json: JsonObject) = new HttpClientOptions(json)
   }
 
-
-import io.vertx.core.http.HttpClientResponse
-import io.vertx.core.http.HttpClientRequest
-import io.vertx.core.buffer.Buffer
-import io.vertx.core.http.HttpFrame
-import io.vertx.core.http.HttpVersion
-import io.vertx.core.http.{HttpConnection => JHttpConnection}
-import io.vertx.core.http.{HttpClientResponse => JHttpClientResponse}
-import io.vertx.core.http.{HttpFrame => JHttpFrame}
-import io.vertx.core.http.HttpConnection
-import io.vertx.core.Handler
-import io.vertx.core.http.{HttpClientRequest => JHttpClientRequest}
-
-/**
-  * Represents a client-side HTTP request.
-  * 
-  * Instances are created by an [[io.vertx.core.http.HttpClient]] instance, via one of the methods corresponding to the
-  * specific HTTP methods, or the generic request methods. On creation the request will not have been written to the
-  * wire.
-  * 
-  * Once a request has been obtained, headers can be set on it, and data can be written to its body if required. Once
-  * you are ready to send the request, one of the [[io.vertx.core.http.HttpClientRequest#end]] methods should be called.
-  * 
-  * Nothing is actually sent until the request has been internally assigned an HTTP connection.
-  * 
-  * The [[io.vertx.core.http.HttpClient]] instance will return an instance of this class immediately, even if there are no HTTP
-  * connections available in the pool. Any requests sent before a connection is assigned will be queued
-  * internally and actually sent when an HTTP connection becomes available from the pool.
-  * 
-  * The headers of the request are queued for writing either when the [[io.vertx.core.http.HttpClientRequest#end]] method is called, or, when the first
-  * part of the body is written, whichever occurs first.
-  * 
-  * This class supports both chunked and non-chunked HTTP.
-  * 
-  * It implements [[io.vertx.core.streams.WriteStream]] so it can be used with
-  * [[io.vertx.core.streams.Pump]] to pump data with flow control.
-  * 
-  * An example of using this class is as follows:
-  * 
-  */
-implicit class HttpClientRequestScala(val asJava: io.vertx.core.http.HttpClientRequest) extends AnyVal {
-
-
-}
-
-import io.vertx.core.buffer.Buffer
-import io.vertx.core.http.HttpFrame
-import io.vertx.core.http.{HttpFrame => JHttpFrame}
-import io.vertx.core.Handler
-
-/**
-  * Represents a client-side HTTP response.
-  * 
-  * Vert.x provides you with one of these via the handler that was provided when creating the [[io.vertx.core.http.HttpClientRequest]]
-  * or that was set on the [[io.vertx.core.http.HttpClientRequest]] instance.
-  * 
-  * It implements [[io.vertx.core.streams.ReadStream]] so it can be used with
-  * [[io.vertx.core.streams.Pump]] to pump data with flow control.
-  */
-implicit class HttpClientResponseScala(val asJava: io.vertx.core.http.HttpClientResponse) extends AnyVal {
-
-
-}
 
 import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.buffer.Buffer
@@ -3423,15 +3257,6 @@ implicit class HttpConnectionScala(val asJava: io.vertx.core.http.HttpConnection
     asJava.ping(data, {a:AsyncResult[io.vertx.core.buffer.Buffer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
-
-}
-
-
-/**
-  * An HTTP/2 frame.
-  */
-implicit class HttpFrameScala(val asJava: io.vertx.core.http.HttpFrame) extends AnyVal {
-
 
 }
 
@@ -3494,17 +3319,6 @@ implicit class HttpServerScala(val asJava: io.vertx.core.http.HttpServer) extend
     asJava.close({a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
-
-}
-
-import io.vertx.core.buffer.Buffer
-import io.vertx.core.Handler
-
-/**
-  * Represents an file upload from an HTML FORM.
-  */
-implicit class HttpServerFileUploadScala(val asJava: io.vertx.core.http.HttpServerFileUpload) extends AnyVal {
-
 
 }
 
@@ -4050,34 +3864,12 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   }
   
   type HttpServerOptions = io.vertx.core.http.HttpServerOptions
+
   object HttpServerOptions {
     def apply() = new HttpServerOptions()
-    def apply(json: JsonObject) = new io.vertx.core.http.HttpServerOptions(json)
+    def apply(json: JsonObject) = new HttpServerOptions(json)
   }
 
-
-import io.vertx.core.http.{HttpServerFileUpload => JHttpServerFileUpload}
-import io.vertx.core.http.HttpServerFileUpload
-import io.vertx.core.buffer.Buffer
-import io.vertx.core.http.HttpFrame
-import io.vertx.core.http.{HttpFrame => JHttpFrame}
-import io.vertx.core.Handler
-
-/**
-  * Represents a server-side HTTP request.
-  * 
-  * Instances are created for each request and passed to the user via a handler.
-  * 
-  * Each instance of this class is associated with a corresponding [[io.vertx.core.http.HttpServerResponse]] instance via
-  * [[io.vertx.core.http.HttpServerRequest#response]].
-  * It implements [[io.vertx.core.streams.ReadStream]] so it can be used with
-  * [[io.vertx.core.streams.Pump]] to pump data with flow control.
-  * 
-  */
-implicit class HttpServerRequestScala(val asJava: io.vertx.core.http.HttpServerRequest) extends AnyVal {
-
-
-}
 
 import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.buffer.Buffer
@@ -4189,9 +3981,10 @@ implicit class HttpServerResponseScala(val asJava: io.vertx.core.http.HttpServer
   }
   
   type JdkSSLEngineOptions = io.vertx.core.net.JdkSSLEngineOptions
+
   object JdkSSLEngineOptions {
     def apply() = new JdkSSLEngineOptions()
-    def apply(json: JsonObject) = new io.vertx.core.net.JdkSSLEngineOptions(json)
+    def apply(json: JsonObject) = new JdkSSLEngineOptions(json)
   }
 
 
@@ -4254,85 +4047,12 @@ import io.vertx.core.buffer.Buffer
   }
   
   type JksOptions = io.vertx.core.net.JksOptions
+
   object JksOptions {
     def apply() = new JksOptions()
-    def apply(json: JsonObject) = new io.vertx.core.net.JksOptions(json)
+    def apply(json: JsonObject) = new JksOptions(json)
   }
 
-
-
-/**
-  * A JSON event emited by the [[io.vertx.core.parsetools.JsonParser]].
-  */
-implicit class JsonEventScala(val asJava: io.vertx.core.parsetools.JsonEvent) extends AnyVal {
-
-
-}
-
-import io.vertx.core.parsetools.{JsonEvent => JJsonEvent}
-import io.vertx.core.buffer.Buffer
-import io.vertx.core.streams.{ReadStream => JReadStream}
-import io.vertx.core.streams.ReadStream
-import io.vertx.core.Handler
-import io.vertx.core.parsetools.JsonEvent
-
-/**
-  * A parser class which allows to incrementally parse json elements and emit json parse events instead of parsing a json
-  * element fully. This parser is convenient for parsing large json structures.
-  * <p/>
-  * The parser also parses concatenated json streams or line delimited json streams.
-  * <p/>
-  * The parser can also parse entire object or array when it is convenient, for instance a very large array
-  * of small objects can be parsed efficiently by handling array <i>start</i>/<i>end</i> and <i>object</i>
-  * events.
-  * <p/>
-  * Whenever the parser fails to parse or process the stream, the [[io.vertx.core.parsetools.JsonParser#exceptionHandler]] is called with
-  * the cause of the failure and the current handling stops. After such event, the parser should not handle data
-  * anymore.
-  */
-implicit class JsonParserScala(val asJava: io.vertx.core.parsetools.JsonParser) extends AnyVal {
-
-
-}
-
-
-/**
-  * Local maps can be used to share data safely in a single Vert.x instance.
-  * 
-  * The map only allows immutable keys and values in the map, OR certain mutable objects such as [[io.vertx.core.buffer.Buffer]]
-  * instances which will be copied when they are added to the map.
-  * 
-  * This ensures there is no shared access to mutable state from different threads (e.g. different event loops) in the
-  * Vert.x instance, and means you don't have to protect access to that state using synchronization or locks.
-  * 
-  * Your own objects can be marked as immutable by implementing the [[io.vertx.core.shareddata.Shareable]] interface.
-  *
-  * Since the version 3.4, this class extends the  interface. However some methods are only accessible in Java.
-  */
-implicit class LocalMapScala[K, V](val asJava: io.vertx.core.shareddata.LocalMap[K, V]) extends AnyVal {
-
-
-}
-
-
-/**
-  * An asynchronous exclusive lock which can be obtained from any node in the cluster.
-  * 
-  * When the lock is obtained, no-one else in the cluster can obtain the lock with the same name until the lock
-  * is released.
-  */
-implicit class LockScala(val asJava: io.vertx.core.shareddata.Lock) extends AnyVal {
-
-
-}
-
-
-/**
-  */
-implicit class MeasuredScala(val asJava: io.vertx.core.metrics.Measured) extends AnyVal {
-
-
-}
 
 import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.eventbus.DeliveryOptions
@@ -4459,34 +4179,12 @@ implicit class MessageProducerScala[T](val asJava: io.vertx.core.eventbus.Messag
   }
   
   type MetricsOptions = io.vertx.core.metrics.MetricsOptions
+
   object MetricsOptions {
     def apply() = new MetricsOptions()
-    def apply(json: JsonObject) = new io.vertx.core.metrics.MetricsOptions(json)
+    def apply(json: JsonObject) = new MetricsOptions(json)
   }
 
-
-import io.vertx.core.MultiMap
-import io.vertx.core.{MultiMap => JMultiMap}
-
-/**
-  * This class represents a MultiMap of String keys to a List of String values.
-  * 
-  * It's useful in Vert.x to represent things in Vert.x like HTTP headers and HTTP parameters which allow
-  * multiple values for keys.
-  */
-implicit class MultiMapScala(val asJava: io.vertx.core.MultiMap) extends AnyVal {
-
-
-}
-
-
-/**
-  * Represent a Mail-Exchange-Record (MX) which was resolved for a domain.
-  */
-implicit class MxRecordScala(val asJava: io.vertx.core.dns.MxRecord) extends AnyVal {
-
-
-}
 
 import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.net.{NetSocket => JNetSocket}
@@ -4931,9 +4629,10 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   }
   
   type NetClientOptions = io.vertx.core.net.NetClientOptions
+
   object NetClientOptions {
     def apply() = new NetClientOptions()
-    def apply(json: JsonObject) = new io.vertx.core.net.NetClientOptions(json)
+    def apply(json: JsonObject) = new NetClientOptions(json)
   }
 
 
@@ -5362,9 +5061,10 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   }
   
   type NetServerOptions = io.vertx.core.net.NetServerOptions
+
   object NetServerOptions {
     def apply() = new NetServerOptions()
-    def apply(json: JsonObject) = new io.vertx.core.net.NetServerOptions(json)
+    def apply(json: JsonObject) = new NetServerOptions(json)
   }
 
 
@@ -5608,9 +5308,10 @@ implicit class NetSocketScala(val asJava: io.vertx.core.net.NetSocket) extends A
   }
   
   type OpenOptions = io.vertx.core.file.OpenOptions
+
   object OpenOptions {
     def apply() = new OpenOptions()
-    def apply(json: JsonObject) = new io.vertx.core.file.OpenOptions(json)
+    def apply(json: JsonObject) = new OpenOptions(json)
   }
 
 
@@ -5634,9 +5335,10 @@ implicit class NetSocketScala(val asJava: io.vertx.core.net.NetSocket) extends A
   }
   
   type OpenSSLEngineOptions = io.vertx.core.net.OpenSSLEngineOptions
+
   object OpenSSLEngineOptions {
     def apply() = new OpenSSLEngineOptions()
-    def apply(json: JsonObject) = new io.vertx.core.net.OpenSSLEngineOptions(json)
+    def apply(json: JsonObject) = new OpenSSLEngineOptions(json)
   }
 
 
@@ -5784,9 +5486,10 @@ implicit class NetSocketScala(val asJava: io.vertx.core.net.NetSocket) extends A
   }
   
   type Option = io.vertx.core.cli.Option
+
   object Option {
     def apply() = new Option()
-    def apply(json: JsonObject) = new io.vertx.core.cli.Option(json)
+    def apply(json: JsonObject) = new Option(json)
   }
 
 
@@ -5930,9 +5633,10 @@ import io.vertx.core.buffer.Buffer
   }
   
   type PemKeyCertOptions = io.vertx.core.net.PemKeyCertOptions
+
   object PemKeyCertOptions {
     def apply() = new PemKeyCertOptions()
-    def apply(json: JsonObject) = new io.vertx.core.net.PemKeyCertOptions(json)
+    def apply(json: JsonObject) = new PemKeyCertOptions(json)
   }
 
 
@@ -5995,9 +5699,10 @@ import io.vertx.core.buffer.Buffer
   }
   
   type PemTrustOptions = io.vertx.core.net.PemTrustOptions
+
   object PemTrustOptions {
     def apply() = new PemTrustOptions()
-    def apply(json: JsonObject) = new io.vertx.core.net.PemTrustOptions(json)
+    def apply(json: JsonObject) = new PemTrustOptions(json)
   }
 
 
@@ -6060,9 +5765,10 @@ import io.vertx.core.buffer.Buffer
   }
   
   type PfxOptions = io.vertx.core.net.PfxOptions
+
   object PfxOptions {
     def apply() = new PfxOptions()
-    def apply(json: JsonObject) = new io.vertx.core.net.PfxOptions(json)
+    def apply(json: JsonObject) = new PfxOptions(json)
   }
 
 
@@ -6129,95 +5835,12 @@ import io.vertx.core.net.ProxyType
   }
   
   type ProxyOptions = io.vertx.core.net.ProxyOptions
+
   object ProxyOptions {
     def apply() = new ProxyOptions()
-    def apply(json: JsonObject) = new io.vertx.core.net.ProxyOptions(json)
+    def apply(json: JsonObject) = new ProxyOptions(json)
   }
 
-
-import io.vertx.core.streams.{ReadStream => JReadStream}
-import io.vertx.core.streams.WriteStream
-import io.vertx.core.streams.ReadStream
-import io.vertx.core.streams.{WriteStream => JWriteStream}
-
-/**
-  * Pumps data from a [[io.vertx.core.streams.ReadStream]] to a [[io.vertx.core.streams.WriteStream]] and performs flow control where necessary to
-  * prevent the write stream buffer from getting overfull.
-  * 
-  * Instances of this class read items from a [[io.vertx.core.streams.ReadStream]] and write them to a [[io.vertx.core.streams.WriteStream]]. If data
-  * can be read faster than it can be written this could result in the write queue of the [[io.vertx.core.streams.WriteStream]] growing
-  * without bound, eventually causing it to exhaust all available RAM.
-  * 
-  * To prevent this, after each write, instances of this class check whether the write queue of the [[io.vertx.core.streams.WriteStream]] is full, and if so, the [[io.vertx.core.streams.ReadStream]] is paused, and a `drainHandler` is set on the
-  * [[io.vertx.core.streams.WriteStream]].
-  * 
-  * When the [[io.vertx.core.streams.WriteStream]] has processed half of its backlog, the `drainHandler` will be
-  * called, which results in the pump resuming the [[io.vertx.core.streams.ReadStream]].
-  * 
-  * This class can be used to pump from any [[io.vertx.core.streams.ReadStream]] to any [[io.vertx.core.streams.WriteStream]],
-  * e.g. from an [[io.vertx.core.http.HttpServerRequest]] to an [[io.vertx.core.file.AsyncFile]],
-  * or from [[io.vertx.core.net.NetSocket]] to a [[io.vertx.core.http.WebSocket]].
-  * 
-  * Please see the documentation for more information.
-  */
-implicit class PumpScala(val asJava: io.vertx.core.streams.Pump) extends AnyVal {
-
-
-}
-
-import io.vertx.core.Handler
-
-/**
-  * Represents a stream of items that can be read from.
-  * 
-  * Any class that implements this interface can be used by a [[io.vertx.core.streams.Pump]] to pump data from it
-  * to a [[io.vertx.core.streams.WriteStream]].
-  */
-implicit class ReadStreamScala[T](val asJava: io.vertx.core.streams.ReadStream[T]) extends AnyVal {
-
-
-}
-
-import io.vertx.core.buffer.Buffer
-import io.vertx.core.streams.{ReadStream => JReadStream}
-import io.vertx.core.streams.ReadStream
-import io.vertx.core.Handler
-
-/**
-  * A helper class which allows you to easily parse protocols which are delimited by a sequence of bytes, or fixed
-  * size records.
-  * 
-  * Instances of this class take as input [[io.vertx.core.buffer.Buffer]] instances containing raw bytes,
-  * and output records.
-  * 
-  * For example, if I had a simple ASCII text protocol delimited by '\n' and the input was the following:
-  * 
-  * <pre>
-  * buffer1:HELLO\nHOW ARE Y
-  * buffer2:OU?\nI AM
-  * buffer3: DOING OK
-  * buffer4:\n
-  * </pre>
-  * Then the output would be:
-  * <pre>
-  * buffer1:HELLO
-  * buffer2:HOW ARE YOU?
-  * buffer3:I AM DOING OK
-  * </pre>
-  * Instances of this class can be changed between delimited mode and fixed size record mode on the fly as
-  * individual records are read, this allows you to parse protocols where, for example, the first 5 records might
-  * all be fixed size (of potentially different sizes), followed by some delimited records, followed by more fixed
-  * size records.
-  * 
-  * Instances of this class can't currently be used for protocols where the text is encoded with something other than
-  * a 1-1 byte-char mapping.
-  * 
-  * Please see the documentation for more information.
-  */
-implicit class RecordParserScala(val asJava: io.vertx.core.parsetools.RecordParser) extends AnyVal {
-
-
-}
 
 
 /**
@@ -6269,48 +5892,12 @@ implicit class RecordParserScala(val asJava: io.vertx.core.parsetools.RecordPars
   }
   
   type RequestOptions = io.vertx.core.http.RequestOptions
+
   object RequestOptions {
     def apply() = new RequestOptions()
-    def apply(json: JsonObject) = new io.vertx.core.http.RequestOptions(json)
+    def apply(json: JsonObject) = new RequestOptions(json)
   }
 
-
-
-/**
-  * A self-signed certificate helper for testing and development purposes.
-  * 
-  * While it helps for testing and development, it should never ever be used in production settings.
-  */
-implicit class SelfSignedCertificateScala(val asJava: io.vertx.core.net.SelfSignedCertificate) extends AnyVal {
-
-
-}
-
-
-/**
-  *
-  * Encapsulates a message being sent from Vert.x. Used with event bus interceptors
-  */
-implicit class SendContextScala[T](val asJava: io.vertx.core.eventbus.SendContext[T]) extends AnyVal {
-
-
-}
-
-import io.vertx.core.buffer.Buffer
-import io.vertx.core.http.{WebSocketFrame => JWebSocketFrame}
-import io.vertx.core.Handler
-import io.vertx.core.http.WebSocketFrame
-
-/**
-  * Represents a server side WebSocket.
-  * 
-  * Instances of this class are passed into a [[io.vertx.core.http.HttpServer#websocketHandler]] or provided
-  * when a WebSocket handshake is manually [[io.vertx.core.http.HttpServerRequest#upgrade]]ed.
-  */
-implicit class ServerWebSocketScala(val asJava: io.vertx.core.http.ServerWebSocket) extends AnyVal {
-
-
-}
 
 import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.shareddata.AsyncMap
@@ -6386,37 +5973,6 @@ implicit class SharedDataScala(val asJava: io.vertx.core.shareddata.SharedData) 
     asJava.getCounter(name, {a:AsyncResult[io.vertx.core.shareddata.Counter] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
-
-}
-
-
-/**
-  * The address of a socket, an inet socket address or a domain socket address.
-  * <p/>
-  * Use [[io.vertx.core.net.SocketAddress#inetSocketAddress]] to create an inet socket address and [[io.vertx.core.net.SocketAddress#domainSocketAddress]]
-  * to create a domain socket address
-  */
-implicit class SocketAddressScala(val asJava: io.vertx.core.net.SocketAddress) extends AnyVal {
-
-
-}
-
-
-/**
-  * Represent a Service-Record (SRV) which was resolved for a domain.
-  */
-implicit class SrvRecordScala(val asJava: io.vertx.core.dns.SrvRecord) extends AnyVal {
-
-
-}
-
-import io.vertx.core.Handler
-
-/**
-  * Base interface for a stream.
-  */
-implicit class StreamBaseScala(val asJava: io.vertx.core.streams.StreamBase) extends AnyVal {
-
 
 }
 
@@ -6721,21 +6277,6 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   }
   
 
-
-import io.vertx.core.Handler
-
-/**
-  * A timeout stream is triggered by a timer, the scala-function will be call when the timer is fired,
-  * it can be once or several times depending on the nature of the timer related to this stream. The
-  *  will be called after the timer handler has been called.
-  * 
-  * Pausing the timer inhibits the timer shots until the stream is resumed. Setting a null handler callback cancels
-  * the timer.
-  */
-implicit class TimeoutStreamScala(val asJava: io.vertx.core.TimeoutStream) extends AnyVal {
-
-
-}
 
 import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.{DeploymentOptions => JDeploymentOptions}
@@ -7106,57 +6647,12 @@ import io.vertx.core.dns.AddressResolverOptions
   }
   
   type VertxOptions = io.vertx.core.VertxOptions
+
   object VertxOptions {
     def apply() = new VertxOptions()
-    def apply(json: JsonObject) = new io.vertx.core.VertxOptions(json)
+    def apply(json: JsonObject) = new VertxOptions(json)
   }
 
-
-import io.vertx.core.buffer.Buffer
-import io.vertx.core.http.{WebSocketFrame => JWebSocketFrame}
-import io.vertx.core.Handler
-import io.vertx.core.http.WebSocketFrame
-
-/**
-  * Represents a client-side WebSocket.
-  */
-implicit class WebSocketScala(val asJava: io.vertx.core.http.WebSocket) extends AnyVal {
-
-
-}
-
-import io.vertx.core.buffer.Buffer
-import io.vertx.core.http.{WebSocketFrame => JWebSocketFrame}
-import io.vertx.core.Handler
-import io.vertx.core.http.WebSocketFrame
-
-/**
-  * Base WebSocket implementation.
-  * 
-  * It implements both  and  so it can be used with
-  * [[io.vertx.core.streams.Pump]] to pump data with flow control.
-  */
-implicit class WebSocketBaseScala(val asJava: io.vertx.core.http.WebSocketBase) extends AnyVal {
-
-
-}
-
-import io.vertx.core.buffer.Buffer
-
-/**
-  * A WebSocket frame that represents either text or binary data.
-  * 
-  * A WebSocket message is composed of one or more WebSocket frames.
-  * 
-  * If there is a just a single frame in the message then a single text or binary frame should be created with final = true.
-  * 
-  * If there are more than one frames in the message, then the first frame should be a text or binary frame with
-  * final = false, followed by one or more continuation frames. The last continuation frame should have final = true.
-  */
-implicit class WebSocketFrameScala(val asJava: io.vertx.core.http.WebSocketFrame) extends AnyVal {
-
-
-}
 
 import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.{Future => JFuture}
@@ -7171,20 +6667,6 @@ import io.vertx.core.Future
   * [[io.vertx.core.Vertx]] but on a separate worker pool.
   */
 implicit class WorkerExecutorScala(val asJava: io.vertx.core.WorkerExecutor) extends AnyVal {
-
-
-}
-
-import io.vertx.core.Handler
-
-/**
-  *
-  * Represents a stream of data that can be written to.
-  * 
-  * Any class that implements this interface can be used by a [[io.vertx.core.streams.Pump]] to pump data from a `ReadStream`
-  * to it.
-  */
-implicit class WriteStreamScala[T](val asJava: io.vertx.core.streams.WriteStream[T]) extends AnyVal {
 
 
 }

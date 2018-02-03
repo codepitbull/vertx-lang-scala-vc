@@ -103,45 +103,12 @@ import io.vertx.ext.bridge.PermittedOptions
   }
   
   type BridgeOptions = io.vertx.ext.web.handler.sockjs.BridgeOptions
+
   object BridgeOptions {
     def apply() = new BridgeOptions()
-    def apply(json: JsonObject) = new io.vertx.ext.web.handler.sockjs.BridgeOptions(json)
+    def apply(json: JsonObject) = new BridgeOptions(json)
   }
 
-
-import io.vertx.core.Vertx
-import io.vertx.core.{Vertx => JVertx}
-
-/**
-  * A session store which stores sessions in a distributed map so they are available across the cluster.
-  */
-implicit class ClusteredSessionStoreScala(val asJava: io.vertx.ext.web.sstore.ClusteredSessionStore) extends AnyVal {
-
-
-}
-
-
-/**
-  * Represents an HTTP Cookie.
-  * 
-  * All cookies must have a name and a value and can optionally have other fields set such as path, domain, etc.
-  * 
-  * (Derived from io.netty.handler.codec.http.Cookie)
-  */
-implicit class CookieScala(val asJava: io.vertx.ext.web.Cookie) extends AnyVal {
-
-
-}
-
-
-/**
-  * Represents a file-upload from an HTTP multipart form submission.
-  * 
-  */
-implicit class FileUploadScala(val asJava: io.vertx.ext.web.FileUpload) extends AnyVal {
-
-
-}
 
 
 
@@ -168,78 +135,12 @@ implicit class FileUploadScala(val asJava: io.vertx.ext.web.FileUpload) extends 
   }
   
   type Http2PushMapping = io.vertx.ext.web.Http2PushMapping
+
   object Http2PushMapping {
     def apply() = new Http2PushMapping()
-    def apply(json: JsonObject) = new io.vertx.ext.web.Http2PushMapping(json)
+    def apply(json: JsonObject) = new Http2PushMapping(json)
   }
 
-
-import io.vertx.ext.web.ParsedHeaderValue
-import io.vertx.ext.web.{ParsedHeaderValue => JParsedHeaderValue}
-
-/**
-  * A parsed language header.
-  * Delivers a more direct access to the individual elements of the header it represents
-  */
-implicit class LanguageHeaderScala(val asJava: io.vertx.ext.web.LanguageHeader) extends AnyVal {
-
-
-}
-
-import io.vertx.core.Vertx
-import io.vertx.core.{Vertx => JVertx}
-
-/**
-  * A session store which is only available on a single node.
-  * 
-  * Can be used when sticky sessions are being used.
-  */
-implicit class LocalSessionStoreScala(val asJava: io.vertx.ext.web.sstore.LocalSessionStore) extends AnyVal {
-
-
-}
-
-
-/**
-  */
-implicit class LocaleScala(val asJava: io.vertx.ext.web.Locale) extends AnyVal {
-
-
-}
-
-import io.vertx.ext.web.ParsedHeaderValue
-import io.vertx.ext.web.{ParsedHeaderValue => JParsedHeaderValue}
-
-implicit class MIMEHeaderScala(val asJava: io.vertx.ext.web.MIMEHeader) extends AnyVal {
-
-
-}
-
-import io.vertx.ext.web.ParsedHeaderValue
-import io.vertx.ext.web.{ParsedHeaderValue => JParsedHeaderValue}
-
-implicit class ParsedHeaderValueScala(val asJava: io.vertx.ext.web.ParsedHeaderValue) extends AnyVal {
-
-
-}
-
-
-/**
-  * A container with the request's headers that are meaningful enough to be parsed
-  * Contains:
-  * <ul>
-  * <li>Accept -> MIME header, parameters and sortable</li>
-  * <li>Accept-Charset -> Parameters and sortable</li>
-  * <li>Accept-Encoding -> Parameters and sortable</li>
-  * <li>Accept-Language -> Parameters and sortable</li>
-  * <li>Content-Type -> MIME header and parameters</li>
-  * </ul>
-  *
-  */
-implicit class ParsedHeaderValuesScala(val asJava: io.vertx.ext.web.ParsedHeaderValues) extends AnyVal {
-
-
-}
 
 import io.vertx.core.json.JsonObject
 
@@ -277,96 +178,12 @@ import io.vertx.core.json.JsonObject
   }
   
   type PermittedOptions = io.vertx.ext.web.handler.sockjs.PermittedOptions
+
   object PermittedOptions {
     def apply() = new PermittedOptions()
-    def apply(json: JsonObject) = new io.vertx.ext.web.handler.sockjs.PermittedOptions(json)
+    def apply(json: JsonObject) = new PermittedOptions(json)
   }
 
-
-import io.vertx.ext.web.{RoutingContext => JRoutingContext}
-import io.vertx.core.http.HttpMethod
-import io.vertx.ext.web.RoutingContext
-import io.vertx.core.Handler
-import scala.collection.JavaConverters._
-
-/**
-  * A route is a holder for a set of criteria which determine whether an HTTP request or failure should be routed
-  * to a handler.
-  */
-implicit class RouteScala(val asJava: io.vertx.ext.web.Route) extends AnyVal {
-
-
-}
-
-import io.vertx.core.http.HttpServerRequest
-import io.vertx.core.http.{HttpServerRequest => JHttpServerRequest}
-import io.vertx.ext.web.{RoutingContext => JRoutingContext}
-import io.vertx.core.http.HttpMethod
-import io.vertx.core.Vertx
-import io.vertx.ext.web.Router
-import io.vertx.ext.web.RoutingContext
-import io.vertx.core.Handler
-import io.vertx.ext.web.{Router => JRouter}
-import io.vertx.core.{Vertx => JVertx}
-
-/**
-  * A router receives request from an [[io.vertx.core.http.HttpServer]] and routes it to the first matching
-  * [[io.vertx.ext.web.Route]] that it contains. A router can contain many routes.
-  * 
-  * Routers are also used for routing failures.
-  */
-implicit class RouterScala(val asJava: io.vertx.ext.web.Router) extends AnyVal {
-
-
-}
-
-import io.vertx.ext.web.Cookie
-import io.vertx.ext.web.{Cookie => JCookie}
-import io.vertx.ext.web.Session
-import io.vertx.ext.auth.User
-import io.vertx.core.buffer.Buffer
-import io.vertx.core.http.HttpMethod
-import io.vertx.ext.auth.{User => JUser}
-import io.vertx.ext.web.{Session => JSession}
-import io.vertx.core.Handler
-
-/**
-  * Represents the context for the handling of a request in Vert.x-Web.
-  * 
-  * A new instance is created for each HTTP request that is received in the
-  * [[io.vertx.ext.web.Router#accept]] of the router.
-  * 
-  * The same instance is passed to any matching request or failure handlers during the routing of the request or
-  * failure.
-  * 
-  * The context provides access to the  and 
-  * and allows you to maintain arbitrary data that lives for the lifetime of the context. Contexts are discarded once they
-  * have been routed to the handler for the request.
-  * 
-  * The context also provides access to the [[io.vertx.ext.web.Session]], cookies and body for the request, given the correct handlers
-  * in the application.
-  */
-implicit class RoutingContextScala(val asJava: io.vertx.ext.web.RoutingContext) extends AnyVal {
-
-
-}
-
-
-/**
-  * Represents a browser session.
-  * 
-  * Sessions persist between HTTP requests for a single browser session. They are deleted when the browser is closed, or
-  * they time-out. Session cookies are used to maintain sessions using a secure UUID.
-  * 
-  * Sessions can be used to maintain data for a browser session, e.g. a shopping basket.
-  * 
-  * The context must have first been routed to a [[io.vertx.ext.web.handler.SessionHandler]]
-  * for sessions to be available.
-  */
-implicit class SessionScala(val asJava: io.vertx.ext.web.Session) extends AnyVal {
-
-
-}
 
 import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.ext.web.Session
@@ -473,28 +290,12 @@ implicit class SessionStoreScala(val asJava: io.vertx.ext.web.sstore.SessionStor
   }
   
   type SockJSHandlerOptions = io.vertx.ext.web.handler.sockjs.SockJSHandlerOptions
+
   object SockJSHandlerOptions {
     def apply() = new SockJSHandlerOptions()
-    def apply(json: JsonObject) = new io.vertx.ext.web.handler.sockjs.SockJSHandlerOptions(json)
+    def apply(json: JsonObject) = new SockJSHandlerOptions(json)
   }
 
-
-import io.vertx.core.buffer.Buffer
-import io.vertx.core.Handler
-
-/**
-  *
-  * You interact with SockJS clients through instances of SockJS socket.
-  * 
-  * The API is very similar to [[io.vertx.core.http.WebSocket]].
-  * It implements both  and 
-  * so it can be used with
-  * [[io.vertx.core.streams.Pump]] to pump data with flow control.
-  */
-implicit class SockJSSocketScala(val asJava: io.vertx.ext.web.handler.sockjs.SockJSSocket) extends AnyVal {
-
-
-}
 
 import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.ext.web.{RoutingContext => JRoutingContext}

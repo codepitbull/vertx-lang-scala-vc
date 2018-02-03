@@ -51,7 +51,7 @@ package object @{moduleName}{\n
 @includeNamed{'scala-methods.templ'}
 @if{type.kind == CLASS_DATA_OBJECT}
 @includeNamed{'implicit_dataobject.templ'}
-@else{!type.name.contains('Handler')}
+@else{!type.name.contains('Handler') && findFutureMethods(instanceMethods).size > 0}
 @includeNamed{'class.templ'}
 @end{}
 

@@ -158,32 +158,6 @@ implicit class CollectionTCKScala(val asJava: io.vertx.codegen.testmodel.Collect
 
 }
 
-import io.vertx.codegen.testmodel.DataObjectWithMaps
-import io.vertx.codegen.testmodel.DataObjectWithRecursion
-import io.vertx.codegen.testmodel.DataObjectWithOnlyJsonObjectConstructor
-import io.vertx.codegen.testmodel.{DataObjectWithValues => JDataObjectWithValues}
-import io.vertx.codegen.testmodel.{DataObjectWithRecursion => JDataObjectWithRecursion}
-import io.vertx.codegen.testmodel.DataObjectWithListAdders
-import io.vertx.codegen.testmodel.{DataObjectWithListAdders => JDataObjectWithListAdders}
-import io.vertx.codegen.testmodel.{DataObjectWithMapAdders => JDataObjectWithMapAdders}
-import io.vertx.codegen.testmodel.{DataObjectWithOnlyJsonObjectConstructor => JDataObjectWithOnlyJsonObjectConstructor}
-import io.vertx.codegen.testmodel.DataObjectWithNestedBuffer
-import io.vertx.codegen.testmodel.DataObjectWithValues
-import io.vertx.codegen.testmodel.DataObjectWithMapAdders
-import io.vertx.codegen.testmodel.{DataObjectWithLists => JDataObjectWithLists}
-import io.vertx.codegen.testmodel.{DataObjectWithMaps => JDataObjectWithMaps}
-import io.vertx.codegen.testmodel.DataObjectWithLists
-import io.vertx.codegen.testmodel.{DataObjectWithNestedBuffer => JDataObjectWithNestedBuffer}
-
-/**
-  * todo:
-  * - Buffer support
-  */
-implicit class DataObjectTCKScala(val asJava: io.vertx.codegen.testmodel.DataObjectTCK) extends AnyVal {
-
-
-}
-
 import io.vertx.core.buffer.Buffer
 
 /**
@@ -200,9 +174,10 @@ import io.vertx.core.buffer.Buffer
   }
   
   type DataObjectWithBuffer = io.vertx.codegen.testmodel.DataObjectWithBuffer
+
   object DataObjectWithBuffer {
     def apply() = new DataObjectWithBuffer()
-    def apply(json: JsonObject) = new io.vertx.codegen.testmodel.DataObjectWithBuffer(json)
+    def apply(json: JsonObject) = new DataObjectWithBuffer(json)
   }
 
 
@@ -257,9 +232,10 @@ import io.vertx.codegen.testmodel.TestGenEnum
   }
   
   type DataObjectWithListAdders = io.vertx.codegen.testmodel.DataObjectWithListAdders
+
   object DataObjectWithListAdders {
     def apply() = new DataObjectWithListAdders()
-    def apply(json: JsonObject) = new io.vertx.codegen.testmodel.DataObjectWithListAdders(json)
+    def apply(json: JsonObject) = new DataObjectWithListAdders(json)
   }
 
 
@@ -314,9 +290,10 @@ import io.vertx.codegen.testmodel.TestGenEnum
   }
   
   type DataObjectWithLists = io.vertx.codegen.testmodel.DataObjectWithLists
+
   object DataObjectWithLists {
     def apply() = new DataObjectWithLists()
-    def apply(json: JsonObject) = new io.vertx.codegen.testmodel.DataObjectWithLists(json)
+    def apply(json: JsonObject) = new DataObjectWithLists(json)
   }
 
 
@@ -371,9 +348,10 @@ import io.vertx.codegen.testmodel.TestGenEnum
   }
   
   type DataObjectWithMapAdders = io.vertx.codegen.testmodel.DataObjectWithMapAdders
+
   object DataObjectWithMapAdders {
     def apply() = new DataObjectWithMapAdders()
-    def apply(json: JsonObject) = new io.vertx.codegen.testmodel.DataObjectWithMapAdders(json)
+    def apply(json: JsonObject) = new DataObjectWithMapAdders(json)
   }
 
 
@@ -428,9 +406,10 @@ import io.vertx.codegen.testmodel.TestGenEnum
   }
   
   type DataObjectWithMaps = io.vertx.codegen.testmodel.DataObjectWithMaps
+
   object DataObjectWithMaps {
     def apply() = new DataObjectWithMaps()
-    def apply(json: JsonObject) = new io.vertx.codegen.testmodel.DataObjectWithMaps(json)
+    def apply(json: JsonObject) = new DataObjectWithMaps(json)
   }
 
 
@@ -464,9 +443,10 @@ import io.vertx.codegen.testmodel.{DataObjectWithBuffer => JDataObjectWithBuffer
   }
   
   type DataObjectWithNestedBuffer = io.vertx.codegen.testmodel.DataObjectWithNestedBuffer
+
   object DataObjectWithNestedBuffer {
     def apply() = new DataObjectWithNestedBuffer()
-    def apply(json: JsonObject) = new io.vertx.codegen.testmodel.DataObjectWithNestedBuffer(json)
+    def apply(json: JsonObject) = new DataObjectWithNestedBuffer(json)
   }
 
 
@@ -479,8 +459,9 @@ import io.vertx.codegen.testmodel.{DataObjectWithBuffer => JDataObjectWithBuffer
   }
   
   type DataObjectWithOnlyJsonObjectConstructor = io.vertx.codegen.testmodel.DataObjectWithOnlyJsonObjectConstructor
+
   object DataObjectWithOnlyJsonObjectConstructor {
-        def apply(json: JsonObject) = new io.vertx.codegen.testmodel.DataObjectWithOnlyJsonObjectConstructor(json)
+        def apply(json: JsonObject) = new DataObjectWithOnlyJsonObjectConstructor(json)
   }
 
 
@@ -507,8 +488,9 @@ import io.vertx.codegen.testmodel.{DataObjectWithRecursion => JDataObjectWithRec
   }
   
   type DataObjectWithRecursion = io.vertx.codegen.testmodel.DataObjectWithRecursion
+
   object DataObjectWithRecursion {
-        def apply(json: JsonObject) = new io.vertx.codegen.testmodel.DataObjectWithRecursion(json)
+        def apply(json: JsonObject) = new DataObjectWithRecursion(json)
   }
 
 
@@ -581,48 +563,12 @@ import io.vertx.codegen.testmodel.TestGenEnum
   }
   
   type DataObjectWithValues = io.vertx.codegen.testmodel.DataObjectWithValues
+
   object DataObjectWithValues {
     def apply() = new DataObjectWithValues()
-    def apply(json: JsonObject) = new io.vertx.codegen.testmodel.DataObjectWithValues(json)
+    def apply(json: JsonObject) = new DataObjectWithValues(json)
   }
 
-
-import io.vertx.codegen.testmodel.{RefedInterface1 => JRefedInterface1}
-import io.vertx.core.Handler
-import io.vertx.codegen.testmodel.RefedInterface1
-
-/**
-  */
-implicit class FactoryScala(val asJava: io.vertx.codegen.testmodel.Factory) extends AnyVal {
-
-
-}
-
-import io.vertx.codegen.testmodel.{RefedInterface1 => JRefedInterface1}
-import io.vertx.codegen.testmodel.RefedInterface1
-
-/**
-  */
-implicit class FunctionParamTCKScala(val asJava: io.vertx.codegen.testmodel.FunctionParamTCK) extends AnyVal {
-
-
-}
-
-
-/**
-  */
-implicit class GenericNullableRefedInterfaceScala[T](val asJava: io.vertx.codegen.testmodel.GenericNullableRefedInterface[T]) extends AnyVal {
-
-
-}
-
-
-/**
-  */
-implicit class GenericRefedInterfaceScala[T](val asJava: io.vertx.codegen.testmodel.GenericRefedInterface[T]) extends AnyVal {
-
-
-}
 
 import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.codegen.testmodel.{GenericNullableRefedInterface => JGenericNullableRefedInterface}
@@ -752,32 +698,6 @@ implicit class GenericsTCKScala(val asJava: io.vertx.codegen.testmodel.GenericsT
     asJava.methodWithHandlerAsyncResultParamInfered[T](param, {a:AsyncResult[io.vertx.codegen.testmodel.GenericRefedInterface[T]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
-
-}
-
-import io.vertx.codegen.testmodel.{RefedInterface1 => JRefedInterface1}
-import io.vertx.codegen.testmodel.RefedInterface1
-
-/**
-  */
-implicit class InterfaceWithApiArgScala(val asJava: io.vertx.codegen.testmodel.InterfaceWithApiArg) extends AnyVal {
-
-
-}
-
-
-/**
-  */
-implicit class InterfaceWithStringArgScala(val asJava: io.vertx.codegen.testmodel.InterfaceWithStringArg) extends AnyVal {
-
-
-}
-
-
-/**
-  */
-implicit class InterfaceWithVariableArgScala[T, U](val asJava: io.vertx.codegen.testmodel.InterfaceWithVariableArg[T, U]) extends AnyVal {
-
 
 }
 
@@ -1399,38 +1319,6 @@ implicit class NullableTCKScala(val asJava: io.vertx.codegen.testmodel.NullableT
 
 /**
   */
-implicit class RefedInterface1Scala(val asJava: io.vertx.codegen.testmodel.RefedInterface1) extends AnyVal {
-
-
-}
-
-
-/**
-  */
-implicit class RefedInterface2Scala(val asJava: io.vertx.codegen.testmodel.RefedInterface2) extends AnyVal {
-
-
-}
-
-
-/**
-  */
-implicit class SuperInterface1Scala(val asJava: io.vertx.codegen.testmodel.SuperInterface1) extends AnyVal {
-
-
-}
-
-
-/**
-  */
-implicit class SuperInterface2Scala(val asJava: io.vertx.codegen.testmodel.SuperInterface2) extends AnyVal {
-
-
-}
-
-
-/**
-  */
 
   implicit class TestDataObjectScala(val asJava: io.vertx.codegen.testmodel.TestDataObject) extends AnyVal {
 
@@ -1455,9 +1343,10 @@ implicit class SuperInterface2Scala(val asJava: io.vertx.codegen.testmodel.Super
   }
   
   type TestDataObject = io.vertx.codegen.testmodel.TestDataObject
+
   object TestDataObject {
     def apply() = new TestDataObject()
-    def apply(json: JsonObject) = new io.vertx.codegen.testmodel.TestDataObject(json)
+    def apply(json: JsonObject) = new TestDataObject(json)
   }
 
 
