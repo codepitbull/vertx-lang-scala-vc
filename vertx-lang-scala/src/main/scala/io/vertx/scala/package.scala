@@ -303,6 +303,28 @@ import io.vertx.core.Future
    */
   implicit class ContextScala(val asJava: io.vertx.core.Context) extends AnyVal {
 
+  /**
+    * Safely execute some blocking code.
+    *
+    * Executes the blocking code in the handler `blockingCodeHandler` using a thread from the worker pool.
+    *
+    * When the code is complete the returned Future will be completed with the result.
+    *
+    * @param blockingFunction function containing blocking code
+    * @param ordered if true then if executeBlocking is called several times on the same context, the executions for that context will be executed serially, not in parallel. if false then they will be no ordering guarantees
+    * @return a Future representing the result of the blocking operation
+    */
+  def executeBlockingFuture[T](blockingFunction: () => T, ordered: Boolean = true): concurrent.Future[T] = {
+    val promise = concurrent.Promise[T]
+    val h: Handler[io.vertx.core.Future[T]] = {f => util.Try(blockingFunction()) match {
+      case util.Success(s) => f.complete(s)
+      case util.Failure(t) => f.fail(t)
+    }}
+    asJava.executeBlocking[T](h, ordered, {h:AsyncResult[T] => {if (h.succeeded()) promise.success(h.result()) else promise.failure(h.cause());()} })
+    promise.future
+  }
+
+
   }
 
   type CopyOptions = io.vertx.core.file.CopyOptions
@@ -1807,6 +1829,27 @@ import io.vertx.core.Handler
     asJava.asInstanceOf[JVertx].deployVerticle(verticle.asJava(), options, promiseAndHandler._1)
     promiseAndHandler._2.future
   }
+  /**
+    * Safely execute some blocking code.
+    *
+    * Executes the blocking code in the handler `blockingCodeHandler` using a thread from the worker pool.
+    *
+    * When the code is complete the returned Future will be completed with the result.
+    *
+    * @param blockingFunction function containing blocking code
+    * @param ordered if true then if executeBlocking is called several times on the same context, the executions for that context will be executed serially, not in parallel. if false then they will be no ordering guarantees
+    * @return a Future representing the result of the blocking operation
+    */
+  def executeBlockingFuture[T](blockingFunction: () => T, ordered: Boolean = true): concurrent.Future[T] = {
+    val promise = concurrent.Promise[T]
+    val h: Handler[io.vertx.core.Future[T]] = {f => util.Try(blockingFunction()) match {
+      case util.Success(s) => f.complete(s)
+      case util.Failure(t) => f.fail(t)
+    }}
+    asJava.executeBlocking[T](h, ordered, {h:AsyncResult[T] => {if (h.succeeded()) promise.success(h.result()) else promise.failure(h.cause());()} })
+    promise.future
+  }
+
 
     /**
      * Like [[close]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
@@ -1867,6 +1910,28 @@ import io.vertx.core.Future
    * [[io.vertx.core.Vertx]] but on a separate worker pool.
    */
   implicit class WorkerExecutorScala(val asJava: io.vertx.core.WorkerExecutor) extends AnyVal {
+
+  /**
+    * Safely execute some blocking code.
+    *
+    * Executes the blocking code in the handler `blockingCodeHandler` using a thread from the worker pool.
+    *
+    * When the code is complete the returned Future will be completed with the result.
+    *
+    * @param blockingFunction function containing blocking code
+    * @param ordered if true then if executeBlocking is called several times on the same context, the executions for that context will be executed serially, not in parallel. if false then they will be no ordering guarantees
+    * @return a Future representing the result of the blocking operation
+    */
+  def executeBlockingFuture[T](blockingFunction: () => T, ordered: Boolean = true): concurrent.Future[T] = {
+    val promise = concurrent.Promise[T]
+    val h: Handler[io.vertx.core.Future[T]] = {f => util.Try(blockingFunction()) match {
+      case util.Success(s) => f.complete(s)
+      case util.Failure(t) => f.fail(t)
+    }}
+    asJava.executeBlocking[T](h, ordered, {h:AsyncResult[T] => {if (h.succeeded()) promise.success(h.result()) else promise.failure(h.cause());()} })
+    promise.future
+  }
+
 
   }
 

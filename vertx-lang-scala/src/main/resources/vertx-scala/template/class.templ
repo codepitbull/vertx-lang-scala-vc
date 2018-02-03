@@ -34,6 +34,15 @@ import @{importedType}\n
 @if{className == 'Vertx'}
 \n
 @includeNamed{'extensions/Vertx.templ'}
+@includeNamed{'executeblocking.templ'}
+@end{}
+@if{className == 'Context'}
+\n
+@includeNamed{'executeblocking.templ'}
+@end{}
+@if{className == 'WorkerExecutor'}
+\n
+@includeNamed{'executeblocking.templ'}
 @end{}
 \n
 
