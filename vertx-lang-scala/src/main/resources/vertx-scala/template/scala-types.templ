@@ -124,7 +124,7 @@
     } else if (type.kind.basic) {
       return typeNameForBasicJava(type);
     } else if (type.kind == CLASS_DATA_OBJECT) {
-      return 'J'+type.simpleName;
+      return helper.getNonGenericType(type);
     } else if (type.kind == CLASS_LIST){
         var ret = 'List';
         if (!type.args.isEmpty)
@@ -165,7 +165,7 @@
         ret += '[_]';
       return ret;
     } else if (type.kind == CLASS_API) {
-      ret = 'J' + helper.getNonGenericType(type.simpleName);
+      ret = helper.getNonGenericType(type.name);
       if(type.isParameterized()) {
         if (type.args.empty) {
           ret += '[_]';
@@ -225,7 +225,7 @@
     } else if (type.kind.basic) {
       return typeNameForBasicJava(type);
     } else if (type.kind == CLASS_DATA_OBJECT) {
-      return 'J'+type.simpleName;
+      return helper.getNonGenericType(type);
     } else if (type.kind == CLASS_LIST){
         var ret = 'java.util.List';
         if (!type.args.isEmpty)
@@ -266,7 +266,7 @@
         ret += '[_]';
       return ret;
     } else if (type.kind == CLASS_API) {
-      ret = 'J' + helper.getNonGenericType(type.simpleName);
+      ret = helper.getNonGenericType(type.name);
       if(type.isParameterized()) {
         if (type.args.empty) {
           ret += '[_]';
@@ -320,7 +320,7 @@
     } else if (type.kind.basic) {
       conversion = '';
     } else if (type.kind == CLASS_DATA_OBJECT) {
-      conversion = '.asJava';
+      conversion = '';
     } else if (type.kind == CLASS_LIST){
       conversion = '';
     } else if (type.kind == CLASS_SET){
@@ -422,7 +422,7 @@
     } else if (type.kind.basic) {
       return typeNameForBasicJava(type);
     } else if (type.kind == CLASS_DATA_OBJECT) {
-      return 'J'+type.simpleName;
+      return helper.getNonGenericType(type);
     } else if (type.kind == CLASS_LIST){
         var ret = 'java.util.List';
         if (!type.args.isEmpty)
@@ -456,7 +456,7 @@
                type.name == 'io.vertx.core.buffer.Buffer'){
       return type.name;
     } else if (type.kind == CLASS_API) {
-      ret = 'J' + helper.getNonGenericType(type.simpleName);
+      ret = helper.getNonGenericType(type.name);
       if(type.isParameterized()) {
         if (type.args.empty) {
           ret += '[_]';

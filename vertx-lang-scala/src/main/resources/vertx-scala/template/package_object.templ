@@ -25,6 +25,8 @@ package @{modulePackage}\n
 
 import scala.collection.JavaConverters._\n
 import scala.compat.java8.FunctionConverters._\n
+import io.vertx.core.json.JsonObject\n
+import io.vertx.core.json.JsonArray\n
 import io.vertx.lang.scala.HandlerOps._\n
 import scala.reflect.runtime.universe._\n
 import scala.concurrent.Promise\n
@@ -47,10 +49,9 @@ package object @{moduleName}{\n
 @includeNamed{'scala-imports.templ'}
 @includeNamed{'scala-types.templ'}
 @includeNamed{'scala-methods.templ'}
-
 @if{type.kind == CLASS_DATA_OBJECT}
 @includeNamed{'implicit_dataobject.templ'}
-@else{}
+@else{!type.name.contains('Handler')}
 @includeNamed{'class.templ'}
 @end{}
 

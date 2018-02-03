@@ -14,8 +14,7 @@ import @{importedType}\n
 @{renderDoc("  *", doc, renderDocLink)}
   */\n
 @end{}
-	implicit class @{className}Scala@{assembleTypeParams(typeParams, true)}(val asJava: J@{className}@{assembleTypeParams(typeParams, true)}) extends AnyVal {\n
-
+	implicit class @{className}Scala@{assembleTypeParams(typeParams, true)}(val asJava: @{helper.getNonGenericType(type)}@{assembleTypeParams(typeParams, true)}) extends AnyVal {\n
 @code{
   var classes = new java.util.ArrayList();
   var abstractClasses = new java.util.ArrayList();

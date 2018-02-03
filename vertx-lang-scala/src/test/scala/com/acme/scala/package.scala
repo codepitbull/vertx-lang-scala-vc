@@ -17,6 +17,8 @@
 package com.acme.scala
 import scala.collection.JavaConverters._
 import scala.compat.java8.FunctionConverters._
+import io.vertx.core.json.JsonObject
+import io.vertx.core.json.JsonArray
 import io.vertx.lang.scala.HandlerOps._
 import scala.reflect.runtime.universe._
 import scala.concurrent.Promise
@@ -24,25 +26,18 @@ import scala.concurrent.Promise
 package object pkg{
 
 
-import com.acme.pkg.sub.{SubInterface => JSubInterface}
-import com.acme.pkg.MyInterface
-import com.acme.pkg.{MyInterface => JMyInterface}
-import io.vertx.codegen.testmodel.{TestInterface => JTestInterface}
-import com.acme.pkg.sub.SubInterface
-import io.vertx.codegen.testmodel.TestInterface
 
 /**
   */
-implicit class MyInterfaceScala(val asJava: JMyInterface) extends AnyVal {
+implicit class MyInterfaceScala(val asJava: com.acme.pkg.MyInterface) extends AnyVal {
 
 
 }
 
-import com.acme.pkg.sub.{SubInterface => JSubInterface}
 
 /**
   */
-implicit class SubInterfaceScala(val asJava: JSubInterface) extends AnyVal {
+implicit class SubInterfaceScala(val asJava: com.acme.pkg.sub.SubInterface) extends AnyVal {
 
 
 }

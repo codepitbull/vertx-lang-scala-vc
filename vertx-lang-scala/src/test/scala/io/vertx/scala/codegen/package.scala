@@ -17,6 +17,8 @@
 package io.vertx.scala.codegen
 import scala.collection.JavaConverters._
 import scala.compat.java8.FunctionConverters._
+import io.vertx.core.json.JsonObject
+import io.vertx.core.json.JsonArray
 import io.vertx.lang.scala.HandlerOps._
 import scala.reflect.runtime.universe._
 import scala.concurrent.Promise
@@ -24,36 +26,14 @@ import scala.concurrent.Promise
 package object testmodel{
 
 
-import io.vertx.codegen.testmodel.{AbstractHandlerUserType => JAbstractHandlerUserType}
-import io.vertx.codegen.testmodel.{RefedInterface1 => JRefedInterface1}
-import io.vertx.core.Handler
-import io.vertx.codegen.testmodel.RefedInterface1
-
-/**
-  */
-implicit class AbstractHandlerUserTypeScala(val asJava: JAbstractHandlerUserType) extends AnyVal {
-
-
-}
-
 import io.vertx.lang.scala.AsyncResultWrapper
-import io.vertx.codegen.testmodel.{RefedInterface1 => JRefedInterface1}
-import io.vertx.codegen.testmodel.TestDataObject
-import scala.collection.JavaConverters._
-import io.vertx.codegen.testmodel.RefedInterface1
-import io.vertx.codegen.testmodel.{CollectionTCK => JCollectionTCK}
-import io.vertx.codegen.testmodel.RefedInterface2
-import io.vertx.core.json.JsonArray
-import io.vertx.codegen.testmodel.TestEnum
-import io.vertx.codegen.testmodel.{TestDataObject => JTestDataObject}
-import io.vertx.core.json.JsonObject
 import io.vertx.core.AsyncResult
-import io.vertx.codegen.testmodel.{RefedInterface2 => JRefedInterface2}
+import scala.collection.JavaConverters._
 import io.vertx.core.Handler
 
 /**
   */
-implicit class CollectionTCKScala(val asJava: JCollectionTCK) extends AnyVal {
+implicit class CollectionTCKScala(val asJava: io.vertx.codegen.testmodel.CollectionTCK) extends AnyVal {
 
 
   def methodWithHandlerAsyncResultListStringFuture(): scala.concurrent.Future[java.util.List[String]] = {
@@ -80,14 +60,14 @@ implicit class CollectionTCKScala(val asJava: JCollectionTCK) extends AnyVal {
     promise.future
   }
 
-  def methodWithHandlerAsyncResultListVertxGenFuture(): scala.concurrent.Future[java.util.List[JRefedInterface1]] = {
-    val promise = Promise[java.util.List[JRefedInterface1]]()
+  def methodWithHandlerAsyncResultListVertxGenFuture(): scala.concurrent.Future[java.util.List[io.vertx.codegen.testmodel.RefedInterface1]] = {
+    val promise = Promise[java.util.List[io.vertx.codegen.testmodel.RefedInterface1]]()
     asJava.methodWithHandlerAsyncResultListVertxGen({a:AsyncResult[java.util.List[io.vertx.codegen.testmodel.RefedInterface1]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
-  def methodWithHandlerAsyncResultListAbstractVertxGenFuture(): scala.concurrent.Future[java.util.List[JRefedInterface2]] = {
-    val promise = Promise[java.util.List[JRefedInterface2]]()
+  def methodWithHandlerAsyncResultListAbstractVertxGenFuture(): scala.concurrent.Future[java.util.List[io.vertx.codegen.testmodel.RefedInterface2]] = {
+    val promise = Promise[java.util.List[io.vertx.codegen.testmodel.RefedInterface2]]()
     asJava.methodWithHandlerAsyncResultListAbstractVertxGen({a:AsyncResult[java.util.List[io.vertx.codegen.testmodel.RefedInterface2]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -116,8 +96,8 @@ implicit class CollectionTCKScala(val asJava: JCollectionTCK) extends AnyVal {
     promise.future
   }
 
-  def methodWithHandlerAsyncResultListDataObjectFuture(): scala.concurrent.Future[java.util.List[JTestDataObject]] = {
-    val promise = Promise[java.util.List[JTestDataObject]]()
+  def methodWithHandlerAsyncResultListDataObjectFuture(): scala.concurrent.Future[java.util.List[io.vertx.codegen.testmodel.TestDataObject]] = {
+    val promise = Promise[java.util.List[io.vertx.codegen.testmodel.TestDataObject]]()
     asJava.methodWithHandlerAsyncResultListDataObject({a:AsyncResult[java.util.List[io.vertx.codegen.testmodel.TestDataObject]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -128,14 +108,14 @@ implicit class CollectionTCKScala(val asJava: JCollectionTCK) extends AnyVal {
     promise.future
   }
 
-  def methodWithHandlerAsyncResultSetVertxGenFuture(): scala.concurrent.Future[java.util.Set[JRefedInterface1]] = {
-    val promise = Promise[java.util.Set[JRefedInterface1]]()
+  def methodWithHandlerAsyncResultSetVertxGenFuture(): scala.concurrent.Future[java.util.Set[io.vertx.codegen.testmodel.RefedInterface1]] = {
+    val promise = Promise[java.util.Set[io.vertx.codegen.testmodel.RefedInterface1]]()
     asJava.methodWithHandlerAsyncResultSetVertxGen({a:AsyncResult[java.util.Set[io.vertx.codegen.testmodel.RefedInterface1]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
-  def methodWithHandlerAsyncResultSetAbstractVertxGenFuture(): scala.concurrent.Future[java.util.Set[JRefedInterface2]] = {
-    val promise = Promise[java.util.Set[JRefedInterface2]]()
+  def methodWithHandlerAsyncResultSetAbstractVertxGenFuture(): scala.concurrent.Future[java.util.Set[io.vertx.codegen.testmodel.RefedInterface2]] = {
+    val promise = Promise[java.util.Set[io.vertx.codegen.testmodel.RefedInterface2]]()
     asJava.methodWithHandlerAsyncResultSetAbstractVertxGen({a:AsyncResult[java.util.Set[io.vertx.codegen.testmodel.RefedInterface2]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -164,8 +144,8 @@ implicit class CollectionTCKScala(val asJava: JCollectionTCK) extends AnyVal {
     promise.future
   }
 
-  def methodWithHandlerAsyncResultSetDataObjectFuture(): scala.concurrent.Future[java.util.Set[JTestDataObject]] = {
-    val promise = Promise[java.util.Set[JTestDataObject]]()
+  def methodWithHandlerAsyncResultSetDataObjectFuture(): scala.concurrent.Future[java.util.Set[io.vertx.codegen.testmodel.TestDataObject]] = {
+    val promise = Promise[java.util.Set[io.vertx.codegen.testmodel.TestDataObject]]()
     asJava.methodWithHandlerAsyncResultSetDataObject({a:AsyncResult[java.util.Set[io.vertx.codegen.testmodel.TestDataObject]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -178,46 +158,20 @@ implicit class CollectionTCKScala(val asJava: JCollectionTCK) extends AnyVal {
 
 }
 
-import io.vertx.codegen.testmodel.{ConcreteHandlerUserType => JConcreteHandlerUserType}
-import io.vertx.codegen.testmodel.{RefedInterface1 => JRefedInterface1}
-import io.vertx.core.Handler
-import io.vertx.codegen.testmodel.RefedInterface1
-
-/**
-  */
-implicit class ConcreteHandlerUserTypeScala(val asJava: JConcreteHandlerUserType) extends AnyVal {
-
-
-}
-
-import io.vertx.codegen.testmodel.{ConcreteHandlerUserType => JConcreteHandlerUserType}
-import io.vertx.codegen.testmodel.{RefedInterface1 => JRefedInterface1}
-import io.vertx.codegen.testmodel.{ConcreteHandlerUserTypeExtension => JConcreteHandlerUserTypeExtension}
-import io.vertx.codegen.testmodel.RefedInterface1
-import io.vertx.codegen.testmodel.ConcreteHandlerUserType
-
-/**
-  */
-implicit class ConcreteHandlerUserTypeExtensionScala(val asJava: JConcreteHandlerUserTypeExtension) extends AnyVal {
-
-
-}
-
 import io.vertx.codegen.testmodel.DataObjectWithMaps
 import io.vertx.codegen.testmodel.DataObjectWithRecursion
 import io.vertx.codegen.testmodel.DataObjectWithOnlyJsonObjectConstructor
 import io.vertx.codegen.testmodel.{DataObjectWithValues => JDataObjectWithValues}
 import io.vertx.codegen.testmodel.{DataObjectWithRecursion => JDataObjectWithRecursion}
 import io.vertx.codegen.testmodel.DataObjectWithListAdders
-import io.vertx.codegen.testmodel.{DataObjectWithMapAdders => JDataObjectWithMapAdders}
 import io.vertx.codegen.testmodel.{DataObjectWithListAdders => JDataObjectWithListAdders}
+import io.vertx.codegen.testmodel.{DataObjectWithMapAdders => JDataObjectWithMapAdders}
 import io.vertx.codegen.testmodel.{DataObjectWithOnlyJsonObjectConstructor => JDataObjectWithOnlyJsonObjectConstructor}
 import io.vertx.codegen.testmodel.DataObjectWithNestedBuffer
-import io.vertx.codegen.testmodel.{DataObjectTCK => JDataObjectTCK}
 import io.vertx.codegen.testmodel.DataObjectWithValues
 import io.vertx.codegen.testmodel.DataObjectWithMapAdders
-import io.vertx.codegen.testmodel.{DataObjectWithMaps => JDataObjectWithMaps}
 import io.vertx.codegen.testmodel.{DataObjectWithLists => JDataObjectWithLists}
+import io.vertx.codegen.testmodel.{DataObjectWithMaps => JDataObjectWithMaps}
 import io.vertx.codegen.testmodel.DataObjectWithLists
 import io.vertx.codegen.testmodel.{DataObjectWithNestedBuffer => JDataObjectWithNestedBuffer}
 
@@ -225,18 +179,17 @@ import io.vertx.codegen.testmodel.{DataObjectWithNestedBuffer => JDataObjectWith
   * todo:
   * - Buffer support
   */
-implicit class DataObjectTCKScala(val asJava: JDataObjectTCK) extends AnyVal {
+implicit class DataObjectTCKScala(val asJava: io.vertx.codegen.testmodel.DataObjectTCK) extends AnyVal {
 
 
 }
 
 import io.vertx.core.buffer.Buffer
-import io.vertx.codegen.testmodel.{DataObjectWithBuffer => JDataObjectWithBuffer}
 
 /**
   */
 
-  implicit class DataObjectWithBufferScala(val asJava: JDataObjectWithBuffer) extends AnyVal {
+  implicit class DataObjectWithBufferScala(val asJava: io.vertx.codegen.testmodel.DataObjectWithBuffer) extends AnyVal {
 
     def setBuffer(value: io.vertx.core.buffer.Buffer) = {
       asJava.setBuffer(value)
@@ -246,17 +199,16 @@ import io.vertx.codegen.testmodel.{DataObjectWithBuffer => JDataObjectWithBuffer
     }
   }
   
-  type DataObjectWithBuffer = JDataObjectWithBuffer
+  type DataObjectWithBuffer = io.vertx.codegen.testmodel.DataObjectWithBuffer
   object DataObjectWithBuffer {
-    def apply(): JDataObjectWithBuffer = new DataObjectWithBuffer()
-    def apply(json: JsonObject) = new JDataObjectWithBuffer(json)
+    def apply() = new DataObjectWithBuffer()
+    def apply(json: JsonObject) = new io.vertx.codegen.testmodel.DataObjectWithBuffer(json)
   }
 
 
 import io.vertx.core.json.JsonArray
 import io.vertx.codegen.testmodel.TestEnum
 import io.vertx.codegen.testmodel.{TestDataObject => JTestDataObject}
-import io.vertx.codegen.testmodel.{DataObjectWithListAdders => JDataObjectWithListAdders}
 import io.vertx.core.json.JsonObject
 import io.vertx.codegen.testmodel.TestDataObject
 import io.vertx.codegen.testmodel.TestGenEnum
@@ -264,13 +216,13 @@ import io.vertx.codegen.testmodel.TestGenEnum
 /**
   */
 
-  implicit class DataObjectWithListAddersScala(val asJava: JDataObjectWithListAdders) extends AnyVal {
+  implicit class DataObjectWithListAddersScala(val asJava: io.vertx.codegen.testmodel.DataObjectWithListAdders) extends AnyVal {
 
     def addBooleanValue(value: java.lang.Boolean) = {
       asJava.addBooleanValue(value)
       }
-    def addDataObjectValue(value: JTestDataObject) = {
-      asJava.addDataObjectValue(value.asJava)
+    def addDataObjectValue(value: io.vertx.codegen.testmodel.TestDataObject) = {
+      asJava.addDataObjectValue(value)
       }
     def addDoubleValue(value: java.lang.Double) = {
       asJava.addDoubleValue(value)
@@ -304,17 +256,16 @@ import io.vertx.codegen.testmodel.TestGenEnum
       }
   }
   
-  type DataObjectWithListAdders = JDataObjectWithListAdders
+  type DataObjectWithListAdders = io.vertx.codegen.testmodel.DataObjectWithListAdders
   object DataObjectWithListAdders {
-    def apply(): JDataObjectWithListAdders = new DataObjectWithListAdders()
-    def apply(json: JsonObject) = new JDataObjectWithListAdders(json)
+    def apply() = new DataObjectWithListAdders()
+    def apply(json: JsonObject) = new io.vertx.codegen.testmodel.DataObjectWithListAdders(json)
   }
 
 
 import io.vertx.core.json.JsonArray
 import io.vertx.codegen.testmodel.TestEnum
 import io.vertx.codegen.testmodel.{TestDataObject => JTestDataObject}
-import io.vertx.codegen.testmodel.{DataObjectWithLists => JDataObjectWithLists}
 import io.vertx.core.json.JsonObject
 import io.vertx.codegen.testmodel.TestDataObject
 import io.vertx.codegen.testmodel.TestGenEnum
@@ -322,12 +273,12 @@ import io.vertx.codegen.testmodel.TestGenEnum
 /**
   */
 
-  implicit class DataObjectWithListsScala(val asJava: JDataObjectWithLists) extends AnyVal {
+  implicit class DataObjectWithListsScala(val asJava: io.vertx.codegen.testmodel.DataObjectWithLists) extends AnyVal {
 
     def setBooleanValues(value: List[java.lang.Boolean]) = {
         asJava.setBooleanValues(value.asJava)
       }
-    def setDataObjectValues(value: List[JTestDataObject]) = {
+    def setDataObjectValues(value: List[io.vertx.codegen.testmodel.TestDataObject]) = {
       asJava.setDataObjectValues(value.asJava)
       }
     def setDoubleValues(value: List[java.lang.Double]) = {
@@ -362,17 +313,16 @@ import io.vertx.codegen.testmodel.TestGenEnum
       }
   }
   
-  type DataObjectWithLists = JDataObjectWithLists
+  type DataObjectWithLists = io.vertx.codegen.testmodel.DataObjectWithLists
   object DataObjectWithLists {
-    def apply(): JDataObjectWithLists = new DataObjectWithLists()
-    def apply(json: JsonObject) = new JDataObjectWithLists(json)
+    def apply() = new DataObjectWithLists()
+    def apply(json: JsonObject) = new io.vertx.codegen.testmodel.DataObjectWithLists(json)
   }
 
 
 import io.vertx.core.json.JsonArray
 import io.vertx.codegen.testmodel.TestEnum
 import io.vertx.codegen.testmodel.{TestDataObject => JTestDataObject}
-import io.vertx.codegen.testmodel.{DataObjectWithMapAdders => JDataObjectWithMapAdders}
 import io.vertx.core.json.JsonObject
 import io.vertx.codegen.testmodel.TestDataObject
 import io.vertx.codegen.testmodel.TestGenEnum
@@ -380,13 +330,13 @@ import io.vertx.codegen.testmodel.TestGenEnum
 /**
   */
 
-  implicit class DataObjectWithMapAddersScala(val asJava: JDataObjectWithMapAdders) extends AnyVal {
+  implicit class DataObjectWithMapAddersScala(val asJava: io.vertx.codegen.testmodel.DataObjectWithMapAdders) extends AnyVal {
 
     def addBooleanValue(key: String, value: java.lang.Boolean) = {
       asJava.addBooleanValue(key, value)
     }
-    def addDataObjectValue(key: String, value: JTestDataObject) = {
-      asJava.addDataObjectValue(key, value.asJava)
+    def addDataObjectValue(key: String, value: io.vertx.codegen.testmodel.TestDataObject) = {
+      asJava.addDataObjectValue(key, value)
     }
     def addDoubleValue(key: String, value: java.lang.Double) = {
       asJava.addDoubleValue(key, value)
@@ -420,17 +370,16 @@ import io.vertx.codegen.testmodel.TestGenEnum
     }
   }
   
-  type DataObjectWithMapAdders = JDataObjectWithMapAdders
+  type DataObjectWithMapAdders = io.vertx.codegen.testmodel.DataObjectWithMapAdders
   object DataObjectWithMapAdders {
-    def apply(): JDataObjectWithMapAdders = new DataObjectWithMapAdders()
-    def apply(json: JsonObject) = new JDataObjectWithMapAdders(json)
+    def apply() = new DataObjectWithMapAdders()
+    def apply(json: JsonObject) = new io.vertx.codegen.testmodel.DataObjectWithMapAdders(json)
   }
 
 
 import io.vertx.core.json.JsonArray
 import io.vertx.codegen.testmodel.TestEnum
 import io.vertx.codegen.testmodel.{TestDataObject => JTestDataObject}
-import io.vertx.codegen.testmodel.{DataObjectWithMaps => JDataObjectWithMaps}
 import io.vertx.core.json.JsonObject
 import io.vertx.codegen.testmodel.TestDataObject
 import io.vertx.codegen.testmodel.TestGenEnum
@@ -438,12 +387,12 @@ import io.vertx.codegen.testmodel.TestGenEnum
 /**
   */
 
-  implicit class DataObjectWithMapsScala(val asJava: JDataObjectWithMaps) extends AnyVal {
+  implicit class DataObjectWithMapsScala(val asJava: io.vertx.codegen.testmodel.DataObjectWithMaps) extends AnyVal {
 
     def setBooleanValues(value: Map[String, java.lang.Boolean]) = {
       asJava.setBooleanValues(value.asJava)
     }
-    def setDataObjectValues(value: Map[String, JTestDataObject]) = {
+    def setDataObjectValues(value: Map[String, io.vertx.codegen.testmodel.TestDataObject]) = {
       asJava.setDataObjectValues(value.asJava)
     }
     def setDoubleValues(value: Map[String, java.lang.Double]) = {
@@ -478,22 +427,21 @@ import io.vertx.codegen.testmodel.TestGenEnum
     }
   }
   
-  type DataObjectWithMaps = JDataObjectWithMaps
+  type DataObjectWithMaps = io.vertx.codegen.testmodel.DataObjectWithMaps
   object DataObjectWithMaps {
-    def apply(): JDataObjectWithMaps = new DataObjectWithMaps()
-    def apply(json: JsonObject) = new JDataObjectWithMaps(json)
+    def apply() = new DataObjectWithMaps()
+    def apply(json: JsonObject) = new io.vertx.codegen.testmodel.DataObjectWithMaps(json)
   }
 
 
 import io.vertx.codegen.testmodel.DataObjectWithBuffer
 import io.vertx.core.buffer.Buffer
 import io.vertx.codegen.testmodel.{DataObjectWithBuffer => JDataObjectWithBuffer}
-import io.vertx.codegen.testmodel.{DataObjectWithNestedBuffer => JDataObjectWithNestedBuffer}
 
 /**
   */
 
-  implicit class DataObjectWithNestedBufferScala(val asJava: JDataObjectWithNestedBuffer) extends AnyVal {
+  implicit class DataObjectWithNestedBufferScala(val asJava: io.vertx.codegen.testmodel.DataObjectWithNestedBuffer) extends AnyVal {
 
     def setBuffer(value: io.vertx.core.buffer.Buffer) = {
       asJava.setBuffer(value)
@@ -507,33 +455,32 @@ import io.vertx.codegen.testmodel.{DataObjectWithNestedBuffer => JDataObjectWith
     def getBuffers: scala.collection.mutable.Buffer[io.vertx.core.buffer.Buffer] = {
       asJava.getBuffers().asScala
     }
-    def setNested(value: JDataObjectWithBuffer) = {
-      asJava.setNested(value.asJava)
+    def setNested(value: io.vertx.codegen.testmodel.DataObjectWithBuffer) = {
+      asJava.setNested(value)
     }
-    def getNested: JDataObjectWithBuffer = {
+    def getNested: io.vertx.codegen.testmodel.DataObjectWithBuffer = {
       asJava.getNested()
     }
   }
   
-  type DataObjectWithNestedBuffer = JDataObjectWithNestedBuffer
+  type DataObjectWithNestedBuffer = io.vertx.codegen.testmodel.DataObjectWithNestedBuffer
   object DataObjectWithNestedBuffer {
-    def apply(): JDataObjectWithNestedBuffer = new DataObjectWithNestedBuffer()
-    def apply(json: JsonObject) = new JDataObjectWithNestedBuffer(json)
+    def apply() = new DataObjectWithNestedBuffer()
+    def apply(json: JsonObject) = new io.vertx.codegen.testmodel.DataObjectWithNestedBuffer(json)
   }
 
 
-import io.vertx.codegen.testmodel.{DataObjectWithOnlyJsonObjectConstructor => JDataObjectWithOnlyJsonObjectConstructor}
 
 /**
   */
 
-  implicit class DataObjectWithOnlyJsonObjectConstructorScala(val asJava: JDataObjectWithOnlyJsonObjectConstructor) extends AnyVal {
+  implicit class DataObjectWithOnlyJsonObjectConstructorScala(val asJava: io.vertx.codegen.testmodel.DataObjectWithOnlyJsonObjectConstructor) extends AnyVal {
 
   }
   
-  type DataObjectWithOnlyJsonObjectConstructor = JDataObjectWithOnlyJsonObjectConstructor
+  type DataObjectWithOnlyJsonObjectConstructor = io.vertx.codegen.testmodel.DataObjectWithOnlyJsonObjectConstructor
   object DataObjectWithOnlyJsonObjectConstructor {
-        def apply(json: JsonObject) = new JDataObjectWithOnlyJsonObjectConstructor(json)
+        def apply(json: JsonObject) = new io.vertx.codegen.testmodel.DataObjectWithOnlyJsonObjectConstructor(json)
   }
 
 
@@ -543,7 +490,7 @@ import io.vertx.codegen.testmodel.{DataObjectWithRecursion => JDataObjectWithRec
 /**
   */
 
-  implicit class DataObjectWithRecursionScala(val asJava: JDataObjectWithRecursion) extends AnyVal {
+  implicit class DataObjectWithRecursionScala(val asJava: io.vertx.codegen.testmodel.DataObjectWithRecursion) extends AnyVal {
 
     def setData(value: String) = {
       asJava.setData(value)
@@ -551,22 +498,21 @@ import io.vertx.codegen.testmodel.{DataObjectWithRecursion => JDataObjectWithRec
     def getData: String = {
       asJava.getData()
     }
-    def setNext(value: JDataObjectWithRecursion) = {
-      asJava.setNext(value.asJava)
+    def setNext(value: io.vertx.codegen.testmodel.DataObjectWithRecursion) = {
+      asJava.setNext(value)
     }
-    def getNext: JDataObjectWithRecursion = {
+    def getNext: io.vertx.codegen.testmodel.DataObjectWithRecursion = {
       asJava.getNext()
     }
   }
   
-  type DataObjectWithRecursion = JDataObjectWithRecursion
+  type DataObjectWithRecursion = io.vertx.codegen.testmodel.DataObjectWithRecursion
   object DataObjectWithRecursion {
-        def apply(json: JsonObject) = new JDataObjectWithRecursion(json)
+        def apply(json: JsonObject) = new io.vertx.codegen.testmodel.DataObjectWithRecursion(json)
   }
 
 
 import io.vertx.core.json.JsonArray
-import io.vertx.codegen.testmodel.{DataObjectWithValues => JDataObjectWithValues}
 import io.vertx.codegen.testmodel.TestEnum
 import io.vertx.codegen.testmodel.{TestDataObject => JTestDataObject}
 import io.vertx.core.json.JsonObject
@@ -576,7 +522,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
 /**
   */
 
-  implicit class DataObjectWithValuesScala(val asJava: JDataObjectWithValues) extends AnyVal {
+  implicit class DataObjectWithValuesScala(val asJava: io.vertx.codegen.testmodel.DataObjectWithValues) extends AnyVal {
 
     def setBooleanValue(value: java.lang.Boolean) = {
       asJava.setBooleanValue(value)
@@ -599,8 +545,8 @@ import io.vertx.codegen.testmodel.TestGenEnum
     def setBoxedShortValue(value: java.lang.Short) = {
       asJava.setBoxedShortValue(value)
     }
-    def setDataObjectValue(value: JTestDataObject) = {
-      asJava.setDataObjectValue(value.asJava)
+    def setDataObjectValue(value: io.vertx.codegen.testmodel.TestDataObject) = {
+      asJava.setDataObjectValue(value)
     }
     def setDoubleValue(value: java.lang.Double) = {
       asJava.setDoubleValue(value)
@@ -634,189 +580,157 @@ import io.vertx.codegen.testmodel.TestGenEnum
     }
   }
   
-  type DataObjectWithValues = JDataObjectWithValues
+  type DataObjectWithValues = io.vertx.codegen.testmodel.DataObjectWithValues
   object DataObjectWithValues {
-    def apply(): JDataObjectWithValues = new DataObjectWithValues()
-    def apply(json: JsonObject) = new JDataObjectWithValues(json)
+    def apply() = new DataObjectWithValues()
+    def apply(json: JsonObject) = new io.vertx.codegen.testmodel.DataObjectWithValues(json)
   }
 
 
-import io.vertx.codegen.testmodel.{ConcreteHandlerUserType => JConcreteHandlerUserType}
-import io.vertx.codegen.testmodel.{AbstractHandlerUserType => JAbstractHandlerUserType}
 import io.vertx.codegen.testmodel.{RefedInterface1 => JRefedInterface1}
-import io.vertx.codegen.testmodel.{ConcreteHandlerUserTypeExtension => JConcreteHandlerUserTypeExtension}
 import io.vertx.core.Handler
 import io.vertx.codegen.testmodel.RefedInterface1
-import io.vertx.codegen.testmodel.ConcreteHandlerUserType
-import io.vertx.codegen.testmodel.AbstractHandlerUserType
-import io.vertx.codegen.testmodel.ConcreteHandlerUserTypeExtension
-import io.vertx.codegen.testmodel.{Factory => JFactory}
 
 /**
   */
-implicit class FactoryScala(val asJava: JFactory) extends AnyVal {
+implicit class FactoryScala(val asJava: io.vertx.codegen.testmodel.Factory) extends AnyVal {
 
 
 }
 
-import io.vertx.core.json.JsonArray
 import io.vertx.codegen.testmodel.{RefedInterface1 => JRefedInterface1}
-import io.vertx.codegen.testmodel.TestEnum
-import io.vertx.codegen.testmodel.{TestDataObject => JTestDataObject}
-import io.vertx.codegen.testmodel.GenericRefedInterface
-import io.vertx.core.json.JsonObject
-import io.vertx.codegen.testmodel.TestDataObject
-import scala.collection.JavaConverters._
-import io.vertx.codegen.testmodel.{GenericRefedInterface => JGenericRefedInterface}
 import io.vertx.codegen.testmodel.RefedInterface1
-import io.vertx.codegen.testmodel.{FunctionParamTCK => JFunctionParamTCK}
 
 /**
   */
-implicit class FunctionParamTCKScala(val asJava: JFunctionParamTCK) extends AnyVal {
+implicit class FunctionParamTCKScala(val asJava: io.vertx.codegen.testmodel.FunctionParamTCK) extends AnyVal {
 
 
 }
 
-import io.vertx.codegen.testmodel.{GenericNullableRefedInterface => JGenericNullableRefedInterface}
 
 /**
   */
-implicit class GenericNullableRefedInterfaceScala[T](val asJava: JGenericNullableRefedInterface[T]) extends AnyVal {
+implicit class GenericNullableRefedInterfaceScala[T](val asJava: io.vertx.codegen.testmodel.GenericNullableRefedInterface[T]) extends AnyVal {
 
 
 }
 
-import io.vertx.codegen.testmodel.GenericRefedInterface
-import io.vertx.codegen.testmodel.{GenericRefedInterface => JGenericRefedInterface}
 
 /**
   */
-implicit class GenericRefedInterfaceScala[T](val asJava: JGenericRefedInterface[T]) extends AnyVal {
+implicit class GenericRefedInterfaceScala[T](val asJava: io.vertx.codegen.testmodel.GenericRefedInterface[T]) extends AnyVal {
 
 
 }
 
 import io.vertx.lang.scala.AsyncResultWrapper
-import io.vertx.codegen.testmodel.{InterfaceWithStringArg => JInterfaceWithStringArg}
+import io.vertx.codegen.testmodel.{GenericNullableRefedInterface => JGenericNullableRefedInterface}
 import io.vertx.codegen.testmodel.{RefedInterface1 => JRefedInterface1}
 import io.vertx.codegen.testmodel.GenericRefedInterface
-import io.vertx.codegen.testmodel.InterfaceWithApiArg
-import io.vertx.codegen.testmodel.TestDataObject
-import io.vertx.codegen.testmodel.InterfaceWithStringArg
-import io.vertx.codegen.testmodel.RefedInterface1
-import io.vertx.codegen.testmodel.GenericNullableRefedInterface
-import io.vertx.codegen.testmodel.{GenericsTCK => JGenericsTCK}
-import io.vertx.codegen.testmodel.{GenericNullableRefedInterface => JGenericNullableRefedInterface}
-import io.vertx.core.json.JsonArray
-import io.vertx.codegen.testmodel.TestEnum
-import io.vertx.codegen.testmodel.{TestDataObject => JTestDataObject}
-import io.vertx.core.json.JsonObject
 import io.vertx.core.AsyncResult
-import io.vertx.codegen.testmodel.InterfaceWithVariableArg
-import io.vertx.codegen.testmodel.{InterfaceWithApiArg => JInterfaceWithApiArg}
-import io.vertx.codegen.testmodel.{InterfaceWithVariableArg => JInterfaceWithVariableArg}
 import io.vertx.core.Handler
 import io.vertx.codegen.testmodel.{GenericRefedInterface => JGenericRefedInterface}
-import io.vertx.codegen.testmodel.TestGenEnum
+import io.vertx.codegen.testmodel.RefedInterface1
+import io.vertx.codegen.testmodel.GenericNullableRefedInterface
 
 /**
   */
-implicit class GenericsTCKScala(val asJava: JGenericsTCK) extends AnyVal {
+implicit class GenericsTCKScala(val asJava: io.vertx.codegen.testmodel.GenericsTCK) extends AnyVal {
 
 
-  def methodWithHandlerAsyncResultByteParameterizedFuture(): scala.concurrent.Future[JGenericRefedInterface[java.lang.Byte]] = {
-    val promise = Promise[JGenericRefedInterface[java.lang.Byte]]()
+  def methodWithHandlerAsyncResultByteParameterizedFuture(): scala.concurrent.Future[io.vertx.codegen.testmodel.GenericRefedInterface[java.lang.Byte]] = {
+    val promise = Promise[io.vertx.codegen.testmodel.GenericRefedInterface[java.lang.Byte]]()
     asJava.methodWithHandlerAsyncResultByteParameterized({a:AsyncResult[io.vertx.codegen.testmodel.GenericRefedInterface[java.lang.Byte]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
-  def methodWithHandlerAsyncResultShortParameterizedFuture(): scala.concurrent.Future[JGenericRefedInterface[java.lang.Short]] = {
-    val promise = Promise[JGenericRefedInterface[java.lang.Short]]()
+  def methodWithHandlerAsyncResultShortParameterizedFuture(): scala.concurrent.Future[io.vertx.codegen.testmodel.GenericRefedInterface[java.lang.Short]] = {
+    val promise = Promise[io.vertx.codegen.testmodel.GenericRefedInterface[java.lang.Short]]()
     asJava.methodWithHandlerAsyncResultShortParameterized({a:AsyncResult[io.vertx.codegen.testmodel.GenericRefedInterface[java.lang.Short]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
-  def methodWithHandlerAsyncResultIntegerParameterizedFuture(): scala.concurrent.Future[JGenericRefedInterface[java.lang.Integer]] = {
-    val promise = Promise[JGenericRefedInterface[java.lang.Integer]]()
+  def methodWithHandlerAsyncResultIntegerParameterizedFuture(): scala.concurrent.Future[io.vertx.codegen.testmodel.GenericRefedInterface[java.lang.Integer]] = {
+    val promise = Promise[io.vertx.codegen.testmodel.GenericRefedInterface[java.lang.Integer]]()
     asJava.methodWithHandlerAsyncResultIntegerParameterized({a:AsyncResult[io.vertx.codegen.testmodel.GenericRefedInterface[java.lang.Integer]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
-  def methodWithHandlerAsyncResultLongParameterizedFuture(): scala.concurrent.Future[JGenericRefedInterface[java.lang.Long]] = {
-    val promise = Promise[JGenericRefedInterface[java.lang.Long]]()
+  def methodWithHandlerAsyncResultLongParameterizedFuture(): scala.concurrent.Future[io.vertx.codegen.testmodel.GenericRefedInterface[java.lang.Long]] = {
+    val promise = Promise[io.vertx.codegen.testmodel.GenericRefedInterface[java.lang.Long]]()
     asJava.methodWithHandlerAsyncResultLongParameterized({a:AsyncResult[io.vertx.codegen.testmodel.GenericRefedInterface[java.lang.Long]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
-  def methodWithHandlerAsyncResultFloatParameterizedFuture(): scala.concurrent.Future[JGenericRefedInterface[java.lang.Float]] = {
-    val promise = Promise[JGenericRefedInterface[java.lang.Float]]()
+  def methodWithHandlerAsyncResultFloatParameterizedFuture(): scala.concurrent.Future[io.vertx.codegen.testmodel.GenericRefedInterface[java.lang.Float]] = {
+    val promise = Promise[io.vertx.codegen.testmodel.GenericRefedInterface[java.lang.Float]]()
     asJava.methodWithHandlerAsyncResultFloatParameterized({a:AsyncResult[io.vertx.codegen.testmodel.GenericRefedInterface[java.lang.Float]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
-  def methodWithHandlerAsyncResultDoubleParameterizedFuture(): scala.concurrent.Future[JGenericRefedInterface[java.lang.Double]] = {
-    val promise = Promise[JGenericRefedInterface[java.lang.Double]]()
+  def methodWithHandlerAsyncResultDoubleParameterizedFuture(): scala.concurrent.Future[io.vertx.codegen.testmodel.GenericRefedInterface[java.lang.Double]] = {
+    val promise = Promise[io.vertx.codegen.testmodel.GenericRefedInterface[java.lang.Double]]()
     asJava.methodWithHandlerAsyncResultDoubleParameterized({a:AsyncResult[io.vertx.codegen.testmodel.GenericRefedInterface[java.lang.Double]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
-  def methodWithHandlerAsyncResultBooleanParameterizedFuture(): scala.concurrent.Future[JGenericRefedInterface[java.lang.Boolean]] = {
-    val promise = Promise[JGenericRefedInterface[java.lang.Boolean]]()
+  def methodWithHandlerAsyncResultBooleanParameterizedFuture(): scala.concurrent.Future[io.vertx.codegen.testmodel.GenericRefedInterface[java.lang.Boolean]] = {
+    val promise = Promise[io.vertx.codegen.testmodel.GenericRefedInterface[java.lang.Boolean]]()
     asJava.methodWithHandlerAsyncResultBooleanParameterized({a:AsyncResult[io.vertx.codegen.testmodel.GenericRefedInterface[java.lang.Boolean]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
-  def methodWithHandlerAsyncResultCharacterParameterizedFuture(): scala.concurrent.Future[JGenericRefedInterface[java.lang.Character]] = {
-    val promise = Promise[JGenericRefedInterface[java.lang.Character]]()
+  def methodWithHandlerAsyncResultCharacterParameterizedFuture(): scala.concurrent.Future[io.vertx.codegen.testmodel.GenericRefedInterface[java.lang.Character]] = {
+    val promise = Promise[io.vertx.codegen.testmodel.GenericRefedInterface[java.lang.Character]]()
     asJava.methodWithHandlerAsyncResultCharacterParameterized({a:AsyncResult[io.vertx.codegen.testmodel.GenericRefedInterface[java.lang.Character]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
-  def methodWithHandlerAsyncResultStringParameterizedFuture(): scala.concurrent.Future[JGenericRefedInterface[String]] = {
-    val promise = Promise[JGenericRefedInterface[String]]()
+  def methodWithHandlerAsyncResultStringParameterizedFuture(): scala.concurrent.Future[io.vertx.codegen.testmodel.GenericRefedInterface[String]] = {
+    val promise = Promise[io.vertx.codegen.testmodel.GenericRefedInterface[String]]()
     asJava.methodWithHandlerAsyncResultStringParameterized({a:AsyncResult[io.vertx.codegen.testmodel.GenericRefedInterface[java.lang.String]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
-  def methodWithHandlerAsyncResultJsonObjectParameterizedFuture(): scala.concurrent.Future[JGenericRefedInterface[io.vertx.core.json.JsonObject]] = {
-    val promise = Promise[JGenericRefedInterface[io.vertx.core.json.JsonObject]]()
+  def methodWithHandlerAsyncResultJsonObjectParameterizedFuture(): scala.concurrent.Future[io.vertx.codegen.testmodel.GenericRefedInterface[io.vertx.core.json.JsonObject]] = {
+    val promise = Promise[io.vertx.codegen.testmodel.GenericRefedInterface[io.vertx.core.json.JsonObject]]()
     asJava.methodWithHandlerAsyncResultJsonObjectParameterized({a:AsyncResult[io.vertx.codegen.testmodel.GenericRefedInterface[io.vertx.core.json.JsonObject]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
-  def methodWithHandlerAsyncResultJsonArrayParameterizedFuture(): scala.concurrent.Future[JGenericRefedInterface[io.vertx.core.json.JsonArray]] = {
-    val promise = Promise[JGenericRefedInterface[io.vertx.core.json.JsonArray]]()
+  def methodWithHandlerAsyncResultJsonArrayParameterizedFuture(): scala.concurrent.Future[io.vertx.codegen.testmodel.GenericRefedInterface[io.vertx.core.json.JsonArray]] = {
+    val promise = Promise[io.vertx.codegen.testmodel.GenericRefedInterface[io.vertx.core.json.JsonArray]]()
     asJava.methodWithHandlerAsyncResultJsonArrayParameterized({a:AsyncResult[io.vertx.codegen.testmodel.GenericRefedInterface[io.vertx.core.json.JsonArray]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
-  def methodWithHandlerAsyncResultDataObjectParameterizedFuture(): scala.concurrent.Future[JGenericRefedInterface[JTestDataObject]] = {
-    val promise = Promise[JGenericRefedInterface[JTestDataObject]]()
+  def methodWithHandlerAsyncResultDataObjectParameterizedFuture(): scala.concurrent.Future[io.vertx.codegen.testmodel.GenericRefedInterface[io.vertx.codegen.testmodel.TestDataObject]] = {
+    val promise = Promise[io.vertx.codegen.testmodel.GenericRefedInterface[io.vertx.codegen.testmodel.TestDataObject]]()
     asJava.methodWithHandlerAsyncResultDataObjectParameterized({a:AsyncResult[io.vertx.codegen.testmodel.GenericRefedInterface[io.vertx.codegen.testmodel.TestDataObject]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
-  def methodWithHandlerAsyncResultEnumParameterizedFuture(): scala.concurrent.Future[JGenericRefedInterface[io.vertx.codegen.testmodel.TestEnum]] = {
-    val promise = Promise[JGenericRefedInterface[io.vertx.codegen.testmodel.TestEnum]]()
+  def methodWithHandlerAsyncResultEnumParameterizedFuture(): scala.concurrent.Future[io.vertx.codegen.testmodel.GenericRefedInterface[io.vertx.codegen.testmodel.TestEnum]] = {
+    val promise = Promise[io.vertx.codegen.testmodel.GenericRefedInterface[io.vertx.codegen.testmodel.TestEnum]]()
     asJava.methodWithHandlerAsyncResultEnumParameterized({a:AsyncResult[io.vertx.codegen.testmodel.GenericRefedInterface[io.vertx.codegen.testmodel.TestEnum]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
-  def methodWithHandlerAsyncResultGenEnumParameterizedFuture(): scala.concurrent.Future[JGenericRefedInterface[io.vertx.codegen.testmodel.TestGenEnum]] = {
-    val promise = Promise[JGenericRefedInterface[io.vertx.codegen.testmodel.TestGenEnum]]()
+  def methodWithHandlerAsyncResultGenEnumParameterizedFuture(): scala.concurrent.Future[io.vertx.codegen.testmodel.GenericRefedInterface[io.vertx.codegen.testmodel.TestGenEnum]] = {
+    val promise = Promise[io.vertx.codegen.testmodel.GenericRefedInterface[io.vertx.codegen.testmodel.TestGenEnum]]()
     asJava.methodWithHandlerAsyncResultGenEnumParameterized({a:AsyncResult[io.vertx.codegen.testmodel.GenericRefedInterface[io.vertx.codegen.testmodel.TestGenEnum]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
-  def methodWithHandlerAsyncResultUserTypeParameterizedFuture(): scala.concurrent.Future[JGenericRefedInterface[JRefedInterface1]] = {
-    val promise = Promise[JGenericRefedInterface[JRefedInterface1]]()
+  def methodWithHandlerAsyncResultUserTypeParameterizedFuture(): scala.concurrent.Future[io.vertx.codegen.testmodel.GenericRefedInterface[io.vertx.codegen.testmodel.RefedInterface1]] = {
+    val promise = Promise[io.vertx.codegen.testmodel.GenericRefedInterface[io.vertx.codegen.testmodel.RefedInterface1]]()
     asJava.methodWithHandlerAsyncResultUserTypeParameterized({a:AsyncResult[io.vertx.codegen.testmodel.GenericRefedInterface[io.vertx.codegen.testmodel.RefedInterface1]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
-  def methodWithHandlerAsyncResultClassTypeParameterizedFuture[U](`type`: Class[U]): scala.concurrent.Future[JGenericRefedInterface[U]] = {
-    val promise = Promise[JGenericRefedInterface[U]]()
+  def methodWithHandlerAsyncResultClassTypeParameterizedFuture[U](`type`: Class[U]): scala.concurrent.Future[io.vertx.codegen.testmodel.GenericRefedInterface[U]] = {
+    val promise = Promise[io.vertx.codegen.testmodel.GenericRefedInterface[U]]()
     asJava.methodWithHandlerAsyncResultClassTypeParameterized[U](`type`, {a:AsyncResult[io.vertx.codegen.testmodel.GenericRefedInterface[U]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -827,14 +741,14 @@ implicit class GenericsTCKScala(val asJava: JGenericsTCK) extends AnyVal {
     promise.future
   }
 
-  def methodWithHandlerAsyncResultGenericNullableApiFuture(notNull: java.lang.Boolean): scala.concurrent.Future[JGenericNullableRefedInterface[JRefedInterface1]] = {
-    val promise = Promise[JGenericNullableRefedInterface[JRefedInterface1]]()
+  def methodWithHandlerAsyncResultGenericNullableApiFuture(notNull: java.lang.Boolean): scala.concurrent.Future[io.vertx.codegen.testmodel.GenericNullableRefedInterface[io.vertx.codegen.testmodel.RefedInterface1]] = {
+    val promise = Promise[io.vertx.codegen.testmodel.GenericNullableRefedInterface[io.vertx.codegen.testmodel.RefedInterface1]]()
     asJava.methodWithHandlerAsyncResultGenericNullableApi(notNull, {a:AsyncResult[io.vertx.codegen.testmodel.GenericNullableRefedInterface[io.vertx.codegen.testmodel.RefedInterface1]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
-  def methodWithHandlerAsyncResultParamInferedFuture[T](param: JGenericRefedInterface[T]): scala.concurrent.Future[JGenericRefedInterface[T]] = {
-    val promise = Promise[JGenericRefedInterface[T]]()
+  def methodWithHandlerAsyncResultParamInferedFuture[T](param: io.vertx.codegen.testmodel.GenericRefedInterface[T]): scala.concurrent.Future[io.vertx.codegen.testmodel.GenericRefedInterface[T]] = {
+    val promise = Promise[io.vertx.codegen.testmodel.GenericRefedInterface[T]]()
     asJava.methodWithHandlerAsyncResultParamInfered[T](param, {a:AsyncResult[io.vertx.codegen.testmodel.GenericRefedInterface[T]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -842,58 +756,48 @@ implicit class GenericsTCKScala(val asJava: JGenericsTCK) extends AnyVal {
 }
 
 import io.vertx.codegen.testmodel.{RefedInterface1 => JRefedInterface1}
-import io.vertx.codegen.testmodel.GenericRefedInterface
-import io.vertx.codegen.testmodel.{InterfaceWithApiArg => JInterfaceWithApiArg}
-import io.vertx.codegen.testmodel.{GenericRefedInterface => JGenericRefedInterface}
 import io.vertx.codegen.testmodel.RefedInterface1
 
 /**
   */
-implicit class InterfaceWithApiArgScala(val asJava: JInterfaceWithApiArg) extends AnyVal {
+implicit class InterfaceWithApiArgScala(val asJava: io.vertx.codegen.testmodel.InterfaceWithApiArg) extends AnyVal {
 
 
 }
 
-import io.vertx.codegen.testmodel.{InterfaceWithStringArg => JInterfaceWithStringArg}
-import io.vertx.codegen.testmodel.GenericRefedInterface
-import io.vertx.codegen.testmodel.{GenericRefedInterface => JGenericRefedInterface}
 
 /**
   */
-implicit class InterfaceWithStringArgScala(val asJava: JInterfaceWithStringArg) extends AnyVal {
+implicit class InterfaceWithStringArgScala(val asJava: io.vertx.codegen.testmodel.InterfaceWithStringArg) extends AnyVal {
 
 
 }
 
-import io.vertx.codegen.testmodel.GenericRefedInterface
-import io.vertx.codegen.testmodel.{InterfaceWithVariableArg => JInterfaceWithVariableArg}
-import io.vertx.codegen.testmodel.{GenericRefedInterface => JGenericRefedInterface}
 
 /**
   */
-implicit class InterfaceWithVariableArgScala[T, U](val asJava: JInterfaceWithVariableArg[T, U]) extends AnyVal {
+implicit class InterfaceWithVariableArgScala[T, U](val asJava: io.vertx.codegen.testmodel.InterfaceWithVariableArg[T, U]) extends AnyVal {
 
 
 }
 
 import io.vertx.lang.scala.AsyncResultWrapper
-import io.vertx.codegen.testmodel.{RefedInterface1 => JRefedInterface1}
-import io.vertx.codegen.testmodel.{NullableTCK => JNullableTCK}
-import io.vertx.codegen.testmodel.TestDataObject
-import scala.collection.JavaConverters._
-import io.vertx.codegen.testmodel.RefedInterface1
 import io.vertx.core.json.JsonArray
+import io.vertx.codegen.testmodel.{RefedInterface1 => JRefedInterface1}
 import io.vertx.codegen.testmodel.TestEnum
 import io.vertx.codegen.testmodel.{TestDataObject => JTestDataObject}
 import io.vertx.core.json.JsonObject
 import io.vertx.core.AsyncResult
+import io.vertx.codegen.testmodel.TestDataObject
 import io.vertx.core.Handler
+import scala.collection.JavaConverters._
+import io.vertx.codegen.testmodel.RefedInterface1
 import io.vertx.codegen.testmodel.TestGenEnum
 
 /**
   * The TCK for @Nullable.
   */
-implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
+implicit class NullableTCKScala(val asJava: io.vertx.codegen.testmodel.NullableTCK) extends AnyVal {
 
 
   def methodWithNullableByteHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[java.lang.Byte] = {
@@ -962,14 +866,14 @@ implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
     promise.future
   }
 
-  def methodWithNullableApiHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[JRefedInterface1] = {
-    val promise = Promise[JRefedInterface1]()
+  def methodWithNullableApiHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[io.vertx.codegen.testmodel.RefedInterface1] = {
+    val promise = Promise[io.vertx.codegen.testmodel.RefedInterface1]()
     asJava.methodWithNullableApiHandlerAsyncResult(notNull, {a:AsyncResult[io.vertx.codegen.testmodel.RefedInterface1] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
-  def methodWithNullableDataObjectHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[JTestDataObject] = {
-    val promise = Promise[JTestDataObject]()
+  def methodWithNullableDataObjectHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[io.vertx.codegen.testmodel.TestDataObject] = {
+    val promise = Promise[io.vertx.codegen.testmodel.TestDataObject]()
     asJava.methodWithNullableDataObjectHandlerAsyncResult(notNull, {a:AsyncResult[io.vertx.codegen.testmodel.TestDataObject] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -1058,14 +962,14 @@ implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
     promise.future
   }
 
-  def methodWithNullableListApiHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[java.util.List[JRefedInterface1]] = {
-    val promise = Promise[java.util.List[JRefedInterface1]]()
+  def methodWithNullableListApiHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[java.util.List[io.vertx.codegen.testmodel.RefedInterface1]] = {
+    val promise = Promise[java.util.List[io.vertx.codegen.testmodel.RefedInterface1]]()
     asJava.methodWithNullableListApiHandlerAsyncResult(notNull, {a:AsyncResult[java.util.List[io.vertx.codegen.testmodel.RefedInterface1]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
-  def methodWithNullableListDataObjectHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[java.util.List[JTestDataObject]] = {
-    val promise = Promise[java.util.List[JTestDataObject]]()
+  def methodWithNullableListDataObjectHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[java.util.List[io.vertx.codegen.testmodel.TestDataObject]] = {
+    val promise = Promise[java.util.List[io.vertx.codegen.testmodel.TestDataObject]]()
     asJava.methodWithNullableListDataObjectHandlerAsyncResult(notNull, {a:AsyncResult[java.util.List[io.vertx.codegen.testmodel.TestDataObject]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -1148,14 +1052,14 @@ implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
     promise.future
   }
 
-  def methodWithNullableSetApiHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[java.util.Set[JRefedInterface1]] = {
-    val promise = Promise[java.util.Set[JRefedInterface1]]()
+  def methodWithNullableSetApiHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[java.util.Set[io.vertx.codegen.testmodel.RefedInterface1]] = {
+    val promise = Promise[java.util.Set[io.vertx.codegen.testmodel.RefedInterface1]]()
     asJava.methodWithNullableSetApiHandlerAsyncResult(notNull, {a:AsyncResult[java.util.Set[io.vertx.codegen.testmodel.RefedInterface1]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
-  def methodWithNullableSetDataObjectHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[java.util.Set[JTestDataObject]] = {
-    val promise = Promise[java.util.Set[JTestDataObject]]()
+  def methodWithNullableSetDataObjectHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[java.util.Set[io.vertx.codegen.testmodel.TestDataObject]] = {
+    val promise = Promise[java.util.Set[io.vertx.codegen.testmodel.TestDataObject]]()
     asJava.methodWithNullableSetDataObjectHandlerAsyncResult(notNull, {a:AsyncResult[java.util.Set[io.vertx.codegen.testmodel.TestDataObject]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -1304,14 +1208,14 @@ implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
     promise.future
   }
 
-  def methodWithListNullableApiHandlerAsyncResultFuture(): scala.concurrent.Future[java.util.List[JRefedInterface1]] = {
-    val promise = Promise[java.util.List[JRefedInterface1]]()
+  def methodWithListNullableApiHandlerAsyncResultFuture(): scala.concurrent.Future[java.util.List[io.vertx.codegen.testmodel.RefedInterface1]] = {
+    val promise = Promise[java.util.List[io.vertx.codegen.testmodel.RefedInterface1]]()
     asJava.methodWithListNullableApiHandlerAsyncResult({a:AsyncResult[java.util.List[io.vertx.codegen.testmodel.RefedInterface1]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
-  def methodWithListNullableDataObjectHandlerAsyncResultFuture(): scala.concurrent.Future[java.util.List[JTestDataObject]] = {
-    val promise = Promise[java.util.List[JTestDataObject]]()
+  def methodWithListNullableDataObjectHandlerAsyncResultFuture(): scala.concurrent.Future[java.util.List[io.vertx.codegen.testmodel.TestDataObject]] = {
+    val promise = Promise[java.util.List[io.vertx.codegen.testmodel.TestDataObject]]()
     asJava.methodWithListNullableDataObjectHandlerAsyncResult({a:AsyncResult[java.util.List[io.vertx.codegen.testmodel.TestDataObject]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -1394,14 +1298,14 @@ implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
     promise.future
   }
 
-  def methodWithSetNullableApiHandlerAsyncResultFuture(): scala.concurrent.Future[java.util.Set[JRefedInterface1]] = {
-    val promise = Promise[java.util.Set[JRefedInterface1]]()
+  def methodWithSetNullableApiHandlerAsyncResultFuture(): scala.concurrent.Future[java.util.Set[io.vertx.codegen.testmodel.RefedInterface1]] = {
+    val promise = Promise[java.util.Set[io.vertx.codegen.testmodel.RefedInterface1]]()
     asJava.methodWithSetNullableApiHandlerAsyncResult({a:AsyncResult[java.util.Set[io.vertx.codegen.testmodel.RefedInterface1]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
-  def methodWithSetNullableDataObjectHandlerAsyncResultFuture(): scala.concurrent.Future[java.util.Set[JTestDataObject]] = {
-    val promise = Promise[java.util.Set[JTestDataObject]]()
+  def methodWithSetNullableDataObjectHandlerAsyncResultFuture(): scala.concurrent.Future[java.util.Set[io.vertx.codegen.testmodel.TestDataObject]] = {
+    val promise = Promise[java.util.Set[io.vertx.codegen.testmodel.TestDataObject]]()
     asJava.methodWithSetNullableDataObjectHandlerAsyncResult({a:AsyncResult[java.util.Set[io.vertx.codegen.testmodel.TestDataObject]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -1492,50 +1396,43 @@ implicit class NullableTCKScala(val asJava: JNullableTCK) extends AnyVal {
 
 }
 
-import io.vertx.codegen.testmodel.{RefedInterface1 => JRefedInterface1}
-import io.vertx.codegen.testmodel.RefedInterface1
 
 /**
   */
-implicit class RefedInterface1Scala(val asJava: JRefedInterface1) extends AnyVal {
+implicit class RefedInterface1Scala(val asJava: io.vertx.codegen.testmodel.RefedInterface1) extends AnyVal {
 
 
 }
 
-import io.vertx.codegen.testmodel.{RefedInterface2 => JRefedInterface2}
-import io.vertx.codegen.testmodel.RefedInterface2
 
 /**
   */
-implicit class RefedInterface2Scala(val asJava: JRefedInterface2) extends AnyVal {
+implicit class RefedInterface2Scala(val asJava: io.vertx.codegen.testmodel.RefedInterface2) extends AnyVal {
 
 
 }
 
-import io.vertx.codegen.testmodel.{SuperInterface1 => JSuperInterface1}
 
 /**
   */
-implicit class SuperInterface1Scala(val asJava: JSuperInterface1) extends AnyVal {
+implicit class SuperInterface1Scala(val asJava: io.vertx.codegen.testmodel.SuperInterface1) extends AnyVal {
 
 
 }
 
-import io.vertx.codegen.testmodel.{SuperInterface2 => JSuperInterface2}
 
 /**
   */
-implicit class SuperInterface2Scala(val asJava: JSuperInterface2) extends AnyVal {
+implicit class SuperInterface2Scala(val asJava: io.vertx.codegen.testmodel.SuperInterface2) extends AnyVal {
 
 
 }
 
-import io.vertx.codegen.testmodel.{TestDataObject => JTestDataObject}
 
 /**
   */
 
-  implicit class TestDataObjectScala(val asJava: JTestDataObject) extends AnyVal {
+  implicit class TestDataObjectScala(val asJava: io.vertx.codegen.testmodel.TestDataObject) extends AnyVal {
 
     def setBar(value: java.lang.Integer) = {
       asJava.setBar(value)
@@ -1557,45 +1454,36 @@ import io.vertx.codegen.testmodel.{TestDataObject => JTestDataObject}
     }
   }
   
-  type TestDataObject = JTestDataObject
+  type TestDataObject = io.vertx.codegen.testmodel.TestDataObject
   object TestDataObject {
-    def apply(): JTestDataObject = new TestDataObject()
-    def apply(json: JsonObject) = new JTestDataObject(json)
+    def apply() = new TestDataObject()
+    def apply(json: JsonObject) = new io.vertx.codegen.testmodel.TestDataObject(json)
   }
 
 
 import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.codegen.testmodel.{ConcreteHandlerUserType => JConcreteHandlerUserType}
+import io.vertx.codegen.testmodel.{AbstractHandlerUserType => JAbstractHandlerUserType}
+import io.vertx.codegen.testmodel.{RefedInterface1 => JRefedInterface1}
 import io.vertx.codegen.testmodel.{ConcreteHandlerUserTypeExtension => JConcreteHandlerUserTypeExtension}
+import io.vertx.codegen.testmodel.GenericRefedInterface
 import io.vertx.codegen.testmodel.TestDataObject
+import io.vertx.codegen.testmodel.RefedInterface1
 import io.vertx.codegen.testmodel.AbstractHandlerUserType
+import io.vertx.core.json.JsonArray
 import io.vertx.codegen.testmodel.TestEnum
+import io.vertx.codegen.testmodel.{TestDataObject => JTestDataObject}
 import io.vertx.core.json.JsonObject
 import io.vertx.core.AsyncResult
-import io.vertx.codegen.testmodel.{SuperInterface1 => JSuperInterface1}
-import io.vertx.codegen.testmodel.{RefedInterface2 => JRefedInterface2}
-import io.vertx.codegen.testmodel.{SuperInterface2 => JSuperInterface2}
+import io.vertx.core.Handler
+import io.vertx.codegen.testmodel.{GenericRefedInterface => JGenericRefedInterface}
 import io.vertx.codegen.testmodel.ConcreteHandlerUserType
 import io.vertx.codegen.testmodel.ConcreteHandlerUserTypeExtension
 import io.vertx.codegen.testmodel.TestGenEnum
-import io.vertx.codegen.testmodel.{AbstractHandlerUserType => JAbstractHandlerUserType}
-import io.vertx.codegen.testmodel.{RefedInterface1 => JRefedInterface1}
-import io.vertx.codegen.testmodel.GenericRefedInterface
-import scala.collection.JavaConverters._
-import io.vertx.codegen.testmodel.RefedInterface1
-import io.vertx.codegen.testmodel.SuperInterface1
-import io.vertx.codegen.testmodel.RefedInterface2
-import io.vertx.codegen.testmodel.SuperInterface2
-import io.vertx.core.json.JsonArray
-import io.vertx.codegen.testmodel.{TestDataObject => JTestDataObject}
-import io.vertx.codegen.testmodel.{TestInterface => JTestInterface}
-import io.vertx.core.Handler
-import io.vertx.codegen.testmodel.{GenericRefedInterface => JGenericRefedInterface}
-import io.vertx.codegen.testmodel.TestInterface
 
 /**
   */
-implicit class TestInterfaceScala(val asJava: JTestInterface) extends AnyVal {
+implicit class TestInterfaceScala(val asJava: io.vertx.codegen.testmodel.TestInterface) extends AnyVal {
 
 
   def methodWithHandlerAsyncResultByteFuture(sendFailure: java.lang.Boolean): scala.concurrent.Future[java.lang.Byte] = {
@@ -1652,14 +1540,14 @@ implicit class TestInterfaceScala(val asJava: JTestInterface) extends AnyVal {
     promise.future
   }
 
-  def methodWithHandlerAsyncResultDataObjectFuture(sendFailure: java.lang.Boolean): scala.concurrent.Future[JTestDataObject] = {
-    val promise = Promise[JTestDataObject]()
+  def methodWithHandlerAsyncResultDataObjectFuture(sendFailure: java.lang.Boolean): scala.concurrent.Future[io.vertx.codegen.testmodel.TestDataObject] = {
+    val promise = Promise[io.vertx.codegen.testmodel.TestDataObject]()
     asJava.methodWithHandlerAsyncResultDataObject(sendFailure, {a:AsyncResult[io.vertx.codegen.testmodel.TestDataObject] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
-  def methodWithHandlerAsyncResultUserTypesFuture(): scala.concurrent.Future[JRefedInterface1] = {
-    val promise = Promise[JRefedInterface1]()
+  def methodWithHandlerAsyncResultUserTypesFuture(): scala.concurrent.Future[io.vertx.codegen.testmodel.RefedInterface1] = {
+    val promise = Promise[io.vertx.codegen.testmodel.RefedInterface1]()
     asJava.methodWithHandlerAsyncResultUserTypes({a:AsyncResult[io.vertx.codegen.testmodel.RefedInterface1] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -1670,8 +1558,8 @@ implicit class TestInterfaceScala(val asJava: JTestInterface) extends AnyVal {
     promise.future
   }
 
-  def methodWithHandlerAsyncResultGenericUserTypeFuture[U](value: U): scala.concurrent.Future[JGenericRefedInterface[U]] = {
-    val promise = Promise[JGenericRefedInterface[U]]()
+  def methodWithHandlerAsyncResultGenericUserTypeFuture[U](value: U): scala.concurrent.Future[io.vertx.codegen.testmodel.GenericRefedInterface[U]] = {
+    val promise = Promise[io.vertx.codegen.testmodel.GenericRefedInterface[U]]()
     asJava.methodWithHandlerAsyncResultGenericUserType[U](value, {a:AsyncResult[io.vertx.codegen.testmodel.GenericRefedInterface[U]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }

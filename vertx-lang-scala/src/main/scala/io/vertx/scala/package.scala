@@ -17,6 +17,8 @@
 package io.vertx.scala
 import scala.collection.JavaConverters._
 import scala.compat.java8.FunctionConverters._
+import io.vertx.core.json.JsonObject
+import io.vertx.core.json.JsonArray
 import io.vertx.lang.scala.HandlerOps._
 import scala.reflect.runtime.universe._
 import scala.concurrent.Promise
@@ -60,7 +62,6 @@ package object core{
   private def listToJsArr(a: Seq[_]) = JsonArray(a: _*)
 
 
-import io.vertx.core.dns.{AddressResolverOptions => JAddressResolverOptions}
 import io.vertx.core.buffer.Buffer
 
 /**
@@ -68,7 +69,7 @@ import io.vertx.core.buffer.Buffer
   * DNS <i>A</i> and <i>AAAA</i> queries.
   */
 
-  implicit class AddressResolverOptionsScala(val asJava: JAddressResolverOptions) extends AnyVal {
+  implicit class AddressResolverOptionsScala(val asJava: io.vertx.core.dns.AddressResolverOptions) extends AnyVal {
 
 
   /**
@@ -227,21 +228,20 @@ import io.vertx.core.buffer.Buffer
     }
   }
   
-  type AddressResolverOptions = JAddressResolverOptions
+  type AddressResolverOptions = io.vertx.core.dns.AddressResolverOptions
   object AddressResolverOptions {
-    def apply(): JAddressResolverOptions = new AddressResolverOptions()
-    def apply(json: JsonObject) = new JAddressResolverOptions(json)
+    def apply() = new AddressResolverOptions()
+    def apply(json: JsonObject) = new io.vertx.core.dns.AddressResolverOptions(json)
   }
 
 
-import io.vertx.core.cli.{Argument => JArgument}
 
 /**
   * Defines a command line argument. Unlike options, argument don't have names and are identified using an index. The
   * first index is 0 (because we are in the computer world).
   */
 
-  implicit class ArgumentScala(val asJava: JArgument) extends AnyVal {
+  implicit class ArgumentScala(val asJava: io.vertx.core.cli.Argument) extends AnyVal {
 
 
   /**
@@ -315,23 +315,17 @@ import io.vertx.core.cli.{Argument => JArgument}
     }
   }
   
-  type Argument = JArgument
+  type Argument = io.vertx.core.cli.Argument
   object Argument {
-    def apply(): JArgument = new Argument()
-    def apply(json: JsonObject) = new JArgument(json)
+    def apply() = new Argument()
+    def apply(json: JsonObject) = new io.vertx.core.cli.Argument(json)
   }
 
 
 import io.vertx.lang.scala.AsyncResultWrapper
-import io.vertx.core.file.AsyncFile
 import io.vertx.core.buffer.Buffer
-import io.vertx.core.file.{AsyncFile => JAsyncFile}
-import io.vertx.core.streams.{ReadStream => JReadStream}
-import io.vertx.core.streams.WriteStream
-import io.vertx.core.streams.ReadStream
 import io.vertx.core.AsyncResult
 import io.vertx.core.Handler
-import io.vertx.core.streams.{WriteStream => JWriteStream}
 
 /**
   * Represents a file on the file-system which can be read from, or written to asynchronously.
@@ -341,7 +335,7 @@ import io.vertx.core.streams.{WriteStream => JWriteStream}
   * other streams, e.g. an [[io.vertx.core.http.HttpClientRequest]] instance,
   * using the [[io.vertx.core.streams.Pump]] class
   */
-implicit class AsyncFileScala(val asJava: JAsyncFile) extends AnyVal {
+implicit class AsyncFileScala(val asJava: io.vertx.core.file.AsyncFile) extends AnyVal {
 
 
  /**
@@ -383,7 +377,6 @@ implicit class AsyncFileScala(val asJava: JAsyncFile) extends AnyVal {
 }
 
 import io.vertx.lang.scala.AsyncResultWrapper
-import io.vertx.core.shareddata.{AsyncMap => JAsyncMap}
 import io.vertx.core.AsyncResult
 import io.vertx.core.Handler
 
@@ -392,7 +385,7 @@ import io.vertx.core.Handler
   * An asynchronous map.
   * 
   */
-implicit class AsyncMapScala[K, V](val asJava: JAsyncMap[K, V]) extends AnyVal {
+implicit class AsyncMapScala[K, V](val asJava: io.vertx.core.shareddata.AsyncMap[K, V]) extends AnyVal {
 
 
  /**
@@ -498,11 +491,7 @@ implicit class AsyncMapScala[K, V](val asJava: JAsyncMap[K, V]) extends AnyVal {
 
 import io.vertx.core.cli.{Argument => JArgument}
 import io.vertx.core.cli.Option
-import io.vertx.core.cli.CommandLine
 import io.vertx.core.cli.{Option => JOption}
-import io.vertx.core.cli.CLI
-import io.vertx.core.cli.{CLI => JCLI}
-import io.vertx.core.cli.{CommandLine => JCommandLine}
 import scala.collection.JavaConverters._
 import io.vertx.core.cli.Argument
 
@@ -521,7 +510,7 @@ import io.vertx.core.cli.Argument
   * Command Line Interface object does not contains "value", it's a model. It must be evaluated by a
   * parser that returns a [[io.vertx.core.cli.CommandLine]] object containing the argument and option values.
   */
-implicit class CLIScala(val asJava: JCLI) extends AnyVal {
+implicit class CLIScala(val asJava: io.vertx.core.cli.CLI) extends AnyVal {
 
 
 }
@@ -535,7 +524,6 @@ import io.vertx.core.buffer.Buffer
 import io.vertx.core.net.{OpenSSLEngineOptions => JOpenSSLEngineOptions}
 import io.vertx.core.net.PemKeyCertOptions
 import io.vertx.core.net.{JdkSSLEngineOptions => JJdkSSLEngineOptions}
-import io.vertx.core.net.{ClientOptionsBase => JClientOptionsBase}
 import io.vertx.core.net.{PemTrustOptions => JPemTrustOptions}
 import io.vertx.core.net.{PemKeyCertOptions => JPemKeyCertOptions}
 import io.vertx.core.net.PemTrustOptions
@@ -547,7 +535,7 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   * Base class for Client options
   */
 
-  implicit class ClientOptionsBaseScala(val asJava: JClientOptionsBase) extends AnyVal {
+  implicit class ClientOptionsBaseScala(val asJava: io.vertx.core.net.ClientOptionsBase) extends AnyVal {
 
 
   /**
@@ -613,20 +601,20 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
     def getIdleTimeout: java.lang.Integer = {
       asJava.getIdleTimeout()
     }
-    def setJdkSslEngineOptions(value: JJdkSSLEngineOptions) = {
-      asJava.setJdkSslEngineOptions(value.asJava)
+    def setJdkSslEngineOptions(value: io.vertx.core.net.JdkSSLEngineOptions) = {
+      asJava.setJdkSslEngineOptions(value)
     }
-    def getJdkSslEngineOptions: JJdkSSLEngineOptions = {
+    def getJdkSslEngineOptions: io.vertx.core.net.JdkSSLEngineOptions = {
       asJava.getJdkSslEngineOptions()
     }
 
   /**
     * Set the key/cert options in jks format, aka Java keystore.
     */
-    def setKeyStoreOptions(value: JJksOptions) = {
-      asJava.setKeyStoreOptions(value.asJava)
+    def setKeyStoreOptions(value: io.vertx.core.net.JksOptions) = {
+      asJava.setKeyStoreOptions(value)
     }
-    def getKeyStoreOptions: JJksOptions = {
+    def getKeyStoreOptions: io.vertx.core.net.JksOptions = {
       asJava.getKeyStoreOptions()
     }
 
@@ -661,60 +649,60 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
     def getMetricsName: String = {
       asJava.getMetricsName()
     }
-    def setOpenSslEngineOptions(value: JOpenSSLEngineOptions) = {
-      asJava.setOpenSslEngineOptions(value.asJava)
+    def setOpenSslEngineOptions(value: io.vertx.core.net.OpenSSLEngineOptions) = {
+      asJava.setOpenSslEngineOptions(value)
     }
-    def getOpenSslEngineOptions: JOpenSSLEngineOptions = {
+    def getOpenSslEngineOptions: io.vertx.core.net.OpenSSLEngineOptions = {
       asJava.getOpenSslEngineOptions()
     }
 
   /**
     * Set the key/cert store options in pem format.
     */
-    def setPemKeyCertOptions(value: JPemKeyCertOptions) = {
-      asJava.setPemKeyCertOptions(value.asJava)
+    def setPemKeyCertOptions(value: io.vertx.core.net.PemKeyCertOptions) = {
+      asJava.setPemKeyCertOptions(value)
     }
-    def getPemKeyCertOptions: JPemKeyCertOptions = {
+    def getPemKeyCertOptions: io.vertx.core.net.PemKeyCertOptions = {
       asJava.getPemKeyCertOptions()
     }
 
   /**
     * Set the trust options in pem format
     */
-    def setPemTrustOptions(value: JPemTrustOptions) = {
-      asJava.setPemTrustOptions(value.asJava)
+    def setPemTrustOptions(value: io.vertx.core.net.PemTrustOptions) = {
+      asJava.setPemTrustOptions(value)
     }
-    def getPemTrustOptions: JPemTrustOptions = {
+    def getPemTrustOptions: io.vertx.core.net.PemTrustOptions = {
       asJava.getPemTrustOptions()
     }
 
   /**
     * Set the key/cert options in pfx format.
     */
-    def setPfxKeyCertOptions(value: JPfxOptions) = {
-      asJava.setPfxKeyCertOptions(value.asJava)
+    def setPfxKeyCertOptions(value: io.vertx.core.net.PfxOptions) = {
+      asJava.setPfxKeyCertOptions(value)
     }
-    def getPfxKeyCertOptions: JPfxOptions = {
+    def getPfxKeyCertOptions: io.vertx.core.net.PfxOptions = {
       asJava.getPfxKeyCertOptions()
     }
 
   /**
     * Set the trust options in pfx format
     */
-    def setPfxTrustOptions(value: JPfxOptions) = {
-      asJava.setPfxTrustOptions(value.asJava)
+    def setPfxTrustOptions(value: io.vertx.core.net.PfxOptions) = {
+      asJava.setPfxTrustOptions(value)
     }
-    def getPfxTrustOptions: JPfxOptions = {
+    def getPfxTrustOptions: io.vertx.core.net.PfxOptions = {
       asJava.getPfxTrustOptions()
     }
 
   /**
     * Set proxy options for connections via CONNECT proxy (e.g. Squid) or a SOCKS proxy.
     */
-    def setProxyOptions(value: JProxyOptions) = {
-      asJava.setProxyOptions(value.asJava)
+    def setProxyOptions(value: io.vertx.core.net.ProxyOptions) = {
+      asJava.setProxyOptions(value)
     }
-    def getProxyOptions: JProxyOptions = {
+    def getProxyOptions: io.vertx.core.net.ProxyOptions = {
       asJava.getProxyOptions()
     }
 
@@ -853,10 +841,10 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   /**
     * Set the trust options in jks format, aka Java truststore
     */
-    def setTrustStoreOptions(value: JJksOptions) = {
-      asJava.setTrustStoreOptions(value.asJava)
+    def setTrustStoreOptions(value: io.vertx.core.net.JksOptions) = {
+      asJava.setTrustStoreOptions(value)
     }
-    def getTrustStoreOptions: JJksOptions = {
+    def getTrustStoreOptions: io.vertx.core.net.JksOptions = {
       asJava.getTrustStoreOptions()
     }
 
@@ -885,12 +873,9 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
 
 import io.vertx.core.cli.{Argument => JArgument}
 import io.vertx.core.cli.Option
-import io.vertx.core.cli.CommandLine
 import io.vertx.core.cli.{Option => JOption}
 import io.vertx.core.cli.CLI
 import io.vertx.core.cli.{CLI => JCLI}
-import io.vertx.core.cli.{CommandLine => JCommandLine}
-import scala.collection.JavaConverters._
 import io.vertx.core.cli.Argument
 
 /**
@@ -898,7 +883,7 @@ import io.vertx.core.cli.Argument
   * has stored the argument and option values. Only  instance of parser should create
   * objects of this type.
   */
-implicit class CommandLineScala(val asJava: JCommandLine) extends AnyVal {
+implicit class CommandLineScala(val asJava: io.vertx.core.cli.CommandLine) extends AnyVal {
 
 
 }
@@ -908,8 +893,8 @@ import io.vertx.core.CompositeFuture
 import io.vertx.core.{Future => JFuture}
 import io.vertx.core.{CompositeFuture => JCompositeFuture}
 import io.vertx.core.AsyncResult
-import scala.collection.JavaConverters._
 import io.vertx.core.Handler
+import scala.collection.JavaConverters._
 import io.vertx.core.Future
 
 /**
@@ -917,22 +902,16 @@ import io.vertx.core.Future
   * needs to be coordinated.
   * The handlers set for the coordinated futures are overridden by the handler of the composite future.
   */
-implicit class CompositeFutureScala(val asJava: JCompositeFuture) extends AnyVal {
+implicit class CompositeFutureScala(val asJava: io.vertx.core.CompositeFuture) extends AnyVal {
 
 
 }
 
 import io.vertx.lang.scala.AsyncResultWrapper
-import io.vertx.core.{Context => JContext}
 import io.vertx.core.{Future => JFuture}
-import io.vertx.core.Vertx
-import io.vertx.core.json.JsonObject
 import io.vertx.core.AsyncResult
-import scala.collection.JavaConverters._
 import io.vertx.core.Handler
 import io.vertx.core.Future
-import io.vertx.core.Context
-import io.vertx.core.{Vertx => JVertx}
 
 /**
   * The execution context of a scala-function execution.
@@ -966,18 +945,17 @@ import io.vertx.core.{Vertx => JVertx}
   * 
   * This class also provides [[io.vertx.core.Context#runOnContext]] which allows an action to be executed asynchronously using the same context.
   */
-implicit class ContextScala(val asJava: JContext) extends AnyVal {
+implicit class ContextScala(val asJava: io.vertx.core.Context) extends AnyVal {
 
 
 }
 
-import io.vertx.core.file.{CopyOptions => JCopyOptions}
 
 /**
   * Describes the copy (and move) options.
   */
 
-  implicit class CopyOptionsScala(val asJava: JCopyOptions) extends AnyVal {
+  implicit class CopyOptionsScala(val asJava: io.vertx.core.file.CopyOptions) extends AnyVal {
 
 
   /**
@@ -1021,15 +999,14 @@ import io.vertx.core.file.{CopyOptions => JCopyOptions}
     }
   }
   
-  type CopyOptions = JCopyOptions
+  type CopyOptions = io.vertx.core.file.CopyOptions
   object CopyOptions {
-    def apply(): JCopyOptions = new CopyOptions()
-    def apply(json: JsonObject) = new JCopyOptions(json)
+    def apply() = new CopyOptions()
+    def apply(json: JsonObject) = new io.vertx.core.file.CopyOptions(json)
   }
 
 
 import io.vertx.lang.scala.AsyncResultWrapper
-import io.vertx.core.shareddata.{Counter => JCounter}
 import io.vertx.core.AsyncResult
 import io.vertx.core.Handler
 
@@ -1037,7 +1014,7 @@ import io.vertx.core.Handler
   * An asynchronous counter that can be used to across the cluster to maintain a consistent count.
   * 
   */
-implicit class CounterScala(val asJava: JCounter) extends AnyVal {
+implicit class CounterScala(val asJava: io.vertx.core.shareddata.Counter) extends AnyVal {
 
 
  /**
@@ -1105,35 +1082,23 @@ implicit class CounterScala(val asJava: JCounter) extends AnyVal {
 
 }
 
-import io.vertx.core.buffer.Buffer
-import io.vertx.core.net.{SocketAddress => JSocketAddress}
-import io.vertx.core.datagram.{DatagramPacket => JDatagramPacket}
-import io.vertx.core.net.SocketAddress
 
 /**
   * A received datagram packet (UDP) which contains the data and information about the sender of the data itself.
   */
-implicit class DatagramPacketScala(val asJava: JDatagramPacket) extends AnyVal {
+implicit class DatagramPacketScala(val asJava: io.vertx.core.datagram.DatagramPacket) extends AnyVal {
 
 
 }
 
 import io.vertx.lang.scala.AsyncResultWrapper
-import io.vertx.core.metrics.{Measured => JMeasured}
-import io.vertx.core.streams.{ReadStream => JReadStream}
-import io.vertx.core.datagram.DatagramSocket
-import io.vertx.core.datagram.{DatagramPacket => JDatagramPacket}
-import io.vertx.core.streams.{WriteStream => JWriteStream}
 import io.vertx.core.datagram.{DatagramSocket => JDatagramSocket}
 import io.vertx.core.buffer.Buffer
 import io.vertx.core.datagram.DatagramPacket
-import io.vertx.core.metrics.Measured
-import io.vertx.core.streams.WriteStream
-import io.vertx.core.streams.ReadStream
-import io.vertx.core.net.{SocketAddress => JSocketAddress}
+import io.vertx.core.datagram.DatagramSocket
 import io.vertx.core.AsyncResult
 import io.vertx.core.Handler
-import io.vertx.core.net.SocketAddress
+import io.vertx.core.datagram.{DatagramPacket => JDatagramPacket}
 
 /**
   * A datagram socket can be used to send [[io.vertx.core.datagram.DatagramPacket]]'s to remote datagram servers
@@ -1147,14 +1112,14 @@ import io.vertx.core.net.SocketAddress
   * 
   * Please consult the documentation for more information on datagram sockets.
   */
-implicit class DatagramSocketScala(val asJava: JDatagramSocket) extends AnyVal {
+implicit class DatagramSocketScala(val asJava: io.vertx.core.datagram.DatagramSocket) extends AnyVal {
 
 
  /**
    * Like [[send]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def sendFuture(packet: io.vertx.core.buffer.Buffer, port: java.lang.Integer, host: String): scala.concurrent.Future[JDatagramSocket] = {
-    val promise = Promise[JDatagramSocket]()
+  def sendFuture(packet: io.vertx.core.buffer.Buffer, port: java.lang.Integer, host: String): scala.concurrent.Future[io.vertx.core.datagram.DatagramSocket] = {
+    val promise = Promise[io.vertx.core.datagram.DatagramSocket]()
     asJava.send(packet, port, host, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -1162,8 +1127,8 @@ implicit class DatagramSocketScala(val asJava: JDatagramSocket) extends AnyVal {
  /**
    * Like [[send]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def sendFuture(str: String, port: java.lang.Integer, host: String): scala.concurrent.Future[JDatagramSocket] = {
-    val promise = Promise[JDatagramSocket]()
+  def sendFuture(str: String, port: java.lang.Integer, host: String): scala.concurrent.Future[io.vertx.core.datagram.DatagramSocket] = {
+    val promise = Promise[io.vertx.core.datagram.DatagramSocket]()
     asJava.send(str, port, host, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -1171,8 +1136,8 @@ implicit class DatagramSocketScala(val asJava: JDatagramSocket) extends AnyVal {
  /**
    * Like [[send]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def sendFuture(str: String, enc: String, port: java.lang.Integer, host: String): scala.concurrent.Future[JDatagramSocket] = {
-    val promise = Promise[JDatagramSocket]()
+  def sendFuture(str: String, enc: String, port: java.lang.Integer, host: String): scala.concurrent.Future[io.vertx.core.datagram.DatagramSocket] = {
+    val promise = Promise[io.vertx.core.datagram.DatagramSocket]()
     asJava.send(str, enc, port, host, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -1189,8 +1154,8 @@ implicit class DatagramSocketScala(val asJava: JDatagramSocket) extends AnyVal {
  /**
    * Like [[listenMulticastGroup]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def listenMulticastGroupFuture(multicastAddress: String): scala.concurrent.Future[JDatagramSocket] = {
-    val promise = Promise[JDatagramSocket]()
+  def listenMulticastGroupFuture(multicastAddress: String): scala.concurrent.Future[io.vertx.core.datagram.DatagramSocket] = {
+    val promise = Promise[io.vertx.core.datagram.DatagramSocket]()
     asJava.listenMulticastGroup(multicastAddress, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -1198,8 +1163,8 @@ implicit class DatagramSocketScala(val asJava: JDatagramSocket) extends AnyVal {
  /**
    * Like [[listenMulticastGroup]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def listenMulticastGroupFuture(multicastAddress: String, networkInterface: String, source: String): scala.concurrent.Future[JDatagramSocket] = {
-    val promise = Promise[JDatagramSocket]()
+  def listenMulticastGroupFuture(multicastAddress: String, networkInterface: String, source: String): scala.concurrent.Future[io.vertx.core.datagram.DatagramSocket] = {
+    val promise = Promise[io.vertx.core.datagram.DatagramSocket]()
     asJava.listenMulticastGroup(multicastAddress, networkInterface, source, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -1207,8 +1172,8 @@ implicit class DatagramSocketScala(val asJava: JDatagramSocket) extends AnyVal {
  /**
    * Like [[unlistenMulticastGroup]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def unlistenMulticastGroupFuture(multicastAddress: String): scala.concurrent.Future[JDatagramSocket] = {
-    val promise = Promise[JDatagramSocket]()
+  def unlistenMulticastGroupFuture(multicastAddress: String): scala.concurrent.Future[io.vertx.core.datagram.DatagramSocket] = {
+    val promise = Promise[io.vertx.core.datagram.DatagramSocket]()
     asJava.unlistenMulticastGroup(multicastAddress, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -1216,8 +1181,8 @@ implicit class DatagramSocketScala(val asJava: JDatagramSocket) extends AnyVal {
  /**
    * Like [[unlistenMulticastGroup]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def unlistenMulticastGroupFuture(multicastAddress: String, networkInterface: String, source: String): scala.concurrent.Future[JDatagramSocket] = {
-    val promise = Promise[JDatagramSocket]()
+  def unlistenMulticastGroupFuture(multicastAddress: String, networkInterface: String, source: String): scala.concurrent.Future[io.vertx.core.datagram.DatagramSocket] = {
+    val promise = Promise[io.vertx.core.datagram.DatagramSocket]()
     asJava.unlistenMulticastGroup(multicastAddress, networkInterface, source, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -1225,8 +1190,8 @@ implicit class DatagramSocketScala(val asJava: JDatagramSocket) extends AnyVal {
  /**
    * Like [[blockMulticastGroup]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def blockMulticastGroupFuture(multicastAddress: String, sourceToBlock: String): scala.concurrent.Future[JDatagramSocket] = {
-    val promise = Promise[JDatagramSocket]()
+  def blockMulticastGroupFuture(multicastAddress: String, sourceToBlock: String): scala.concurrent.Future[io.vertx.core.datagram.DatagramSocket] = {
+    val promise = Promise[io.vertx.core.datagram.DatagramSocket]()
     asJava.blockMulticastGroup(multicastAddress, sourceToBlock, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -1234,8 +1199,8 @@ implicit class DatagramSocketScala(val asJava: JDatagramSocket) extends AnyVal {
  /**
    * Like [[blockMulticastGroup]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def blockMulticastGroupFuture(multicastAddress: String, networkInterface: String, sourceToBlock: String): scala.concurrent.Future[JDatagramSocket] = {
-    val promise = Promise[JDatagramSocket]()
+  def blockMulticastGroupFuture(multicastAddress: String, networkInterface: String, sourceToBlock: String): scala.concurrent.Future[io.vertx.core.datagram.DatagramSocket] = {
+    val promise = Promise[io.vertx.core.datagram.DatagramSocket]()
     asJava.blockMulticastGroup(multicastAddress, networkInterface, sourceToBlock, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -1243,23 +1208,20 @@ implicit class DatagramSocketScala(val asJava: JDatagramSocket) extends AnyVal {
  /**
    * Like [[listen]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def listenFuture(port: java.lang.Integer, host: String): scala.concurrent.Future[JDatagramSocket] = {
-    val promise = Promise[JDatagramSocket]()
+  def listenFuture(port: java.lang.Integer, host: String): scala.concurrent.Future[io.vertx.core.datagram.DatagramSocket] = {
+    val promise = Promise[io.vertx.core.datagram.DatagramSocket]()
     asJava.listen(port, host, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
 }
 
-import io.vertx.core.datagram.{DatagramSocketOptions => JDatagramSocketOptions}
-import io.vertx.core.net.{NetworkOptions => JNetworkOptions}
-import io.vertx.core.net.NetworkOptions
 
 /**
   * Options used to configure a datagram socket.
   */
 
-  implicit class DatagramSocketOptionsScala(val asJava: JDatagramSocketOptions) extends AnyVal {
+  implicit class DatagramSocketOptionsScala(val asJava: io.vertx.core.datagram.DatagramSocketOptions) extends AnyVal {
 
 
   /**
@@ -1375,14 +1337,13 @@ import io.vertx.core.net.NetworkOptions
     }
   }
   
-  type DatagramSocketOptions = JDatagramSocketOptions
+  type DatagramSocketOptions = io.vertx.core.datagram.DatagramSocketOptions
   object DatagramSocketOptions {
-    def apply(): JDatagramSocketOptions = new DatagramSocketOptions()
-    def apply(json: JsonObject) = new JDatagramSocketOptions(json)
+    def apply() = new DatagramSocketOptions()
+    def apply(json: JsonObject) = new io.vertx.core.datagram.DatagramSocketOptions(json)
   }
 
 
-import io.vertx.core.eventbus.{DeliveryOptions => JDeliveryOptions}
 
 /**
   * Delivery options are used to configure message delivery.
@@ -1391,7 +1352,7 @@ import io.vertx.core.eventbus.{DeliveryOptions => JDeliveryOptions}
   * that you wish to send with the message.
   */
 
-  implicit class DeliveryOptionsScala(val asJava: JDeliveryOptions) extends AnyVal {
+  implicit class DeliveryOptionsScala(val asJava: io.vertx.core.eventbus.DeliveryOptions) extends AnyVal {
 
 
   /**
@@ -1425,14 +1386,13 @@ import io.vertx.core.eventbus.{DeliveryOptions => JDeliveryOptions}
     }
   }
   
-  type DeliveryOptions = JDeliveryOptions
+  type DeliveryOptions = io.vertx.core.eventbus.DeliveryOptions
   object DeliveryOptions {
-    def apply(): JDeliveryOptions = new DeliveryOptions()
-    def apply(json: JsonObject) = new JDeliveryOptions(json)
+    def apply() = new DeliveryOptions()
+    def apply(json: JsonObject) = new io.vertx.core.eventbus.DeliveryOptions(json)
   }
 
 
-import io.vertx.core.{DeploymentOptions => JDeploymentOptions}
 import io.vertx.core.json.JsonObject
 
 /**
@@ -1440,7 +1400,7 @@ import io.vertx.core.json.JsonObject
   * 
   */
 
-  implicit class DeploymentOptionsScala(val asJava: JDeploymentOptions) extends AnyVal {
+  implicit class DeploymentOptionsScala(val asJava: io.vertx.core.DeploymentOptions) extends AnyVal {
 
 
   /**
@@ -1557,30 +1517,24 @@ import io.vertx.core.json.JsonObject
     }
   }
   
-  type DeploymentOptions = JDeploymentOptions
+  type DeploymentOptions = io.vertx.core.DeploymentOptions
   object DeploymentOptions {
-    def apply(): JDeploymentOptions = new DeploymentOptions()
-    def apply(json: JsonObject) = new JDeploymentOptions(json)
+    def apply() = new DeploymentOptions()
+    def apply(json: JsonObject) = new io.vertx.core.DeploymentOptions(json)
   }
 
 
-import io.vertx.core.dns.DnsClient
 import io.vertx.lang.scala.AsyncResultWrapper
-import io.vertx.core.dns.{DnsClient => JDnsClient}
-import io.vertx.core.dns.MxRecord
-import io.vertx.core.dns.{SrvRecord => JSrvRecord}
 import io.vertx.core.AsyncResult
-import scala.collection.JavaConverters._
 import io.vertx.core.Handler
-import io.vertx.core.dns.{MxRecord => JMxRecord}
-import io.vertx.core.dns.SrvRecord
+import scala.collection.JavaConverters._
 
 /**
   * Provides a way to asynchronously lookup information from DNS servers.
   * 
   * Please consult the documentation for more information on DNS clients.
   */
-implicit class DnsClientScala(val asJava: JDnsClient) extends AnyVal {
+implicit class DnsClientScala(val asJava: io.vertx.core.dns.DnsClient) extends AnyVal {
 
 
  /**
@@ -1640,8 +1594,8 @@ implicit class DnsClientScala(val asJava: JDnsClient) extends AnyVal {
  /**
    * Like [[resolveMX]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def resolveMXFuture(name: String): scala.concurrent.Future[java.util.List[JMxRecord]] = {
-    val promise = Promise[java.util.List[JMxRecord]]()
+  def resolveMXFuture(name: String): scala.concurrent.Future[java.util.List[io.vertx.core.dns.MxRecord]] = {
+    val promise = Promise[java.util.List[io.vertx.core.dns.MxRecord]]()
     asJava.resolveMX(name, {a:AsyncResult[java.util.List[io.vertx.core.dns.MxRecord]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -1676,8 +1630,8 @@ implicit class DnsClientScala(val asJava: JDnsClient) extends AnyVal {
  /**
    * Like [[resolveSRV]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def resolveSRVFuture(name: String): scala.concurrent.Future[java.util.List[JSrvRecord]] = {
-    val promise = Promise[java.util.List[JSrvRecord]]()
+  def resolveSRVFuture(name: String): scala.concurrent.Future[java.util.List[io.vertx.core.dns.SrvRecord]] = {
+    val promise = Promise[java.util.List[io.vertx.core.dns.SrvRecord]]()
     asJava.resolveSRV(name, {a:AsyncResult[java.util.List[io.vertx.core.dns.SrvRecord]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -1693,13 +1647,12 @@ implicit class DnsClientScala(val asJava: JDnsClient) extends AnyVal {
 
 }
 
-import io.vertx.core.dns.{DnsClientOptions => JDnsClientOptions}
 
 /**
   * Configuration options for Vert.x DNS client.
   */
 
-  implicit class DnsClientOptionsScala(val asJava: JDnsClientOptions) extends AnyVal {
+  implicit class DnsClientOptionsScala(val asJava: io.vertx.core.dns.DnsClientOptions) extends AnyVal {
 
 
   /**
@@ -1733,30 +1686,22 @@ import io.vertx.core.dns.{DnsClientOptions => JDnsClientOptions}
     }
   }
   
-  type DnsClientOptions = JDnsClientOptions
+  type DnsClientOptions = io.vertx.core.dns.DnsClientOptions
   object DnsClientOptions {
-    def apply(): JDnsClientOptions = new DnsClientOptions()
-    def apply(json: JsonObject) = new JDnsClientOptions(json)
+    def apply() = new DnsClientOptions()
+    def apply(json: JsonObject) = new io.vertx.core.dns.DnsClientOptions(json)
   }
 
 
 import io.vertx.lang.scala.AsyncResultWrapper
-import io.vertx.core.metrics.{Measured => JMeasured}
 import io.vertx.core.eventbus.DeliveryOptions
-import io.vertx.core.eventbus.{DeliveryOptions => JDeliveryOptions}
-import io.vertx.core.eventbus.Message
-import io.vertx.core.eventbus.{MessageConsumer => JMessageConsumer}
-import io.vertx.core.eventbus.EventBus
-import io.vertx.core.metrics.Measured
-import io.vertx.core.eventbus.{SendContext => JSendContext}
 import io.vertx.core.eventbus.{Message => JMessage}
-import io.vertx.core.eventbus.{MessageProducer => JMessageProducer}
+import io.vertx.core.eventbus.{DeliveryOptions => JDeliveryOptions}
+import io.vertx.core.eventbus.{SendContext => JSendContext}
 import io.vertx.core.eventbus.SendContext
+import io.vertx.core.eventbus.Message
 import io.vertx.core.AsyncResult
 import io.vertx.core.Handler
-import io.vertx.core.eventbus.MessageConsumer
-import io.vertx.core.eventbus.MessageProducer
-import io.vertx.core.eventbus.{EventBus => JEventBus}
 
 /**
   * A Vert.x event-bus is a light-weight distributed messaging system which allows different parts of your application,
@@ -1768,14 +1713,14 @@ import io.vertx.core.eventbus.{EventBus => JEventBus}
   * 
   * Please refer to the documentation for more information on the event bus.
   */
-implicit class EventBusScala(val asJava: JEventBus) extends AnyVal {
+implicit class EventBusScala(val asJava: io.vertx.core.eventbus.EventBus) extends AnyVal {
 
 
  /**
    * Like [[send]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def sendFuture[T](address: String, message: AnyRef): scala.concurrent.Future[JMessage[T]] = {
-    val promise = Promise[JMessage[T]]()
+  def sendFuture[T](address: String, message: AnyRef): scala.concurrent.Future[io.vertx.core.eventbus.Message[T]] = {
+    val promise = Promise[io.vertx.core.eventbus.Message[T]]()
     asJava.send[T](address, message, {a:AsyncResult[io.vertx.core.eventbus.Message[T]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -1783,15 +1728,14 @@ implicit class EventBusScala(val asJava: JEventBus) extends AnyVal {
  /**
    * Like [[send]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def sendFuture[T](address: String, message: AnyRef, options: JDeliveryOptions): scala.concurrent.Future[JMessage[T]] = {
-    val promise = Promise[JMessage[T]]()
+  def sendFuture[T](address: String, message: AnyRef, options: io.vertx.core.eventbus.DeliveryOptions): scala.concurrent.Future[io.vertx.core.eventbus.Message[T]] = {
+    val promise = Promise[io.vertx.core.eventbus.Message[T]]()
     asJava.send[T](address, message, options, {a:AsyncResult[io.vertx.core.eventbus.Message[T]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
 }
 
-import io.vertx.core.eventbus.{EventBusOptions => JEventBusOptions}
 import io.vertx.core.net.JksOptions
 import io.vertx.core.net.{PfxOptions => JPfxOptions}
 import io.vertx.core.net.PfxOptions
@@ -1802,18 +1746,16 @@ import io.vertx.core.net.PemKeyCertOptions
 import io.vertx.core.http.ClientAuth
 import io.vertx.core.net.{JdkSSLEngineOptions => JJdkSSLEngineOptions}
 import io.vertx.core.net.{PemTrustOptions => JPemTrustOptions}
-import io.vertx.core.net.{TCPSSLOptions => JTCPSSLOptions}
 import io.vertx.core.net.{PemKeyCertOptions => JPemKeyCertOptions}
 import io.vertx.core.net.PemTrustOptions
 import io.vertx.core.net.JdkSSLEngineOptions
 import io.vertx.core.net.{JksOptions => JJksOptions}
-import io.vertx.core.net.TCPSSLOptions
 
 /**
   * Options to configure the event bus.
   */
 
-  implicit class EventBusOptionsScala(val asJava: JEventBusOptions) extends AnyVal {
+  implicit class EventBusOptionsScala(val asJava: io.vertx.core.eventbus.EventBusOptions) extends AnyVal {
 
 
   /**
@@ -1965,20 +1907,20 @@ import io.vertx.core.net.TCPSSLOptions
     def getIdleTimeout: java.lang.Integer = {
       asJava.getIdleTimeout()
     }
-    def setJdkSslEngineOptions(value: JJdkSSLEngineOptions) = {
-      asJava.setJdkSslEngineOptions(value.asJava)
+    def setJdkSslEngineOptions(value: io.vertx.core.net.JdkSSLEngineOptions) = {
+      asJava.setJdkSslEngineOptions(value)
     }
-    def getJdkSslEngineOptions: JJdkSSLEngineOptions = {
+    def getJdkSslEngineOptions: io.vertx.core.net.JdkSSLEngineOptions = {
       asJava.getJdkSslEngineOptions()
     }
 
   /**
     * Set the key/cert options in jks format, aka Java keystore.
     */
-    def setKeyStoreOptions(value: JJksOptions) = {
-      asJava.setKeyStoreOptions(value.asJava)
+    def setKeyStoreOptions(value: io.vertx.core.net.JksOptions) = {
+      asJava.setKeyStoreOptions(value)
     }
-    def getKeyStoreOptions: JJksOptions = {
+    def getKeyStoreOptions: io.vertx.core.net.JksOptions = {
       asJava.getKeyStoreOptions()
     }
 
@@ -1991,50 +1933,50 @@ import io.vertx.core.net.TCPSSLOptions
     def getLogActivity: java.lang.Boolean = {
       asJava.getLogActivity()
     }
-    def setOpenSslEngineOptions(value: JOpenSSLEngineOptions) = {
-      asJava.setOpenSslEngineOptions(value.asJava)
+    def setOpenSslEngineOptions(value: io.vertx.core.net.OpenSSLEngineOptions) = {
+      asJava.setOpenSslEngineOptions(value)
     }
-    def getOpenSslEngineOptions: JOpenSSLEngineOptions = {
+    def getOpenSslEngineOptions: io.vertx.core.net.OpenSSLEngineOptions = {
       asJava.getOpenSslEngineOptions()
     }
 
   /**
     * Set the key/cert store options in pem format.
     */
-    def setPemKeyCertOptions(value: JPemKeyCertOptions) = {
-      asJava.setPemKeyCertOptions(value.asJava)
+    def setPemKeyCertOptions(value: io.vertx.core.net.PemKeyCertOptions) = {
+      asJava.setPemKeyCertOptions(value)
     }
-    def getPemKeyCertOptions: JPemKeyCertOptions = {
+    def getPemKeyCertOptions: io.vertx.core.net.PemKeyCertOptions = {
       asJava.getPemKeyCertOptions()
     }
 
   /**
     * Set the trust options in pem format
     */
-    def setPemTrustOptions(value: JPemTrustOptions) = {
-      asJava.setPemTrustOptions(value.asJava)
+    def setPemTrustOptions(value: io.vertx.core.net.PemTrustOptions) = {
+      asJava.setPemTrustOptions(value)
     }
-    def getPemTrustOptions: JPemTrustOptions = {
+    def getPemTrustOptions: io.vertx.core.net.PemTrustOptions = {
       asJava.getPemTrustOptions()
     }
 
   /**
     * Set the key/cert options in pfx format.
     */
-    def setPfxKeyCertOptions(value: JPfxOptions) = {
-      asJava.setPfxKeyCertOptions(value.asJava)
+    def setPfxKeyCertOptions(value: io.vertx.core.net.PfxOptions) = {
+      asJava.setPfxKeyCertOptions(value)
     }
-    def getPfxKeyCertOptions: JPfxOptions = {
+    def getPfxKeyCertOptions: io.vertx.core.net.PfxOptions = {
       asJava.getPfxKeyCertOptions()
     }
 
   /**
     * Set the trust options in pfx format
     */
-    def setPfxTrustOptions(value: JPfxOptions) = {
-      asJava.setPfxTrustOptions(value.asJava)
+    def setPfxTrustOptions(value: io.vertx.core.net.PfxOptions) = {
+      asJava.setPfxTrustOptions(value)
     }
-    def getPfxTrustOptions: JPfxOptions = {
+    def getPfxTrustOptions: io.vertx.core.net.PfxOptions = {
       asJava.getPfxTrustOptions()
     }
 
@@ -2203,10 +2145,10 @@ import io.vertx.core.net.TCPSSLOptions
   /**
     * Set the trust options in jks format, aka Java truststore
     */
-    def setTrustStoreOptions(value: JJksOptions) = {
-      asJava.setTrustStoreOptions(value.asJava)
+    def setTrustStoreOptions(value: io.vertx.core.net.JksOptions) = {
+      asJava.setTrustStoreOptions(value)
     }
-    def getTrustStoreOptions: JJksOptions = {
+    def getTrustStoreOptions: io.vertx.core.net.JksOptions = {
       asJava.getTrustStoreOptions()
     }
 
@@ -2231,27 +2173,25 @@ import io.vertx.core.net.TCPSSLOptions
     }
   }
   
-  type EventBusOptions = JEventBusOptions
+  type EventBusOptions = io.vertx.core.eventbus.EventBusOptions
   object EventBusOptions {
-    def apply(): JEventBusOptions = new EventBusOptions()
-    def apply(json: JsonObject) = new JEventBusOptions(json)
+    def apply() = new EventBusOptions()
+    def apply(json: JsonObject) = new io.vertx.core.eventbus.EventBusOptions(json)
   }
 
 
-import io.vertx.core.file.{FileProps => JFileProps}
 
 /**
   * Represents properties of a file on the file system.
   * 
   */
-implicit class FilePropsScala(val asJava: JFileProps) extends AnyVal {
+implicit class FilePropsScala(val asJava: io.vertx.core.file.FileProps) extends AnyVal {
 
 
 }
 
 import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.file.AsyncFile
-import io.vertx.core.file.{FileSystem => JFileSystem}
 import io.vertx.core.file.OpenOptions
 import scala.collection.JavaConverters._
 import io.vertx.core.file.FileSystemProps
@@ -2259,12 +2199,11 @@ import io.vertx.core.file.FileProps
 import io.vertx.core.file.{OpenOptions => JOpenOptions}
 import io.vertx.core.file.{FileSystemProps => JFileSystemProps}
 import io.vertx.core.buffer.Buffer
-import io.vertx.core.file.{AsyncFile => JAsyncFile}
 import io.vertx.core.file.CopyOptions
-import io.vertx.core.file.FileSystem
+import io.vertx.core.file.{AsyncFile => JAsyncFile}
 import io.vertx.core.file.{CopyOptions => JCopyOptions}
-import io.vertx.core.file.{FileProps => JFileProps}
 import io.vertx.core.AsyncResult
+import io.vertx.core.file.{FileProps => JFileProps}
 import io.vertx.core.Handler
 
 /**
@@ -2281,7 +2220,7 @@ import io.vertx.core.Handler
   * 
   * Please consult the documentation for more information on file system support.
   */
-implicit class FileSystemScala(val asJava: JFileSystem) extends AnyVal {
+implicit class FileSystemScala(val asJava: io.vertx.core.file.FileSystem) extends AnyVal {
 
 
  /**
@@ -2296,7 +2235,7 @@ implicit class FileSystemScala(val asJava: JFileSystem) extends AnyVal {
  /**
    * Like [[copy]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def copyFuture(from: String, to: String, options: JCopyOptions): scala.concurrent.Future[Unit] = {
+  def copyFuture(from: String, to: String, options: io.vertx.core.file.CopyOptions): scala.concurrent.Future[Unit] = {
     val promise = Promise[Unit]()
     asJava.copy(from, to, options, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
@@ -2323,7 +2262,7 @@ implicit class FileSystemScala(val asJava: JFileSystem) extends AnyVal {
  /**
    * Like [[move]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def moveFuture(from: String, to: String, options: JCopyOptions): scala.concurrent.Future[Unit] = {
+  def moveFuture(from: String, to: String, options: io.vertx.core.file.CopyOptions): scala.concurrent.Future[Unit] = {
     val promise = Promise[Unit]()
     asJava.move(from, to, options, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
@@ -2368,8 +2307,8 @@ implicit class FileSystemScala(val asJava: JFileSystem) extends AnyVal {
  /**
    * Like [[props]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def propsFuture(path: String): scala.concurrent.Future[JFileProps] = {
-    val promise = Promise[JFileProps]()
+  def propsFuture(path: String): scala.concurrent.Future[io.vertx.core.file.FileProps] = {
+    val promise = Promise[io.vertx.core.file.FileProps]()
     asJava.props(path, {a:AsyncResult[io.vertx.core.file.FileProps] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -2377,8 +2316,8 @@ implicit class FileSystemScala(val asJava: JFileSystem) extends AnyVal {
  /**
    * Like [[lprops]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def lpropsFuture(path: String): scala.concurrent.Future[JFileProps] = {
-    val promise = Promise[JFileProps]()
+  def lpropsFuture(path: String): scala.concurrent.Future[io.vertx.core.file.FileProps] = {
+    val promise = Promise[io.vertx.core.file.FileProps]()
     asJava.lprops(path, {a:AsyncResult[io.vertx.core.file.FileProps] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -2512,8 +2451,8 @@ implicit class FileSystemScala(val asJava: JFileSystem) extends AnyVal {
  /**
    * Like [[open]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def openFuture(path: String, options: JOpenOptions): scala.concurrent.Future[JAsyncFile] = {
-    val promise = Promise[JAsyncFile]()
+  def openFuture(path: String, options: io.vertx.core.file.OpenOptions): scala.concurrent.Future[io.vertx.core.file.AsyncFile] = {
+    val promise = Promise[io.vertx.core.file.AsyncFile]()
     asJava.open(path, options, {a:AsyncResult[io.vertx.core.file.AsyncFile] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -2548,20 +2487,19 @@ implicit class FileSystemScala(val asJava: JFileSystem) extends AnyVal {
  /**
    * Like [[fsProps]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def fsPropsFuture(path: String): scala.concurrent.Future[JFileSystemProps] = {
-    val promise = Promise[JFileSystemProps]()
+  def fsPropsFuture(path: String): scala.concurrent.Future[io.vertx.core.file.FileSystemProps] = {
+    val promise = Promise[io.vertx.core.file.FileSystemProps]()
     asJava.fsProps(path, {a:AsyncResult[io.vertx.core.file.FileSystemProps] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
 }
 
-import io.vertx.core.file.{FileSystemProps => JFileSystemProps}
 
 /**
   * Represents properties of the file system.
   */
-implicit class FileSystemPropsScala(val asJava: JFileSystemProps) extends AnyVal {
+implicit class FileSystemPropsScala(val asJava: io.vertx.core.file.FileSystemProps) extends AnyVal {
 
 
 }
@@ -2576,19 +2514,18 @@ import io.vertx.core.Future
   * Represents the result of an action that may, or may not, have occurred yet.
   * 
   */
-implicit class FutureScala[T](val asJava: JFuture[T]) extends AnyVal {
+implicit class FutureScala[T](val asJava: io.vertx.core.Future[T]) extends AnyVal {
 
 
 }
 
 import io.vertx.core.buffer.Buffer
-import io.vertx.core.http.{GoAway => JGoAway}
 
 /**
   * A  frame.
   */
 
-  implicit class GoAwayScala(val asJava: JGoAway) extends AnyVal {
+  implicit class GoAwayScala(val asJava: io.vertx.core.http.GoAway) extends AnyVal {
 
 
   /**
@@ -2621,14 +2558,13 @@ import io.vertx.core.http.{GoAway => JGoAway}
     }
   }
   
-  type GoAway = JGoAway
+  type GoAway = io.vertx.core.http.GoAway
   object GoAway {
-    def apply(): JGoAway = new GoAway()
-    def apply(json: JsonObject) = new JGoAway(json)
+    def apply() = new GoAway()
+    def apply(json: JsonObject) = new io.vertx.core.http.GoAway(json)
   }
 
 
-import io.vertx.core.http.{Http2Settings => JHttp2Settings}
 
 /**
   * HTTP2 settings, the settings is initialized with the default HTTP/2 values.
@@ -2637,7 +2573,7 @@ import io.vertx.core.http.{Http2Settings => JHttp2Settings}
   * protocol extensions.
   */
 
-  implicit class Http2SettingsScala(val asJava: JHttp2Settings) extends AnyVal {
+  implicit class Http2SettingsScala(val asJava: io.vertx.core.http.Http2Settings) extends AnyVal {
 
 
   /**
@@ -2701,34 +2637,24 @@ import io.vertx.core.http.{Http2Settings => JHttp2Settings}
     }
   }
   
-  type Http2Settings = JHttp2Settings
+  type Http2Settings = io.vertx.core.http.Http2Settings
   object Http2Settings {
-    def apply(): JHttp2Settings = new Http2Settings()
-    def apply(json: JsonObject) = new JHttp2Settings(json)
+    def apply() = new Http2Settings()
+    def apply(json: JsonObject) = new io.vertx.core.http.Http2Settings(json)
   }
 
 
-import io.vertx.core.metrics.{Measured => JMeasured}
+import io.vertx.core.http.HttpClientResponse
 import io.vertx.core.http.{RequestOptions => JRequestOptions}
-import io.vertx.core.streams.{ReadStream => JReadStream}
+import io.vertx.core.http.HttpMethod
+import io.vertx.core.http.{HttpClientResponse => JHttpClientResponse}
 import io.vertx.core.MultiMap
+import io.vertx.core.http.{WebSocket => JWebSocket}
 import io.vertx.core.http.RequestOptions
+import io.vertx.core.{MultiMap => JMultiMap}
 import io.vertx.core.http.WebSocket
 import io.vertx.core.http.WebsocketVersion
-import io.vertx.core.Future
-import io.vertx.core.http.{HttpClient => JHttpClient}
-import io.vertx.core.http.HttpClientRequest
-import io.vertx.core.http.HttpClientResponse
-import io.vertx.core.metrics.Measured
-import io.vertx.core.http.HttpMethod
-import io.vertx.core.{Future => JFuture}
-import io.vertx.core.http.{HttpClientResponse => JHttpClientResponse}
-import io.vertx.core.streams.ReadStream
-import io.vertx.core.http.{WebSocket => JWebSocket}
-import io.vertx.core.{MultiMap => JMultiMap}
 import io.vertx.core.Handler
-import io.vertx.core.http.{HttpClientRequest => JHttpClientRequest}
-import io.vertx.core.http.HttpClient
 
 /**
   * An asynchronous HTTP client.
@@ -2756,7 +2682,7 @@ import io.vertx.core.http.HttpClient
   * 
   * The client is designed to be reused between requests.
   */
-implicit class HttpClientScala(val asJava: JHttpClient) extends AnyVal {
+implicit class HttpClientScala(val asJava: io.vertx.core.http.HttpClient) extends AnyVal {
 
 
 }
@@ -2764,22 +2690,19 @@ implicit class HttpClientScala(val asJava: JHttpClient) extends AnyVal {
 import io.vertx.core.net.ProxyOptions
 import io.vertx.core.net.JksOptions
 import io.vertx.core.net.{PfxOptions => JPfxOptions}
-import io.vertx.core.http.{HttpClientOptions => JHttpClientOptions}
 import io.vertx.core.http.Http2Settings
 import io.vertx.core.net.PfxOptions
 import io.vertx.core.net.OpenSSLEngineOptions
 import io.vertx.core.buffer.Buffer
-import io.vertx.core.net.ClientOptionsBase
 import io.vertx.core.http.HttpVersion
 import io.vertx.core.net.{OpenSSLEngineOptions => JOpenSSLEngineOptions}
 import io.vertx.core.net.PemKeyCertOptions
 import io.vertx.core.net.{JdkSSLEngineOptions => JJdkSSLEngineOptions}
 import io.vertx.core.net.{PemTrustOptions => JPemTrustOptions}
-import io.vertx.core.net.{ClientOptionsBase => JClientOptionsBase}
+import io.vertx.core.http.{Http2Settings => JHttp2Settings}
 import io.vertx.core.net.{PemKeyCertOptions => JPemKeyCertOptions}
 import io.vertx.core.net.PemTrustOptions
 import io.vertx.core.net.{ProxyOptions => JProxyOptions}
-import io.vertx.core.http.{Http2Settings => JHttp2Settings}
 import io.vertx.core.net.JdkSSLEngineOptions
 import io.vertx.core.net.{JksOptions => JJksOptions}
 
@@ -2787,7 +2710,7 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   * Options describing how an [[io.vertx.core.http.HttpClient]] will make connections.
   */
 
-  implicit class HttpClientOptionsScala(val asJava: JHttpClientOptions) extends AnyVal {
+  implicit class HttpClientOptionsScala(val asJava: io.vertx.core.http.HttpClientOptions) extends AnyVal {
 
 
   /**
@@ -2964,16 +2887,16 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   /**
     * Set the HTTP/2 connection settings immediately sent by to the server when the client connects.
     */
-    def setInitialSettings(value: JHttp2Settings) = {
-      asJava.setInitialSettings(value.asJava)
+    def setInitialSettings(value: io.vertx.core.http.Http2Settings) = {
+      asJava.setInitialSettings(value)
     }
-    def getInitialSettings: JHttp2Settings = {
+    def getInitialSettings: io.vertx.core.http.Http2Settings = {
       asJava.getInitialSettings()
     }
-    def setJdkSslEngineOptions(value: JJdkSSLEngineOptions) = {
-      asJava.setJdkSslEngineOptions(value.asJava)
+    def setJdkSslEngineOptions(value: io.vertx.core.net.JdkSSLEngineOptions) = {
+      asJava.setJdkSslEngineOptions(value)
     }
-    def getJdkSslEngineOptions: JJdkSSLEngineOptions = {
+    def getJdkSslEngineOptions: io.vertx.core.net.JdkSSLEngineOptions = {
       asJava.getJdkSslEngineOptions()
     }
 
@@ -2990,10 +2913,10 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   /**
     * Set the key/cert options in jks format, aka Java keystore.
     */
-    def setKeyStoreOptions(value: JJksOptions) = {
-      asJava.setKeyStoreOptions(value.asJava)
+    def setKeyStoreOptions(value: io.vertx.core.net.JksOptions) = {
+      asJava.setKeyStoreOptions(value)
     }
-    def getKeyStoreOptions: JJksOptions = {
+    def getKeyStoreOptions: io.vertx.core.net.JksOptions = {
       asJava.getKeyStoreOptions()
     }
 
@@ -3109,50 +3032,50 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
     def getMetricsName: String = {
       asJava.getMetricsName()
     }
-    def setOpenSslEngineOptions(value: JOpenSSLEngineOptions) = {
-      asJava.setOpenSslEngineOptions(value.asJava)
+    def setOpenSslEngineOptions(value: io.vertx.core.net.OpenSSLEngineOptions) = {
+      asJava.setOpenSslEngineOptions(value)
     }
-    def getOpenSslEngineOptions: JOpenSSLEngineOptions = {
+    def getOpenSslEngineOptions: io.vertx.core.net.OpenSSLEngineOptions = {
       asJava.getOpenSslEngineOptions()
     }
 
   /**
     * Set the key/cert store options in pem format.
     */
-    def setPemKeyCertOptions(value: JPemKeyCertOptions) = {
-      asJava.setPemKeyCertOptions(value.asJava)
+    def setPemKeyCertOptions(value: io.vertx.core.net.PemKeyCertOptions) = {
+      asJava.setPemKeyCertOptions(value)
     }
-    def getPemKeyCertOptions: JPemKeyCertOptions = {
+    def getPemKeyCertOptions: io.vertx.core.net.PemKeyCertOptions = {
       asJava.getPemKeyCertOptions()
     }
 
   /**
     * Set the trust options in pem format
     */
-    def setPemTrustOptions(value: JPemTrustOptions) = {
-      asJava.setPemTrustOptions(value.asJava)
+    def setPemTrustOptions(value: io.vertx.core.net.PemTrustOptions) = {
+      asJava.setPemTrustOptions(value)
     }
-    def getPemTrustOptions: JPemTrustOptions = {
+    def getPemTrustOptions: io.vertx.core.net.PemTrustOptions = {
       asJava.getPemTrustOptions()
     }
 
   /**
     * Set the key/cert options in pfx format.
     */
-    def setPfxKeyCertOptions(value: JPfxOptions) = {
-      asJava.setPfxKeyCertOptions(value.asJava)
+    def setPfxKeyCertOptions(value: io.vertx.core.net.PfxOptions) = {
+      asJava.setPfxKeyCertOptions(value)
     }
-    def getPfxKeyCertOptions: JPfxOptions = {
+    def getPfxKeyCertOptions: io.vertx.core.net.PfxOptions = {
       asJava.getPfxKeyCertOptions()
     }
 
   /**
     * Set the trust options in pfx format
     */
-    def setPfxTrustOptions(value: JPfxOptions) = {
-      asJava.setPfxTrustOptions(value.asJava)
+    def setPfxTrustOptions(value: io.vertx.core.net.PfxOptions) = {
+      asJava.setPfxTrustOptions(value)
     }
-    def getPfxTrustOptions: JPfxOptions = {
+    def getPfxTrustOptions: io.vertx.core.net.PfxOptions = {
       asJava.getPfxTrustOptions()
     }
 
@@ -3189,10 +3112,10 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   /**
     * Set proxy options for connections via CONNECT proxy (e.g. Squid) or a SOCKS proxy.
     */
-    def setProxyOptions(value: JProxyOptions) = {
-      asJava.setProxyOptions(value.asJava)
+    def setProxyOptions(value: io.vertx.core.net.ProxyOptions) = {
+      asJava.setProxyOptions(value)
     }
-    def getProxyOptions: JProxyOptions = {
+    def getProxyOptions: io.vertx.core.net.ProxyOptions = {
       asJava.getProxyOptions()
     }
 
@@ -3343,10 +3266,10 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   /**
     * Set the trust options in jks format, aka Java truststore
     */
-    def setTrustStoreOptions(value: JJksOptions) = {
-      asJava.setTrustStoreOptions(value.asJava)
+    def setTrustStoreOptions(value: io.vertx.core.net.JksOptions) = {
+      asJava.setTrustStoreOptions(value)
     }
-    def getTrustStoreOptions: JJksOptions = {
+    def getTrustStoreOptions: io.vertx.core.net.JksOptions = {
       asJava.getTrustStoreOptions()
     }
 
@@ -3391,28 +3314,21 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
     }
   }
   
-  type HttpClientOptions = JHttpClientOptions
+  type HttpClientOptions = io.vertx.core.http.HttpClientOptions
   object HttpClientOptions {
-    def apply(): JHttpClientOptions = new HttpClientOptions()
-    def apply(json: JsonObject) = new JHttpClientOptions(json)
+    def apply() = new HttpClientOptions()
+    def apply(json: JsonObject) = new io.vertx.core.http.HttpClientOptions(json)
   }
 
 
-import io.vertx.core.streams.{ReadStream => JReadStream}
-import io.vertx.core.http.{HttpConnection => JHttpConnection}
-import io.vertx.core.MultiMap
-import io.vertx.core.http.{HttpFrame => JHttpFrame}
-import io.vertx.core.streams.{WriteStream => JWriteStream}
 import io.vertx.core.http.HttpClientResponse
 import io.vertx.core.http.HttpClientRequest
 import io.vertx.core.buffer.Buffer
 import io.vertx.core.http.HttpFrame
 import io.vertx.core.http.HttpVersion
-import io.vertx.core.streams.WriteStream
-import io.vertx.core.http.HttpMethod
+import io.vertx.core.http.{HttpConnection => JHttpConnection}
 import io.vertx.core.http.{HttpClientResponse => JHttpClientResponse}
-import io.vertx.core.streams.ReadStream
-import io.vertx.core.{MultiMap => JMultiMap}
+import io.vertx.core.http.{HttpFrame => JHttpFrame}
 import io.vertx.core.http.HttpConnection
 import io.vertx.core.Handler
 import io.vertx.core.http.{HttpClientRequest => JHttpClientRequest}
@@ -3444,27 +3360,15 @@ import io.vertx.core.http.{HttpClientRequest => JHttpClientRequest}
   * An example of using this class is as follows:
   * 
   */
-implicit class HttpClientRequestScala(val asJava: JHttpClientRequest) extends AnyVal {
+implicit class HttpClientRequestScala(val asJava: io.vertx.core.http.HttpClientRequest) extends AnyVal {
 
 
 }
 
-import io.vertx.core.streams.{ReadStream => JReadStream}
-import io.vertx.core.MultiMap
-import io.vertx.core.http.{HttpFrame => JHttpFrame}
-import scala.collection.JavaConverters._
-import io.vertx.core.http.HttpClientResponse
-import io.vertx.core.http.HttpClientRequest
-import io.vertx.core.net.{NetSocket => JNetSocket}
 import io.vertx.core.buffer.Buffer
 import io.vertx.core.http.HttpFrame
-import io.vertx.core.http.HttpVersion
-import io.vertx.core.http.{HttpClientResponse => JHttpClientResponse}
-import io.vertx.core.streams.ReadStream
-import io.vertx.core.{MultiMap => JMultiMap}
+import io.vertx.core.http.{HttpFrame => JHttpFrame}
 import io.vertx.core.Handler
-import io.vertx.core.http.{HttpClientRequest => JHttpClientRequest}
-import io.vertx.core.net.NetSocket
 
 /**
   * Represents a client-side HTTP response.
@@ -3475,23 +3379,19 @@ import io.vertx.core.net.NetSocket
   * It implements [[io.vertx.core.streams.ReadStream]] so it can be used with
   * [[io.vertx.core.streams.Pump]] to pump data with flow control.
   */
-implicit class HttpClientResponseScala(val asJava: JHttpClientResponse) extends AnyVal {
+implicit class HttpClientResponseScala(val asJava: io.vertx.core.http.HttpClientResponse) extends AnyVal {
 
 
 }
 
 import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.buffer.Buffer
-import io.vertx.core.http.{HttpConnection => JHttpConnection}
 import io.vertx.core.http.{GoAway => JGoAway}
 import io.vertx.core.http.GoAway
-import io.vertx.core.net.{SocketAddress => JSocketAddress}
-import io.vertx.core.http.HttpConnection
 import io.vertx.core.http.Http2Settings
 import io.vertx.core.AsyncResult
-import io.vertx.core.http.{Http2Settings => JHttp2Settings}
 import io.vertx.core.Handler
-import io.vertx.core.net.SocketAddress
+import io.vertx.core.http.{Http2Settings => JHttp2Settings}
 
 /**
   * Represents an HTTP connection.
@@ -3503,13 +3403,13 @@ import io.vertx.core.net.SocketAddress
   *   <li>[[io.vertx.core.http.HttpConnection#exceptionHandler]]</li>
   * </ul>
   */
-implicit class HttpConnectionScala(val asJava: JHttpConnection) extends AnyVal {
+implicit class HttpConnectionScala(val asJava: io.vertx.core.http.HttpConnection) extends AnyVal {
 
 
  /**
    * Like [[updateSettings]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def updateSettingsFuture(settings: JHttp2Settings): scala.concurrent.Future[Unit] = {
+  def updateSettingsFuture(settings: io.vertx.core.http.Http2Settings): scala.concurrent.Future[Unit] = {
     val promise = Promise[Unit]()
     asJava.updateSettings(settings, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
@@ -3526,29 +3426,23 @@ implicit class HttpConnectionScala(val asJava: JHttpConnection) extends AnyVal {
 
 }
 
-import io.vertx.core.buffer.Buffer
-import io.vertx.core.http.{HttpFrame => JHttpFrame}
 
 /**
   * An HTTP/2 frame.
   */
-implicit class HttpFrameScala(val asJava: JHttpFrame) extends AnyVal {
+implicit class HttpFrameScala(val asJava: io.vertx.core.http.HttpFrame) extends AnyVal {
 
 
 }
 
-import io.vertx.core.http.{HttpServer => JHttpServer}
 import io.vertx.lang.scala.AsyncResultWrapper
-import io.vertx.core.metrics.{Measured => JMeasured}
+import io.vertx.core.http.{HttpServer => JHttpServer}
 import io.vertx.core.http.HttpServerRequest
 import io.vertx.core.http.ServerWebSocket
-import io.vertx.core.streams.{ReadStream => JReadStream}
-import io.vertx.core.http.{HttpConnection => JHttpConnection}
-import io.vertx.core.http.HttpServer
 import io.vertx.core.http.{HttpServerRequest => JHttpServerRequest}
+import io.vertx.core.http.{HttpConnection => JHttpConnection}
 import io.vertx.core.http.{ServerWebSocket => JServerWebSocket}
-import io.vertx.core.metrics.Measured
-import io.vertx.core.streams.ReadStream
+import io.vertx.core.http.HttpServer
 import io.vertx.core.http.HttpConnection
 import io.vertx.core.AsyncResult
 import io.vertx.core.Handler
@@ -3562,14 +3456,14 @@ import io.vertx.core.Handler
   * You receive WebSockets by providing a [[io.vertx.core.http.HttpServer#websocketHandler]]. As WebSocket connections arrive on the server, the
   * WebSocket is passed to the handler.
   */
-implicit class HttpServerScala(val asJava: JHttpServer) extends AnyVal {
+implicit class HttpServerScala(val asJava: io.vertx.core.http.HttpServer) extends AnyVal {
 
 
  /**
    * Like [[listen]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def listenFuture(port: java.lang.Integer, host: String): scala.concurrent.Future[JHttpServer] = {
-    val promise = Promise[JHttpServer]()
+  def listenFuture(port: java.lang.Integer, host: String): scala.concurrent.Future[io.vertx.core.http.HttpServer] = {
+    val promise = Promise[io.vertx.core.http.HttpServer]()
     asJava.listen(port, host, {a:AsyncResult[io.vertx.core.http.HttpServer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -3577,8 +3471,8 @@ implicit class HttpServerScala(val asJava: JHttpServer) extends AnyVal {
  /**
    * Like [[listen]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def listenFuture(port: java.lang.Integer): scala.concurrent.Future[JHttpServer] = {
-    val promise = Promise[JHttpServer]()
+  def listenFuture(port: java.lang.Integer): scala.concurrent.Future[io.vertx.core.http.HttpServer] = {
+    val promise = Promise[io.vertx.core.http.HttpServer]()
     asJava.listen(port, {a:AsyncResult[io.vertx.core.http.HttpServer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -3586,8 +3480,8 @@ implicit class HttpServerScala(val asJava: JHttpServer) extends AnyVal {
  /**
    * Like [[listen]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def listenFuture(): scala.concurrent.Future[JHttpServer] = {
-    val promise = Promise[JHttpServer]()
+  def listenFuture(): scala.concurrent.Future[io.vertx.core.http.HttpServer] = {
+    val promise = Promise[io.vertx.core.http.HttpServer]()
     asJava.listen({a:AsyncResult[io.vertx.core.http.HttpServer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -3603,17 +3497,13 @@ implicit class HttpServerScala(val asJava: JHttpServer) extends AnyVal {
 
 }
 
-import io.vertx.core.http.{HttpServerFileUpload => JHttpServerFileUpload}
-import io.vertx.core.http.HttpServerFileUpload
 import io.vertx.core.buffer.Buffer
-import io.vertx.core.streams.{ReadStream => JReadStream}
-import io.vertx.core.streams.ReadStream
 import io.vertx.core.Handler
 
 /**
   * Represents an file upload from an HTML FORM.
   */
-implicit class HttpServerFileUploadScala(val asJava: JHttpServerFileUpload) extends AnyVal {
+implicit class HttpServerFileUploadScala(val asJava: io.vertx.core.http.HttpServerFileUpload) extends AnyVal {
 
 
 }
@@ -3621,21 +3511,18 @@ implicit class HttpServerFileUploadScala(val asJava: JHttpServerFileUpload) exte
 import io.vertx.core.net.JksOptions
 import io.vertx.core.net.{PfxOptions => JPfxOptions}
 import io.vertx.core.http.Http2Settings
-import io.vertx.core.http.{HttpServerOptions => JHttpServerOptions}
-import io.vertx.core.net.{NetServerOptions => JNetServerOptions}
 import io.vertx.core.net.PfxOptions
 import io.vertx.core.net.OpenSSLEngineOptions
-import io.vertx.core.net.NetServerOptions
 import io.vertx.core.buffer.Buffer
 import io.vertx.core.http.HttpVersion
 import io.vertx.core.net.{OpenSSLEngineOptions => JOpenSSLEngineOptions}
 import io.vertx.core.net.PemKeyCertOptions
-import io.vertx.core.net.{JdkSSLEngineOptions => JJdkSSLEngineOptions}
 import io.vertx.core.http.ClientAuth
+import io.vertx.core.net.{JdkSSLEngineOptions => JJdkSSLEngineOptions}
 import io.vertx.core.net.{PemTrustOptions => JPemTrustOptions}
+import io.vertx.core.http.{Http2Settings => JHttp2Settings}
 import io.vertx.core.net.{PemKeyCertOptions => JPemKeyCertOptions}
 import io.vertx.core.net.PemTrustOptions
-import io.vertx.core.http.{Http2Settings => JHttp2Settings}
 import io.vertx.core.net.JdkSSLEngineOptions
 import io.vertx.core.net.{JksOptions => JJksOptions}
 
@@ -3643,7 +3530,7 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   * Represents options used by an [[io.vertx.core.http.HttpServer]] instance
   */
 
-  implicit class HttpServerOptionsScala(val asJava: JHttpServerOptions) extends AnyVal {
+  implicit class HttpServerOptionsScala(val asJava: io.vertx.core.http.HttpServerOptions) extends AnyVal {
 
 
   /**
@@ -3850,26 +3737,26 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   /**
     * Set the HTTP/2 connection settings immediatly sent by the server when a client connects.
     */
-    def setInitialSettings(value: JHttp2Settings) = {
-      asJava.setInitialSettings(value.asJava)
+    def setInitialSettings(value: io.vertx.core.http.Http2Settings) = {
+      asJava.setInitialSettings(value)
     }
-    def getInitialSettings: JHttp2Settings = {
+    def getInitialSettings: io.vertx.core.http.Http2Settings = {
       asJava.getInitialSettings()
     }
-    def setJdkSslEngineOptions(value: JJdkSSLEngineOptions) = {
-      asJava.setJdkSslEngineOptions(value.asJava)
+    def setJdkSslEngineOptions(value: io.vertx.core.net.JdkSSLEngineOptions) = {
+      asJava.setJdkSslEngineOptions(value)
     }
-    def getJdkSslEngineOptions: JJdkSSLEngineOptions = {
+    def getJdkSslEngineOptions: io.vertx.core.net.JdkSSLEngineOptions = {
       asJava.getJdkSslEngineOptions()
     }
 
   /**
     * Set the key/cert options in jks format, aka Java keystore.
     */
-    def setKeyStoreOptions(value: JJksOptions) = {
-      asJava.setKeyStoreOptions(value.asJava)
+    def setKeyStoreOptions(value: io.vertx.core.net.JksOptions) = {
+      asJava.setKeyStoreOptions(value)
     }
-    def getKeyStoreOptions: JJksOptions = {
+    def getKeyStoreOptions: io.vertx.core.net.JksOptions = {
       asJava.getKeyStoreOptions()
     }
 
@@ -3932,50 +3819,50 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
     def getMaxWebsocketMessageSize: java.lang.Integer = {
       asJava.getMaxWebsocketMessageSize()
     }
-    def setOpenSslEngineOptions(value: JOpenSSLEngineOptions) = {
-      asJava.setOpenSslEngineOptions(value.asJava)
+    def setOpenSslEngineOptions(value: io.vertx.core.net.OpenSSLEngineOptions) = {
+      asJava.setOpenSslEngineOptions(value)
     }
-    def getOpenSslEngineOptions: JOpenSSLEngineOptions = {
+    def getOpenSslEngineOptions: io.vertx.core.net.OpenSSLEngineOptions = {
       asJava.getOpenSslEngineOptions()
     }
 
   /**
     * Set the key/cert store options in pem format.
     */
-    def setPemKeyCertOptions(value: JPemKeyCertOptions) = {
-      asJava.setPemKeyCertOptions(value.asJava)
+    def setPemKeyCertOptions(value: io.vertx.core.net.PemKeyCertOptions) = {
+      asJava.setPemKeyCertOptions(value)
     }
-    def getPemKeyCertOptions: JPemKeyCertOptions = {
+    def getPemKeyCertOptions: io.vertx.core.net.PemKeyCertOptions = {
       asJava.getPemKeyCertOptions()
     }
 
   /**
     * Set the trust options in pem format
     */
-    def setPemTrustOptions(value: JPemTrustOptions) = {
-      asJava.setPemTrustOptions(value.asJava)
+    def setPemTrustOptions(value: io.vertx.core.net.PemTrustOptions) = {
+      asJava.setPemTrustOptions(value)
     }
-    def getPemTrustOptions: JPemTrustOptions = {
+    def getPemTrustOptions: io.vertx.core.net.PemTrustOptions = {
       asJava.getPemTrustOptions()
     }
 
   /**
     * Set the key/cert options in pfx format.
     */
-    def setPfxKeyCertOptions(value: JPfxOptions) = {
-      asJava.setPfxKeyCertOptions(value.asJava)
+    def setPfxKeyCertOptions(value: io.vertx.core.net.PfxOptions) = {
+      asJava.setPfxKeyCertOptions(value)
     }
-    def getPfxKeyCertOptions: JPfxOptions = {
+    def getPfxKeyCertOptions: io.vertx.core.net.PfxOptions = {
       asJava.getPfxKeyCertOptions()
     }
 
   /**
     * Set the trust options in pfx format
     */
-    def setPfxTrustOptions(value: JPfxOptions) = {
-      asJava.setPfxTrustOptions(value.asJava)
+    def setPfxTrustOptions(value: io.vertx.core.net.PfxOptions) = {
+      asJava.setPfxTrustOptions(value)
     }
-    def getPfxTrustOptions: JPfxOptions = {
+    def getPfxTrustOptions: io.vertx.core.net.PfxOptions = {
       asJava.getPfxTrustOptions()
     }
 
@@ -4124,10 +4011,10 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   /**
     * Set the trust options in jks format, aka Java truststore
     */
-    def setTrustStoreOptions(value: JJksOptions) = {
-      asJava.setTrustStoreOptions(value.asJava)
+    def setTrustStoreOptions(value: io.vertx.core.net.JksOptions) = {
+      asJava.setTrustStoreOptions(value)
     }
-    def getTrustStoreOptions: JJksOptions = {
+    def getTrustStoreOptions: io.vertx.core.net.JksOptions = {
       asJava.getTrustStoreOptions()
     }
 
@@ -4162,37 +4049,19 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
     }
   }
   
-  type HttpServerOptions = JHttpServerOptions
+  type HttpServerOptions = io.vertx.core.http.HttpServerOptions
   object HttpServerOptions {
-    def apply(): JHttpServerOptions = new HttpServerOptions()
-    def apply(json: JsonObject) = new JHttpServerOptions(json)
+    def apply() = new HttpServerOptions()
+    def apply(json: JsonObject) = new io.vertx.core.http.HttpServerOptions(json)
   }
 
 
-import io.vertx.core.http.HttpServerRequest
-import io.vertx.core.http.ServerWebSocket
-import io.vertx.core.http.HttpServerFileUpload
-import io.vertx.core.http.{HttpServerResponse => JHttpServerResponse}
-import io.vertx.core.streams.{ReadStream => JReadStream}
-import io.vertx.core.http.{HttpConnection => JHttpConnection}
-import io.vertx.core.MultiMap
-import io.vertx.core.http.{HttpFrame => JHttpFrame}
 import io.vertx.core.http.{HttpServerFileUpload => JHttpServerFileUpload}
-import io.vertx.core.http.{HttpServerRequest => JHttpServerRequest}
-import io.vertx.core.net.{NetSocket => JNetSocket}
+import io.vertx.core.http.HttpServerFileUpload
 import io.vertx.core.buffer.Buffer
 import io.vertx.core.http.HttpFrame
-import io.vertx.core.http.{ServerWebSocket => JServerWebSocket}
-import io.vertx.core.http.HttpVersion
-import io.vertx.core.http.HttpMethod
-import io.vertx.core.http.HttpServerResponse
-import io.vertx.core.streams.ReadStream
-import io.vertx.core.{MultiMap => JMultiMap}
-import io.vertx.core.net.{SocketAddress => JSocketAddress}
-import io.vertx.core.http.HttpConnection
+import io.vertx.core.http.{HttpFrame => JHttpFrame}
 import io.vertx.core.Handler
-import io.vertx.core.net.SocketAddress
-import io.vertx.core.net.NetSocket
 
 /**
   * Represents a server-side HTTP request.
@@ -4205,22 +4074,20 @@ import io.vertx.core.net.NetSocket
   * [[io.vertx.core.streams.Pump]] to pump data with flow control.
   * 
   */
-implicit class HttpServerRequestScala(val asJava: JHttpServerRequest) extends AnyVal {
+implicit class HttpServerRequestScala(val asJava: io.vertx.core.http.HttpServerRequest) extends AnyVal {
 
 
 }
 
 import io.vertx.lang.scala.AsyncResultWrapper
-import io.vertx.core.http.{HttpServerResponse => JHttpServerResponse}
-import io.vertx.core.MultiMap
-import io.vertx.core.http.{HttpFrame => JHttpFrame}
-import io.vertx.core.streams.{WriteStream => JWriteStream}
 import io.vertx.core.buffer.Buffer
+import io.vertx.core.http.{HttpServerResponse => JHttpServerResponse}
 import io.vertx.core.http.HttpFrame
-import io.vertx.core.streams.WriteStream
-import io.vertx.core.http.HttpServerResponse
 import io.vertx.core.http.HttpMethod
+import io.vertx.core.http.HttpServerResponse
+import io.vertx.core.MultiMap
 import io.vertx.core.{MultiMap => JMultiMap}
+import io.vertx.core.http.{HttpFrame => JHttpFrame}
 import io.vertx.core.AsyncResult
 import io.vertx.core.Handler
 
@@ -4244,7 +4111,7 @@ import io.vertx.core.Handler
   * It implements [[io.vertx.core.streams.WriteStream]] so it can be used with
   * [[io.vertx.core.streams.Pump]] to pump data with flow control.
   */
-implicit class HttpServerResponseScala(val asJava: JHttpServerResponse) extends AnyVal {
+implicit class HttpServerResponseScala(val asJava: io.vertx.core.http.HttpServerResponse) extends AnyVal {
 
 
  /**
@@ -4277,8 +4144,8 @@ implicit class HttpServerResponseScala(val asJava: JHttpServerResponse) extends 
  /**
    * Like [[push]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def pushFuture(method: io.vertx.core.http.HttpMethod, host: String, path: String): scala.concurrent.Future[JHttpServerResponse] = {
-    val promise = Promise[JHttpServerResponse]()
+  def pushFuture(method: io.vertx.core.http.HttpMethod, host: String, path: String): scala.concurrent.Future[io.vertx.core.http.HttpServerResponse] = {
+    val promise = Promise[io.vertx.core.http.HttpServerResponse]()
     asJava.push(method, host, path, {a:AsyncResult[io.vertx.core.http.HttpServerResponse] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -4286,8 +4153,8 @@ implicit class HttpServerResponseScala(val asJava: JHttpServerResponse) extends 
  /**
    * Like [[push]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def pushFuture(method: io.vertx.core.http.HttpMethod, path: String, headers: JMultiMap): scala.concurrent.Future[JHttpServerResponse] = {
-    val promise = Promise[JHttpServerResponse]()
+  def pushFuture(method: io.vertx.core.http.HttpMethod, path: String, headers: io.vertx.core.MultiMap): scala.concurrent.Future[io.vertx.core.http.HttpServerResponse] = {
+    val promise = Promise[io.vertx.core.http.HttpServerResponse]()
     asJava.push(method, path, headers, {a:AsyncResult[io.vertx.core.http.HttpServerResponse] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -4295,8 +4162,8 @@ implicit class HttpServerResponseScala(val asJava: JHttpServerResponse) extends 
  /**
    * Like [[push]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def pushFuture(method: io.vertx.core.http.HttpMethod, path: String): scala.concurrent.Future[JHttpServerResponse] = {
-    val promise = Promise[JHttpServerResponse]()
+  def pushFuture(method: io.vertx.core.http.HttpMethod, path: String): scala.concurrent.Future[io.vertx.core.http.HttpServerResponse] = {
+    val promise = Promise[io.vertx.core.http.HttpServerResponse]()
     asJava.push(method, path, {a:AsyncResult[io.vertx.core.http.HttpServerResponse] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -4304,33 +4171,31 @@ implicit class HttpServerResponseScala(val asJava: JHttpServerResponse) extends 
  /**
    * Like [[push]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def pushFuture(method: io.vertx.core.http.HttpMethod, host: String, path: String, headers: JMultiMap): scala.concurrent.Future[JHttpServerResponse] = {
-    val promise = Promise[JHttpServerResponse]()
+  def pushFuture(method: io.vertx.core.http.HttpMethod, host: String, path: String, headers: io.vertx.core.MultiMap): scala.concurrent.Future[io.vertx.core.http.HttpServerResponse] = {
+    val promise = Promise[io.vertx.core.http.HttpServerResponse]()
     asJava.push(method, host, path, headers, {a:AsyncResult[io.vertx.core.http.HttpServerResponse] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
 }
 
-import io.vertx.core.net.{JdkSSLEngineOptions => JJdkSSLEngineOptions}
 
 /**
   * Configures a <a href="../../../../../../../cheatsheet/TCPSSLOptions.html">TCPSSLOptions</a> to use the JDK ssl engine implementation.
   */
 
-  implicit class JdkSSLEngineOptionsScala(val asJava: JJdkSSLEngineOptions) extends AnyVal {
+  implicit class JdkSSLEngineOptionsScala(val asJava: io.vertx.core.net.JdkSSLEngineOptions) extends AnyVal {
 
   }
   
-  type JdkSSLEngineOptions = JJdkSSLEngineOptions
+  type JdkSSLEngineOptions = io.vertx.core.net.JdkSSLEngineOptions
   object JdkSSLEngineOptions {
-    def apply(): JJdkSSLEngineOptions = new JdkSSLEngineOptions()
-    def apply(json: JsonObject) = new JJdkSSLEngineOptions(json)
+    def apply() = new JdkSSLEngineOptions()
+    def apply(json: JsonObject) = new io.vertx.core.net.JdkSSLEngineOptions(json)
   }
 
 
 import io.vertx.core.buffer.Buffer
-import io.vertx.core.net.{JksOptions => JJksOptions}
 
 /**
   * Key or trust store options configuring private key and/or certificates based on Java Keystore files.
@@ -4354,7 +4219,7 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   * </pre>
   */
 
-  implicit class JksOptionsScala(val asJava: JJksOptions) extends AnyVal {
+  implicit class JksOptionsScala(val asJava: io.vertx.core.net.JksOptions) extends AnyVal {
 
 
   /**
@@ -4388,23 +4253,18 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
     }
   }
   
-  type JksOptions = JJksOptions
+  type JksOptions = io.vertx.core.net.JksOptions
   object JksOptions {
-    def apply(): JJksOptions = new JksOptions()
-    def apply(json: JsonObject) = new JJksOptions(json)
+    def apply() = new JksOptions()
+    def apply(json: JsonObject) = new io.vertx.core.net.JksOptions(json)
   }
 
 
-import io.vertx.core.json.JsonArray
-import io.vertx.core.parsetools.{JsonEvent => JJsonEvent}
-import io.vertx.core.parsetools.JsonEventType
-import io.vertx.core.buffer.Buffer
-import io.vertx.core.json.JsonObject
 
 /**
   * A JSON event emited by the [[io.vertx.core.parsetools.JsonParser]].
   */
-implicit class JsonEventScala(val asJava: JJsonEvent) extends AnyVal {
+implicit class JsonEventScala(val asJava: io.vertx.core.parsetools.JsonEvent) extends AnyVal {
 
 
 }
@@ -4413,8 +4273,6 @@ import io.vertx.core.parsetools.{JsonEvent => JJsonEvent}
 import io.vertx.core.buffer.Buffer
 import io.vertx.core.streams.{ReadStream => JReadStream}
 import io.vertx.core.streams.ReadStream
-import io.vertx.core.parsetools.JsonParser
-import io.vertx.core.parsetools.{JsonParser => JJsonParser}
 import io.vertx.core.Handler
 import io.vertx.core.parsetools.JsonEvent
 
@@ -4432,13 +4290,11 @@ import io.vertx.core.parsetools.JsonEvent
   * the cause of the failure and the current handling stops. After such event, the parser should not handle data
   * anymore.
   */
-implicit class JsonParserScala(val asJava: JJsonParser) extends AnyVal {
+implicit class JsonParserScala(val asJava: io.vertx.core.parsetools.JsonParser) extends AnyVal {
 
 
 }
 
-import io.vertx.core.shareddata.{LocalMap => JLocalMap}
-import scala.collection.JavaConverters._
 
 /**
   * Local maps can be used to share data safely in a single Vert.x instance.
@@ -4453,12 +4309,11 @@ import scala.collection.JavaConverters._
   *
   * Since the version 3.4, this class extends the  interface. However some methods are only accessible in Java.
   */
-implicit class LocalMapScala[K, V](val asJava: JLocalMap[K, V]) extends AnyVal {
+implicit class LocalMapScala[K, V](val asJava: io.vertx.core.shareddata.LocalMap[K, V]) extends AnyVal {
 
 
 }
 
-import io.vertx.core.shareddata.{Lock => JLock}
 
 /**
   * An asynchronous exclusive lock which can be obtained from any node in the cluster.
@@ -4466,16 +4321,15 @@ import io.vertx.core.shareddata.{Lock => JLock}
   * When the lock is obtained, no-one else in the cluster can obtain the lock with the same name until the lock
   * is released.
   */
-implicit class LockScala(val asJava: JLock) extends AnyVal {
+implicit class LockScala(val asJava: io.vertx.core.shareddata.Lock) extends AnyVal {
 
 
 }
 
-import io.vertx.core.metrics.{Measured => JMeasured}
 
 /**
   */
-implicit class MeasuredScala(val asJava: JMeasured) extends AnyVal {
+implicit class MeasuredScala(val asJava: io.vertx.core.metrics.Measured) extends AnyVal {
 
 
 }
@@ -4484,9 +4338,7 @@ import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.eventbus.DeliveryOptions
 import io.vertx.core.eventbus.{Message => JMessage}
 import io.vertx.core.eventbus.{DeliveryOptions => JDeliveryOptions}
-import io.vertx.core.MultiMap
 import io.vertx.core.eventbus.Message
-import io.vertx.core.{MultiMap => JMultiMap}
 import io.vertx.core.AsyncResult
 import io.vertx.core.Handler
 
@@ -4500,14 +4352,14 @@ import io.vertx.core.Handler
   * 
   * If you want to notify the sender that processing failed, then [[io.vertx.core.eventbus.Message#fail]] can be called.
   */
-implicit class MessageScala[T](val asJava: JMessage[T]) extends AnyVal {
+implicit class MessageScala[T](val asJava: io.vertx.core.eventbus.Message[T]) extends AnyVal {
 
 
  /**
    * Like [[reply]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def replyFuture[R](message: AnyRef): scala.concurrent.Future[JMessage[R]] = {
-    val promise = Promise[JMessage[R]]()
+  def replyFuture[R](message: AnyRef): scala.concurrent.Future[io.vertx.core.eventbus.Message[R]] = {
+    val promise = Promise[io.vertx.core.eventbus.Message[R]]()
     asJava.reply[R](message, {a:AsyncResult[io.vertx.core.eventbus.Message[R]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -4515,8 +4367,8 @@ implicit class MessageScala[T](val asJava: JMessage[T]) extends AnyVal {
  /**
    * Like [[reply]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def replyFuture[R](message: AnyRef, options: JDeliveryOptions): scala.concurrent.Future[JMessage[R]] = {
-    val promise = Promise[JMessage[R]]()
+  def replyFuture[R](message: AnyRef, options: io.vertx.core.eventbus.DeliveryOptions): scala.concurrent.Future[io.vertx.core.eventbus.Message[R]] = {
+    val promise = Promise[io.vertx.core.eventbus.Message[R]]()
     asJava.reply[R](message, options, {a:AsyncResult[io.vertx.core.eventbus.Message[R]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -4524,14 +4376,10 @@ implicit class MessageScala[T](val asJava: JMessage[T]) extends AnyVal {
 }
 
 import io.vertx.lang.scala.AsyncResultWrapper
-import io.vertx.core.streams.{ReadStream => JReadStream}
 import io.vertx.core.eventbus.{Message => JMessage}
-import io.vertx.core.streams.ReadStream
 import io.vertx.core.eventbus.Message
 import io.vertx.core.AsyncResult
-import io.vertx.core.eventbus.MessageConsumer
 import io.vertx.core.Handler
-import io.vertx.core.eventbus.{MessageConsumer => JMessageConsumer}
 
 /**
   * An event bus consumer object representing a stream of message to an [[io.vertx.core.eventbus.EventBus]] address that can
@@ -4544,7 +4392,7 @@ import io.vertx.core.eventbus.{MessageConsumer => JMessageConsumer}
   * The consumer is unregistered from the event bus using the [[io.vertx.core.eventbus.MessageConsumer#unregister]] method or by calling the
   * [[io.vertx.core.eventbus.MessageConsumer#handler]] with a null value..
   */
-implicit class MessageConsumerScala[T](val asJava: JMessageConsumer[T]) extends AnyVal {
+implicit class MessageConsumerScala[T](val asJava: io.vertx.core.eventbus.MessageConsumer[T]) extends AnyVal {
 
 
  /**
@@ -4569,39 +4417,34 @@ implicit class MessageConsumerScala[T](val asJava: JMessageConsumer[T]) extends 
 
 import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.eventbus.DeliveryOptions
-import io.vertx.core.eventbus.{MessageProducer => JMessageProducer}
-import io.vertx.core.eventbus.{DeliveryOptions => JDeliveryOptions}
 import io.vertx.core.eventbus.{Message => JMessage}
-import io.vertx.core.streams.WriteStream
+import io.vertx.core.eventbus.{DeliveryOptions => JDeliveryOptions}
 import io.vertx.core.eventbus.Message
 import io.vertx.core.AsyncResult
 import io.vertx.core.Handler
-import io.vertx.core.streams.{WriteStream => JWriteStream}
-import io.vertx.core.eventbus.MessageProducer
 
 /**
   * Represents a stream of message that can be written to.
   * 
   */
-implicit class MessageProducerScala[T](val asJava: JMessageProducer[T]) extends AnyVal {
+implicit class MessageProducerScala[T](val asJava: io.vertx.core.eventbus.MessageProducer[T]) extends AnyVal {
 
 
-  def sendFuture[R](message: T): scala.concurrent.Future[JMessage[R]] = {
-    val promise = Promise[JMessage[R]]()
+  def sendFuture[R](message: T): scala.concurrent.Future[io.vertx.core.eventbus.Message[R]] = {
+    val promise = Promise[io.vertx.core.eventbus.Message[R]]()
     asJava.send[R](message, {a:AsyncResult[io.vertx.core.eventbus.Message[R]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
 }
 
-import io.vertx.core.metrics.{MetricsOptions => JMetricsOptions}
 
 /**
   * Vert.x metrics base configuration, this class can be extended by provider implementations to configure
   * those specific implementations.
   */
 
-  implicit class MetricsOptionsScala(val asJava: JMetricsOptions) extends AnyVal {
+  implicit class MetricsOptionsScala(val asJava: io.vertx.core.metrics.MetricsOptions) extends AnyVal {
 
 
   /**
@@ -4615,16 +4458,15 @@ import io.vertx.core.metrics.{MetricsOptions => JMetricsOptions}
     }
   }
   
-  type MetricsOptions = JMetricsOptions
+  type MetricsOptions = io.vertx.core.metrics.MetricsOptions
   object MetricsOptions {
-    def apply(): JMetricsOptions = new MetricsOptions()
-    def apply(json: JsonObject) = new JMetricsOptions(json)
+    def apply() = new MetricsOptions()
+    def apply(json: JsonObject) = new io.vertx.core.metrics.MetricsOptions(json)
   }
 
 
 import io.vertx.core.MultiMap
 import io.vertx.core.{MultiMap => JMultiMap}
-import scala.collection.JavaConverters._
 
 /**
   * This class represents a MultiMap of String keys to a List of String values.
@@ -4632,29 +4474,24 @@ import scala.collection.JavaConverters._
   * It's useful in Vert.x to represent things in Vert.x like HTTP headers and HTTP parameters which allow
   * multiple values for keys.
   */
-implicit class MultiMapScala(val asJava: JMultiMap) extends AnyVal {
+implicit class MultiMapScala(val asJava: io.vertx.core.MultiMap) extends AnyVal {
 
 
 }
 
-import io.vertx.core.dns.{MxRecord => JMxRecord}
 
 /**
   * Represent a Mail-Exchange-Record (MX) which was resolved for a domain.
   */
-implicit class MxRecordScala(val asJava: JMxRecord) extends AnyVal {
+implicit class MxRecordScala(val asJava: io.vertx.core.dns.MxRecord) extends AnyVal {
 
 
 }
 
 import io.vertx.lang.scala.AsyncResultWrapper
-import io.vertx.core.metrics.{Measured => JMeasured}
 import io.vertx.core.net.{NetSocket => JNetSocket}
-import io.vertx.core.net.{NetClient => JNetClient}
-import io.vertx.core.metrics.Measured
 import io.vertx.core.net.{SocketAddress => JSocketAddress}
 import io.vertx.core.AsyncResult
-import io.vertx.core.net.NetClient
 import io.vertx.core.Handler
 import io.vertx.core.net.NetSocket
 import io.vertx.core.net.SocketAddress
@@ -4667,14 +4504,14 @@ import io.vertx.core.net.SocketAddress
   * This client supports a configurable number of connection attempts and a configurable
   * delay between attempts.
   */
-implicit class NetClientScala(val asJava: JNetClient) extends AnyVal {
+implicit class NetClientScala(val asJava: io.vertx.core.net.NetClient) extends AnyVal {
 
 
  /**
    * Like [[connect]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def connectFuture(port: java.lang.Integer, host: String): scala.concurrent.Future[JNetSocket] = {
-    val promise = Promise[JNetSocket]()
+  def connectFuture(port: java.lang.Integer, host: String): scala.concurrent.Future[io.vertx.core.net.NetSocket] = {
+    val promise = Promise[io.vertx.core.net.NetSocket]()
     asJava.connect(port, host, {a:AsyncResult[io.vertx.core.net.NetSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -4682,8 +4519,8 @@ implicit class NetClientScala(val asJava: JNetClient) extends AnyVal {
  /**
    * Like [[connect]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def connectFuture(port: java.lang.Integer, host: String, serverName: String): scala.concurrent.Future[JNetSocket] = {
-    val promise = Promise[JNetSocket]()
+  def connectFuture(port: java.lang.Integer, host: String, serverName: String): scala.concurrent.Future[io.vertx.core.net.NetSocket] = {
+    val promise = Promise[io.vertx.core.net.NetSocket]()
     asJava.connect(port, host, serverName, {a:AsyncResult[io.vertx.core.net.NetSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -4691,8 +4528,8 @@ implicit class NetClientScala(val asJava: JNetClient) extends AnyVal {
  /**
    * Like [[connect]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def connectFuture(remoteAddress: JSocketAddress): scala.concurrent.Future[JNetSocket] = {
-    val promise = Promise[JNetSocket]()
+  def connectFuture(remoteAddress: io.vertx.core.net.SocketAddress): scala.concurrent.Future[io.vertx.core.net.NetSocket] = {
+    val promise = Promise[io.vertx.core.net.NetSocket]()
     asJava.connect(remoteAddress, {a:AsyncResult[io.vertx.core.net.NetSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -4700,8 +4537,8 @@ implicit class NetClientScala(val asJava: JNetClient) extends AnyVal {
  /**
    * Like [[connect]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def connectFuture(remoteAddress: JSocketAddress, serverName: String): scala.concurrent.Future[JNetSocket] = {
-    val promise = Promise[JNetSocket]()
+  def connectFuture(remoteAddress: io.vertx.core.net.SocketAddress, serverName: String): scala.concurrent.Future[io.vertx.core.net.NetSocket] = {
+    val promise = Promise[io.vertx.core.net.NetSocket]()
     asJava.connect(remoteAddress, serverName, {a:AsyncResult[io.vertx.core.net.NetSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -4716,7 +4553,6 @@ import io.vertx.core.net.OpenSSLEngineOptions
 import io.vertx.core.buffer.Buffer
 import io.vertx.core.net.{OpenSSLEngineOptions => JOpenSSLEngineOptions}
 import io.vertx.core.net.PemKeyCertOptions
-import io.vertx.core.net.{NetClientOptions => JNetClientOptions}
 import io.vertx.core.net.{JdkSSLEngineOptions => JJdkSSLEngineOptions}
 import io.vertx.core.net.{PemTrustOptions => JPemTrustOptions}
 import io.vertx.core.net.{PemKeyCertOptions => JPemKeyCertOptions}
@@ -4729,7 +4565,7 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   * Options for configuring a [[io.vertx.core.net.NetClient]].
   */
 
-  implicit class NetClientOptionsScala(val asJava: JNetClientOptions) extends AnyVal {
+  implicit class NetClientOptionsScala(val asJava: io.vertx.core.net.NetClientOptions) extends AnyVal {
 
 
   /**
@@ -4806,20 +4642,20 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
     def getIdleTimeout: java.lang.Integer = {
       asJava.getIdleTimeout()
     }
-    def setJdkSslEngineOptions(value: JJdkSSLEngineOptions) = {
-      asJava.setJdkSslEngineOptions(value.asJava)
+    def setJdkSslEngineOptions(value: io.vertx.core.net.JdkSSLEngineOptions) = {
+      asJava.setJdkSslEngineOptions(value)
     }
-    def getJdkSslEngineOptions: JJdkSSLEngineOptions = {
+    def getJdkSslEngineOptions: io.vertx.core.net.JdkSSLEngineOptions = {
       asJava.getJdkSslEngineOptions()
     }
 
   /**
     * Set the key/cert options in jks format, aka Java keystore.
     */
-    def setKeyStoreOptions(value: JJksOptions) = {
-      asJava.setKeyStoreOptions(value.asJava)
+    def setKeyStoreOptions(value: io.vertx.core.net.JksOptions) = {
+      asJava.setKeyStoreOptions(value)
     }
-    def getKeyStoreOptions: JJksOptions = {
+    def getKeyStoreOptions: io.vertx.core.net.JksOptions = {
       asJava.getKeyStoreOptions()
     }
 
@@ -4854,60 +4690,60 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
     def getMetricsName: String = {
       asJava.getMetricsName()
     }
-    def setOpenSslEngineOptions(value: JOpenSSLEngineOptions) = {
-      asJava.setOpenSslEngineOptions(value.asJava)
+    def setOpenSslEngineOptions(value: io.vertx.core.net.OpenSSLEngineOptions) = {
+      asJava.setOpenSslEngineOptions(value)
     }
-    def getOpenSslEngineOptions: JOpenSSLEngineOptions = {
+    def getOpenSslEngineOptions: io.vertx.core.net.OpenSSLEngineOptions = {
       asJava.getOpenSslEngineOptions()
     }
 
   /**
     * Set the key/cert store options in pem format.
     */
-    def setPemKeyCertOptions(value: JPemKeyCertOptions) = {
-      asJava.setPemKeyCertOptions(value.asJava)
+    def setPemKeyCertOptions(value: io.vertx.core.net.PemKeyCertOptions) = {
+      asJava.setPemKeyCertOptions(value)
     }
-    def getPemKeyCertOptions: JPemKeyCertOptions = {
+    def getPemKeyCertOptions: io.vertx.core.net.PemKeyCertOptions = {
       asJava.getPemKeyCertOptions()
     }
 
   /**
     * Set the trust options in pem format
     */
-    def setPemTrustOptions(value: JPemTrustOptions) = {
-      asJava.setPemTrustOptions(value.asJava)
+    def setPemTrustOptions(value: io.vertx.core.net.PemTrustOptions) = {
+      asJava.setPemTrustOptions(value)
     }
-    def getPemTrustOptions: JPemTrustOptions = {
+    def getPemTrustOptions: io.vertx.core.net.PemTrustOptions = {
       asJava.getPemTrustOptions()
     }
 
   /**
     * Set the key/cert options in pfx format.
     */
-    def setPfxKeyCertOptions(value: JPfxOptions) = {
-      asJava.setPfxKeyCertOptions(value.asJava)
+    def setPfxKeyCertOptions(value: io.vertx.core.net.PfxOptions) = {
+      asJava.setPfxKeyCertOptions(value)
     }
-    def getPfxKeyCertOptions: JPfxOptions = {
+    def getPfxKeyCertOptions: io.vertx.core.net.PfxOptions = {
       asJava.getPfxKeyCertOptions()
     }
 
   /**
     * Set the trust options in pfx format
     */
-    def setPfxTrustOptions(value: JPfxOptions) = {
-      asJava.setPfxTrustOptions(value.asJava)
+    def setPfxTrustOptions(value: io.vertx.core.net.PfxOptions) = {
+      asJava.setPfxTrustOptions(value)
     }
-    def getPfxTrustOptions: JPfxOptions = {
+    def getPfxTrustOptions: io.vertx.core.net.PfxOptions = {
       asJava.getPfxTrustOptions()
     }
 
   /**
     * Set proxy options for connections via CONNECT proxy (e.g. Squid) or a SOCKS proxy.
     */
-    def setProxyOptions(value: JProxyOptions) = {
-      asJava.setProxyOptions(value.asJava)
+    def setProxyOptions(value: io.vertx.core.net.ProxyOptions) = {
+      asJava.setProxyOptions(value)
     }
-    def getProxyOptions: JProxyOptions = {
+    def getProxyOptions: io.vertx.core.net.ProxyOptions = {
       asJava.getProxyOptions()
     }
 
@@ -5066,10 +4902,10 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   /**
     * Set the trust options in jks format, aka Java truststore
     */
-    def setTrustStoreOptions(value: JJksOptions) = {
-      asJava.setTrustStoreOptions(value.asJava)
+    def setTrustStoreOptions(value: io.vertx.core.net.JksOptions) = {
+      asJava.setTrustStoreOptions(value)
     }
-    def getTrustStoreOptions: JJksOptions = {
+    def getTrustStoreOptions: io.vertx.core.net.JksOptions = {
       asJava.getTrustStoreOptions()
     }
 
@@ -5094,21 +4930,17 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
     }
   }
   
-  type NetClientOptions = JNetClientOptions
+  type NetClientOptions = io.vertx.core.net.NetClientOptions
   object NetClientOptions {
-    def apply(): JNetClientOptions = new NetClientOptions()
-    def apply(json: JsonObject) = new JNetClientOptions(json)
+    def apply() = new NetClientOptions()
+    def apply(json: JsonObject) = new io.vertx.core.net.NetClientOptions(json)
   }
 
 
 import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.net.{NetServer => JNetServer}
-import io.vertx.core.metrics.{Measured => JMeasured}
-import io.vertx.core.streams.{ReadStream => JReadStream}
 import io.vertx.core.net.{NetSocket => JNetSocket}
-import io.vertx.core.metrics.Measured
 import io.vertx.core.net.NetServer
-import io.vertx.core.streams.ReadStream
 import io.vertx.core.net.{SocketAddress => JSocketAddress}
 import io.vertx.core.AsyncResult
 import io.vertx.core.Handler
@@ -5118,14 +4950,14 @@ import io.vertx.core.net.SocketAddress
 /**
   * Represents a TCP server
   */
-implicit class NetServerScala(val asJava: JNetServer) extends AnyVal {
+implicit class NetServerScala(val asJava: io.vertx.core.net.NetServer) extends AnyVal {
 
 
  /**
    * Like [[listen]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def listenFuture(): scala.concurrent.Future[JNetServer] = {
-    val promise = Promise[JNetServer]()
+  def listenFuture(): scala.concurrent.Future[io.vertx.core.net.NetServer] = {
+    val promise = Promise[io.vertx.core.net.NetServer]()
     asJava.listen({a:AsyncResult[io.vertx.core.net.NetServer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -5133,8 +4965,8 @@ implicit class NetServerScala(val asJava: JNetServer) extends AnyVal {
  /**
    * Like [[listen]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def listenFuture(port: java.lang.Integer, host: String): scala.concurrent.Future[JNetServer] = {
-    val promise = Promise[JNetServer]()
+  def listenFuture(port: java.lang.Integer, host: String): scala.concurrent.Future[io.vertx.core.net.NetServer] = {
+    val promise = Promise[io.vertx.core.net.NetServer]()
     asJava.listen(port, host, {a:AsyncResult[io.vertx.core.net.NetServer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -5142,8 +4974,8 @@ implicit class NetServerScala(val asJava: JNetServer) extends AnyVal {
  /**
    * Like [[listen]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def listenFuture(port: java.lang.Integer): scala.concurrent.Future[JNetServer] = {
-    val promise = Promise[JNetServer]()
+  def listenFuture(port: java.lang.Integer): scala.concurrent.Future[io.vertx.core.net.NetServer] = {
+    val promise = Promise[io.vertx.core.net.NetServer]()
     asJava.listen(port, {a:AsyncResult[io.vertx.core.net.NetServer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -5151,8 +4983,8 @@ implicit class NetServerScala(val asJava: JNetServer) extends AnyVal {
  /**
    * Like [[listen]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def listenFuture(localAddress: JSocketAddress): scala.concurrent.Future[JNetServer] = {
-    val promise = Promise[JNetServer]()
+  def listenFuture(localAddress: io.vertx.core.net.SocketAddress): scala.concurrent.Future[io.vertx.core.net.NetServer] = {
+    val promise = Promise[io.vertx.core.net.NetServer]()
     asJava.listen(localAddress, {a:AsyncResult[io.vertx.core.net.NetServer] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -5170,7 +5002,6 @@ implicit class NetServerScala(val asJava: JNetServer) extends AnyVal {
 
 import io.vertx.core.net.JksOptions
 import io.vertx.core.net.{PfxOptions => JPfxOptions}
-import io.vertx.core.net.{NetServerOptions => JNetServerOptions}
 import io.vertx.core.net.PfxOptions
 import io.vertx.core.net.OpenSSLEngineOptions
 import io.vertx.core.buffer.Buffer
@@ -5188,7 +5019,7 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   * Options for configuring a [[io.vertx.core.net.NetServer]].
   */
 
-  implicit class NetServerOptionsScala(val asJava: JNetServerOptions) extends AnyVal {
+  implicit class NetServerOptionsScala(val asJava: io.vertx.core.net.NetServerOptions) extends AnyVal {
 
 
   /**
@@ -5284,20 +5115,20 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
     def getIdleTimeout: java.lang.Integer = {
       asJava.getIdleTimeout()
     }
-    def setJdkSslEngineOptions(value: JJdkSSLEngineOptions) = {
-      asJava.setJdkSslEngineOptions(value.asJava)
+    def setJdkSslEngineOptions(value: io.vertx.core.net.JdkSSLEngineOptions) = {
+      asJava.setJdkSslEngineOptions(value)
     }
-    def getJdkSslEngineOptions: JJdkSSLEngineOptions = {
+    def getJdkSslEngineOptions: io.vertx.core.net.JdkSSLEngineOptions = {
       asJava.getJdkSslEngineOptions()
     }
 
   /**
     * Set the key/cert options in jks format, aka Java keystore.
     */
-    def setKeyStoreOptions(value: JJksOptions) = {
-      asJava.setKeyStoreOptions(value.asJava)
+    def setKeyStoreOptions(value: io.vertx.core.net.JksOptions) = {
+      asJava.setKeyStoreOptions(value)
     }
-    def getKeyStoreOptions: JJksOptions = {
+    def getKeyStoreOptions: io.vertx.core.net.JksOptions = {
       asJava.getKeyStoreOptions()
     }
 
@@ -5310,50 +5141,50 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
     def getLogActivity: java.lang.Boolean = {
       asJava.getLogActivity()
     }
-    def setOpenSslEngineOptions(value: JOpenSSLEngineOptions) = {
-      asJava.setOpenSslEngineOptions(value.asJava)
+    def setOpenSslEngineOptions(value: io.vertx.core.net.OpenSSLEngineOptions) = {
+      asJava.setOpenSslEngineOptions(value)
     }
-    def getOpenSslEngineOptions: JOpenSSLEngineOptions = {
+    def getOpenSslEngineOptions: io.vertx.core.net.OpenSSLEngineOptions = {
       asJava.getOpenSslEngineOptions()
     }
 
   /**
     * Set the key/cert store options in pem format.
     */
-    def setPemKeyCertOptions(value: JPemKeyCertOptions) = {
-      asJava.setPemKeyCertOptions(value.asJava)
+    def setPemKeyCertOptions(value: io.vertx.core.net.PemKeyCertOptions) = {
+      asJava.setPemKeyCertOptions(value)
     }
-    def getPemKeyCertOptions: JPemKeyCertOptions = {
+    def getPemKeyCertOptions: io.vertx.core.net.PemKeyCertOptions = {
       asJava.getPemKeyCertOptions()
     }
 
   /**
     * Set the trust options in pem format
     */
-    def setPemTrustOptions(value: JPemTrustOptions) = {
-      asJava.setPemTrustOptions(value.asJava)
+    def setPemTrustOptions(value: io.vertx.core.net.PemTrustOptions) = {
+      asJava.setPemTrustOptions(value)
     }
-    def getPemTrustOptions: JPemTrustOptions = {
+    def getPemTrustOptions: io.vertx.core.net.PemTrustOptions = {
       asJava.getPemTrustOptions()
     }
 
   /**
     * Set the key/cert options in pfx format.
     */
-    def setPfxKeyCertOptions(value: JPfxOptions) = {
-      asJava.setPfxKeyCertOptions(value.asJava)
+    def setPfxKeyCertOptions(value: io.vertx.core.net.PfxOptions) = {
+      asJava.setPfxKeyCertOptions(value)
     }
-    def getPfxKeyCertOptions: JPfxOptions = {
+    def getPfxKeyCertOptions: io.vertx.core.net.PfxOptions = {
       asJava.getPfxKeyCertOptions()
     }
 
   /**
     * Set the trust options in pfx format
     */
-    def setPfxTrustOptions(value: JPfxOptions) = {
-      asJava.setPfxTrustOptions(value.asJava)
+    def setPfxTrustOptions(value: io.vertx.core.net.PfxOptions) = {
+      asJava.setPfxTrustOptions(value)
     }
-    def getPfxTrustOptions: JPfxOptions = {
+    def getPfxTrustOptions: io.vertx.core.net.PfxOptions = {
       asJava.getPfxTrustOptions()
     }
 
@@ -5502,10 +5333,10 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   /**
     * Set the trust options in jks format, aka Java truststore
     */
-    def setTrustStoreOptions(value: JJksOptions) = {
-      asJava.setTrustStoreOptions(value.asJava)
+    def setTrustStoreOptions(value: io.vertx.core.net.JksOptions) = {
+      asJava.setTrustStoreOptions(value)
     }
-    def getTrustStoreOptions: JJksOptions = {
+    def getTrustStoreOptions: io.vertx.core.net.JksOptions = {
       asJava.getTrustStoreOptions()
     }
 
@@ -5530,25 +5361,17 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
     }
   }
   
-  type NetServerOptions = JNetServerOptions
+  type NetServerOptions = io.vertx.core.net.NetServerOptions
   object NetServerOptions {
-    def apply(): JNetServerOptions = new NetServerOptions()
-    def apply(json: JsonObject) = new JNetServerOptions(json)
+    def apply() = new NetServerOptions()
+    def apply(json: JsonObject) = new io.vertx.core.net.NetServerOptions(json)
   }
 
 
 import io.vertx.lang.scala.AsyncResultWrapper
-import io.vertx.core.net.{NetSocket => JNetSocket}
 import io.vertx.core.buffer.Buffer
-import io.vertx.core.streams.{ReadStream => JReadStream}
-import io.vertx.core.streams.WriteStream
-import io.vertx.core.streams.ReadStream
-import io.vertx.core.net.{SocketAddress => JSocketAddress}
 import io.vertx.core.AsyncResult
 import io.vertx.core.Handler
-import io.vertx.core.streams.{WriteStream => JWriteStream}
-import io.vertx.core.net.NetSocket
-import io.vertx.core.net.SocketAddress
 
 /**
   * Represents a socket-like interface to a TCP connection on either the
@@ -5561,7 +5384,7 @@ import io.vertx.core.net.SocketAddress
   * It implements both  and  so it can be used with
   * [[io.vertx.core.streams.Pump]] to pump data with flow control.
   */
-implicit class NetSocketScala(val asJava: JNetSocket) extends AnyVal {
+implicit class NetSocketScala(val asJava: io.vertx.core.net.NetSocket) extends AnyVal {
 
 
  /**
@@ -5593,12 +5416,11 @@ implicit class NetSocketScala(val asJava: JNetSocket) extends AnyVal {
 
 }
 
-import io.vertx.core.net.{NetworkOptions => JNetworkOptions}
 
 /**
   */
 
-  implicit class NetworkOptionsScala(val asJava: JNetworkOptions) extends AnyVal {
+  implicit class NetworkOptionsScala(val asJava: io.vertx.core.net.NetworkOptions) extends AnyVal {
 
 
   /**
@@ -5666,13 +5488,12 @@ import io.vertx.core.net.{NetworkOptions => JNetworkOptions}
   
 
 
-import io.vertx.core.file.{OpenOptions => JOpenOptions}
 
 /**
   * Describes how an [[io.vertx.core.file.AsyncFile]] should be opened.
   */
 
-  implicit class OpenOptionsScala(val asJava: JOpenOptions) extends AnyVal {
+  implicit class OpenOptionsScala(val asJava: io.vertx.core.file.OpenOptions) extends AnyVal {
 
 
   /**
@@ -5786,20 +5607,19 @@ import io.vertx.core.file.{OpenOptions => JOpenOptions}
     }
   }
   
-  type OpenOptions = JOpenOptions
+  type OpenOptions = io.vertx.core.file.OpenOptions
   object OpenOptions {
-    def apply(): JOpenOptions = new OpenOptions()
-    def apply(json: JsonObject) = new JOpenOptions(json)
+    def apply() = new OpenOptions()
+    def apply(json: JsonObject) = new io.vertx.core.file.OpenOptions(json)
   }
 
 
-import io.vertx.core.net.{OpenSSLEngineOptions => JOpenSSLEngineOptions}
 
 /**
   * Configures a <a href="../../../../../../../cheatsheet/TCPSSLOptions.html">TCPSSLOptions</a> to use OpenSsl.
   */
 
-  implicit class OpenSSLEngineOptionsScala(val asJava: JOpenSSLEngineOptions) extends AnyVal {
+  implicit class OpenSSLEngineOptionsScala(val asJava: io.vertx.core.net.OpenSSLEngineOptions) extends AnyVal {
 
 
   /**
@@ -5813,14 +5633,13 @@ import io.vertx.core.net.{OpenSSLEngineOptions => JOpenSSLEngineOptions}
     }
   }
   
-  type OpenSSLEngineOptions = JOpenSSLEngineOptions
+  type OpenSSLEngineOptions = io.vertx.core.net.OpenSSLEngineOptions
   object OpenSSLEngineOptions {
-    def apply(): JOpenSSLEngineOptions = new OpenSSLEngineOptions()
-    def apply(json: JsonObject) = new JOpenSSLEngineOptions(json)
+    def apply() = new OpenSSLEngineOptions()
+    def apply(json: JsonObject) = new io.vertx.core.net.OpenSSLEngineOptions(json)
   }
 
 
-import io.vertx.core.cli.{Option => JOption}
 
 /**
   * Models command line options. Options are values passed to a command line interface using -x or --x. Supported
@@ -5829,7 +5648,7 @@ import io.vertx.core.cli.{Option => JOption}
   * Short name is generally used with a single dash, while long name requires a double-dash.
   */
 
-  implicit class OptionScala(val asJava: JOption) extends AnyVal {
+  implicit class OptionScala(val asJava: io.vertx.core.cli.Option) extends AnyVal {
 
 
   /**
@@ -5964,15 +5783,14 @@ import io.vertx.core.cli.{Option => JOption}
     }
   }
   
-  type Option = JOption
+  type Option = io.vertx.core.cli.Option
   object Option {
-    def apply(): JOption = new Option()
-    def apply(json: JsonObject) = new JOption(json)
+    def apply() = new Option()
+    def apply(json: JsonObject) = new io.vertx.core.cli.Option(json)
   }
 
 
 import io.vertx.core.buffer.Buffer
-import io.vertx.core.net.{PemKeyCertOptions => JPemKeyCertOptions}
 
 /**
   * Key store options configuring a list of private key and its certificate based on
@@ -6039,7 +5857,7 @@ import io.vertx.core.net.{PemKeyCertOptions => JPemKeyCertOptions}
   * </pre>
   */
 
-  implicit class PemKeyCertOptionsScala(val asJava: JPemKeyCertOptions) extends AnyVal {
+  implicit class PemKeyCertOptionsScala(val asJava: io.vertx.core.net.PemKeyCertOptions) extends AnyVal {
 
 
   /**
@@ -6111,15 +5929,14 @@ import io.vertx.core.net.{PemKeyCertOptions => JPemKeyCertOptions}
     }
   }
   
-  type PemKeyCertOptions = JPemKeyCertOptions
+  type PemKeyCertOptions = io.vertx.core.net.PemKeyCertOptions
   object PemKeyCertOptions {
-    def apply(): JPemKeyCertOptions = new PemKeyCertOptions()
-    def apply(json: JsonObject) = new JPemKeyCertOptions(json)
+    def apply() = new PemKeyCertOptions()
+    def apply(json: JsonObject) = new io.vertx.core.net.PemKeyCertOptions(json)
   }
 
 
 import io.vertx.core.buffer.Buffer
-import io.vertx.core.net.{PemTrustOptions => JPemTrustOptions}
 
 /**
   * Certificate Authority options configuring certificates based on
@@ -6153,7 +5970,7 @@ import io.vertx.core.net.{PemTrustOptions => JPemTrustOptions}
   * </pre>
   */
 
-  implicit class PemTrustOptionsScala(val asJava: JPemTrustOptions) extends AnyVal {
+  implicit class PemTrustOptionsScala(val asJava: io.vertx.core.net.PemTrustOptions) extends AnyVal {
 
 
   /**
@@ -6177,15 +5994,14 @@ import io.vertx.core.net.{PemTrustOptions => JPemTrustOptions}
     }
   }
   
-  type PemTrustOptions = JPemTrustOptions
+  type PemTrustOptions = io.vertx.core.net.PemTrustOptions
   object PemTrustOptions {
-    def apply(): JPemTrustOptions = new PemTrustOptions()
-    def apply(json: JsonObject) = new JPemTrustOptions(json)
+    def apply() = new PemTrustOptions()
+    def apply(json: JsonObject) = new io.vertx.core.net.PemTrustOptions(json)
   }
 
 
 import io.vertx.core.buffer.Buffer
-import io.vertx.core.net.{PfxOptions => JPfxOptions}
 
 /**
   * Key or trust store options configuring private key and/or certificates based on PKCS#12 files.
@@ -6209,7 +6025,7 @@ import io.vertx.core.net.{PfxOptions => JPfxOptions}
   * </pre>
   */
 
-  implicit class PfxOptionsScala(val asJava: JPfxOptions) extends AnyVal {
+  implicit class PfxOptionsScala(val asJava: io.vertx.core.net.PfxOptions) extends AnyVal {
 
 
   /**
@@ -6243,21 +6059,20 @@ import io.vertx.core.net.{PfxOptions => JPfxOptions}
     }
   }
   
-  type PfxOptions = JPfxOptions
+  type PfxOptions = io.vertx.core.net.PfxOptions
   object PfxOptions {
-    def apply(): JPfxOptions = new PfxOptions()
-    def apply(json: JsonObject) = new JPfxOptions(json)
+    def apply() = new PfxOptions()
+    def apply(json: JsonObject) = new io.vertx.core.net.PfxOptions(json)
   }
 
 
 import io.vertx.core.net.ProxyType
-import io.vertx.core.net.{ProxyOptions => JProxyOptions}
 
 /**
   * Proxy options for a net client or a net client.
   */
 
-  implicit class ProxyOptionsScala(val asJava: JProxyOptions) extends AnyVal {
+  implicit class ProxyOptionsScala(val asJava: io.vertx.core.net.ProxyOptions) extends AnyVal {
 
 
   /**
@@ -6313,18 +6128,16 @@ import io.vertx.core.net.{ProxyOptions => JProxyOptions}
     }
   }
   
-  type ProxyOptions = JProxyOptions
+  type ProxyOptions = io.vertx.core.net.ProxyOptions
   object ProxyOptions {
-    def apply(): JProxyOptions = new ProxyOptions()
-    def apply(json: JsonObject) = new JProxyOptions(json)
+    def apply() = new ProxyOptions()
+    def apply(json: JsonObject) = new io.vertx.core.net.ProxyOptions(json)
   }
 
 
-import io.vertx.core.streams.{Pump => JPump}
 import io.vertx.core.streams.{ReadStream => JReadStream}
 import io.vertx.core.streams.WriteStream
 import io.vertx.core.streams.ReadStream
-import io.vertx.core.streams.Pump
 import io.vertx.core.streams.{WriteStream => JWriteStream}
 
 /**
@@ -6347,15 +6160,11 @@ import io.vertx.core.streams.{WriteStream => JWriteStream}
   * 
   * Please see the documentation for more information.
   */
-implicit class PumpScala(val asJava: JPump) extends AnyVal {
+implicit class PumpScala(val asJava: io.vertx.core.streams.Pump) extends AnyVal {
 
 
 }
 
-import io.vertx.core.streams.{StreamBase => JStreamBase}
-import io.vertx.core.streams.{ReadStream => JReadStream}
-import io.vertx.core.streams.StreamBase
-import io.vertx.core.streams.ReadStream
 import io.vertx.core.Handler
 
 /**
@@ -6364,7 +6173,7 @@ import io.vertx.core.Handler
   * Any class that implements this interface can be used by a [[io.vertx.core.streams.Pump]] to pump data from it
   * to a [[io.vertx.core.streams.WriteStream]].
   */
-implicit class ReadStreamScala[T](val asJava: JReadStream[T]) extends AnyVal {
+implicit class ReadStreamScala[T](val asJava: io.vertx.core.streams.ReadStream[T]) extends AnyVal {
 
 
 }
@@ -6372,9 +6181,7 @@ implicit class ReadStreamScala[T](val asJava: JReadStream[T]) extends AnyVal {
 import io.vertx.core.buffer.Buffer
 import io.vertx.core.streams.{ReadStream => JReadStream}
 import io.vertx.core.streams.ReadStream
-import io.vertx.core.parsetools.RecordParser
 import io.vertx.core.Handler
-import io.vertx.core.parsetools.{RecordParser => JRecordParser}
 
 /**
   * A helper class which allows you to easily parse protocols which are delimited by a sequence of bytes, or fixed
@@ -6407,18 +6214,17 @@ import io.vertx.core.parsetools.{RecordParser => JRecordParser}
   * 
   * Please see the documentation for more information.
   */
-implicit class RecordParserScala(val asJava: JRecordParser) extends AnyVal {
+implicit class RecordParserScala(val asJava: io.vertx.core.parsetools.RecordParser) extends AnyVal {
 
 
 }
 
-import io.vertx.core.http.{RequestOptions => JRequestOptions}
 
 /**
   * Options describing how an [[io.vertx.core.http.HttpClient]] will make connect to make a request.
   */
 
-  implicit class RequestOptionsScala(val asJava: JRequestOptions) extends AnyVal {
+  implicit class RequestOptionsScala(val asJava: io.vertx.core.http.RequestOptions) extends AnyVal {
 
 
   /**
@@ -6462,55 +6268,38 @@ import io.vertx.core.http.{RequestOptions => JRequestOptions}
     }
   }
   
-  type RequestOptions = JRequestOptions
+  type RequestOptions = io.vertx.core.http.RequestOptions
   object RequestOptions {
-    def apply(): JRequestOptions = new RequestOptions()
-    def apply(json: JsonObject) = new JRequestOptions(json)
+    def apply() = new RequestOptions()
+    def apply(json: JsonObject) = new io.vertx.core.http.RequestOptions(json)
   }
 
 
-import io.vertx.core.net.{SelfSignedCertificate => JSelfSignedCertificate}
-import io.vertx.core.net.PemKeyCertOptions
-import io.vertx.core.net.{PemTrustOptions => JPemTrustOptions}
-import io.vertx.core.net.SelfSignedCertificate
-import io.vertx.core.net.{PemKeyCertOptions => JPemKeyCertOptions}
-import io.vertx.core.net.PemTrustOptions
 
 /**
   * A self-signed certificate helper for testing and development purposes.
   * 
   * While it helps for testing and development, it should never ever be used in production settings.
   */
-implicit class SelfSignedCertificateScala(val asJava: JSelfSignedCertificate) extends AnyVal {
+implicit class SelfSignedCertificateScala(val asJava: io.vertx.core.net.SelfSignedCertificate) extends AnyVal {
 
 
 }
 
-import io.vertx.core.eventbus.{SendContext => JSendContext}
-import io.vertx.core.eventbus.{Message => JMessage}
-import io.vertx.core.eventbus.Message
 
 /**
   *
   * Encapsulates a message being sent from Vert.x. Used with event bus interceptors
   */
-implicit class SendContextScala[T](val asJava: JSendContext[T]) extends AnyVal {
+implicit class SendContextScala[T](val asJava: io.vertx.core.eventbus.SendContext[T]) extends AnyVal {
 
 
 }
 
-import io.vertx.core.http.ServerWebSocket
-import io.vertx.core.http.WebSocketBase
 import io.vertx.core.buffer.Buffer
-import io.vertx.core.http.{ServerWebSocket => JServerWebSocket}
-import io.vertx.core.http.{WebSocketBase => JWebSocketBase}
-import io.vertx.core.MultiMap
 import io.vertx.core.http.{WebSocketFrame => JWebSocketFrame}
-import io.vertx.core.{MultiMap => JMultiMap}
-import io.vertx.core.net.{SocketAddress => JSocketAddress}
 import io.vertx.core.Handler
 import io.vertx.core.http.WebSocketFrame
-import io.vertx.core.net.SocketAddress
 
 /**
   * Represents a server side WebSocket.
@@ -6518,7 +6307,7 @@ import io.vertx.core.net.SocketAddress
   * Instances of this class are passed into a [[io.vertx.core.http.HttpServer#websocketHandler]] or provided
   * when a WebSocket handshake is manually [[io.vertx.core.http.HttpServerRequest#upgrade]]ed.
   */
-implicit class ServerWebSocketScala(val asJava: JServerWebSocket) extends AnyVal {
+implicit class ServerWebSocketScala(val asJava: io.vertx.core.http.ServerWebSocket) extends AnyVal {
 
 
 }
@@ -6526,15 +6315,12 @@ implicit class ServerWebSocketScala(val asJava: JServerWebSocket) extends AnyVal
 import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.shareddata.AsyncMap
 import io.vertx.core.shareddata.Lock
-import io.vertx.core.shareddata.LocalMap
 import io.vertx.core.shareddata.{Counter => JCounter}
 import io.vertx.core.shareddata.{AsyncMap => JAsyncMap}
-import io.vertx.core.shareddata.{LocalMap => JLocalMap}
 import io.vertx.core.shareddata.Counter
-import io.vertx.core.shareddata.{Lock => JLock}
 import io.vertx.core.AsyncResult
+import io.vertx.core.shareddata.{Lock => JLock}
 import io.vertx.core.Handler
-import io.vertx.core.shareddata.{SharedData => JSharedData}
 
 /**
   * Shared data allows you to share data safely between different parts of your application in a safe way.
@@ -6553,14 +6339,14 @@ import io.vertx.core.shareddata.{SharedData => JSharedData}
   * </p>
   * Please see the documentation for more information.
   */
-implicit class SharedDataScala(val asJava: JSharedData) extends AnyVal {
+implicit class SharedDataScala(val asJava: io.vertx.core.shareddata.SharedData) extends AnyVal {
 
 
  /**
    * Like [[getClusterWideMap]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def getClusterWideMapFuture[K, V](name: String): scala.concurrent.Future[JAsyncMap[K, V]] = {
-    val promise = Promise[JAsyncMap[K, V]]()
+  def getClusterWideMapFuture[K, V](name: String): scala.concurrent.Future[io.vertx.core.shareddata.AsyncMap[K, V]] = {
+    val promise = Promise[io.vertx.core.shareddata.AsyncMap[K, V]]()
     asJava.getClusterWideMap[K, V](name, {a:AsyncResult[io.vertx.core.shareddata.AsyncMap[K,V]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -6568,8 +6354,8 @@ implicit class SharedDataScala(val asJava: JSharedData) extends AnyVal {
  /**
    * Like [[getAsyncMap]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def getAsyncMapFuture[K, V](name: String): scala.concurrent.Future[JAsyncMap[K, V]] = {
-    val promise = Promise[JAsyncMap[K, V]]()
+  def getAsyncMapFuture[K, V](name: String): scala.concurrent.Future[io.vertx.core.shareddata.AsyncMap[K, V]] = {
+    val promise = Promise[io.vertx.core.shareddata.AsyncMap[K, V]]()
     asJava.getAsyncMap[K, V](name, {a:AsyncResult[io.vertx.core.shareddata.AsyncMap[K,V]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -6577,8 +6363,8 @@ implicit class SharedDataScala(val asJava: JSharedData) extends AnyVal {
  /**
    * Like [[getLock]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def getLockFuture(name: String): scala.concurrent.Future[JLock] = {
-    val promise = Promise[JLock]()
+  def getLockFuture(name: String): scala.concurrent.Future[io.vertx.core.shareddata.Lock] = {
+    val promise = Promise[io.vertx.core.shareddata.Lock]()
     asJava.getLock(name, {a:AsyncResult[io.vertx.core.shareddata.Lock] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -6586,8 +6372,8 @@ implicit class SharedDataScala(val asJava: JSharedData) extends AnyVal {
  /**
    * Like [[getLockWithTimeout]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def getLockWithTimeoutFuture(name: String, timeout: java.lang.Long): scala.concurrent.Future[JLock] = {
-    val promise = Promise[JLock]()
+  def getLockWithTimeoutFuture(name: String, timeout: java.lang.Long): scala.concurrent.Future[io.vertx.core.shareddata.Lock] = {
+    val promise = Promise[io.vertx.core.shareddata.Lock]()
     asJava.getLockWithTimeout(name, timeout, {a:AsyncResult[io.vertx.core.shareddata.Lock] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
@@ -6595,16 +6381,14 @@ implicit class SharedDataScala(val asJava: JSharedData) extends AnyVal {
  /**
    * Like [[getCounter]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def getCounterFuture(name: String): scala.concurrent.Future[JCounter] = {
-    val promise = Promise[JCounter]()
+  def getCounterFuture(name: String): scala.concurrent.Future[io.vertx.core.shareddata.Counter] = {
+    val promise = Promise[io.vertx.core.shareddata.Counter]()
     asJava.getCounter(name, {a:AsyncResult[io.vertx.core.shareddata.Counter] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
   }
 
 }
 
-import io.vertx.core.net.{SocketAddress => JSocketAddress}
-import io.vertx.core.net.SocketAddress
 
 /**
   * The address of a socket, an inet socket address or a domain socket address.
@@ -6612,29 +6396,26 @@ import io.vertx.core.net.SocketAddress
   * Use [[io.vertx.core.net.SocketAddress#inetSocketAddress]] to create an inet socket address and [[io.vertx.core.net.SocketAddress#domainSocketAddress]]
   * to create a domain socket address
   */
-implicit class SocketAddressScala(val asJava: JSocketAddress) extends AnyVal {
+implicit class SocketAddressScala(val asJava: io.vertx.core.net.SocketAddress) extends AnyVal {
 
 
 }
 
-import io.vertx.core.dns.{SrvRecord => JSrvRecord}
 
 /**
   * Represent a Service-Record (SRV) which was resolved for a domain.
   */
-implicit class SrvRecordScala(val asJava: JSrvRecord) extends AnyVal {
+implicit class SrvRecordScala(val asJava: io.vertx.core.dns.SrvRecord) extends AnyVal {
 
 
 }
 
-import io.vertx.core.streams.{StreamBase => JStreamBase}
-import io.vertx.core.streams.StreamBase
 import io.vertx.core.Handler
 
 /**
   * Base interface for a stream.
   */
-implicit class StreamBaseScala(val asJava: JStreamBase) extends AnyVal {
+implicit class StreamBaseScala(val asJava: io.vertx.core.streams.StreamBase) extends AnyVal {
 
 
 }
@@ -6648,7 +6429,6 @@ import io.vertx.core.net.{OpenSSLEngineOptions => JOpenSSLEngineOptions}
 import io.vertx.core.net.PemKeyCertOptions
 import io.vertx.core.net.{JdkSSLEngineOptions => JJdkSSLEngineOptions}
 import io.vertx.core.net.{PemTrustOptions => JPemTrustOptions}
-import io.vertx.core.net.{TCPSSLOptions => JTCPSSLOptions}
 import io.vertx.core.net.{PemKeyCertOptions => JPemKeyCertOptions}
 import io.vertx.core.net.PemTrustOptions
 import io.vertx.core.net.JdkSSLEngineOptions
@@ -6658,7 +6438,7 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   * Base class. TCP and SSL related options
   */
 
-  implicit class TCPSSLOptionsScala(val asJava: JTCPSSLOptions) extends AnyVal {
+  implicit class TCPSSLOptionsScala(val asJava: io.vertx.core.net.TCPSSLOptions) extends AnyVal {
 
 
   /**
@@ -6714,20 +6494,20 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
     def getIdleTimeout: java.lang.Integer = {
       asJava.getIdleTimeout()
     }
-    def setJdkSslEngineOptions(value: JJdkSSLEngineOptions) = {
-      asJava.setJdkSslEngineOptions(value.asJava)
+    def setJdkSslEngineOptions(value: io.vertx.core.net.JdkSSLEngineOptions) = {
+      asJava.setJdkSslEngineOptions(value)
     }
-    def getJdkSslEngineOptions: JJdkSSLEngineOptions = {
+    def getJdkSslEngineOptions: io.vertx.core.net.JdkSSLEngineOptions = {
       asJava.getJdkSslEngineOptions()
     }
 
   /**
     * Set the key/cert options in jks format, aka Java keystore.
     */
-    def setKeyStoreOptions(value: JJksOptions) = {
-      asJava.setKeyStoreOptions(value.asJava)
+    def setKeyStoreOptions(value: io.vertx.core.net.JksOptions) = {
+      asJava.setKeyStoreOptions(value)
     }
-    def getKeyStoreOptions: JJksOptions = {
+    def getKeyStoreOptions: io.vertx.core.net.JksOptions = {
       asJava.getKeyStoreOptions()
     }
 
@@ -6740,50 +6520,50 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
     def getLogActivity: java.lang.Boolean = {
       asJava.getLogActivity()
     }
-    def setOpenSslEngineOptions(value: JOpenSSLEngineOptions) = {
-      asJava.setOpenSslEngineOptions(value.asJava)
+    def setOpenSslEngineOptions(value: io.vertx.core.net.OpenSSLEngineOptions) = {
+      asJava.setOpenSslEngineOptions(value)
     }
-    def getOpenSslEngineOptions: JOpenSSLEngineOptions = {
+    def getOpenSslEngineOptions: io.vertx.core.net.OpenSSLEngineOptions = {
       asJava.getOpenSslEngineOptions()
     }
 
   /**
     * Set the key/cert store options in pem format.
     */
-    def setPemKeyCertOptions(value: JPemKeyCertOptions) = {
-      asJava.setPemKeyCertOptions(value.asJava)
+    def setPemKeyCertOptions(value: io.vertx.core.net.PemKeyCertOptions) = {
+      asJava.setPemKeyCertOptions(value)
     }
-    def getPemKeyCertOptions: JPemKeyCertOptions = {
+    def getPemKeyCertOptions: io.vertx.core.net.PemKeyCertOptions = {
       asJava.getPemKeyCertOptions()
     }
 
   /**
     * Set the trust options in pem format
     */
-    def setPemTrustOptions(value: JPemTrustOptions) = {
-      asJava.setPemTrustOptions(value.asJava)
+    def setPemTrustOptions(value: io.vertx.core.net.PemTrustOptions) = {
+      asJava.setPemTrustOptions(value)
     }
-    def getPemTrustOptions: JPemTrustOptions = {
+    def getPemTrustOptions: io.vertx.core.net.PemTrustOptions = {
       asJava.getPemTrustOptions()
     }
 
   /**
     * Set the key/cert options in pfx format.
     */
-    def setPfxKeyCertOptions(value: JPfxOptions) = {
-      asJava.setPfxKeyCertOptions(value.asJava)
+    def setPfxKeyCertOptions(value: io.vertx.core.net.PfxOptions) = {
+      asJava.setPfxKeyCertOptions(value)
     }
-    def getPfxKeyCertOptions: JPfxOptions = {
+    def getPfxKeyCertOptions: io.vertx.core.net.PfxOptions = {
       asJava.getPfxKeyCertOptions()
     }
 
   /**
     * Set the trust options in pfx format
     */
-    def setPfxTrustOptions(value: JPfxOptions) = {
-      asJava.setPfxTrustOptions(value.asJava)
+    def setPfxTrustOptions(value: io.vertx.core.net.PfxOptions) = {
+      asJava.setPfxTrustOptions(value)
     }
-    def getPfxTrustOptions: JPfxOptions = {
+    def getPfxTrustOptions: io.vertx.core.net.PfxOptions = {
       asJava.getPfxTrustOptions()
     }
 
@@ -6912,10 +6692,10 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   /**
     * Set the trust options in jks format, aka Java truststore
     */
-    def setTrustStoreOptions(value: JJksOptions) = {
-      asJava.setTrustStoreOptions(value.asJava)
+    def setTrustStoreOptions(value: io.vertx.core.net.JksOptions) = {
+      asJava.setTrustStoreOptions(value)
     }
-    def getTrustStoreOptions: JJksOptions = {
+    def getTrustStoreOptions: io.vertx.core.net.JksOptions = {
       asJava.getTrustStoreOptions()
     }
 
@@ -6942,11 +6722,7 @@ import io.vertx.core.net.{JksOptions => JJksOptions}
   
 
 
-import io.vertx.core.TimeoutStream
-import io.vertx.core.streams.{ReadStream => JReadStream}
-import io.vertx.core.streams.ReadStream
 import io.vertx.core.Handler
-import io.vertx.core.{TimeoutStream => JTimeoutStream}
 
 /**
   * A timeout stream is triggered by a timer, the scala-function will be call when the timer is fired,
@@ -6956,61 +6732,34 @@ import io.vertx.core.{TimeoutStream => JTimeoutStream}
   * Pausing the timer inhibits the timer shots until the stream is resumed. Setting a null handler callback cancels
   * the timer.
   */
-implicit class TimeoutStreamScala(val asJava: JTimeoutStream) extends AnyVal {
+implicit class TimeoutStreamScala(val asJava: io.vertx.core.TimeoutStream) extends AnyVal {
 
 
 }
 
 import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.{DeploymentOptions => JDeploymentOptions}
-import io.vertx.core.http.HttpServer
-import io.vertx.core.Context
-import io.vertx.core.http.{HttpServerOptions => JHttpServerOptions}
-import io.vertx.core.net.{NetServerOptions => JNetServerOptions}
-import io.vertx.core.WorkerExecutor
-import io.vertx.core.eventbus.EventBus
-import io.vertx.core.dns.{DnsClient => JDnsClient}
-import io.vertx.core.net.{NetClientOptions => JNetClientOptions}
-import io.vertx.core.datagram.DatagramSocketOptions
-import io.vertx.core.metrics.{Measured => JMeasured}
+import io.vertx.core.Vertx
+import io.vertx.core.dns.DnsClientOptions
 import io.vertx.core.VertxOptions
-import scala.collection.JavaConverters._
+import io.vertx.core.http.{HttpClientOptions => JHttpClientOptions}
+import io.vertx.core.http.{HttpServerOptions => JHttpServerOptions}
 import io.vertx.core.Future
+import io.vertx.core.net.{NetServerOptions => JNetServerOptions}
 import io.vertx.core.{Vertx => JVertx}
 import io.vertx.core.net.NetClientOptions
-import io.vertx.core.dns.DnsClient
-import io.vertx.core.http.{HttpClient => JHttpClient}
-import io.vertx.core.net.NetServerOptions
-import io.vertx.core.{Context => JContext}
-import io.vertx.core.metrics.Measured
-import io.vertx.core.file.FileSystem
-import io.vertx.core.http.HttpClient
-import io.vertx.core.net.{NetServer => JNetServer}
-import io.vertx.core.datagram.DatagramSocket
-import io.vertx.core.dns.DnsClientOptions
-import io.vertx.core.shareddata.SharedData
-import io.vertx.core.TimeoutStream
-import io.vertx.core.datagram.{DatagramSocket => JDatagramSocket}
-import io.vertx.core.dns.{DnsClientOptions => JDnsClientOptions}
-import io.vertx.core.AsyncResult
-import io.vertx.core.http.HttpClientOptions
-import io.vertx.core.net.NetClient
-import io.vertx.core.{VertxOptions => JVertxOptions}
-import io.vertx.core.eventbus.{EventBus => JEventBus}
-import io.vertx.core.http.{HttpServer => JHttpServer}
-import io.vertx.core.file.{FileSystem => JFileSystem}
-import io.vertx.core.net.{NetClient => JNetClient}
-import io.vertx.core.Vertx
-import io.vertx.core.http.{HttpClientOptions => JHttpClientOptions}
-import io.vertx.core.{WorkerExecutor => JWorkerExecutor}
-import io.vertx.core.shareddata.{SharedData => JSharedData}
 import io.vertx.core.datagram.{DatagramSocketOptions => JDatagramSocketOptions}
-import io.vertx.core.net.NetServer
+import io.vertx.core.net.NetServerOptions
+import io.vertx.core.dns.{DnsClientOptions => JDnsClientOptions}
 import io.vertx.core.DeploymentOptions
+import io.vertx.core.net.{NetClientOptions => JNetClientOptions}
 import io.vertx.core.{Future => JFuture}
 import io.vertx.core.http.HttpServerOptions
+import io.vertx.core.AsyncResult
+import io.vertx.core.http.HttpClientOptions
+import io.vertx.core.datagram.DatagramSocketOptions
+import io.vertx.core.{VertxOptions => JVertxOptions}
 import io.vertx.core.Handler
-import io.vertx.core.{TimeoutStream => JTimeoutStream}
 
 /**
   * The entry point into the Vert.x Core API.
@@ -7035,7 +6784,7 @@ import io.vertx.core.{TimeoutStream => JTimeoutStream}
   * 
   * Please see the user manual for more detailed usage information.
   */
-implicit class VertxScala(val asJava: JVertx) extends AnyVal {
+implicit class VertxScala(val asJava: io.vertx.core.Vertx) extends AnyVal {
 
   import io.vertx.lang.scala.ScalaVerticle;  /**
     * Deploy a verticle instance that you have created yourself.
@@ -7100,7 +6849,7 @@ implicit class VertxScala(val asJava: JVertx) extends AnyVal {
  /**
    * Like [[deployVerticle]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
    */
-  def deployVerticleFuture(name: String, options: JDeploymentOptions): scala.concurrent.Future[String] = {
+  def deployVerticleFuture(name: String, options: io.vertx.core.DeploymentOptions): scala.concurrent.Future[String] = {
     val promise = Promise[String]()
     asJava.deployVerticle(name, options, {a:AsyncResult[java.lang.String] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
     promise.future
@@ -7122,23 +6871,22 @@ import io.vertx.core.metrics.{MetricsOptions => JMetricsOptions}
 import io.vertx.core.metrics.MetricsOptions
 import io.vertx.core.eventbus.{EventBusOptions => JEventBusOptions}
 import io.vertx.core.eventbus.EventBusOptions
-import io.vertx.core.{VertxOptions => JVertxOptions}
 import io.vertx.core.dns.AddressResolverOptions
 
 /**
   * Instances of this class are used to configure [[io.vertx.core.Vertx]] instances.
   */
 
-  implicit class VertxOptionsScala(val asJava: JVertxOptions) extends AnyVal {
+  implicit class VertxOptionsScala(val asJava: io.vertx.core.VertxOptions) extends AnyVal {
 
 
   /**
     * Sets the address resolver configuration to configure resolving DNS servers, cache TTL, etc...
     */
-    def setAddressResolverOptions(value: JAddressResolverOptions) = {
-      asJava.setAddressResolverOptions(value.asJava)
+    def setAddressResolverOptions(value: io.vertx.core.dns.AddressResolverOptions) = {
+      asJava.setAddressResolverOptions(value)
     }
-    def getAddressResolverOptions: JAddressResolverOptions = {
+    def getAddressResolverOptions: io.vertx.core.dns.AddressResolverOptions = {
       asJava.getAddressResolverOptions()
     }
 
@@ -7229,10 +6977,10 @@ import io.vertx.core.dns.AddressResolverOptions
   /**
     * Sets the event bus configuration to configure the host, port, ssl...
     */
-    def setEventBusOptions(value: JEventBusOptions) = {
-      asJava.setEventBusOptions(value.asJava)
+    def setEventBusOptions(value: io.vertx.core.eventbus.EventBusOptions) = {
+      asJava.setEventBusOptions(value)
     }
-    def getEventBusOptions: JEventBusOptions = {
+    def getEventBusOptions: io.vertx.core.eventbus.EventBusOptions = {
       asJava.getEventBusOptions()
     }
 
@@ -7309,10 +7057,10 @@ import io.vertx.core.dns.AddressResolverOptions
   /**
     * Set the metrics options
     */
-    def setMetricsOptions(value: JMetricsOptions) = {
-      asJava.setMetricsOptions(value.asJava)
+    def setMetricsOptions(value: io.vertx.core.metrics.MetricsOptions) = {
+      asJava.setMetricsOptions(value)
     }
-    def getMetricsOptions: JMetricsOptions = {
+    def getMetricsOptions: io.vertx.core.metrics.MetricsOptions = {
       asJava.getMetricsOptions()
     }
 
@@ -7357,44 +7105,30 @@ import io.vertx.core.dns.AddressResolverOptions
     }
   }
   
-  type VertxOptions = JVertxOptions
+  type VertxOptions = io.vertx.core.VertxOptions
   object VertxOptions {
-    def apply(): JVertxOptions = new VertxOptions()
-    def apply(json: JsonObject) = new JVertxOptions(json)
+    def apply() = new VertxOptions()
+    def apply(json: JsonObject) = new io.vertx.core.VertxOptions(json)
   }
 
 
-import io.vertx.core.http.WebSocketBase
 import io.vertx.core.buffer.Buffer
-import io.vertx.core.http.{WebSocketBase => JWebSocketBase}
-import io.vertx.core.http.{WebSocket => JWebSocket}
 import io.vertx.core.http.{WebSocketFrame => JWebSocketFrame}
-import io.vertx.core.net.{SocketAddress => JSocketAddress}
-import io.vertx.core.http.WebSocket
 import io.vertx.core.Handler
 import io.vertx.core.http.WebSocketFrame
-import io.vertx.core.net.SocketAddress
 
 /**
   * Represents a client-side WebSocket.
   */
-implicit class WebSocketScala(val asJava: JWebSocket) extends AnyVal {
+implicit class WebSocketScala(val asJava: io.vertx.core.http.WebSocket) extends AnyVal {
 
 
 }
 
 import io.vertx.core.buffer.Buffer
-import io.vertx.core.http.WebSocketBase
-import io.vertx.core.streams.{ReadStream => JReadStream}
-import io.vertx.core.http.{WebSocketBase => JWebSocketBase}
-import io.vertx.core.streams.WriteStream
-import io.vertx.core.streams.ReadStream
 import io.vertx.core.http.{WebSocketFrame => JWebSocketFrame}
-import io.vertx.core.net.{SocketAddress => JSocketAddress}
 import io.vertx.core.Handler
-import io.vertx.core.streams.{WriteStream => JWriteStream}
 import io.vertx.core.http.WebSocketFrame
-import io.vertx.core.net.SocketAddress
 
 /**
   * Base WebSocket implementation.
@@ -7402,14 +7136,12 @@ import io.vertx.core.net.SocketAddress
   * It implements both  and  so it can be used with
   * [[io.vertx.core.streams.Pump]] to pump data with flow control.
   */
-implicit class WebSocketBaseScala(val asJava: JWebSocketBase) extends AnyVal {
+implicit class WebSocketBaseScala(val asJava: io.vertx.core.http.WebSocketBase) extends AnyVal {
 
 
 }
 
 import io.vertx.core.buffer.Buffer
-import io.vertx.core.http.{WebSocketFrame => JWebSocketFrame}
-import io.vertx.core.http.WebSocketFrame
 
 /**
   * A WebSocket frame that represents either text or binary data.
@@ -7421,16 +7153,13 @@ import io.vertx.core.http.WebSocketFrame
   * If there are more than one frames in the message, then the first frame should be a text or binary frame with
   * final = false, followed by one or more continuation frames. The last continuation frame should have final = true.
   */
-implicit class WebSocketFrameScala(val asJava: JWebSocketFrame) extends AnyVal {
+implicit class WebSocketFrameScala(val asJava: io.vertx.core.http.WebSocketFrame) extends AnyVal {
 
 
 }
 
 import io.vertx.lang.scala.AsyncResultWrapper
-import io.vertx.core.metrics.{Measured => JMeasured}
-import io.vertx.core.metrics.Measured
 import io.vertx.core.{Future => JFuture}
-import io.vertx.core.{WorkerExecutor => JWorkerExecutor}
 import io.vertx.core.AsyncResult
 import io.vertx.core.Handler
 import io.vertx.core.Future
@@ -7441,16 +7170,12 @@ import io.vertx.core.Future
   * It provides the same <code>executeBlocking</code> operation than [[io.vertx.core.Context]] and
   * [[io.vertx.core.Vertx]] but on a separate worker pool.
   */
-implicit class WorkerExecutorScala(val asJava: JWorkerExecutor) extends AnyVal {
+implicit class WorkerExecutorScala(val asJava: io.vertx.core.WorkerExecutor) extends AnyVal {
 
 
 }
 
-import io.vertx.core.streams.{StreamBase => JStreamBase}
-import io.vertx.core.streams.WriteStream
-import io.vertx.core.streams.StreamBase
 import io.vertx.core.Handler
-import io.vertx.core.streams.{WriteStream => JWriteStream}
 
 /**
   *
@@ -7459,7 +7184,7 @@ import io.vertx.core.streams.{WriteStream => JWriteStream}
   * Any class that implements this interface can be used by a [[io.vertx.core.streams.Pump]] to pump data from a `ReadStream`
   * to it.
   */
-implicit class WriteStreamScala[T](val asJava: JWriteStream[T]) extends AnyVal {
+implicit class WriteStreamScala[T](val asJava: io.vertx.core.streams.WriteStream[T]) extends AnyVal {
 
 
 }
