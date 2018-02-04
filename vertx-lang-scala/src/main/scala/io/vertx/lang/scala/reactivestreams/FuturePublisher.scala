@@ -16,20 +16,16 @@ import scala.util.{Failure, Success}
 class FuturePublisher[T](future: Future[T])(implicit ec: ExecutionContext) extends Publisher[T]{
   @volatile var subscriberRef:Subscriber[_ >: T] = _
   val requested = new AtomicBoolean(false)
-  override def subscribe(subscriber: Subscriber[_ >: T]) = {
-    def subscribeToFuture = {
+  override def subscribe(subscriber: Subscriber[_ >: T]): Unit = {
+    def subscribeToFuture(): Unit = {
       future.onComplete {
-        case Success(res) => {
+        case Success(res) =>
           if (subscriberRef != null) {
             subscriberRef.onNext(res)
             subscriberRef.onComplete()
           }
-        }
-        case Failure(t) => {
-          if (subscriberRef != null) {
-            subscriberRef.onError(t)
-          }
-        }
+        case Failure(t) =>
+          if (subscriberRef != null) subscriberRef.onError(t)
       }
     }
 
@@ -51,7 +47,7 @@ class FuturePublisher[T](future: Future[T])(implicit ec: ExecutionContext) exten
           else {
             //avoid subscribing to the future while onSubscribe has not yet returned
             if(requested.compareAndSet(false,true) && subscribed.get()) {
-              subscribeToFuture
+              subscribeToFuture()
             }
           }
         }
@@ -59,7 +55,7 @@ class FuturePublisher[T](future: Future[T])(implicit ec: ExecutionContext) exten
 
       subscribed.set(true)
       if(requested.get()) {
-        subscribeToFuture
+        subscribeToFuture()
       }
 
     }

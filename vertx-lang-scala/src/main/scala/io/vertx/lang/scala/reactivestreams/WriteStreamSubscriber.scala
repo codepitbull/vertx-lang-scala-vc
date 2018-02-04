@@ -24,7 +24,7 @@ class WriteStreamSubscriber[I](ws: WriteStream[I], _batchSize: Long)(implicit ec
 
   var subscription = new AtomicReference[Subscription]
 
-  override def onError(t: Throwable) = {
+  override def onError(t: Throwable): Unit = {
     if(t == null) {
       throw new NullPointerException("onError called with null as parameter")
     }
@@ -34,11 +34,11 @@ class WriteStreamSubscriber[I](ws: WriteStream[I], _batchSize: Long)(implicit ec
     })
   }
 
-  override def onComplete() = {
+  override def onComplete(): Unit = {
     ec.execute(() => ws.end())
   }
 
-  override def onNext(t: I) = {
+  override def onNext(t: I): Unit = {
     if(t == null) {
       throw new NullPointerException("onNext was called with null as param")
     }
@@ -55,7 +55,7 @@ class WriteStreamSubscriber[I](ws: WriteStream[I], _batchSize: Long)(implicit ec
     })
   }
 
-  override def onSubscribe(s: Subscription) = {
+  override def onSubscribe(s: Subscription): Unit = {
     if(!subscription.compareAndSet(null, s)) {
       Log.error("Subscriber can only be subscribed once.")
       s.cancel()

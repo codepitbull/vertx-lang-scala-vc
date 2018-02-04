@@ -1,17 +1,10 @@
 package io.vertx.lang.scala
 
-import io.reactivex.Flowable.fromPublisher
 import io.vertx.lang.scala.streams.api.StreamStage
 import io.vertx.core.streams.WriteStream
 import org.reactivestreams.{Publisher, Subscriber}
 
-import scala.concurrent.Future
-
 package object reactivestreams {
-
-  implicit class ReactiveFuture[O](val future: Future[O])(implicit ec: VertxExecutionContext) {
-    def flowable() = fromPublisher(new FuturePublisher(future))
-  }
 
   /**
     * Extends [[WriteStream]]s with a subscriber-method to provide an entry point for reactive streams.

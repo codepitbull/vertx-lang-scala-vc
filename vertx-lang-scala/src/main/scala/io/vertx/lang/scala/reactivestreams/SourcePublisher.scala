@@ -8,7 +8,7 @@ class SourcePublisher[T](src: Source[T])(implicit ec: VertxExecutionContext) ext
 
   @volatile var subscriber:Subscriber[_ >: T] = _
 
-  override def subscribe(s: Subscriber[_ >: T]) = this.synchronized {
+  override def subscribe(s: Subscriber[_ >: T]): Unit = this.synchronized {
     if(subscriber == null) {
       subscriber = s
       src.subscribe(new HiddenSink())
