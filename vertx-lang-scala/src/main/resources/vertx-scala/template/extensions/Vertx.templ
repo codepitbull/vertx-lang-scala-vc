@@ -10,16 +10,16 @@
     * @param verticle the verticle instance to deploy.\n
     */\n
   def deployVerticle(verticle: ScalaVerticle): Unit = {\n
-    asJava.asInstanceOf[JVertx].deployVerticle(verticle.asJava())\n
+    asJava.deployVerticle(verticle.asJava())\n
   }\n
 \n
   /**\n
     * Like [[deployVerticle]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.\n
     */\n
   def deployVerticleFuture(verticle: ScalaVerticle): scala.concurrent.Future[String] = {\n
-    val promiseAndHandler = handlerForAsyncResultWithConversion[String, String](x => x.asInstanceOf[String])\n
-    asJava.asInstanceOf[JVertx].deployVerticle(verticle.asJava(), promiseAndHandler._1)\n
-    promiseAndHandler._2.future\n
+    val promise = Promise[String]()\n
+    asJava.deployVerticle(verticle.asJava(), {a:AsyncResult[String] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})\n
+    promise.future\n
   }\n
 \n
   /**\n
@@ -30,14 +30,14 @@
     * @param options  the deployment options.\n
     */\n
   def deployVerticle(verticle: ScalaVerticle, options: DeploymentOptions): Unit = {\n
-    asJava.asInstanceOf[JVertx].deployVerticle(verticle.asJava(), options)\n
+    asJava.deployVerticle(verticle.asJava(), options)\n
   }\n
 \n
   /**\n
     * Like [[deployVerticle]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.\n
     */\n
   def deployVerticleFuture(verticle: ScalaVerticle, options: DeploymentOptions): scala.concurrent.Future[String] = {\n
-    val promiseAndHandler = handlerForAsyncResultWithConversion[String, String](x => x.asInstanceOf[String])\n
-    asJava.asInstanceOf[JVertx].deployVerticle(verticle.asJava(), options, promiseAndHandler._1)\n
-    promiseAndHandler._2.future\n
+    val promise = Promise[String]()\n
+    asJava.deployVerticle(verticle.asJava(),options , {a:AsyncResult[String] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})\n
+    promise.future\n
   }\n

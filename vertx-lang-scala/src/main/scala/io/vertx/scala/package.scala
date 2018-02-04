@@ -1798,16 +1798,16 @@ import io.vertx.core.Handler
     * @param verticle the verticle instance to deploy.
     */
   def deployVerticle(verticle: ScalaVerticle): Unit = {
-    asJava.asInstanceOf[JVertx].deployVerticle(verticle.asJava())
+    asJava.deployVerticle(verticle.asJava())
   }
 
   /**
     * Like [[deployVerticle]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
     */
   def deployVerticleFuture(verticle: ScalaVerticle): scala.concurrent.Future[String] = {
-    val promiseAndHandler = handlerForAsyncResultWithConversion[String, String](x => x.asInstanceOf[String])
-    asJava.asInstanceOf[JVertx].deployVerticle(verticle.asJava(), promiseAndHandler._1)
-    promiseAndHandler._2.future
+    val promise = Promise[String]()
+    asJava.deployVerticle(verticle.asJava(), {a:AsyncResult[String] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    promise.future
   }
 
   /**
@@ -1818,16 +1818,16 @@ import io.vertx.core.Handler
     * @param options  the deployment options.
     */
   def deployVerticle(verticle: ScalaVerticle, options: DeploymentOptions): Unit = {
-    asJava.asInstanceOf[JVertx].deployVerticle(verticle.asJava(), options)
+    asJava.deployVerticle(verticle.asJava(), options)
   }
 
   /**
     * Like [[deployVerticle]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
     */
   def deployVerticleFuture(verticle: ScalaVerticle, options: DeploymentOptions): scala.concurrent.Future[String] = {
-    val promiseAndHandler = handlerForAsyncResultWithConversion[String, String](x => x.asInstanceOf[String])
-    asJava.asInstanceOf[JVertx].deployVerticle(verticle.asJava(), options, promiseAndHandler._1)
-    promiseAndHandler._2.future
+    val promise = Promise[String]()
+    asJava.deployVerticle(verticle.asJava(),options , {a:AsyncResult[String] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+    promise.future
   }
   /**
     * Safely execute some blocking code.
