@@ -313,7 +313,7 @@
 
   <modules>
     <module>vertx-web</module>
-    <!--<module>vertx-web-common</module>-->
-    <!--<module>vertx-web-client</module>-->
+    <module>vertx-web-common</module>
+    <module>vertx-web-client</module>
   </modules>
 </project>
