@@ -315,5 +315,11 @@
     <module>vertx-web</module>
     <module>vertx-web-common</module>
     <module>vertx-web-client</module>
+    <module>vertx-web-templ-freemarker</module>
+    <module>vertx-web-templ-handlebars</module>
+    <module>vertx-web-templ-jade</module>
+    <module>vertx-web-templ-mvel</module>
+    <module>vertx-web-templ-pebble</module>
+    <module>vertx-web-templ-thymeleaf</module>
   </modules>
 </project>
