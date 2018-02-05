@@ -1,0 +1,9 @@
+  \n
+  object Message{\n
+    type Address = String\n
+    type Headers = MultiMap\n
+    type ReplyAddress = String\n
+    type Send = Boolean\n
+    def unapply[T](message: Message[T]): scala.Option[(Address, Headers, ReplyAddress, Send, T)] = Some(message.asJava.address(), message.asJava.headers(), message.asJava.replyAddress(), message.asJava.isSend, message.asJava.body())\n
+  }\n
+\n

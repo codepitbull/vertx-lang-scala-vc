@@ -27,7 +27,6 @@ import scala.collection.JavaConverters._\n
 import scala.compat.java8.FunctionConverters._\n
 import io.vertx.core.json.JsonObject\n
 import io.vertx.core.json.JsonArray\n
-import io.vertx.lang.scala.HandlerOps._\n
 import scala.reflect.runtime.universe._\n
 import scala.concurrent.Promise\n
 @if{type.name == 'io.vertx.core.Vertx'}
@@ -53,6 +52,9 @@ package object @{moduleName}{\n
 @includeNamed{'implicit_dataobject.templ'}
 @else{!type.name.contains('Handler') && findFutureMethods(instanceMethods).size > 0}
 @includeNamed{'class.templ'}
+@end{}
+@if{helper.getSimpleName(type.name) == 'Message'}
+@includeNamed{'extensions/Message.templ'}
 @end{}
 
 @if{incrementalIndex==incrementalSize-1}

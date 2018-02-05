@@ -19,7 +19,6 @@ import scala.collection.JavaConverters._
 import scala.compat.java8.FunctionConverters._
 import io.vertx.core.json.JsonObject
 import io.vertx.core.json.JsonArray
-import io.vertx.lang.scala.HandlerOps._
 import scala.reflect.runtime.universe._
 import scala.concurrent.Promise
 

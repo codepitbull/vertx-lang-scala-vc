@@ -19,7 +19,6 @@ import scala.collection.JavaConverters._
 import scala.compat.java8.FunctionConverters._
 import io.vertx.core.json.JsonObject
 import io.vertx.core.json.JsonArray
-import io.vertx.lang.scala.HandlerOps._
 import scala.reflect.runtime.universe._
 import scala.concurrent.Promise
 
@@ -1344,6 +1343,15 @@ import io.vertx.core.Handler
     }
 
   }
+  
+  object Message{
+    type Address = String
+    type Headers = MultiMap
+    type ReplyAddress = String
+    type Send = Boolean
+    def unapply[T](message: Message[T]): scala.Option[(Address, Headers, ReplyAddress, Send, T)] = Some(message.asJava.address(), message.asJava.headers(), message.asJava.replyAddress(), message.asJava.isSend, message.asJava.body())
+  }
+
 
 import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.eventbus.{Message => JMessage}
