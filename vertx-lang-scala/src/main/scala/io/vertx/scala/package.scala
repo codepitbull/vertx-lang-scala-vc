@@ -77,7 +77,6 @@ package object core{
   }
 
 
-import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.buffer.Buffer
 import io.vertx.core.AsyncResult
 import io.vertx.core.Handler
@@ -130,7 +129,6 @@ import io.vertx.core.Handler
 
   }
 
-import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.AsyncResult
 import io.vertx.core.Handler
 
@@ -244,7 +242,6 @@ import io.vertx.core.Handler
 
 
 
-import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.CompositeFuture
 import io.vertx.core.{Future => JFuture}
 import io.vertx.core.{CompositeFuture => JCompositeFuture}
@@ -262,7 +259,6 @@ import io.vertx.core.Future
 
   }
 
-import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.{Future => JFuture}
 import io.vertx.core.AsyncResult
 import io.vertx.core.Handler
@@ -334,7 +330,6 @@ import io.vertx.core.Future
   }
 
 
-import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.AsyncResult
 import io.vertx.core.Handler
 
@@ -409,7 +404,6 @@ import io.vertx.core.Handler
 
   }
 
-import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.datagram.{DatagramSocket => JDatagramSocket}
 import io.vertx.core.buffer.Buffer
 import io.vertx.core.datagram.DatagramPacket
@@ -557,7 +551,6 @@ import io.vertx.core.datagram.{DatagramPacket => JDatagramPacket}
   }
 
 
-import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.AsyncResult
 import io.vertx.core.Handler
 import scala.collection.JavaConverters._
@@ -687,7 +680,6 @@ import scala.collection.JavaConverters._
   }
 
 
-import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.eventbus.DeliveryOptions
 import io.vertx.core.eventbus.{Message => JMessage}
 import io.vertx.core.eventbus.{DeliveryOptions => JDeliveryOptions}
@@ -737,7 +729,6 @@ import io.vertx.core.Handler
   }
 
 
-import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.file.AsyncFile
 import io.vertx.core.file.OpenOptions
 import scala.collection.JavaConverters._
@@ -1041,7 +1032,6 @@ import io.vertx.core.Handler
 
   }
 
-import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.{Future => JFuture}
 import io.vertx.core.AsyncResult
 import io.vertx.core.Handler
@@ -1079,7 +1069,6 @@ import io.vertx.core.Future
   }
 
 
-import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.buffer.Buffer
 import io.vertx.core.http.{GoAway => JGoAway}
 import io.vertx.core.http.GoAway
@@ -1120,7 +1109,6 @@ import io.vertx.core.http.{Http2Settings => JHttp2Settings}
 
   }
 
-import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.http.{HttpServer => JHttpServer}
 import io.vertx.core.http.HttpServerRequest
 import io.vertx.core.http.ServerWebSocket
@@ -1189,7 +1177,6 @@ import io.vertx.core.Handler
   }
 
 
-import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.buffer.Buffer
 import io.vertx.core.http.{HttpServerResponse => JHttpServerResponse}
 import io.vertx.core.http.HttpFrame
@@ -1304,7 +1291,6 @@ import io.vertx.core.Handler
   }
 
 
-import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.eventbus.DeliveryOptions
 import io.vertx.core.eventbus.{Message => JMessage}
 import io.vertx.core.eventbus.{DeliveryOptions => JDeliveryOptions}
@@ -1353,7 +1339,6 @@ import io.vertx.core.Handler
   }
 
 
-import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.eventbus.{Message => JMessage}
 import io.vertx.core.eventbus.Message
 import io.vertx.core.AsyncResult
@@ -1392,7 +1377,6 @@ import io.vertx.core.Handler
 
   }
 
-import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.eventbus.DeliveryOptions
 import io.vertx.core.eventbus.{Message => JMessage}
 import io.vertx.core.eventbus.{DeliveryOptions => JDeliveryOptions}
@@ -1422,7 +1406,6 @@ import io.vertx.core.Handler
   }
 
 
-import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.net.{NetSocket => JNetSocket}
 import io.vertx.core.net.{SocketAddress => JSocketAddress}
 import io.vertx.core.AsyncResult
@@ -1486,7 +1469,6 @@ import io.vertx.core.net.SocketAddress
   }
 
 
-import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.net.{NetServer => JNetServer}
 import io.vertx.core.net.{NetSocket => JNetSocket}
 import io.vertx.core.net.NetServer
@@ -1556,7 +1538,6 @@ import io.vertx.core.net.SocketAddress
   }
 
 
-import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.buffer.Buffer
 import io.vertx.core.AsyncResult
 import io.vertx.core.Handler
@@ -1669,7 +1650,6 @@ import io.vertx.core.Handler
   }
 
 
-import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.shareddata.AsyncMap
 import io.vertx.core.shareddata.Lock
 import io.vertx.core.shareddata.{Counter => JCounter}
@@ -1747,7 +1727,6 @@ import io.vertx.core.Handler
 
 
 
-import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.{DeploymentOptions => JDeploymentOptions}
 import io.vertx.core.Vertx
 import io.vertx.core.dns.DnsClientOptions
@@ -1905,7 +1884,6 @@ import io.vertx.core.Handler
   }
 
 
-import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.{Future => JFuture}
 import io.vertx.core.AsyncResult
 import io.vertx.core.Handler

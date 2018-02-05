@@ -25,7 +25,6 @@ import scala.concurrent.Promise
 package object client{
 
 
-import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.ext.web.client.HttpResponse
 import io.vertx.ext.web.codec.{BodyCodec => JBodyCodec}
 import io.vertx.core.streams.{ReadStream => JReadStream}

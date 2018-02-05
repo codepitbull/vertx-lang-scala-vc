@@ -25,7 +25,6 @@ import scala.concurrent.Promise
 package object web{
 
 
-import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.core.{Future => JFuture}
 import io.vertx.core.json.JsonObject
 import io.vertx.core.AsyncResult
@@ -71,7 +70,6 @@ import io.vertx.core.Future
   }
 
 
-import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.ext.web.Session
 import io.vertx.ext.web.{Session => JSession}
 import io.vertx.core.AsyncResult
@@ -137,7 +135,6 @@ import io.vertx.core.Handler
   }
 
 
-import io.vertx.lang.scala.AsyncResultWrapper
 import io.vertx.ext.web.{RoutingContext => JRoutingContext}
 import io.vertx.core.buffer.Buffer
 import io.vertx.ext.web.RoutingContext
