@@ -126,17 +126,17 @@
     } else if (type.kind == CLASS_DATA_OBJECT) {
       return helper.getNonGenericType(type);
     } else if (type.kind == CLASS_LIST){
-        var ret = 'List';
+        var ret = 'java.util.List';
         if (!type.args.isEmpty)
           ret += '[' + toScalaMethodParam(type.args[0]) + ']';
         return ret;
     } else if (type.kind == CLASS_SET){
-        var ret = 'Set';
+        var ret = 'java.util.Set';
         if (!type.args.isEmpty)
           ret += '[' + toScalaMethodParam(type.args[0]) + ']';
         return ret;
     } else if (type.kind == CLASS_MAP){
-        var ret = 'Map';
+        var ret = 'java.util.Map';
         if (!type.args.isEmpty())
           ret += '[String, ' + toScalaMethodParam(type.args[1]) + ']';
         return ret;
@@ -329,9 +329,9 @@
       conversion += '';
     } else if (type.kind == CLASS_HANDLER) {
       if(type.isNullable) {
-        conversion = ' match {case Some(t) => (p:' + toScalaMethodParam(type.args[0]) + ') => t(p); case None => null}';
+        conversion = ' match {case Some(t) => p => t(p); case None => null}';
       } else {
-        conversion = '(p:' + toScalaMethodParam(type.args[0]) + ') => ' + name + '(p)';
+        conversion = 'p => ' + name + '(p)';
       }
     } else if (type.kind == CLASS_FUNCTION) {
       conversion = '';
@@ -343,7 +343,7 @@
     } else if (type.kind == CLASS_ASYNC_RESULT) {
       conversion = '';
     } else if (type.kind == CLASS_API) {
-      conversion = '.asJava';
+      conversion = '';
     } else if (type.kind == CLASS_CLASS_TYPE) {
       conversion = '';
     } else {

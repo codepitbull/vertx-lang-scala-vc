@@ -1,4 +1,9 @@
 @if{incrementalIndex==0}
+
+//MODULE: @{type.module.name}\n
+//MODULE: @{type.module.packageName}\n
+//MODULE: @{type.module.groupPackage}\n
+//MODULE: @{type.module.translatePackageName('scala')}\n
 @code{
 var fullPackage = type.module.translatePackageName('scala');
 var splitted = fullPackage.split('\\.');
@@ -27,7 +32,6 @@ import scala.collection.JavaConverters._\n
 import scala.compat.java8.FunctionConverters._\n
 import io.vertx.core.json.JsonObject\n
 import io.vertx.core.json.JsonArray\n
-import scala.reflect.runtime.universe._\n
 import scala.concurrent.Promise\n
 @if{type.name == 'io.vertx.core.Vertx'}
   import io.vertx.lang.scala.ScalaVerticle\n

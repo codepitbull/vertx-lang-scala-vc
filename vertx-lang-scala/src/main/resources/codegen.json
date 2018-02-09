@@ -4,7 +4,7 @@
     {
       "kind": ["class","dataObject"],
       "incremental": true,
-      "fileName": "if(type.name != 'io.vertx.core.buffer.Buffer'){var pkg = 'scala/' + module.translatePackageName('scala').replace('.', '/'); var splitted = pkg.split('/'); return pkg.replace('/' + splitted[splitted.length - 1],'') + '/package.scala';}",
+      "fileName": "if(type.name != 'io.vertx.core.buffer.Buffer'){var pkg = 'scala/' + type.module.translatePackageName('scala').replace('.', '/'); var splitted = pkg.split('/'); return pkg + '/package.scala';}",
       "templateFileName": "vertx-scala/template/package_object.templ"
     }
   ]

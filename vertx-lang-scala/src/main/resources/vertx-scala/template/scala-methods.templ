@@ -111,7 +111,7 @@
       if (isAsyncResultHandler(param.type)) {
         paramString += handler;
       } else {
-        paramString += escapeIfKeyword(param.name);
+        paramString += conversionForJavaMethodParam(escapeIfKeyword(param.name), param.type);
       }
     }
 
