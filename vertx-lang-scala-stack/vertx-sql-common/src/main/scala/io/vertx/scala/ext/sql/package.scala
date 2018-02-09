@@ -453,6 +453,18 @@ import io.vertx.core.Handler
    */
   implicit class SQLRowStreamScala(val asJava: io.vertx.ext.sql.SQLRowStream) extends AnyVal {
 
+    def exceptionHandler(handler: scala.Option[Throwable => Unit]): io.vertx.ext.sql.SQLRowStream = {
+      asJava.exceptionHandler(handler match {case Some(t) => p:Throwable => t(p); case None => null})
+    }
+
+    def handler(handler: scala.Option[io.vertx.core.json.JsonArray => Unit]): io.vertx.ext.sql.SQLRowStream = {
+      asJava.handler(handler match {case Some(t) => p:io.vertx.core.json.JsonArray => t(p); case None => null})
+    }
+
+    def endHandler(endHandler: scala.Option[Void => Unit]): io.vertx.ext.sql.SQLRowStream = {
+      asJava.endHandler(endHandler match {case Some(t) => p:Void => t(p); case None => null})
+    }
+
     /**
      * Like [[close]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
      */

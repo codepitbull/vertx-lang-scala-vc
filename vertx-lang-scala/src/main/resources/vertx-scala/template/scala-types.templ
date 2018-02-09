@@ -313,10 +313,11 @@
     var conversion = '';
     if (type.kind == CLASS_HANDLER) {
       if(type.isNullable) {
-        conversion = ' match {case Some(t) => p => t(p); case None => null}';
+        conversion = name + ' match {case Some(t) => p:' + toScalaMethodParam(type.args[0]) + ' => t(p); case None => null}';
       } else {
-        conversion = 'p => ' + name + '(p)';
+        conversion = '{p:' + toScalaMethodParam(type.args[0]) + ' => ' + name + '(p)}';
       }
+      return conversion;
     }
 
     if(type.kind == CLASS_FUNCTION) {
@@ -327,13 +328,13 @@
         var invocation = name + '(' + conversionForReturn('a', type.args[0]) + ')';
         return 'a => ' + conversionForJavaMethodParam(invocation, type.args[1]);
       }
+      return conversion;
     }
 
-    if(type.kind == CLASS_HANDLER) {
-      return conversion;
-    } else {
-      return escapeIfKeyword(name) + conversion;
+    if(type.isNullable ) {
+      conversion += '.orNull';
     }
+    return escapeIfKeyword(name) + conversion;
   }
 
   def conversionForReturn(invocation, type) {

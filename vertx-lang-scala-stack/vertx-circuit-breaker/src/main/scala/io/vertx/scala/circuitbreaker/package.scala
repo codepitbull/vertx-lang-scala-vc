@@ -47,7 +47,7 @@ import io.vertx.core.{Vertx => JVertx}
      */
     def executeCommandWithFallbackFuture[T](command: io.vertx.core.Future[T] => Unit, fallback: Throwable => T): scala.concurrent.Future[T] = {
       val promise = Promise[T]()
-      asJava.executeCommandWithFallback[T](p => command(p), a => fallback(a), {a:AsyncResult[T] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      asJava.executeCommandWithFallback[T]({p:io.vertx.core.Future[T] => command(p)}, a => fallback(a), {a:AsyncResult[T] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
       promise.future
     }
 
@@ -56,7 +56,7 @@ import io.vertx.core.{Vertx => JVertx}
      */
     def executeCommandFuture[T](command: io.vertx.core.Future[T] => Unit): scala.concurrent.Future[T] = {
       val promise = Promise[T]()
-      asJava.executeCommand[T](p => command(p), {a:AsyncResult[T] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      asJava.executeCommand[T]({p:io.vertx.core.Future[T] => command(p)}, {a:AsyncResult[T] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
       promise.future
     }
 

@@ -241,6 +241,14 @@ import io.vertx.codegen.testmodel.GenericNullableRefedInterface
    */
   implicit class GenericsTCKScala(val asJava: io.vertx.codegen.testmodel.GenericsTCK) extends AnyVal {
 
+    def methodWithClassTypeParam[U](`type`: Class[U], u: U): Unit = {
+      asJava.methodWithClassTypeParam[U](`type`, u)
+    }
+
+    def interfaceWithVariableArg[T, U](value1: T, `type`: Class[U], value2: U): io.vertx.codegen.testmodel.InterfaceWithVariableArg[T, U] = {
+      asJava.interfaceWithVariableArg[T, U](value1, `type`, value2)
+    }
+
     def methodWithHandlerAsyncResultByteParameterizedFuture(): scala.concurrent.Future[io.vertx.codegen.testmodel.GenericRefedInterface[java.lang.Byte]] = {
       val promise = Promise[io.vertx.codegen.testmodel.GenericRefedInterface[java.lang.Byte]]()
       asJava.methodWithHandlerAsyncResultByteParameterized({a:AsyncResult[io.vertx.codegen.testmodel.GenericRefedInterface[java.lang.Byte]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
@@ -373,6 +381,478 @@ import io.vertx.codegen.testmodel.TestGenEnum
    * The TCK for @Nullable.
    */
   implicit class NullableTCKScala(val asJava: io.vertx.codegen.testmodel.NullableTCK) extends AnyVal {
+
+    def methodWithNullableByteParam(expectNull: java.lang.Boolean, param: scala.Option[java.lang.Byte]): Unit = {
+      asJava.methodWithNullableByteParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableByteReturn(notNull: java.lang.Boolean): scala.Option[java.lang.Byte] = {
+      scala.Option(asJava.methodWithNullableByteReturn(notNull))
+    }
+
+    def methodWithNullableShortParam(expectNull: java.lang.Boolean, param: scala.Option[java.lang.Short]): Unit = {
+      asJava.methodWithNullableShortParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableShortReturn(notNull: java.lang.Boolean): scala.Option[java.lang.Short] = {
+      scala.Option(asJava.methodWithNullableShortReturn(notNull))
+    }
+
+    def methodWithNullableIntegerParam(expectNull: java.lang.Boolean, param: scala.Option[java.lang.Integer]): Unit = {
+      asJava.methodWithNullableIntegerParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableIntegerReturn(notNull: java.lang.Boolean): scala.Option[java.lang.Integer] = {
+      scala.Option(asJava.methodWithNullableIntegerReturn(notNull))
+    }
+
+    def methodWithNullableLongParam(expectNull: java.lang.Boolean, param: scala.Option[java.lang.Long]): Unit = {
+      asJava.methodWithNullableLongParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableLongReturn(notNull: java.lang.Boolean): scala.Option[java.lang.Long] = {
+      scala.Option(asJava.methodWithNullableLongReturn(notNull))
+    }
+
+    def methodWithNullableFloatParam(expectNull: java.lang.Boolean, param: scala.Option[java.lang.Float]): Unit = {
+      asJava.methodWithNullableFloatParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableFloatReturn(notNull: java.lang.Boolean): scala.Option[java.lang.Float] = {
+      scala.Option(asJava.methodWithNullableFloatReturn(notNull))
+    }
+
+    def methodWithNullableDoubleParam(expectNull: java.lang.Boolean, param: scala.Option[java.lang.Double]): Unit = {
+      asJava.methodWithNullableDoubleParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableDoubleReturn(notNull: java.lang.Boolean): scala.Option[java.lang.Double] = {
+      scala.Option(asJava.methodWithNullableDoubleReturn(notNull))
+    }
+
+    def methodWithNullableBooleanParam(expectNull: java.lang.Boolean, param: scala.Option[java.lang.Boolean]): Unit = {
+      asJava.methodWithNullableBooleanParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableBooleanReturn(notNull: java.lang.Boolean): scala.Option[java.lang.Boolean] = {
+      scala.Option(asJava.methodWithNullableBooleanReturn(notNull))
+    }
+
+    def methodWithNullableStringParam(expectNull: java.lang.Boolean, param: scala.Option[String]): Unit = {
+      asJava.methodWithNullableStringParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableStringReturn(notNull: java.lang.Boolean): scala.Option[String] = {
+      scala.Option(asJava.methodWithNullableStringReturn(notNull))
+    }
+
+    def methodWithNullableCharParam(expectNull: java.lang.Boolean, param: scala.Option[java.lang.Character]): Unit = {
+      asJava.methodWithNullableCharParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableCharReturn(notNull: java.lang.Boolean): scala.Option[java.lang.Character] = {
+      scala.Option(asJava.methodWithNullableCharReturn(notNull))
+    }
+
+    def methodWithNullableJsonObjectParam(expectNull: java.lang.Boolean, param: scala.Option[io.vertx.core.json.JsonObject]): Unit = {
+      asJava.methodWithNullableJsonObjectParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableJsonObjectReturn(notNull: java.lang.Boolean): scala.Option[io.vertx.core.json.JsonObject] = {
+      scala.Option(asJava.methodWithNullableJsonObjectReturn(notNull))
+    }
+
+    def methodWithNullableJsonArrayParam(expectNull: java.lang.Boolean, param: scala.Option[io.vertx.core.json.JsonArray]): Unit = {
+      asJava.methodWithNullableJsonArrayParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableJsonArrayReturn(notNull: java.lang.Boolean): scala.Option[io.vertx.core.json.JsonArray] = {
+      scala.Option(asJava.methodWithNullableJsonArrayReturn(notNull))
+    }
+
+    def methodWithNullableApiParam(expectNull: java.lang.Boolean, param: scala.Option[io.vertx.codegen.testmodel.RefedInterface1]): Unit = {
+      asJava.methodWithNullableApiParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableApiReturn(notNull: java.lang.Boolean): scala.Option[io.vertx.codegen.testmodel.RefedInterface1] = {
+      scala.Option(asJava.methodWithNullableApiReturn(notNull))
+    }
+
+    def methodWithNullableDataObjectParam(expectNull: java.lang.Boolean, param: scala.Option[io.vertx.codegen.testmodel.TestDataObject]): Unit = {
+      asJava.methodWithNullableDataObjectParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableDataObjectReturn(notNull: java.lang.Boolean): scala.Option[io.vertx.codegen.testmodel.TestDataObject] = {
+      scala.Option(asJava.methodWithNullableDataObjectReturn(notNull))
+    }
+
+    def methodWithNullableEnumParam(expectNull: java.lang.Boolean, param: scala.Option[io.vertx.codegen.testmodel.TestEnum]): Unit = {
+      asJava.methodWithNullableEnumParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableEnumReturn(notNull: java.lang.Boolean): scala.Option[io.vertx.codegen.testmodel.TestEnum] = {
+      scala.Option(asJava.methodWithNullableEnumReturn(notNull))
+    }
+
+    def methodWithNullableGenEnumParam(expectNull: java.lang.Boolean, param: scala.Option[io.vertx.codegen.testmodel.TestGenEnum]): Unit = {
+      asJava.methodWithNullableGenEnumParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableGenEnumReturn(notNull: java.lang.Boolean): scala.Option[io.vertx.codegen.testmodel.TestGenEnum] = {
+      scala.Option(asJava.methodWithNullableGenEnumReturn(notNull))
+    }
+
+    def methodWithNullableTypeVariableParam[T](expectNull: java.lang.Boolean, param: T): Unit = {
+      asJava.methodWithNullableTypeVariableParam[T](expectNull, param)
+    }
+
+    def methodWithNullableTypeVariableHandler[T](notNull: java.lang.Boolean, value: T, handler: T => Unit): Unit = {
+      asJava.methodWithNullableTypeVariableHandler[T](notNull, value, {p:T => handler(p)})
+    }
+
+    def methodWithNullableTypeVariableReturn[T](notNull: java.lang.Boolean, value: T): scala.Option[T] = {
+      scala.Option(asJava.methodWithNullableTypeVariableReturn[T](notNull, value))
+    }
+
+    def methodWithNullableObjectParam(expectNull: java.lang.Boolean, param: AnyRef): Unit = {
+      asJava.methodWithNullableObjectParam(expectNull, param)
+    }
+
+    def methodWithNullableListByteParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.List[java.lang.Byte]]): Unit = {
+      asJava.methodWithNullableListByteParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableListByteReturn(notNull: java.lang.Boolean): scala.Option[java.util.List[java.lang.Byte]] = {
+      scala.Option(asJava.methodWithNullableListByteReturn(notNull))
+    }
+
+    def methodWithNullableListShortParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.List[java.lang.Short]]): Unit = {
+      asJava.methodWithNullableListShortParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableListShortReturn(notNull: java.lang.Boolean): scala.Option[java.util.List[java.lang.Short]] = {
+      scala.Option(asJava.methodWithNullableListShortReturn(notNull))
+    }
+
+    def methodWithNullableListIntegerParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.List[java.lang.Integer]]): Unit = {
+      asJava.methodWithNullableListIntegerParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableListIntegerReturn(notNull: java.lang.Boolean): scala.Option[java.util.List[java.lang.Integer]] = {
+      scala.Option(asJava.methodWithNullableListIntegerReturn(notNull))
+    }
+
+    def methodWithNullableListLongParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.List[java.lang.Long]]): Unit = {
+      asJava.methodWithNullableListLongParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableListLongReturn(notNull: java.lang.Boolean): scala.Option[java.util.List[java.lang.Long]] = {
+      scala.Option(asJava.methodWithNullableListLongReturn(notNull))
+    }
+
+    def methodWithNullableListFloatParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.List[java.lang.Float]]): Unit = {
+      asJava.methodWithNullableListFloatParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableListFloatReturn(notNull: java.lang.Boolean): scala.Option[java.util.List[java.lang.Float]] = {
+      scala.Option(asJava.methodWithNullableListFloatReturn(notNull))
+    }
+
+    def methodWithNullableListDoubleParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.List[java.lang.Double]]): Unit = {
+      asJava.methodWithNullableListDoubleParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableListDoubleReturn(notNull: java.lang.Boolean): scala.Option[java.util.List[java.lang.Double]] = {
+      scala.Option(asJava.methodWithNullableListDoubleReturn(notNull))
+    }
+
+    def methodWithNullableListBooleanParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.List[java.lang.Boolean]]): Unit = {
+      asJava.methodWithNullableListBooleanParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableListBooleanReturn(notNull: java.lang.Boolean): scala.Option[java.util.List[java.lang.Boolean]] = {
+      scala.Option(asJava.methodWithNullableListBooleanReturn(notNull))
+    }
+
+    def methodWithNullableListStringParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.List[String]]): Unit = {
+      asJava.methodWithNullableListStringParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableListStringReturn(notNull: java.lang.Boolean): scala.Option[java.util.List[String]] = {
+      scala.Option(asJava.methodWithNullableListStringReturn(notNull))
+    }
+
+    def methodWithNullableListCharParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.List[java.lang.Character]]): Unit = {
+      asJava.methodWithNullableListCharParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableListCharReturn(notNull: java.lang.Boolean): scala.Option[java.util.List[java.lang.Character]] = {
+      scala.Option(asJava.methodWithNullableListCharReturn(notNull))
+    }
+
+    def methodWithNullableListJsonObjectParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.List[io.vertx.core.json.JsonObject]]): Unit = {
+      asJava.methodWithNullableListJsonObjectParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableListJsonObjectReturn(notNull: java.lang.Boolean): scala.Option[java.util.List[io.vertx.core.json.JsonObject]] = {
+      scala.Option(asJava.methodWithNullableListJsonObjectReturn(notNull))
+    }
+
+    def methodWithNullableListJsonArrayParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.List[io.vertx.core.json.JsonArray]]): Unit = {
+      asJava.methodWithNullableListJsonArrayParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableListJsonArrayReturn(notNull: java.lang.Boolean): scala.Option[java.util.List[io.vertx.core.json.JsonArray]] = {
+      scala.Option(asJava.methodWithNullableListJsonArrayReturn(notNull))
+    }
+
+    def methodWithNullableListApiParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.List[io.vertx.codegen.testmodel.RefedInterface1]]): Unit = {
+      asJava.methodWithNullableListApiParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableListApiReturn(notNull: java.lang.Boolean): scala.Option[java.util.List[io.vertx.codegen.testmodel.RefedInterface1]] = {
+      scala.Option(asJava.methodWithNullableListApiReturn(notNull))
+    }
+
+    def methodWithNullableListDataObjectParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.List[io.vertx.codegen.testmodel.TestDataObject]]): Unit = {
+      asJava.methodWithNullableListDataObjectParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableListDataObjectReturn(notNull: java.lang.Boolean): scala.Option[java.util.List[io.vertx.codegen.testmodel.TestDataObject]] = {
+      scala.Option(asJava.methodWithNullableListDataObjectReturn(notNull))
+    }
+
+    def methodWithNullableListEnumParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.List[io.vertx.codegen.testmodel.TestEnum]]): Unit = {
+      asJava.methodWithNullableListEnumParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableListEnumReturn(notNull: java.lang.Boolean): scala.Option[java.util.List[io.vertx.codegen.testmodel.TestEnum]] = {
+      scala.Option(asJava.methodWithNullableListEnumReturn(notNull))
+    }
+
+    def methodWithNullableListGenEnumParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.List[io.vertx.codegen.testmodel.TestGenEnum]]): Unit = {
+      asJava.methodWithNullableListGenEnumParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableListGenEnumReturn(notNull: java.lang.Boolean): scala.Option[java.util.List[io.vertx.codegen.testmodel.TestGenEnum]] = {
+      scala.Option(asJava.methodWithNullableListGenEnumReturn(notNull))
+    }
+
+    def methodWithNullableSetByteParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.Set[java.lang.Byte]]): Unit = {
+      asJava.methodWithNullableSetByteParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableSetByteReturn(notNull: java.lang.Boolean): scala.Option[java.util.Set[java.lang.Byte]] = {
+      scala.Option(asJava.methodWithNullableSetByteReturn(notNull))
+    }
+
+    def methodWithNullableSetShortParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.Set[java.lang.Short]]): Unit = {
+      asJava.methodWithNullableSetShortParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableSetShortReturn(notNull: java.lang.Boolean): scala.Option[java.util.Set[java.lang.Short]] = {
+      scala.Option(asJava.methodWithNullableSetShortReturn(notNull))
+    }
+
+    def methodWithNullableSetIntegerParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.Set[java.lang.Integer]]): Unit = {
+      asJava.methodWithNullableSetIntegerParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableSetIntegerReturn(notNull: java.lang.Boolean): scala.Option[java.util.Set[java.lang.Integer]] = {
+      scala.Option(asJava.methodWithNullableSetIntegerReturn(notNull))
+    }
+
+    def methodWithNullableSetLongParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.Set[java.lang.Long]]): Unit = {
+      asJava.methodWithNullableSetLongParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableSetLongReturn(notNull: java.lang.Boolean): scala.Option[java.util.Set[java.lang.Long]] = {
+      scala.Option(asJava.methodWithNullableSetLongReturn(notNull))
+    }
+
+    def methodWithNullableSetFloatParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.Set[java.lang.Float]]): Unit = {
+      asJava.methodWithNullableSetFloatParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableSetFloatReturn(notNull: java.lang.Boolean): scala.Option[java.util.Set[java.lang.Float]] = {
+      scala.Option(asJava.methodWithNullableSetFloatReturn(notNull))
+    }
+
+    def methodWithNullableSetDoubleParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.Set[java.lang.Double]]): Unit = {
+      asJava.methodWithNullableSetDoubleParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableSetDoubleReturn(notNull: java.lang.Boolean): scala.Option[java.util.Set[java.lang.Double]] = {
+      scala.Option(asJava.methodWithNullableSetDoubleReturn(notNull))
+    }
+
+    def methodWithNullableSetBooleanParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.Set[java.lang.Boolean]]): Unit = {
+      asJava.methodWithNullableSetBooleanParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableSetBooleanReturn(notNull: java.lang.Boolean): scala.Option[java.util.Set[java.lang.Boolean]] = {
+      scala.Option(asJava.methodWithNullableSetBooleanReturn(notNull))
+    }
+
+    def methodWithNullableSetStringParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.Set[String]]): Unit = {
+      asJava.methodWithNullableSetStringParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableSetStringReturn(notNull: java.lang.Boolean): scala.Option[java.util.Set[String]] = {
+      scala.Option(asJava.methodWithNullableSetStringReturn(notNull))
+    }
+
+    def methodWithNullableSetCharParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.Set[java.lang.Character]]): Unit = {
+      asJava.methodWithNullableSetCharParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableSetCharReturn(notNull: java.lang.Boolean): scala.Option[java.util.Set[java.lang.Character]] = {
+      scala.Option(asJava.methodWithNullableSetCharReturn(notNull))
+    }
+
+    def methodWithNullableSetJsonObjectParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.Set[io.vertx.core.json.JsonObject]]): Unit = {
+      asJava.methodWithNullableSetJsonObjectParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableSetJsonObjectReturn(notNull: java.lang.Boolean): scala.Option[java.util.Set[io.vertx.core.json.JsonObject]] = {
+      scala.Option(asJava.methodWithNullableSetJsonObjectReturn(notNull))
+    }
+
+    def methodWithNullableSetJsonArrayParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.Set[io.vertx.core.json.JsonArray]]): Unit = {
+      asJava.methodWithNullableSetJsonArrayParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableSetJsonArrayReturn(notNull: java.lang.Boolean): scala.Option[java.util.Set[io.vertx.core.json.JsonArray]] = {
+      scala.Option(asJava.methodWithNullableSetJsonArrayReturn(notNull))
+    }
+
+    def methodWithNullableSetApiParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.Set[io.vertx.codegen.testmodel.RefedInterface1]]): Unit = {
+      asJava.methodWithNullableSetApiParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableSetApiReturn(notNull: java.lang.Boolean): scala.Option[java.util.Set[io.vertx.codegen.testmodel.RefedInterface1]] = {
+      scala.Option(asJava.methodWithNullableSetApiReturn(notNull))
+    }
+
+    def methodWithNullableSetDataObjectParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.Set[io.vertx.codegen.testmodel.TestDataObject]]): Unit = {
+      asJava.methodWithNullableSetDataObjectParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableSetDataObjectReturn(notNull: java.lang.Boolean): scala.Option[java.util.Set[io.vertx.codegen.testmodel.TestDataObject]] = {
+      scala.Option(asJava.methodWithNullableSetDataObjectReturn(notNull))
+    }
+
+    def methodWithNullableSetEnumParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.Set[io.vertx.codegen.testmodel.TestEnum]]): Unit = {
+      asJava.methodWithNullableSetEnumParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableSetEnumReturn(notNull: java.lang.Boolean): scala.Option[java.util.Set[io.vertx.codegen.testmodel.TestEnum]] = {
+      scala.Option(asJava.methodWithNullableSetEnumReturn(notNull))
+    }
+
+    def methodWithNullableSetGenEnumParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.Set[io.vertx.codegen.testmodel.TestGenEnum]]): Unit = {
+      asJava.methodWithNullableSetGenEnumParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableSetGenEnumReturn(notNull: java.lang.Boolean): scala.Option[java.util.Set[io.vertx.codegen.testmodel.TestGenEnum]] = {
+      scala.Option(asJava.methodWithNullableSetGenEnumReturn(notNull))
+    }
+
+    def methodWithNullableMapByteParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.Map[String, java.lang.Byte]]): Unit = {
+      asJava.methodWithNullableMapByteParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableMapByteReturn(notNull: java.lang.Boolean): scala.Option[java.util.Map[String, java.lang.Byte]] = {
+      scala.Option(asJava.methodWithNullableMapByteReturn(notNull))
+    }
+
+    def methodWithNullableMapShortParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.Map[String, java.lang.Short]]): Unit = {
+      asJava.methodWithNullableMapShortParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableMapShortReturn(notNull: java.lang.Boolean): scala.Option[java.util.Map[String, java.lang.Short]] = {
+      scala.Option(asJava.methodWithNullableMapShortReturn(notNull))
+    }
+
+    def methodWithNullableMapIntegerParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.Map[String, java.lang.Integer]]): Unit = {
+      asJava.methodWithNullableMapIntegerParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableMapIntegerReturn(notNull: java.lang.Boolean): scala.Option[java.util.Map[String, java.lang.Integer]] = {
+      scala.Option(asJava.methodWithNullableMapIntegerReturn(notNull))
+    }
+
+    def methodWithNullableMapLongParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.Map[String, java.lang.Long]]): Unit = {
+      asJava.methodWithNullableMapLongParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableMapLongReturn(notNull: java.lang.Boolean): scala.Option[java.util.Map[String, java.lang.Long]] = {
+      scala.Option(asJava.methodWithNullableMapLongReturn(notNull))
+    }
+
+    def methodWithNullableMapFloatParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.Map[String, java.lang.Float]]): Unit = {
+      asJava.methodWithNullableMapFloatParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableMapFloatReturn(notNull: java.lang.Boolean): scala.Option[java.util.Map[String, java.lang.Float]] = {
+      scala.Option(asJava.methodWithNullableMapFloatReturn(notNull))
+    }
+
+    def methodWithNullableMapDoubleParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.Map[String, java.lang.Double]]): Unit = {
+      asJava.methodWithNullableMapDoubleParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableMapDoubleReturn(notNull: java.lang.Boolean): scala.Option[java.util.Map[String, java.lang.Double]] = {
+      scala.Option(asJava.methodWithNullableMapDoubleReturn(notNull))
+    }
+
+    def methodWithNullableMapBooleanParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.Map[String, java.lang.Boolean]]): Unit = {
+      asJava.methodWithNullableMapBooleanParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableMapBooleanReturn(notNull: java.lang.Boolean): scala.Option[java.util.Map[String, java.lang.Boolean]] = {
+      scala.Option(asJava.methodWithNullableMapBooleanReturn(notNull))
+    }
+
+    def methodWithNullableMapStringParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.Map[String, String]]): Unit = {
+      asJava.methodWithNullableMapStringParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableMapStringReturn(notNull: java.lang.Boolean): scala.Option[java.util.Map[String, String]] = {
+      scala.Option(asJava.methodWithNullableMapStringReturn(notNull))
+    }
+
+    def methodWithNullableMapCharParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.Map[String, java.lang.Character]]): Unit = {
+      asJava.methodWithNullableMapCharParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableMapCharReturn(notNull: java.lang.Boolean): scala.Option[java.util.Map[String, java.lang.Character]] = {
+      scala.Option(asJava.methodWithNullableMapCharReturn(notNull))
+    }
+
+    def methodWithNullableMapJsonObjectParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.Map[String, io.vertx.core.json.JsonObject]]): Unit = {
+      asJava.methodWithNullableMapJsonObjectParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableMapJsonObjectReturn(notNull: java.lang.Boolean): scala.Option[java.util.Map[String, io.vertx.core.json.JsonObject]] = {
+      scala.Option(asJava.methodWithNullableMapJsonObjectReturn(notNull))
+    }
+
+    def methodWithNullableMapJsonArrayParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.Map[String, io.vertx.core.json.JsonArray]]): Unit = {
+      asJava.methodWithNullableMapJsonArrayParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableMapJsonArrayReturn(notNull: java.lang.Boolean): scala.Option[java.util.Map[String, io.vertx.core.json.JsonArray]] = {
+      scala.Option(asJava.methodWithNullableMapJsonArrayReturn(notNull))
+    }
+
+    def methodWithNullableMapApiParam(expectNull: java.lang.Boolean, param: scala.Option[java.util.Map[String, io.vertx.codegen.testmodel.RefedInterface1]]): Unit = {
+      asJava.methodWithNullableMapApiParam(expectNull, param.orNull)
+    }
+
+    def methodWithNullableHandler(expectNull: java.lang.Boolean, handler: scala.Option[String => Unit]): Unit = {
+      asJava.methodWithNullableHandler(expectNull, handler match {case Some(t) => p:String => t(p); case None => null})
+    }
 
     def methodWithNullableByteHandlerAsyncResultFuture(notNull: java.lang.Boolean): scala.concurrent.Future[java.lang.Byte] = {
       val promise = Promise[java.lang.Byte]()
@@ -1000,6 +1480,22 @@ import io.vertx.codegen.testmodel.TestGenEnum
   /**
    */
   implicit class TestInterfaceScala(val asJava: io.vertx.codegen.testmodel.TestInterface) extends AnyVal {
+
+    def methodWithObjectParam(str: String, obj: AnyRef): Unit = {
+      asJava.methodWithObjectParam(str, obj)
+    }
+
+    def methodWithHandlerGenericUserType[U](value: U, handler: io.vertx.codegen.testmodel.GenericRefedInterface[U] => Unit): Unit = {
+      asJava.methodWithHandlerGenericUserType[U](value, {p:io.vertx.codegen.testmodel.GenericRefedInterface[U] => handler(p)})
+    }
+
+    def methodWithGenericUserTypeReturn[U](value: U): io.vertx.codegen.testmodel.GenericRefedInterface[U] = {
+      asJava.methodWithGenericUserTypeReturn[U](value)
+    }
+
+    def methodWithGenericParam[U](`type`: String, u: U): Unit = {
+      asJava.methodWithGenericParam[U](`type`, u)
+    }
 
     def methodWithHandlerAsyncResultByteFuture(sendFailure: java.lang.Boolean): scala.concurrent.Future[java.lang.Byte] = {
       val promise = Promise[java.lang.Byte]()

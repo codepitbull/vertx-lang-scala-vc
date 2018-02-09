@@ -6,6 +6,26 @@
     return method.name == 'addInterceptor' || method.name == 'removeInterceptor';
   }
 
+  def findNullableMethods(methods) {
+    var ret = new java.util.ArrayList();
+    for (method : methods) {
+      if (!skipMethod(method)) {
+        if(method.returnType.isNullable) {
+          ret.add(method);
+        } else if (!method.params.isEmpty) {
+          for (param : method.params) {
+            if (param.isNullable) {
+              if(!ret.contains(method)) {
+                ret.add(method);
+              }
+            }
+          }
+        }
+      }
+    }
+    return ret;
+  }
+
   def findBasicMethods(methods) {
     var ret = new java.util.ArrayList();
     for (method : methods) {

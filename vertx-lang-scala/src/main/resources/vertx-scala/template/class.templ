@@ -29,6 +29,8 @@ import @{importedType}\n
 
 @code{
   var futureMethods = findFutureMethods(instanceMethods);
+  var nullableMethods = findNullableMethods(instanceMethods);
+  nullableMethods.removeAll(futureMethods);
 }
 
 @if{className == 'Vertx'}
@@ -45,15 +47,29 @@ import @{importedType}\n
 @includeNamed{'executeblocking.templ'}
 @end{}
 \n
-
 @if{className != 'CompositeFuture' && className != 'Future' }
+
+@foreach{method : nullableMethods}
+	@if{method.name != 'executeBlocking'}
+	@if{method.doc != null}@{methodDoc(method, '    ', true)}@end{}
+    def @{method.name}
+	@{assembleTypeParams(method.typeParams, true)}(
+	@foreach{param : method.params}
+		@{escapeIfKeyword(param.name)}: @{wrapInOptionIfNullable(param.type.isNullable, toScalaMethodParam(param.type))}
+	@end{', '}): @{wrapInOptionIfNullable(method.returnType.isNullable, toReturnType(method.returnType))} = {\n
+      @if{method.returnType.isNullable}scala.Option(@end{}@{invokeMethodWithoutConvertingReturn('asJava', type, method, typeParams)}@if{method.returnType.isNullable})@end{}\n
+    }\n
+\n
+	@end{}
+@end{}
+
 @foreach{method : futureMethods}
 	@if{method.name != 'executeBlocking'}
 	@if{method.doc != null}@{methodDoc(method, '    ', true)}@end{}
     def @{createNameForMethodReturningAFuture(method)}
 	@{assembleTypeParams(method.typeParams, true)}(
 	@foreach{param : removeLastParam(method.params)}
-		@{escapeIfKeyword(param.name)}: @{toScalaMethodParam(param.type)}
+		@{escapeIfKeyword(param.name)}: @{wrapInOptionIfNullable(param.type.isNullable, toScalaMethodParam(param.type))}
 	@end{', '}): scala.concurrent.Future[@{toReturnType(typeOfReturnedFuture(method))}] = {\n
       val promise = Promise[@{toReturnType(typeOfReturnedFuture(method))}]()\n
 		@code{var resultHandler = '{a:AsyncResult[' + typeOfReturnedFuture(method).name.replace('<', '[').replace('>', ']') + '] => if(a.failed) promise.failure(a.cause) else promise.success(' + conversionForReturn('a.result()', typeOfReturnedFuture(method)) + ');()}';}

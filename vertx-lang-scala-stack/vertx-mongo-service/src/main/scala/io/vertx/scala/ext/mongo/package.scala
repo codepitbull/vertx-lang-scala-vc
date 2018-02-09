@@ -61,9 +61,9 @@ import io.vertx.ext.mongo.{MongoClientUpdateResult => JMongoClientUpdateResult}
       promise.future
     }
 
-    def saveWithOptionsFuture(collection: String, document: io.vertx.core.json.JsonObject, writeOption: io.vertx.ext.mongo.WriteOption): scala.concurrent.Future[String] = {
+    def saveWithOptionsFuture(collection: String, document: io.vertx.core.json.JsonObject, writeOption: scala.Option[io.vertx.ext.mongo.WriteOption]): scala.concurrent.Future[String] = {
       val promise = Promise[String]()
-      asJava.saveWithOptions(collection, document, writeOption, {a:AsyncResult[java.lang.String] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      asJava.saveWithOptions(collection, document, writeOption.orNull, {a:AsyncResult[java.lang.String] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
       promise.future
     }
 
@@ -73,9 +73,9 @@ import io.vertx.ext.mongo.{MongoClientUpdateResult => JMongoClientUpdateResult}
       promise.future
     }
 
-    def insertWithOptionsFuture(collection: String, document: io.vertx.core.json.JsonObject, writeOption: io.vertx.ext.mongo.WriteOption): scala.concurrent.Future[String] = {
+    def insertWithOptionsFuture(collection: String, document: io.vertx.core.json.JsonObject, writeOption: scala.Option[io.vertx.ext.mongo.WriteOption]): scala.concurrent.Future[String] = {
       val promise = Promise[String]()
-      asJava.insertWithOptions(collection, document, writeOption, {a:AsyncResult[java.lang.String] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      asJava.insertWithOptions(collection, document, writeOption.orNull, {a:AsyncResult[java.lang.String] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
       promise.future
     }
 
@@ -151,9 +151,9 @@ import io.vertx.ext.mongo.{MongoClientUpdateResult => JMongoClientUpdateResult}
       promise.future
     }
 
-    def findOneFuture(collection: String, query: io.vertx.core.json.JsonObject, fields: io.vertx.core.json.JsonObject): scala.concurrent.Future[io.vertx.core.json.JsonObject] = {
+    def findOneFuture(collection: String, query: io.vertx.core.json.JsonObject, fields: scala.Option[io.vertx.core.json.JsonObject]): scala.concurrent.Future[io.vertx.core.json.JsonObject] = {
       val promise = Promise[io.vertx.core.json.JsonObject]()
-      asJava.findOne(collection, query, fields, {a:AsyncResult[io.vertx.core.json.JsonObject] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      asJava.findOne(collection, query, fields.orNull, {a:AsyncResult[io.vertx.core.json.JsonObject] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
       promise.future
     }
 
@@ -217,9 +217,9 @@ import io.vertx.ext.mongo.{MongoClientUpdateResult => JMongoClientUpdateResult}
       promise.future
     }
 
-    def removeDocumentsWithOptionsFuture(collection: String, query: io.vertx.core.json.JsonObject, writeOption: io.vertx.ext.mongo.WriteOption): scala.concurrent.Future[io.vertx.ext.mongo.MongoClientDeleteResult] = {
+    def removeDocumentsWithOptionsFuture(collection: String, query: io.vertx.core.json.JsonObject, writeOption: scala.Option[io.vertx.ext.mongo.WriteOption]): scala.concurrent.Future[io.vertx.ext.mongo.MongoClientDeleteResult] = {
       val promise = Promise[io.vertx.ext.mongo.MongoClientDeleteResult]()
-      asJava.removeDocumentsWithOptions(collection, query, writeOption, {a:AsyncResult[io.vertx.ext.mongo.MongoClientDeleteResult] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      asJava.removeDocumentsWithOptions(collection, query, writeOption.orNull, {a:AsyncResult[io.vertx.ext.mongo.MongoClientDeleteResult] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
       promise.future
     }
 
@@ -241,9 +241,9 @@ import io.vertx.ext.mongo.{MongoClientUpdateResult => JMongoClientUpdateResult}
       promise.future
     }
 
-    def removeDocumentWithOptionsFuture(collection: String, query: io.vertx.core.json.JsonObject, writeOption: io.vertx.ext.mongo.WriteOption): scala.concurrent.Future[io.vertx.ext.mongo.MongoClientDeleteResult] = {
+    def removeDocumentWithOptionsFuture(collection: String, query: io.vertx.core.json.JsonObject, writeOption: scala.Option[io.vertx.ext.mongo.WriteOption]): scala.concurrent.Future[io.vertx.ext.mongo.MongoClientDeleteResult] = {
       val promise = Promise[io.vertx.ext.mongo.MongoClientDeleteResult]()
-      asJava.removeDocumentWithOptions(collection, query, writeOption, {a:AsyncResult[io.vertx.ext.mongo.MongoClientDeleteResult] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      asJava.removeDocumentWithOptions(collection, query, writeOption.orNull, {a:AsyncResult[io.vertx.ext.mongo.MongoClientDeleteResult] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
       promise.future
     }
 

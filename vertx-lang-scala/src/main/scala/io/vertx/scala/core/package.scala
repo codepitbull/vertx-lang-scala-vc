@@ -94,6 +94,22 @@ import io.vertx.core.Handler
    */
   implicit class AsyncFileScala(val asJava: io.vertx.core.file.AsyncFile) extends AnyVal {
 
+    def handler(handler: scala.Option[io.vertx.core.buffer.Buffer => Unit]): io.vertx.core.file.AsyncFile = {
+      asJava.handler(handler match {case Some(t) => p:io.vertx.core.buffer.Buffer => t(p); case None => null})
+    }
+
+    def endHandler(endHandler: scala.Option[Void => Unit]): io.vertx.core.file.AsyncFile = {
+      asJava.endHandler(endHandler match {case Some(t) => p:Void => t(p); case None => null})
+    }
+
+    def drainHandler(handler: scala.Option[Void => Unit]): io.vertx.core.file.AsyncFile = {
+      asJava.drainHandler(handler match {case Some(t) => p:Void => t(p); case None => null})
+    }
+
+    def exceptionHandler(handler: scala.Option[Throwable => Unit]): io.vertx.core.file.AsyncFile = {
+      asJava.exceptionHandler(handler match {case Some(t) => p:Throwable => t(p); case None => null})
+    }
+
     /**
      * Like [[close]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
      */
@@ -323,6 +339,27 @@ import io.vertx.core.Future
   }
 
 
+    /**
+     * Like [[config]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
+     */
+    def config(): scala.Option[io.vertx.core.json.JsonObject] = {
+      scala.Option(asJava.config())
+    }
+
+    /**
+     * Like [[put]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
+     */
+    def put(key: String, value: AnyRef): Unit = {
+      asJava.put(key, value)
+    }
+
+    /**
+     * Like [[exceptionHandler]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
+     */
+    def exceptionHandler(handler: scala.Option[Throwable => Unit]): io.vertx.core.Context = {
+      asJava.exceptionHandler(handler match {case Some(t) => p:Throwable => t(p); case None => null})
+    }
+
   }
 
   type CopyOptions = io.vertx.core.file.CopyOptions
@@ -429,6 +466,18 @@ import io.vertx.core.datagram.{DatagramPacket => JDatagramPacket}
    */
   implicit class DatagramSocketScala(val asJava: io.vertx.core.datagram.DatagramSocket) extends AnyVal {
 
+    def endHandler(endHandler: scala.Option[Void => Unit]): io.vertx.core.datagram.DatagramSocket = {
+      asJava.endHandler(endHandler match {case Some(t) => p:Void => t(p); case None => null})
+    }
+
+    def handler(handler: scala.Option[io.vertx.core.datagram.DatagramPacket => Unit]): io.vertx.core.datagram.DatagramSocket = {
+      asJava.handler(handler match {case Some(t) => p:io.vertx.core.datagram.DatagramPacket => t(p); case None => null})
+    }
+
+    def exceptionHandler(handler: scala.Option[Throwable => Unit]): io.vertx.core.datagram.DatagramSocket = {
+      asJava.exceptionHandler(handler match {case Some(t) => p:Throwable => t(p); case None => null})
+    }
+
     /**
      * Like [[send]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
      */
@@ -477,9 +526,9 @@ import io.vertx.core.datagram.{DatagramPacket => JDatagramPacket}
     /**
      * Like [[listenMulticastGroup]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
      */
-    def listenMulticastGroupFuture(multicastAddress: String, networkInterface: String, source: String): scala.concurrent.Future[io.vertx.core.datagram.DatagramSocket] = {
+    def listenMulticastGroupFuture(multicastAddress: String, networkInterface: String, source: scala.Option[String]): scala.concurrent.Future[io.vertx.core.datagram.DatagramSocket] = {
       val promise = Promise[io.vertx.core.datagram.DatagramSocket]()
-      asJava.listenMulticastGroup(multicastAddress, networkInterface, source, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      asJava.listenMulticastGroup(multicastAddress, networkInterface, source.orNull, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
       promise.future
     }
 
@@ -495,9 +544,9 @@ import io.vertx.core.datagram.{DatagramPacket => JDatagramPacket}
     /**
      * Like [[unlistenMulticastGroup]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
      */
-    def unlistenMulticastGroupFuture(multicastAddress: String, networkInterface: String, source: String): scala.concurrent.Future[io.vertx.core.datagram.DatagramSocket] = {
+    def unlistenMulticastGroupFuture(multicastAddress: String, networkInterface: String, source: scala.Option[String]): scala.concurrent.Future[io.vertx.core.datagram.DatagramSocket] = {
       val promise = Promise[io.vertx.core.datagram.DatagramSocket]()
-      asJava.unlistenMulticastGroup(multicastAddress, networkInterface, source, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      asJava.unlistenMulticastGroup(multicastAddress, networkInterface, source.orNull, {a:AsyncResult[io.vertx.core.datagram.DatagramSocket] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
       promise.future
     }
 
@@ -707,6 +756,34 @@ import io.vertx.core.Handler
     /**
      * Like [[send]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
      */
+    def send(address: String, message: AnyRef): io.vertx.core.eventbus.EventBus = {
+      asJava.send(address, message)
+    }
+
+    /**
+     * Like [[send]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
+     */
+    def send(address: String, message: AnyRef, options: io.vertx.core.eventbus.DeliveryOptions): io.vertx.core.eventbus.EventBus = {
+      asJava.send(address, message, options)
+    }
+
+    /**
+     * Like [[publish]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
+     */
+    def publish(address: String, message: AnyRef): io.vertx.core.eventbus.EventBus = {
+      asJava.publish(address, message)
+    }
+
+    /**
+     * Like [[publish]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
+     */
+    def publish(address: String, message: AnyRef, options: io.vertx.core.eventbus.DeliveryOptions): io.vertx.core.eventbus.EventBus = {
+      asJava.publish(address, message, options)
+    }
+
+    /**
+     * Like [[send]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
+     */
     def sendFuture[T](address: String, message: AnyRef): scala.concurrent.Future[io.vertx.core.eventbus.Message[T]] = {
       val promise = Promise[io.vertx.core.eventbus.Message[T]]()
       asJava.send[T](address, message, {a:AsyncResult[io.vertx.core.eventbus.Message[T]] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
@@ -762,6 +839,13 @@ import io.vertx.core.Handler
    * Please consult the documentation for more information on file system support.
    */
   implicit class FileSystemScala(val asJava: io.vertx.core.file.FileSystem) extends AnyVal {
+
+    /**
+     * Like [[chownBlocking]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
+     */
+    def chownBlocking(path: String, user: scala.Option[String], group: scala.Option[String]): io.vertx.core.file.FileSystem = {
+      asJava.chownBlocking(path, user.orNull, group.orNull)
+    }
 
     /**
      * Like [[copy]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
@@ -838,9 +922,9 @@ import io.vertx.core.Handler
     /**
      * Like [[chown]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
      */
-    def chownFuture(path: String, user: String, group: String): scala.concurrent.Future[Unit] = {
+    def chownFuture(path: String, user: scala.Option[String], group: scala.Option[String]): scala.concurrent.Future[Unit] = {
       val promise = Promise[Unit]()
-      asJava.chown(path, user, group, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
+      asJava.chown(path, user.orNull, group.orNull, {a:AsyncResult[java.lang.Void] => if(a.failed) promise.failure(a.cause) else promise.success(a.result());()})
       promise.future
     }
 
@@ -1093,6 +1177,27 @@ import io.vertx.core.http.{Http2Settings => JHttp2Settings}
   implicit class HttpConnectionScala(val asJava: io.vertx.core.http.HttpConnection) extends AnyVal {
 
     /**
+     * Like [[goAwayHandler]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
+     */
+    def goAwayHandler(handler: scala.Option[io.vertx.core.http.GoAway => Unit]): io.vertx.core.http.HttpConnection = {
+      asJava.goAwayHandler(handler match {case Some(t) => p:io.vertx.core.http.GoAway => t(p); case None => null})
+    }
+
+    /**
+     * Like [[shutdownHandler]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
+     */
+    def shutdownHandler(handler: scala.Option[Void => Unit]): io.vertx.core.http.HttpConnection = {
+      asJava.shutdownHandler(handler match {case Some(t) => p:Void => t(p); case None => null})
+    }
+
+    /**
+     * Like [[pingHandler]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
+     */
+    def pingHandler(handler: scala.Option[io.vertx.core.buffer.Buffer => Unit]): io.vertx.core.http.HttpConnection = {
+      asJava.pingHandler(handler match {case Some(t) => p:io.vertx.core.buffer.Buffer => t(p); case None => null})
+    }
+
+    /**
      * Like [[updateSettings]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
      */
     def updateSettingsFuture(settings: io.vertx.core.http.Http2Settings): scala.concurrent.Future[Unit] = {
@@ -1213,6 +1318,42 @@ import io.vertx.core.Handler
    */
   implicit class HttpServerResponseScala(val asJava: io.vertx.core.http.HttpServerResponse) extends AnyVal {
 
+    def exceptionHandler(handler: scala.Option[Throwable => Unit]): io.vertx.core.http.HttpServerResponse = {
+      asJava.exceptionHandler(handler match {case Some(t) => p:Throwable => t(p); case None => null})
+    }
+
+    def drainHandler(handler: scala.Option[Void => Unit]): io.vertx.core.http.HttpServerResponse = {
+      asJava.drainHandler(handler match {case Some(t) => p:Void => t(p); case None => null})
+    }
+
+    /**
+     * Like [[closeHandler]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
+     */
+    def closeHandler(handler: scala.Option[Void => Unit]): io.vertx.core.http.HttpServerResponse = {
+      asJava.closeHandler(handler match {case Some(t) => p:Void => t(p); case None => null})
+    }
+
+    /**
+     * Like [[endHandler]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
+     */
+    def endHandler(handler: scala.Option[Void => Unit]): io.vertx.core.http.HttpServerResponse = {
+      asJava.endHandler(handler match {case Some(t) => p:Void => t(p); case None => null})
+    }
+
+    /**
+     * Like [[headersEndHandler]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
+     */
+    def headersEndHandler(handler: scala.Option[Void => Unit]): io.vertx.core.http.HttpServerResponse = {
+      asJava.headersEndHandler(handler match {case Some(t) => p:Void => t(p); case None => null})
+    }
+
+    /**
+     * Like [[bodyEndHandler]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
+     */
+    def bodyEndHandler(handler: scala.Option[Void => Unit]): io.vertx.core.http.HttpServerResponse = {
+      asJava.bodyEndHandler(handler match {case Some(t) => p:Void => t(p); case None => null})
+    }
+
     /**
      * Like [[sendFile]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
      */
@@ -1314,6 +1455,27 @@ import io.vertx.core.Handler
   implicit class MessageScala[T](val asJava: io.vertx.core.eventbus.Message[T]) extends AnyVal {
 
     /**
+     * Like [[replyAddress]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
+     */
+    def replyAddress(): scala.Option[String] = {
+      scala.Option(asJava.replyAddress())
+    }
+
+    /**
+     * Like [[reply]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
+     */
+    def reply(message: AnyRef): Unit = {
+      asJava.reply(message)
+    }
+
+    /**
+     * Like [[reply]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
+     */
+    def reply(message: AnyRef, options: io.vertx.core.eventbus.DeliveryOptions): Unit = {
+      asJava.reply(message, options)
+    }
+
+    /**
      * Like [[reply]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
      */
     def replyFuture[R](message: AnyRef): scala.concurrent.Future[io.vertx.core.eventbus.Message[R]] = {
@@ -1360,6 +1522,18 @@ import io.vertx.core.Handler
    */
   implicit class MessageConsumerScala[T](val asJava: io.vertx.core.eventbus.MessageConsumer[T]) extends AnyVal {
 
+    def exceptionHandler(handler: scala.Option[Throwable => Unit]): io.vertx.core.eventbus.MessageConsumer[T] = {
+      asJava.exceptionHandler(handler match {case Some(t) => p:Throwable => t(p); case None => null})
+    }
+
+    def handler(handler: scala.Option[io.vertx.core.eventbus.Message[T] => Unit]): io.vertx.core.eventbus.MessageConsumer[T] = {
+      asJava.handler(handler match {case Some(t) => p:io.vertx.core.eventbus.Message[T] => t(p); case None => null})
+    }
+
+    def endHandler(endHandler: scala.Option[Void => Unit]): io.vertx.core.eventbus.MessageConsumer[T] = {
+      asJava.endHandler(endHandler match {case Some(t) => p:Void => t(p); case None => null})
+    }
+
     /**
      * Like [[completionHandler]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
      */
@@ -1392,6 +1566,32 @@ import io.vertx.core.Handler
    * 
    */
   implicit class MessageProducerScala[T](val asJava: io.vertx.core.eventbus.MessageProducer[T]) extends AnyVal {
+
+    /**
+     * Like [[end]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
+     */
+    def end(t: T): Unit = {
+      asJava.end(t)
+    }
+
+    /**
+     * Like [[send]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
+     */
+    def send(message: T): io.vertx.core.eventbus.MessageProducer[T] = {
+      asJava.send(message)
+    }
+
+    def exceptionHandler(handler: scala.Option[Throwable => Unit]): io.vertx.core.eventbus.MessageProducer[T] = {
+      asJava.exceptionHandler(handler match {case Some(t) => p:Throwable => t(p); case None => null})
+    }
+
+    def write(data: T): io.vertx.core.eventbus.MessageProducer[T] = {
+      asJava.write(data)
+    }
+
+    def drainHandler(handler: scala.Option[Void => Unit]): io.vertx.core.eventbus.MessageProducer[T] = {
+      asJava.drainHandler(handler match {case Some(t) => p:Void => t(p); case None => null})
+    }
 
     def sendFuture[R](message: T): scala.concurrent.Future[io.vertx.core.eventbus.Message[R]] = {
       val promise = Promise[io.vertx.core.eventbus.Message[R]]()
@@ -1487,6 +1687,13 @@ import io.vertx.core.net.SocketAddress
   implicit class NetServerScala(val asJava: io.vertx.core.net.NetServer) extends AnyVal {
 
     /**
+     * Like [[connectHandler]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
+     */
+    def connectHandler(handler: scala.Option[io.vertx.core.net.NetSocket => Unit]): io.vertx.core.net.NetServer = {
+      asJava.connectHandler(handler match {case Some(t) => p:io.vertx.core.net.NetSocket => t(p); case None => null})
+    }
+
+    /**
      * Like [[listen]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
      */
     def listenFuture(): scala.concurrent.Future[io.vertx.core.net.NetServer] = {
@@ -1557,6 +1764,29 @@ import io.vertx.core.Handler
    * [[io.vertx.core.streams.Pump]] to pump data with flow control.
    */
   implicit class NetSocketScala(val asJava: io.vertx.core.net.NetSocket) extends AnyVal {
+
+    def exceptionHandler(handler: scala.Option[Throwable => Unit]): io.vertx.core.net.NetSocket = {
+      asJava.exceptionHandler(handler match {case Some(t) => p:Throwable => t(p); case None => null})
+    }
+
+    def handler(handler: scala.Option[io.vertx.core.buffer.Buffer => Unit]): io.vertx.core.net.NetSocket = {
+      asJava.handler(handler match {case Some(t) => p:io.vertx.core.buffer.Buffer => t(p); case None => null})
+    }
+
+    def endHandler(endHandler: scala.Option[Void => Unit]): io.vertx.core.net.NetSocket = {
+      asJava.endHandler(endHandler match {case Some(t) => p:Void => t(p); case None => null})
+    }
+
+    def drainHandler(handler: scala.Option[Void => Unit]): io.vertx.core.net.NetSocket = {
+      asJava.drainHandler(handler match {case Some(t) => p:Void => t(p); case None => null})
+    }
+
+    /**
+     * Like [[closeHandler]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
+     */
+    def closeHandler(handler: scala.Option[Void => Unit]): io.vertx.core.net.NetSocket = {
+      asJava.closeHandler(handler match {case Some(t) => p:Void => t(p); case None => null})
+    }
 
     /**
      * Like [[sendFile]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
@@ -1840,6 +2070,13 @@ import io.vertx.core.Handler
     promise.future
   }
 
+
+    /**
+     * Like [[exceptionHandler]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
+     */
+    def exceptionHandler(handler: scala.Option[Throwable => Unit]): io.vertx.core.Vertx = {
+      asJava.exceptionHandler(handler match {case Some(t) => p:Throwable => t(p); case None => null})
+    }
 
     /**
      * Like [[close]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.

@@ -57,6 +57,18 @@ import io.vertx.kafka.client.consumer.OffsetAndTimestamp
    */
   implicit class KafkaConsumerScala[K, V](val asJava: io.vertx.kafka.client.consumer.KafkaConsumer[K, V]) extends AnyVal {
 
+    def exceptionHandler(handler: scala.Option[Throwable => Unit]): io.vertx.kafka.client.consumer.KafkaConsumer[K, V] = {
+      asJava.exceptionHandler(handler match {case Some(t) => p:Throwable => t(p); case None => null})
+    }
+
+    def handler(handler: scala.Option[io.vertx.kafka.client.consumer.KafkaConsumerRecord[K, V] => Unit]): io.vertx.kafka.client.consumer.KafkaConsumer[K, V] = {
+      asJava.handler(handler match {case Some(t) => p:io.vertx.kafka.client.consumer.KafkaConsumerRecord[K, V] => t(p); case None => null})
+    }
+
+    def endHandler(endHandler: scala.Option[Void => Unit]): io.vertx.kafka.client.consumer.KafkaConsumer[K, V] = {
+      asJava.endHandler(endHandler match {case Some(t) => p:Void => t(p); case None => null})
+    }
+
     /**
      * Like [[subscribe]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
      */
@@ -300,6 +312,14 @@ import io.vertx.core.{Vertx => JVertx}
    * The  provides global control over writing a record.
    */
   implicit class KafkaProducerScala[K, V](val asJava: io.vertx.kafka.client.producer.KafkaProducer[K, V]) extends AnyVal {
+
+    def exceptionHandler(handler: scala.Option[Throwable => Unit]): io.vertx.kafka.client.producer.KafkaProducer[K, V] = {
+      asJava.exceptionHandler(handler match {case Some(t) => p:Throwable => t(p); case None => null})
+    }
+
+    def drainHandler(handler: scala.Option[Void => Unit]): io.vertx.kafka.client.producer.KafkaProducer[K, V] = {
+      asJava.drainHandler(handler match {case Some(t) => p:Void => t(p); case None => null})
+    }
 
     /**
      * Like [[write]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
