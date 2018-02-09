@@ -52,7 +52,7 @@ import @{importedType}\n
 @foreach{method : nullableMethods}
 	@if{method.name != 'executeBlocking'}
 	@if{method.doc != null}@{methodDoc(method, '    ', true)}@end{}
-    def @{method.name}
+    def @{method.name}@if{method.returnType.isNullable}Option@end{}
 	@{assembleTypeParams(method.typeParams, true)}(
 	@foreach{param : method.params}
 		@{escapeIfKeyword(param.name)}: @{wrapInOptionIfNullable(param.type.isNullable, toScalaMethodParam(param.type))}

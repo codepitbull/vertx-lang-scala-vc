@@ -35,7 +35,7 @@ class ScalaVerticleTest extends AsyncFlatSpec with Matchers{
     //TODO limit of type inference using the Handler-conversion => it won't see the generic without the actual param
     vertx.eventBus()
       .localConsumer[String]("startMethod")
-      .handler(a => a match {case Message(address, headers, replayAddress, send, body) => result.success(body)} )
+      .handler(a => a match {case Message(address, headers, replyAddress, send, body) => result.success(body)} )
 
     vertx.deployVerticle(nameForVerticle[StartFutureVerticle])
     result.future.map(r => r should equal("startFuture"))

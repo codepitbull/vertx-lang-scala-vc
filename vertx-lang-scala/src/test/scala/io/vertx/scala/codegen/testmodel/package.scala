@@ -386,7 +386,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableByteParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableByteReturn(notNull: java.lang.Boolean): scala.Option[java.lang.Byte] = {
+    def methodWithNullableByteReturnOption(notNull: java.lang.Boolean): scala.Option[java.lang.Byte] = {
       scala.Option(asJava.methodWithNullableByteReturn(notNull))
     }
 
@@ -394,7 +394,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableShortParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableShortReturn(notNull: java.lang.Boolean): scala.Option[java.lang.Short] = {
+    def methodWithNullableShortReturnOption(notNull: java.lang.Boolean): scala.Option[java.lang.Short] = {
       scala.Option(asJava.methodWithNullableShortReturn(notNull))
     }
 
@@ -402,7 +402,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableIntegerParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableIntegerReturn(notNull: java.lang.Boolean): scala.Option[java.lang.Integer] = {
+    def methodWithNullableIntegerReturnOption(notNull: java.lang.Boolean): scala.Option[java.lang.Integer] = {
       scala.Option(asJava.methodWithNullableIntegerReturn(notNull))
     }
 
@@ -410,7 +410,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableLongParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableLongReturn(notNull: java.lang.Boolean): scala.Option[java.lang.Long] = {
+    def methodWithNullableLongReturnOption(notNull: java.lang.Boolean): scala.Option[java.lang.Long] = {
       scala.Option(asJava.methodWithNullableLongReturn(notNull))
     }
 
@@ -418,7 +418,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableFloatParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableFloatReturn(notNull: java.lang.Boolean): scala.Option[java.lang.Float] = {
+    def methodWithNullableFloatReturnOption(notNull: java.lang.Boolean): scala.Option[java.lang.Float] = {
       scala.Option(asJava.methodWithNullableFloatReturn(notNull))
     }
 
@@ -426,7 +426,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableDoubleParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableDoubleReturn(notNull: java.lang.Boolean): scala.Option[java.lang.Double] = {
+    def methodWithNullableDoubleReturnOption(notNull: java.lang.Boolean): scala.Option[java.lang.Double] = {
       scala.Option(asJava.methodWithNullableDoubleReturn(notNull))
     }
 
@@ -434,7 +434,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableBooleanParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableBooleanReturn(notNull: java.lang.Boolean): scala.Option[java.lang.Boolean] = {
+    def methodWithNullableBooleanReturnOption(notNull: java.lang.Boolean): scala.Option[java.lang.Boolean] = {
       scala.Option(asJava.methodWithNullableBooleanReturn(notNull))
     }
 
@@ -442,7 +442,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableStringParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableStringReturn(notNull: java.lang.Boolean): scala.Option[String] = {
+    def methodWithNullableStringReturnOption(notNull: java.lang.Boolean): scala.Option[String] = {
       scala.Option(asJava.methodWithNullableStringReturn(notNull))
     }
 
@@ -450,7 +450,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableCharParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableCharReturn(notNull: java.lang.Boolean): scala.Option[java.lang.Character] = {
+    def methodWithNullableCharReturnOption(notNull: java.lang.Boolean): scala.Option[java.lang.Character] = {
       scala.Option(asJava.methodWithNullableCharReturn(notNull))
     }
 
@@ -458,7 +458,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableJsonObjectParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableJsonObjectReturn(notNull: java.lang.Boolean): scala.Option[io.vertx.core.json.JsonObject] = {
+    def methodWithNullableJsonObjectReturnOption(notNull: java.lang.Boolean): scala.Option[io.vertx.core.json.JsonObject] = {
       scala.Option(asJava.methodWithNullableJsonObjectReturn(notNull))
     }
 
@@ -466,7 +466,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableJsonArrayParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableJsonArrayReturn(notNull: java.lang.Boolean): scala.Option[io.vertx.core.json.JsonArray] = {
+    def methodWithNullableJsonArrayReturnOption(notNull: java.lang.Boolean): scala.Option[io.vertx.core.json.JsonArray] = {
       scala.Option(asJava.methodWithNullableJsonArrayReturn(notNull))
     }
 
@@ -474,7 +474,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableApiParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableApiReturn(notNull: java.lang.Boolean): scala.Option[io.vertx.codegen.testmodel.RefedInterface1] = {
+    def methodWithNullableApiReturnOption(notNull: java.lang.Boolean): scala.Option[io.vertx.codegen.testmodel.RefedInterface1] = {
       scala.Option(asJava.methodWithNullableApiReturn(notNull))
     }
 
@@ -482,7 +482,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableDataObjectParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableDataObjectReturn(notNull: java.lang.Boolean): scala.Option[io.vertx.codegen.testmodel.TestDataObject] = {
+    def methodWithNullableDataObjectReturnOption(notNull: java.lang.Boolean): scala.Option[io.vertx.codegen.testmodel.TestDataObject] = {
       scala.Option(asJava.methodWithNullableDataObjectReturn(notNull))
     }
 
@@ -490,7 +490,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableEnumParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableEnumReturn(notNull: java.lang.Boolean): scala.Option[io.vertx.codegen.testmodel.TestEnum] = {
+    def methodWithNullableEnumReturnOption(notNull: java.lang.Boolean): scala.Option[io.vertx.codegen.testmodel.TestEnum] = {
       scala.Option(asJava.methodWithNullableEnumReturn(notNull))
     }
 
@@ -498,7 +498,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableGenEnumParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableGenEnumReturn(notNull: java.lang.Boolean): scala.Option[io.vertx.codegen.testmodel.TestGenEnum] = {
+    def methodWithNullableGenEnumReturnOption(notNull: java.lang.Boolean): scala.Option[io.vertx.codegen.testmodel.TestGenEnum] = {
       scala.Option(asJava.methodWithNullableGenEnumReturn(notNull))
     }
 
@@ -510,7 +510,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableTypeVariableHandler[T](notNull, value, {p:T => handler(p)})
     }
 
-    def methodWithNullableTypeVariableReturn[T](notNull: java.lang.Boolean, value: T): scala.Option[T] = {
+    def methodWithNullableTypeVariableReturnOption[T](notNull: java.lang.Boolean, value: T): scala.Option[T] = {
       scala.Option(asJava.methodWithNullableTypeVariableReturn[T](notNull, value))
     }
 
@@ -522,7 +522,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableListByteParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableListByteReturn(notNull: java.lang.Boolean): scala.Option[java.util.List[java.lang.Byte]] = {
+    def methodWithNullableListByteReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.List[java.lang.Byte]] = {
       scala.Option(asJava.methodWithNullableListByteReturn(notNull))
     }
 
@@ -530,7 +530,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableListShortParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableListShortReturn(notNull: java.lang.Boolean): scala.Option[java.util.List[java.lang.Short]] = {
+    def methodWithNullableListShortReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.List[java.lang.Short]] = {
       scala.Option(asJava.methodWithNullableListShortReturn(notNull))
     }
 
@@ -538,7 +538,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableListIntegerParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableListIntegerReturn(notNull: java.lang.Boolean): scala.Option[java.util.List[java.lang.Integer]] = {
+    def methodWithNullableListIntegerReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.List[java.lang.Integer]] = {
       scala.Option(asJava.methodWithNullableListIntegerReturn(notNull))
     }
 
@@ -546,7 +546,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableListLongParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableListLongReturn(notNull: java.lang.Boolean): scala.Option[java.util.List[java.lang.Long]] = {
+    def methodWithNullableListLongReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.List[java.lang.Long]] = {
       scala.Option(asJava.methodWithNullableListLongReturn(notNull))
     }
 
@@ -554,7 +554,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableListFloatParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableListFloatReturn(notNull: java.lang.Boolean): scala.Option[java.util.List[java.lang.Float]] = {
+    def methodWithNullableListFloatReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.List[java.lang.Float]] = {
       scala.Option(asJava.methodWithNullableListFloatReturn(notNull))
     }
 
@@ -562,7 +562,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableListDoubleParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableListDoubleReturn(notNull: java.lang.Boolean): scala.Option[java.util.List[java.lang.Double]] = {
+    def methodWithNullableListDoubleReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.List[java.lang.Double]] = {
       scala.Option(asJava.methodWithNullableListDoubleReturn(notNull))
     }
 
@@ -570,7 +570,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableListBooleanParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableListBooleanReturn(notNull: java.lang.Boolean): scala.Option[java.util.List[java.lang.Boolean]] = {
+    def methodWithNullableListBooleanReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.List[java.lang.Boolean]] = {
       scala.Option(asJava.methodWithNullableListBooleanReturn(notNull))
     }
 
@@ -578,7 +578,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableListStringParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableListStringReturn(notNull: java.lang.Boolean): scala.Option[java.util.List[String]] = {
+    def methodWithNullableListStringReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.List[String]] = {
       scala.Option(asJava.methodWithNullableListStringReturn(notNull))
     }
 
@@ -586,7 +586,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableListCharParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableListCharReturn(notNull: java.lang.Boolean): scala.Option[java.util.List[java.lang.Character]] = {
+    def methodWithNullableListCharReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.List[java.lang.Character]] = {
       scala.Option(asJava.methodWithNullableListCharReturn(notNull))
     }
 
@@ -594,7 +594,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableListJsonObjectParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableListJsonObjectReturn(notNull: java.lang.Boolean): scala.Option[java.util.List[io.vertx.core.json.JsonObject]] = {
+    def methodWithNullableListJsonObjectReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.List[io.vertx.core.json.JsonObject]] = {
       scala.Option(asJava.methodWithNullableListJsonObjectReturn(notNull))
     }
 
@@ -602,7 +602,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableListJsonArrayParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableListJsonArrayReturn(notNull: java.lang.Boolean): scala.Option[java.util.List[io.vertx.core.json.JsonArray]] = {
+    def methodWithNullableListJsonArrayReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.List[io.vertx.core.json.JsonArray]] = {
       scala.Option(asJava.methodWithNullableListJsonArrayReturn(notNull))
     }
 
@@ -610,7 +610,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableListApiParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableListApiReturn(notNull: java.lang.Boolean): scala.Option[java.util.List[io.vertx.codegen.testmodel.RefedInterface1]] = {
+    def methodWithNullableListApiReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.List[io.vertx.codegen.testmodel.RefedInterface1]] = {
       scala.Option(asJava.methodWithNullableListApiReturn(notNull))
     }
 
@@ -618,7 +618,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableListDataObjectParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableListDataObjectReturn(notNull: java.lang.Boolean): scala.Option[java.util.List[io.vertx.codegen.testmodel.TestDataObject]] = {
+    def methodWithNullableListDataObjectReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.List[io.vertx.codegen.testmodel.TestDataObject]] = {
       scala.Option(asJava.methodWithNullableListDataObjectReturn(notNull))
     }
 
@@ -626,7 +626,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableListEnumParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableListEnumReturn(notNull: java.lang.Boolean): scala.Option[java.util.List[io.vertx.codegen.testmodel.TestEnum]] = {
+    def methodWithNullableListEnumReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.List[io.vertx.codegen.testmodel.TestEnum]] = {
       scala.Option(asJava.methodWithNullableListEnumReturn(notNull))
     }
 
@@ -634,7 +634,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableListGenEnumParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableListGenEnumReturn(notNull: java.lang.Boolean): scala.Option[java.util.List[io.vertx.codegen.testmodel.TestGenEnum]] = {
+    def methodWithNullableListGenEnumReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.List[io.vertx.codegen.testmodel.TestGenEnum]] = {
       scala.Option(asJava.methodWithNullableListGenEnumReturn(notNull))
     }
 
@@ -642,7 +642,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableSetByteParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableSetByteReturn(notNull: java.lang.Boolean): scala.Option[java.util.Set[java.lang.Byte]] = {
+    def methodWithNullableSetByteReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.Set[java.lang.Byte]] = {
       scala.Option(asJava.methodWithNullableSetByteReturn(notNull))
     }
 
@@ -650,7 +650,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableSetShortParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableSetShortReturn(notNull: java.lang.Boolean): scala.Option[java.util.Set[java.lang.Short]] = {
+    def methodWithNullableSetShortReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.Set[java.lang.Short]] = {
       scala.Option(asJava.methodWithNullableSetShortReturn(notNull))
     }
 
@@ -658,7 +658,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableSetIntegerParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableSetIntegerReturn(notNull: java.lang.Boolean): scala.Option[java.util.Set[java.lang.Integer]] = {
+    def methodWithNullableSetIntegerReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.Set[java.lang.Integer]] = {
       scala.Option(asJava.methodWithNullableSetIntegerReturn(notNull))
     }
 
@@ -666,7 +666,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableSetLongParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableSetLongReturn(notNull: java.lang.Boolean): scala.Option[java.util.Set[java.lang.Long]] = {
+    def methodWithNullableSetLongReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.Set[java.lang.Long]] = {
       scala.Option(asJava.methodWithNullableSetLongReturn(notNull))
     }
 
@@ -674,7 +674,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableSetFloatParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableSetFloatReturn(notNull: java.lang.Boolean): scala.Option[java.util.Set[java.lang.Float]] = {
+    def methodWithNullableSetFloatReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.Set[java.lang.Float]] = {
       scala.Option(asJava.methodWithNullableSetFloatReturn(notNull))
     }
 
@@ -682,7 +682,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableSetDoubleParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableSetDoubleReturn(notNull: java.lang.Boolean): scala.Option[java.util.Set[java.lang.Double]] = {
+    def methodWithNullableSetDoubleReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.Set[java.lang.Double]] = {
       scala.Option(asJava.methodWithNullableSetDoubleReturn(notNull))
     }
 
@@ -690,7 +690,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableSetBooleanParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableSetBooleanReturn(notNull: java.lang.Boolean): scala.Option[java.util.Set[java.lang.Boolean]] = {
+    def methodWithNullableSetBooleanReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.Set[java.lang.Boolean]] = {
       scala.Option(asJava.methodWithNullableSetBooleanReturn(notNull))
     }
 
@@ -698,7 +698,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableSetStringParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableSetStringReturn(notNull: java.lang.Boolean): scala.Option[java.util.Set[String]] = {
+    def methodWithNullableSetStringReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.Set[String]] = {
       scala.Option(asJava.methodWithNullableSetStringReturn(notNull))
     }
 
@@ -706,7 +706,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableSetCharParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableSetCharReturn(notNull: java.lang.Boolean): scala.Option[java.util.Set[java.lang.Character]] = {
+    def methodWithNullableSetCharReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.Set[java.lang.Character]] = {
       scala.Option(asJava.methodWithNullableSetCharReturn(notNull))
     }
 
@@ -714,7 +714,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableSetJsonObjectParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableSetJsonObjectReturn(notNull: java.lang.Boolean): scala.Option[java.util.Set[io.vertx.core.json.JsonObject]] = {
+    def methodWithNullableSetJsonObjectReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.Set[io.vertx.core.json.JsonObject]] = {
       scala.Option(asJava.methodWithNullableSetJsonObjectReturn(notNull))
     }
 
@@ -722,7 +722,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableSetJsonArrayParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableSetJsonArrayReturn(notNull: java.lang.Boolean): scala.Option[java.util.Set[io.vertx.core.json.JsonArray]] = {
+    def methodWithNullableSetJsonArrayReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.Set[io.vertx.core.json.JsonArray]] = {
       scala.Option(asJava.methodWithNullableSetJsonArrayReturn(notNull))
     }
 
@@ -730,7 +730,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableSetApiParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableSetApiReturn(notNull: java.lang.Boolean): scala.Option[java.util.Set[io.vertx.codegen.testmodel.RefedInterface1]] = {
+    def methodWithNullableSetApiReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.Set[io.vertx.codegen.testmodel.RefedInterface1]] = {
       scala.Option(asJava.methodWithNullableSetApiReturn(notNull))
     }
 
@@ -738,7 +738,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableSetDataObjectParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableSetDataObjectReturn(notNull: java.lang.Boolean): scala.Option[java.util.Set[io.vertx.codegen.testmodel.TestDataObject]] = {
+    def methodWithNullableSetDataObjectReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.Set[io.vertx.codegen.testmodel.TestDataObject]] = {
       scala.Option(asJava.methodWithNullableSetDataObjectReturn(notNull))
     }
 
@@ -746,7 +746,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableSetEnumParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableSetEnumReturn(notNull: java.lang.Boolean): scala.Option[java.util.Set[io.vertx.codegen.testmodel.TestEnum]] = {
+    def methodWithNullableSetEnumReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.Set[io.vertx.codegen.testmodel.TestEnum]] = {
       scala.Option(asJava.methodWithNullableSetEnumReturn(notNull))
     }
 
@@ -754,7 +754,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableSetGenEnumParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableSetGenEnumReturn(notNull: java.lang.Boolean): scala.Option[java.util.Set[io.vertx.codegen.testmodel.TestGenEnum]] = {
+    def methodWithNullableSetGenEnumReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.Set[io.vertx.codegen.testmodel.TestGenEnum]] = {
       scala.Option(asJava.methodWithNullableSetGenEnumReturn(notNull))
     }
 
@@ -762,7 +762,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableMapByteParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableMapByteReturn(notNull: java.lang.Boolean): scala.Option[java.util.Map[String, java.lang.Byte]] = {
+    def methodWithNullableMapByteReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.Map[String, java.lang.Byte]] = {
       scala.Option(asJava.methodWithNullableMapByteReturn(notNull))
     }
 
@@ -770,7 +770,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableMapShortParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableMapShortReturn(notNull: java.lang.Boolean): scala.Option[java.util.Map[String, java.lang.Short]] = {
+    def methodWithNullableMapShortReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.Map[String, java.lang.Short]] = {
       scala.Option(asJava.methodWithNullableMapShortReturn(notNull))
     }
 
@@ -778,7 +778,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableMapIntegerParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableMapIntegerReturn(notNull: java.lang.Boolean): scala.Option[java.util.Map[String, java.lang.Integer]] = {
+    def methodWithNullableMapIntegerReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.Map[String, java.lang.Integer]] = {
       scala.Option(asJava.methodWithNullableMapIntegerReturn(notNull))
     }
 
@@ -786,7 +786,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableMapLongParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableMapLongReturn(notNull: java.lang.Boolean): scala.Option[java.util.Map[String, java.lang.Long]] = {
+    def methodWithNullableMapLongReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.Map[String, java.lang.Long]] = {
       scala.Option(asJava.methodWithNullableMapLongReturn(notNull))
     }
 
@@ -794,7 +794,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableMapFloatParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableMapFloatReturn(notNull: java.lang.Boolean): scala.Option[java.util.Map[String, java.lang.Float]] = {
+    def methodWithNullableMapFloatReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.Map[String, java.lang.Float]] = {
       scala.Option(asJava.methodWithNullableMapFloatReturn(notNull))
     }
 
@@ -802,7 +802,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableMapDoubleParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableMapDoubleReturn(notNull: java.lang.Boolean): scala.Option[java.util.Map[String, java.lang.Double]] = {
+    def methodWithNullableMapDoubleReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.Map[String, java.lang.Double]] = {
       scala.Option(asJava.methodWithNullableMapDoubleReturn(notNull))
     }
 
@@ -810,7 +810,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableMapBooleanParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableMapBooleanReturn(notNull: java.lang.Boolean): scala.Option[java.util.Map[String, java.lang.Boolean]] = {
+    def methodWithNullableMapBooleanReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.Map[String, java.lang.Boolean]] = {
       scala.Option(asJava.methodWithNullableMapBooleanReturn(notNull))
     }
 
@@ -818,7 +818,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableMapStringParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableMapStringReturn(notNull: java.lang.Boolean): scala.Option[java.util.Map[String, String]] = {
+    def methodWithNullableMapStringReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.Map[String, String]] = {
       scala.Option(asJava.methodWithNullableMapStringReturn(notNull))
     }
 
@@ -826,7 +826,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableMapCharParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableMapCharReturn(notNull: java.lang.Boolean): scala.Option[java.util.Map[String, java.lang.Character]] = {
+    def methodWithNullableMapCharReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.Map[String, java.lang.Character]] = {
       scala.Option(asJava.methodWithNullableMapCharReturn(notNull))
     }
 
@@ -834,7 +834,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableMapJsonObjectParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableMapJsonObjectReturn(notNull: java.lang.Boolean): scala.Option[java.util.Map[String, io.vertx.core.json.JsonObject]] = {
+    def methodWithNullableMapJsonObjectReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.Map[String, io.vertx.core.json.JsonObject]] = {
       scala.Option(asJava.methodWithNullableMapJsonObjectReturn(notNull))
     }
 
@@ -842,7 +842,7 @@ import io.vertx.codegen.testmodel.TestGenEnum
       asJava.methodWithNullableMapJsonArrayParam(expectNull, param.orNull)
     }
 
-    def methodWithNullableMapJsonArrayReturn(notNull: java.lang.Boolean): scala.Option[java.util.Map[String, io.vertx.core.json.JsonArray]] = {
+    def methodWithNullableMapJsonArrayReturnOption(notNull: java.lang.Boolean): scala.Option[java.util.Map[String, io.vertx.core.json.JsonArray]] = {
       scala.Option(asJava.methodWithNullableMapJsonArrayReturn(notNull))
     }
 

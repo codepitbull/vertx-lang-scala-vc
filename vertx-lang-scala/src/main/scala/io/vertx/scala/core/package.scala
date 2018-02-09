@@ -342,7 +342,7 @@ import io.vertx.core.Future
     /**
      * Like [[config]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
      */
-    def config(): scala.Option[io.vertx.core.json.JsonObject] = {
+    def configOption(): scala.Option[io.vertx.core.json.JsonObject] = {
       scala.Option(asJava.config())
     }
 
@@ -1457,7 +1457,7 @@ import io.vertx.core.Handler
     /**
      * Like [[replyAddress]] but returns a [[scala.concurrent.Future]] instead of taking an AsyncResultHandler.
      */
-    def replyAddress(): scala.Option[String] = {
+    def replyAddressOption(): scala.Option[String] = {
       scala.Option(asJava.replyAddress())
     }
 
