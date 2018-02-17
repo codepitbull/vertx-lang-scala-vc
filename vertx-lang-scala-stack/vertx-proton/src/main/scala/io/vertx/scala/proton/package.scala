@@ -1,7 +1,7 @@
 //MODULE: vertx-proton
 //MODULE: io.vertx.proton
-//MODULE: io.vertx.proton
-//MODULE: io.vertx.proton.scala
+//MODULE: io.vertx
+//MODULE: io.vertx.scala.proton
 /*
  * Copyright 2014 Red Hat, Inc.
  *
@@ -18,14 +18,14 @@
  * under the License.
  */
 
-package io.vertx.proton
+package io.vertx.scala
 import scala.collection.JavaConverters._
 import scala.compat.java8.FunctionConverters._
 import io.vertx.core.json.JsonObject
 import io.vertx.core.json.JsonArray
 import scala.concurrent.Promise
 
-package object scala{
+package object proton{
 
 
   type ProtonClientOptions = io.vertx.proton.ProtonClientOptions

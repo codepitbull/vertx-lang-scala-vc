@@ -17,9 +17,9 @@ To use Vert.x Proton, add the following dependency to the _dependencies_ section
 [source,xml,subs="+attributes"]
 ----
 <dependency>
-  <groupId>${maven.groupId}</groupId>
-  <artifactId>${maven.artifactId}</artifactId>
-  <version>${maven.version}</version>
+  <groupId>io.vertx</groupId>
+  <artifactId>vertx-proton-scala_2.12</artifactId>
+  <version>3.6.0-SNAPSHOT</version>
 </dependency>
 ----
 
@@ -27,7 +27,7 @@ To use Vert.x Proton, add the following dependency to the _dependencies_ section
 
 [source,groovy,subs="+attributes"]
 ----
-compile ${maven.groupId}:${maven.artifactId}:${maven.version}
+compile io.vertx:vertx-proton-scala_2.12:3.6.0-SNAPSHOT
 ----
 
 === Creating a connection
