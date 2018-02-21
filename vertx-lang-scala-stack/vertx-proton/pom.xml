@@ -75,7 +75,7 @@
         <configuration>
           <instructions>
             <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-            <Export-Package>io.vertx.scala.ext.auth.jwt;version=${project.version}
+            <Export-Package>io.vertx.scala.proton;version=${project.version}
             </Export-Package>
             <Import-Package>*</Import-Package>
             <Include-Resource>{maven-resources}</Include-Resource>

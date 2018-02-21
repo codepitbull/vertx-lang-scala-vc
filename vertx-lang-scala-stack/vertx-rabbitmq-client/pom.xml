@@ -70,7 +70,7 @@
         <configuration>
           <instructions>
             <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-            <Export-Package>io.vertx.scala.ext.sql;version=${project.version}
+            <Export-Package>io.vertx.scala.rabbitmq;version=${project.version}
             </Export-Package>
             <Import-Package>
               javax.sql,
